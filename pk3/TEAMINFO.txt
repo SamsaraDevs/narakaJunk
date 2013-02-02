@@ -1,0 +1,33 @@
+ClearTeams
+
+Team "Heroes"
+{
+	//Name "Heroes"
+	PlayerColor "00 00 FF"
+	TextColor "Blue"
+	//WinnerPic "winerblu"
+	//LoserPic "loserblu"
+
+	PlayerStartThingNumber 5080
+    AllowCustomPlayerColor
+}
+
+Team "Villains"
+{
+	//Name "Villains"
+	PlayerColor "FF 00 00"
+	TextColor "Red"
+	//WinnerPic "winerred"
+	//LoserPic "loserred"
+
+	PlayerStartThingNumber 5081
+    AllowCustomPlayerColor
+}
+
+// Both of these are for compatibility purposes only. Please do not actually use them.
+Team "Raktah"
+{
+}
+Team "Nilah"
+{
+}

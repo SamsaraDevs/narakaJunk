@@ -1,0 +1,76 @@
+$playersound	Cyberdemon	 male	*death			dscybdth
+$playersound	Cyberdemon	 male	*xdeath			dscybdth
+$playersound	Cyberdemon	 male	*burndeath		dscybdth
+$playersound	Cyberdemon	 male	*crazydeath		dscybdth
+$playersounddup Cyberdemon   male    *wimpydeath 	*death
+$playersound	Cyberdemon	 male	*gibbed			dscybdth
+$playersound	Cyberdemon   male	*falling		dscybsit
+$playersound	Cyberdemon	 male	*pain100		dsdmpain
+$playersounddup	Cyberdemon	 male	*pain75			*pain100
+$playersounddup	Cyberdemon	 male	*pain50			*pain100
+$playersounddup	Cyberdemon	 male	*pain25			*pain100
+$playersound	Cyberdemon	 male	*grunt			dsdmact
+$playersound	Cyberdemon	 male	*land			cybland
+$playersound	Cyberdemon	 male	*usefail		dsdmact
+$playersound	Cyberdemon   male	*puzzfail		dsdmact
+$playersound	Cyberdemon   male	*taunt			dscybsit
+
+$playersound	DSparil		 male	*death			SRPDTH
+$playersound	DSparil		 male	*xdeath			SRPDTH
+$playersound	DSparil		 male	*burndeath		SRPDTH
+$playersound	DSparil		 male	*crazydeath		SRPDTH
+$playersounddup DSparil		 male   *wimpydeath 	*death
+$playersound	DSparil		 male	*gibbed			SRPDTH
+$playersound	DSparil		 male	*falling		chdsparl
+$playersound	DSparil		 male	*pain100		SRPPAI
+$playersounddup	DSparil		 male	*pain75			*pain100
+$playersounddup	DSparil		 male	*pain50			*pain100
+$playersounddup	DSparil		 male	*pain25			*pain100
+$playersound	DSparil		 male	*grunt			DSPGRUNT
+$playersound	DSparil		 male	*land			SRPSTEP
+$playersound	DSparil		 male	*usefail		DSPGRUNT
+$playersound	DSparil		 male	*puzzfail		DSPGRUNT
+$playersound	DSparil		 male	*taunt			SRPACT
+
+
+$playersound	DSparilOnFoot		 male	*death			DSPDSPH
+$playersound	DSparilOnFoot		 male	*xdeath			DSPDSPH
+$playersound	DSparilOnFoot		 male	*burndeath		DSPDSPH
+$playersound	DSparilOnFoot		 male	*crazydeath		DSPDSPH
+$playersounddup DSparilOnFoot		 male    *wimpydeath 	*death
+$playersound	DSparilOnFoot		 male	*gibbed			DSPDSPH
+$playersound	DSparilOnFoot		 male	*falling		chdsparl
+$playersound	DSparilOnFoot		 male	*pain100		DSPPAI
+$playersounddup	DSparilOnFoot		 male	*pain75			*pain100
+$playersounddup	DSparilOnFoot		 male	*pain50			*pain100
+$playersounddup	DSparilOnFoot		 male	*pain25			*pain100
+$playersound	DSparilOnFoot		 male	*grunt			DSPGRUNT
+$playersound	DSparilOnFoot		 male	*land			DSPLAND
+$playersound	DSparilOnFoot		 male	*usefail		DSPGRUNT
+$playersound	DSparilOnFoot		 male	*puzzfail		DSPGRUNT
+$playersound	DSparilOnFoot		 male	*taunt			DSPACT
+
+dsparilserpent/sight		srpsit
+dsparilserpent/attack		srpatk
+dsparilserpent/attack2		srpatk2
+dsparilserpent/pain			srppai
+dsparilserpent/death		srpdth
+dsparilserpent/active		srpact
+dsparilserpent/step			srpstep
+
+dsparil/sight			dspsit
+dsparil/attack			dspatk
+dsparil/pain			dsppai
+dsparil/active			dspact
+dsparil/rise			dsprise
+dsparil/zap				dspzap
+dsparil/scream			dspdsph
+dsparil/explode			dspdexp
+dsparil/bones			dspdbon
+
+wizard/sight			discsit
+wizard/attack			discatk
+wizard/death			discdth
+wizard/pain				discpai
+wizard/active1			discact
+$random wizard/active 		{ wizard/sight wizard/active1 }

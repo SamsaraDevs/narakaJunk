@@ -1,0 +1,18 @@
+clearplayerclasses
+addplayerclass "DoomguyDharmapala"
+addplayerclass "ChexWarriorDharmapala"
+addplayerclass "CorvusDharmapala"
+addplayerclass "WolfenDharmapala"
+addplayerclass "HexenPlayerDharmapala"
+addplayerclass "DukeDharmapala"
+addplayerclass "MarathonDharmapala"
+addplayerclass "QuakeDharmapala"
+
+addplayerclass "CyberdemonPlayer"
+//addplayerclass "SnotfolusPlayer"
+addplayerclass "DsparilPlayer"
+//addplayerclass "HitlerPlayer"
+//addplayerclass "KoraxPlayer"
+//addplayerclass "UndecidedDukeVillainPlayer"
+//addplayerclass "TfearPlayer"
+//addplayerclass "UndecidedQuakeVillainPlayer"

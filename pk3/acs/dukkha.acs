@@ -1,0 +1,48 @@
+#library "DUKKHA"
+#include "zcommon.acs"
+
+script 465 (void)
+{
+	MorphActor(0, "DSparilOnFootPlayer", "", 0x7FFFFFFF, 0, "emptytelefog", "emptytelefog");
+	GiveInventory("Megasphere",1);
+}
+
+script 466 (void)
+{
+	SetPlayerProperty(0,1,4);
+}
+
+script 467 (void)
+{
+	SetPlayerProperty(0,0,4);
+}
+
+script 468 (void)
+{
+    if (CheckInventory("GhostsphereCooldown") > 0)
+    {
+        delay(35);
+        TakeInventory("GhostsphereCooldown",1);
+        restart;
+    }
+}
+
+script 469 (void)
+{
+    if (CheckInventory("DSparilSummonCooldown") > 0)
+    {
+        delay(35);
+        TakeInventory("DSparilSummonCooldown",1);
+        restart;
+    }
+}
+
+script 470 UNLOADING
+{
+	TakeInventory("DsparilPortTeleport",10);
+	TakeInventory("DsparilPortGhostsphere",10);
+	TakeInventory("GhostsphereCooldown",100);
+	TakeInventory("DSparilSummonCooldown",100);
+	TakeInventory("DSparilRevived",10);
+	TakeInventory("Staff of D'Sparil",10);
+}

@@ -1,0 +1,272 @@
+Actor CyberdemonClass : Boolean { }
+
+actor EmptyTelefog : TeleportFog
+{
+	Alpha 0
+	States
+	{
+	Spawn:
+		ACLO E 1
+		stop
+	}
+}
+
+actor CyberdemonPlayer : PlayerPawn
+{
+	LimitedToTeam 1
+    Player.DisplayName "Cyberdemon"
+    BloodColor "Red"
+	Radius 20 // Previously 25
+	Height 67
+	Mass 1000
+	Player.Viewheight 67
+	Player.AttackZOffset 22
+	Player.ForwardMove 0.65 0.65
+	Player.SideMove 0.55 0.55
+    Player.JumpZ 6//Default is 8
+    Player.StartItem "Cyber-Rocket Launcher", 1
+    Player.StartItem "CyberdemonClass", 1
+    //Player.StartItem "BossDamageImmunity", 1
+    Player.Soundclass "Cyberdemon"
+	DamageFactor "DSparilDamage", 0
+	DamageFactor "Slime", 0
+	DamageFactor "Lava", 0
+	DamageFactor "Normal", 0.45
+	DamageFactor "Telefrag", 2.0
+    DamageFactor "PoisonCloud", 1.75
+    DamageFactor "DukeExplosive", 0.25
+    DamageFactor "TimonsAxe", 0.25
+    DamageFactor "WMCBeam", 0.25
+    DamageFactor "WMCNade", 0.25
+	Species "Villain"
+	//DamageFactor "MarathonFusion", 2.0 // Maybe not for this.
+	//DamageFactor "CorvusHellstaffTomed", 0.2 // Or this...
+	+THRUSPECIES
+    +NOSKIN
+    -DONTBLAST
+    -THRUSPECIES
+    +DONTRIP
+    +BOSSDEATH
+    +NOTDMATCH
+    +NOICEDEATH
+	+NORADIUSDMG
+	Obituary "%k stomped %o under cloven hooves."
+    //Species "Player"
+    //Player.ColorRange 112, 127
+    States
+    {
+      Spawn:
+        CYBR A -1
+        Loop
+
+      See:
+		CYBR A 3
+		CYBR A 0 A_CheckFloor("WalkSound")
+		CYBR A 3
+		goto ContinueOn
+	  WalkSound:
+		TNT1 A 0 Radius_Quake(2,4,0,2,0)
+		CYBR A 3 A_PlaySoundEx("cyber/hoof","soundslot6")
+		TNT1 A 0 A_Explode(128,128,0)
+	  ContinueOn:
+		CYBR ABB 6
+		CYBR C 3
+		CYBR A 0 A_CheckFloor("WalkSound2")
+		CYBR C 3
+		goto ContinueOn2
+	  WalkSound2:
+		TNT1 A 0 Radius_Quake(2,4,0,2,0)
+		CYBR C 3 A_PlaySoundEx("cyber/hoof","soundslot6")
+		TNT1 A 0 A_Explode(128,128,0)
+	  ContinueOn2:
+		CYBR CDD 6 
+        goto Spawn
+
+      Missile:
+        CYBR E 12 
+        Goto Spawn
+
+      Melee:
+        CYBR F 6 BRIGHT
+        Goto Missile
+
+      Pain:
+        CYBR G 4 
+        CYBR G 4 A_Pain
+        Goto Spawn
+
+      Death.DukeDamage:
+      Death.DukeExplosive:
+      Death.DukePistol:
+	  Death.MightyBoot:
+        TNT1 A 0 A_Jump(218,"Death")
+        TNT1 A 0 A_GiveToTarget("DukeBossKillTaunt",1)
+        goto Death
+		
+	  XDeath:
+      Death:
+		CYBR H 1 A_SpawnItemEx("KilledCyberdemon",0,0,0,0,0,0,0,32)
+		TNT1 A 0 A_PlayerScream
+		TNT1 A 0 A_NoBlocking
+		ACLO E -1
+		stop
+
+      Death.DukeIce:
+        TNT1 A 0 A_Jump(218,"Ice")
+        TNT1 A 0 A_GiveToTarget("DukeBossKillTaunt",1)
+        goto Ice
+
+      Death.ZorchPistol:
+      Death.Zorch:
+        CYBR G 0 A_Stop
+		CYBR G 1 A_SpawnItemEx("ZorchedCyberdemon",0,0,0,0,0,0,0,32)
+		TNT1 A 0 A_NoBlocking
+		ACLO E -1
+		stop
+		
+      Ice:
+      Death.HexenIce:
+      Death.Ice:
+		CYBR G 1 A_SpawnItemEx("FrozenCyberdemon",0,0,0,0,0,0,0,32)
+		TNT1 A 0 A_NoBlocking
+		ACLO E -1
+		stop
+    }
+}
+
+ACTOR KilledCyberdemon
+{
+Radius 1
+Height 1
++NOCLIP
+-SOLID
++CLIENTSIDEONLY
+States
+{
+	Spawn:
+		CYBR H 8
+		CYBR I 8 //A_PlayerScream
+		CYBR JKL 8
+		CYBR M 8
+		CYBR NO 8
+		CYBR P 10
+		CYBR P -1
+		Stop
+}
+}
+
+ACTOR ZorchedCyberdemon
+{
+Radius 1
+Height 1
++NOCLIP
+-SOLID
++CLIENTSIDEONLY
+States
+{
+	Spawn:
+        TNT1 A 0 A_ChangeFlag("DONTGIB",1)
+        TNT1 A 0 A_PlaySoundEx("chex/zorchhuge","soundslot5",0,0)
+        CYBR G 8 A_SpawnItem("ZorchEffectHuge")
+        CYBR G 8 A_SetTranslucent(0.9,0)
+        CYBR G 0 A_PlaySoundEx("chex/cyberzorch","soundslot6",0,2)
+        CYBR G 8 A_SetTranslucent(0.8,0)
+        CYBR G 0 A_NoBlocking
+        CYBR G 8 A_SetTranslucent(0.7,0)
+        CYBR G 8 A_SetTranslucent(0.6,0)
+        CYBR G 8 A_SetTranslucent(0.5,0)
+        CYBR G 8 A_SetTranslucent(0.4,0)
+        CYBR G 8 A_SetTranslucent(0.3,0)
+        CYBR G 8 A_SetTranslucent(0.2,0)
+        CYBR G 8 A_SetTranslucent(0.1,0)
+        TNT1 A 1 A_SetTranslucent(1,0)
+        TNT1 A -1
+        stop
+}
+}
+
+ACTOR FrozenCyberdemon
+{
+Radius 1
+Height 1
++NOCLIP
+-SOLID
++CLIENTSIDEONLY
+States
+{
+	Spawn:
+        CYBR G 0 A_PlaySoundEx("freeze/cyberdemon","soundslot6",0,0)
+        CYBR G 0 //A_GenericFreezeDeath
+        CYBR G 0 A_UnsetShootable
+        CYBR Z 105 A_UnsetSolid
+        CYBR G 0 A_PlaySoundEx("freeze/break","soundslot6",0,0)
+        CYBR GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 0 A_SpawnItemEx("IceChunk2",random(-1,1),random(-1,1),random(16,96),random(-2,2),random(-2,2),random(5,15))//A_SpawnDebris("IceChunk2")
+        CYBR G 0 A_IceGuyDie
+        ACLO E 1 A_IceGuyDie
+        ACLO E -1
+        stop
+}
+}
+
+ACTOR "Cyber-Rocket Launcher" : Weapon
+{
+    //Weapon.AmmoType1 "PlasmaGunAmmo"
+	//Weapon.AmmoUse1 1
+    //Weapon.AmmoType2 "CannonAmmo"
+	//Weapon.AmmoUse2 1
+    //+NOAUTOAIM
+	Weapon.SlotNumber 9
+	+AMMO_OPTIONAL
+	+ALT_AMMO_OPTIONAL
+	Weapon.Kickback 100
+	States
+	{
+	Ready:
+		CYBL A 1 A_WeaponReady
+		Loop
+	Deselect:
+		CYBL A 1 A_Lower
+		Loop
+	Select:
+		CYBL A 1 A_Raise
+		Loop
+	Fire:
+		CYBL A 4
+		CYBL B 4
+		CYBL A 0 A_GunFlash
+		CYBL C 4 A_FireCustomMissile("CyberRocket2",0,0,-10,0)
+		CYBL DE 4 
+		goto Ready
+	AltFire:
+		CYBL A 2
+		CYBL A 0 A_GunFlash
+		CYBL B 3
+		CYBL C 3 A_FireCustomMissile("CyberRocket3",random(-1,4),0,-10,0,random(-2,2))
+		CYBL D 4
+		CYBL E 1
+		CYBL A 0 A_GunFlash
+		CYBL B 3
+		CYBL C 3 A_FireCustomMissile("CyberRocket3",random(-1,4),0,-10,0,random(-2,2))
+		CYBL D 4
+		CYBL E 1
+		CYBL A 0 A_GunFlash
+		CYBL B 3
+		CYBL C 3 A_FireCustomMissile("CyberRocket3",random(-1,4),0,-10,0,random(-2,2))
+		CYBL D 4
+		CYBL E 5
+		CYBL A 10
+		goto Ready
+	}
+}
+
+ACTOR CyberRocket2 : CyberRocket
+{
+Obituary "%k splattered %o with a Cyber-Rocket."
+Speed 30
+}
+
+ACTOR CyberRocket3 : CyberRocket
+{
+Obituary "%k splattered %o with a Cyber-Rocket."
+Speed 20
+}

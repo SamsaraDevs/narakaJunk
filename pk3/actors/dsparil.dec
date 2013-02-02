@@ -1,0 +1,721 @@
+Actor DsparilClass : Boolean { }
+Actor DsparilWalking : Boolean { }
+Actor DsparilRevived : Boolean { }
+Actor GhostsphereCooldown : Counter { Inventory.MaxAmount 100 }
+Actor DSparilSummonCooldown : Counter { Inventory.MaxAmount 10 }
+
+Actor DsparilPortTeleport : CustomInventory
+{
+    //tag "Chaos Device"
+    inventory.maxamount 1
+    inventory.usesound "heretic/itemuse"
+    +INVBAR
+    +inventory.undroppable
+    +inventory.hubpower
+    Inventory.Icon "ARTIATLP"
+    States
+    {
+      Use:
+        TNT1 A 0 A_JumpIfInventory("TomeOfPowerCooldown",1,"UseFail")
+        TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("DsparilTeleport",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+        TNT1 A 0 A_GiveInventory("DSparilChaosDevice",1)
+        TNT1 A 0 A_GiveInventory("TomeOfPowerCooldown",20)
+        TNT1 A 0 ACS_ExecuteAlways(202)
+        fail
+
+      UseFail:
+        TNT1 A 1
+        TNT1 A 0 A_Print("The Chaos Device has not cooled down yet.")
+        fail
+    }
+}
+
+Actor DsparilPortGhostsphere : CustomInventory
+{
+    //tag "Shadowsphere"
+    +INVBAR
+    +INVENTORY.UNDROPPABLE
+    Inventory.Icon "ARTINVSI"
+    +inventory.hubpower
+    inventory.usesound "heretic/itemuse"
+    Inventory.MaxAmount 1
+    States
+    {
+      Use:
+        TNT1 A 0 A_JumpIfInventory("GhostsphereCooldown",1,"UseFail")
+        TNT1 A 1
+        TNT1 A 0 A_GiveInventory("PowerGhost",1)
+        TNT1 A 0 A_GiveInventory("GhostsphereCooldown",90)
+        TNT1 A 0 ACS_ExecuteAlways(468)
+        fail
+
+      UseFail:
+        TNT1 A 1
+        TNT1 A 0 A_Print("The Shadowsphere has not cooled down yet.")
+        fail
+    }
+}
+
+Actor DSparilChaosDevice : ArtiTeleport
+{
++INVENTORY.AUTOACTIVATE
+}
+
+Actor DsparilPlayer : PlayerPawn
+{
+	LimitedToTeam 1
+    Player.DisplayName "DSparil"
+    BloodColor "Red"
+	Radius 16 // Previously 25
+	Height 59
+	Mass 800
+	Player.Viewheight 65
+	Player.AttackZOffset 22
+	//Player.ForwardMove 0.95 0.75
+	//Player.SideMove 0.85 0.85
+	Scale 0.75
+    Player.JumpZ 8//Default is 8
+    Player.StartItem "Chaos Serpent", 1
+    Player.StartItem "DsparilClass", 1
+    //Player.StartItem "BossDamageImmunity", 1
+    Player.Soundclass "DSparil"
+	DamageFactor "DSparilDamage", 0
+	DamageFactor "Slime", 0
+	DamageFactor "Lava", 0
+	DamageFactor "Normal", 0.65
+	DamageFactor "Telefrag", 2.0
+    DamageFactor "PoisonCloud", 1.75
+    DamageFactor "DukeExplosive", 0.35
+    DamageFactor "TimonsAxe", 0.25
+    DamageFactor "WMCBeam", 0.25
+    DamageFactor "WMCNade", 0.25
+	Species "Villain"
+	+THRUSPECIES
+    +NOSKIN
+    -DONTBLAST
+    -THRUSPECIES
+    +DONTRIP
+    +BOSSDEATH
+    +NOTDMATCH
+    +NOICEDEATH
+	+NORADIUSDMG
+    //Species "Player"
+    //Player.ColorRange 112, 127
+    States
+    {
+      Spawn:
+		TNT1 A 0 A_TakeInventory("DSparilWalking",100)
+		TNT1 A 0 A_TakeInventory("DSparilRevived",100)
+		TNT1 A 0 A_TakeInventory("DSparilPortTeleport",100)
+		TNT1 A 0 A_TakeInventory("DSparilPortGhostsphere",100)
+		TNT1 A 0 A_TakeInventory("Staff of D'Sparil",100)
+		TNT1 A 0 A_SetShootable
+        SRCR A -1
+        Loop
+
+      See:
+		TNT1 A 0 A_GiveInventory("DSparilWalking",1)
+		SRCR A 2
+		SRCR A 0 A_CheckFloor("WalkSound")
+		SRCR A 2
+		goto ContinueOn
+	  WalkSound:
+		//TNT1 A 0 A_AlertMonsters
+		SRCR A 2 A_PlaySound("dsparilserpent/step")
+	  ContinueOn:
+		SRCR ABB 2
+		SRCR C 2
+		SRCR A 0 A_CheckFloor("WalkSound2")
+		SRCR C 2
+		goto ContinueOn2
+	  WalkSound2:
+		//TNT1 A 0 A_AlertMonsters
+		SRCR C 2 A_PlaySound("dsparilserpent/step")
+	  ContinueOn2:
+		TNT1 A 0 A_Jump(16,"SerpentShouts")
+		SRCR CDD 2
+        goto Spawn
+		
+	  SerpentShouts:
+		TNT1 A 0 A_PlaySoundEx("dsparilserpent/sight", "soundslot6")
+		SRCR CDD 2
+		goto Spawn
+
+      Missile:
+        SRCR Q 12 
+        Goto Spawn
+
+      Melee:
+        SRCR S 6 BRIGHT
+        Goto Missile
+
+      Pain:
+		TNT1 A 0 A_JumpIfHealthLower(50,"FakeDeath")
+        SRCR R 4 
+        SRCR R 4 A_Pain
+        Goto Spawn
+		
+      Pain.Zorch:
+	  Pain.ZorchPistol:
+		TNT1 A 0 A_JumpIfHealthLower(50,"FakeZorch")
+        SRCR R 4 
+        SRCR R 4 A_Pain
+        Goto Spawn
+		
+      Pain.Ice:
+	  Pain.DukeIce:
+	  Pain.HexenIce:
+		TNT1 A 0 A_JumpIfHealthLower(50,"FakeFreeze")
+        SRCR R 4 
+        SRCR R 4 A_Pain
+        Goto Spawn
+
+      Death.DukeDamage:
+      Death.DukeExplosive:
+      Death.DukePistol:
+	  Death.MightyBoot:
+        TNT1 A 0 A_Jump(218,"Death")
+        TNT1 A 0 A_GiveToTarget("DukeBossKillTaunt",1)
+        goto Death
+		
+	  XDeath:
+      Death:
+		SRCR E 1 A_SpawnItemEx("DSparilSerpentDeath",0,0,0,0,0,0,0,32)
+		TNT1 A 0 A_PlayerScream
+		TNT1 A 0 A_NoBlocking
+		ACLO E 1
+		ACLO E -1
+		stop
+
+      Death.DukeIce:
+        TNT1 A 0 A_Jump(218,"Ice")
+        TNT1 A 0 A_GiveToTarget("DukeBossKillTaunt",1)
+        goto Ice
+
+      Death.ZorchPistol:
+      Death.Zorch:
+        SRCR E 0 A_Stop
+		SRCR E 1 A_SpawnItemEx("DSparilSerpentZorch",0,0,0,0,0,0,0,32)
+		TNT1 A 0 A_NoBlocking
+		ACLO E 1
+		ACLO E -1
+		stop
+		
+      Ice:
+      Death.HexenIce:
+      Death.Ice:
+		SRCR E 1 A_SpawnItemEx("DSparilSerpentFreeze",0,0,0,0,0,0,0,32)
+		TNT1 A 0 A_NoBlocking
+		ACLO E 1
+		ACLO E -1
+		stop
+		
+		
+		
+      FakeDeath:
+		TNT1 A 0 A_UnsetShootable//A_ChangeFlag("Shootable",0)
+		SRCR E 1 
+		SOR2 A 0 ACS_ExecuteAlways(466)
+		SRCR E 7
+		SRCR F 7 A_PlaySound("dsparilserpent/death")
+		SRCR G 7
+		SRCR HIJK 6
+		SRCR L 1 A_SpawnItemEx("DSparilSerpentDeath",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+		SRCR L 6 ACS_ExecuteAlways(465)
+		stop
+
+      FakeZorch:
+		TNT1 A 0 A_UnsetShootable//A_ChangeFlag("Shootable",0)
+		SRCR Q 1
+		SOR2 A 0 ACS_ExecuteAlways(466)
+        TNT1 A 0 A_PlaySoundEx("chex/zorchhuge","soundslot5",0,0)
+		SRCR Q 1
+        SRCR Q 8 A_SpawnItemEx("ZorchEffectHuge",0,0,0,0,0,0,0,128)
+        SRCR Q 8 A_SetTranslucent(0.9,0)
+        SRCR Q 0 A_PlaySoundEx("dsparilserpent/active","soundslot6",0,2)
+        SRCR Q 8 A_SetTranslucent(0.8,0)
+        SRCR Q 0 A_NoBlocking
+        SRCR Q 8 A_SetTranslucent(0.7,0)
+        SRCR Q 8 A_SetTranslucent(0.6,0)
+        SRCR Q 8 A_SetTranslucent(0.5,0)
+        SRCR Q 8 A_SetTranslucent(0.4,0)
+        SRCR Q 8 A_SetTranslucent(0.3,0)
+        SRCR Q 8 A_SetTranslucent(0.2,0)
+        SRCR Q 8 A_SetTranslucent(0.1,0)
+        ACLO E 1 A_SetTranslucent(1,0)
+		ACLO E 6 ACS_ExecuteAlways(465)
+		stop
+		
+      FakeFreeze:
+		TNT1 A 0 A_UnsetShootable//A_ChangeFlag("Shootable",0)
+		SRCR Z 1
+		SOR2 A 0 ACS_ExecuteAlways(466)
+        SRCR Q 0 A_PlaySoundEx("freeze/dsparil","soundslot6",0,0)
+        //SRCR Q 0 A_UnsetShootable
+        SRCR Z 140 //A_UnsetSolid
+        SRCR Q 0 A_PlaySoundEx("freeze/break","soundslot6",0,0)
+        SRCR GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 0 A_SpawnItemEx("IceChunk2",random(-1,1),random(-1,1),random(16,96),random(-2,2),random(-2,2),random(5,15))
+		ACLO E 6 ACS_ExecuteAlways(465)
+		stop
+    }
+}
+
+Actor DsparilOnFootPlayer : PlayerPawn
+{
+	LimitedToTeam 1
+    Player.DisplayName "DSparil"
+    BloodColor "Red"
+	Radius 16
+	Height 45
+	Mass 300
+	Player.Viewheight 45
+	Player.AttackZOffset 22
+	Player.ForwardMove 0.75 0.7
+	Player.SideMove 0.6 0.6
+	Scale 0.75
+    Player.JumpZ 6//Default is 8
+    Player.StartItem "Staff of D'Sparil", 1
+    Player.StartItem "DsparilClass", 1
+    //Player.StartItem "BossDamageImmunity", 1
+	Player.StartItem "DsparilPortTeleport", 1
+	Player.StartItem "DsparilPortGhostsphere", 1
+    Player.Soundclass "DSparilOnFoot"
+	DamageFactor "DSparilDamage", 0
+	DamageFactor "Slime", 0
+	DamageFactor "Lava", 0
+	DamageFactor "Normal", 0.8
+	DamageFactor "Telefrag", 2.0
+    DamageFactor "PoisonCloud", 1.75
+    DamageFactor "DukeExplosive", 0.35
+    DamageFactor "TimonsAxe", 0.25
+    DamageFactor "WMCBeam", 0.25
+    DamageFactor "WMCNade", 0.25
+	Player.MorphWeapon "Staff of D'Sparil"
+	Species "Villain"
+	//DamageFactor "CorvusHellstaffTomed", 0.2
+	//+NOTARGET - Doesn't work, surprisingly.
+	+THRUSPECIES
+    +NOSKIN
+    -DONTBLAST
+    -THRUSPECIES
+    +DONTRIP
+    +BOSSDEATH
+    +NOTDMATCH
+    +NOICEDEATH
+	+NORADIUSDMG
+	+INVULNERABLE
+	-SHOOTABLE
+    //Species "Player"
+    //Player.ColorRange 112, 127
+    States
+    {
+      Spawn:
+		ACLO EEEEEEEEEE 1 A_JumpIfInventory("DSparilRevived",1,"Spawn2")
+		SOR2 A 0 ACS_ExecuteAlways(466)
+		ACLO E 70
+		ACLO E 0 A_GiveInventory("Megasphere")
+		ACLO E 0 A_GiveInventory("DsparilPortTeleport")
+		ACLO E 0 A_GiveInventory("DsparilPortGhostsphere")
+		SOR2 AB 4 A_GiveInventory("DSparilRevived")
+		SOR2 C 4 A_PlaySoundEx("dsparil/rise", "Body")
+		SOR2 DEF 4 A_GiveInventory("DSparilRevived")
+		SOR2 G 12 A_PlaySoundEx("dsparil/sight", "Body")
+		SOR2 A 0 A_ChangeFlag("Invulnerable",0)
+		SOR2 A 0 A_ChangeFlag("Shootable",1)
+		SOR2 A 0 ACS_ExecuteAlways(467)
+		Goto Spawn2
+	  Spawn2:
+		TNT1 A 0 A_ChangeFlag("Invulnerable",0)
+		TNT1 A 0 A_ChangeFlag("Shootable",1)
+        SOR2 M -1
+        Loop
+
+      See:
+		SOR2 MNOP 4
+        goto Spawn2
+
+      Missile:
+	  Melee:
+        SOR2 RST 6 
+        Goto Spawn2
+
+      //Melee:
+        //SOR2 T 6 BRIGHT
+        //Goto Missile
+
+      Pain:
+        SOR2 Q 4 
+        SOR2 Q 4 A_Pain
+        Goto Spawn2
+		
+      Pain.Zorch:
+	  Pain.ZorchPistol:
+        SOR2 Q 4 
+        SOR2 Q 4 A_Pain
+        Goto Spawn
+		
+      Pain.Ice:
+	  Pain.DukeIce:
+	  Pain.HexenIce:
+        SOR2 Q 4 
+        SOR2 Q 4 A_Pain
+        Goto Spawn
+
+      Death.DukeDamage:
+      Death.DukeExplosive:
+      Death.DukePistol:
+	  Death.MightyBoot:
+        TNT1 A 0 A_Jump(218,"Death")
+        TNT1 A 0 A_GiveToTarget("DukeBossKillTaunt",1)
+        goto Death
+		
+	  XDeath:
+      Death:
+		SDTH A 1 A_KillChildren
+		SDTH A 1 A_SpawnItemEx("DSparilDeath",0,0,0,0,0,0,0,128)
+		TNT1 A 0 A_NoBlocking
+		ACLO E -1
+		stop
+
+      Death.ZorchPistol:
+      Death.Zorch:
+		SOR2 Q 1 A_KillChildren
+		SOR2 Q 1 A_SpawnItemEx("DSparilZorch",0,0,0,0,0,0,0,128)
+		TNT1 A 0 A_NoBlocking
+		ACLO E -1
+		stop
+
+      Death.DukeIce:
+        TNT1 A 0 A_Jump(218,"Ice")
+        TNT1 A 0 A_GiveToTarget("DukeBossKillTaunt",1)
+        goto Ice
+		
+      Ice:
+      Death.HexenIce:
+      Death.Ice:
+		SOR2 Q 1 A_KillChildren
+		SOR2 Q 1 A_SpawnItemEx("DSparilFrozen",0,0,0,0,0,0,0,128)
+		TNT1 A 0 A_NoBlocking
+		ACLO E -1
+		stop
+    }
+}
+
+Actor DSparilDeath
+{
+Radius 1
+Height 1
++NOCLIP
+-SOLID
++CLIENTSIDEONLY
++NOINTERACTION
+Scale 0.85
+States
+{
+  Spawn:
+		SDTH A 8
+		SDTH B 8
+		SDTH C 8 A_PlaySoundEx("dsparil/scream", "Body")
+		SDTH DEFDEFDEFDEFDEFDEFDEF 7
+		SDTH G 6 A_PlaySoundEx("dsparil/explode", "Body")
+		SDTH H 6
+		SDTH I 18
+		SDTH J 6 A_NoBlocking
+		SDTH K 6 A_PlaySoundEx("dsparil/bones", "Body")
+		SDTH LMN 6
+		SDTH O -1
+}
+}
+
+ACTOR DSparilZorch
+{
+Radius 1
+Height 1
++NOCLIP
+-SOLID
++CLIENTSIDEONLY
++NOINTERACTION
+Scale 0.8
+States
+{
+  Spawn:
+	SOR2 Q 1 A_PlaySoundEx("chex/zorchhuge","soundslot5",0,0)
+	SOR2 Q 8 A_SpawnItem("ZorchEffectHuge2")
+    SOR2 Q 8 A_SetTranslucent(0.9,0)
+	TNT1 A 0 A_PlaySoundEx("chex/dsparilzorch","soundslot6",0,2)
+    SOR2 Q 8 A_SetTranslucent(0.8,0)
+    TNT1 A 0 A_NoBlocking
+    SOR2 Q 8 A_SetTranslucent(0.7,0)
+    SOR2 Q 8 A_SetTranslucent(0.6,0)
+    SOR2 Q 8 A_SetTranslucent(0.5,0)
+    SOR2 Q 8 A_SetTranslucent(0.4,0)
+    SOR2 Q 8 A_SetTranslucent(0.3,0)
+    SOR2 Q 8 A_SetTranslucent(0.2,0)
+    SOR2 Q 8 A_SetTranslucent(0.1,0)
+	ACLO E -1
+    stop
+}
+}
+
+ACTOR DSparilFrozen
+{
+Radius 1
+Height 1
++NOCLIP
+-SOLID
++CLIENTSIDEONLY
++NOINTERACTION
+Scale 0.8
+States
+{
+  Spawn:
+    SOR2 Q 0 A_PlaySoundEx("freeze/dsparil","soundslot6",0,0)
+	SOR2 Q 0 A_UnsetShootable
+    SOR2 Z 105 A_UnsetSolid
+    SOR2 Q 0 A_PlaySoundEx("freeze/break","soundslot6",0,0)
+	SOR2 QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ 0 A_SpawnItemEx("IceChunk2",random(-1,1),random(-1,1),random(16,96),random(-2,2),random(-2,2),random(5,15))
+	ACLO E -1
+	stop
+}
+}
+
+ACTOR DSparilSerpentDeath
+{
+Radius 1
+Height 1
++NOCLIP
+-SOLID
++CLIENTSIDEONLY
+//+NOINTERACTION
+Scale 0.85
+States
+{
+  Spawn:
+	SRCR L 25
+	SRCR L 0 A_PlaySoundEx("dsparil/zap", "body")
+	SRCR MN 5
+	SRCR O 5
+	SRCR L 20
+	SRCR L 0 A_PlaySoundEx("dsparil/zap", "body")
+	SRCR MN 5
+	SRCR O 4
+	SRCR L 6
+    SRCR P -1 //A_SorcererRise
+}
+}
+
+
+ACTOR DSparilTeleport
+{
+Radius 1
+Height 1
+Scale 0.85
+Speed 0
++NOCLIP
+-SOLID
++CLIENTSIDEONLY
++NOINTERACTION
+States
+{
+	Spawn:
+        SOR2 G 7
+        SOR2 H 7
+        SOR2 I 7
+        SOR2 J 7
+        SOR2 K 7
+        SOR2 L 7
+        ACLO E 1
+        ACLO E -1
+        stop
+}
+}
+
+ACTOR "Chaos Serpent" : Weapon
+{
+	Weapon.SlotNumber 9
+	+AMMO_OPTIONAL
+	+ALT_AMMO_OPTIONAL
+	Weapon.Kickback 100
+	States
+	{
+	Ready:
+		TNT1 A 0 A_JumpIfInventory("DSparilWalking",1,"Walking")
+		SPRN A 1 A_WeaponReady
+		Loop
+	Walking:
+		SPRN EEEFFGGGAA 2 A_WeaponReady
+		goto Ready
+	Deselect:
+		SPRN A 1 A_Lower
+		Loop
+	Select:
+		SPRN A 1 A_Raise
+		Loop
+	Fire:
+		SPRN BC 2
+		SPRN A 0 A_GunFlash
+		SPRN A 0 A_PlayWeaponSound("dsparilserpent/attack")
+		SPRN D 4 A_FireCustomMissile("DSparilFireball",0,0,0,-3)
+		SPRN B 6 
+		goto Ready
+	AltFire:
+		SPRN B 2
+		SPRN C 3
+		TNT1 A 0 A_GunFlash
+		TNT1 A 0 A_PlayWeaponSound("dsparilserpent/attack2")
+		TNT1 A 0 A_FireCustomMissile("DSparilFireball",-3,0,0,-3)
+		TNT1 A 0 A_FireCustomMissile("DSparilFireball",0,0,0,-3)
+		TNT1 A 0  A_FireCustomMissile("DSparilFireball",3,0,0,-3)
+		SPRN D 5
+		SPRN C 4
+		SPRN B 3
+		SPRN A 3
+		SPRN B 2
+		SPRN C 3
+		TNT1 A 0 A_GunFlash
+		TNT1 A 0 A_PlayWeaponSound("dsparilserpent/attack2")
+		TNT1 A 0 A_FireCustomMissile("DSparilFireball2",-3,0,0,-3)
+		TNT1 A 0 A_FireCustomMissile("DSparilFireball2",0,0,0,-3)
+		TNT1 A 0 A_FireCustomMissile("DSparilFireball2",3,0,0,-3)
+		SPRN D 5
+		SPRN C 4
+		SPRN B 3
+		SPRN A 23
+		goto Ready
+	}
+}
+
+ACTOR DSparilFireball : SorcererFX1
+{
+Obituary "%k fed %o to the Serpent."
+Speed 45
+FastSpeed 45
+}
+
+ACTOR DSparilFireball2 : SorcererFX1
+{
+Obituary "%k fed %o to the Serpent."
+Speed 30
+FastSpeed 30
+}
+
+actor "Staff of D'Sparil" : weapon
+{
+	Weapon.SlotNumber 9
+	+AMMO_OPTIONAL
+	+ALT_AMMO_OPTIONAL
+	Weapon.Kickback 100
+	States
+	{
+	Ready:
+		DSPS A 1 A_WeaponReady
+		loop
+	Select:
+		DSPS A 1 A_Raise
+		loop
+	Deselect:
+		DSPS A 1 A_Lower
+		loop
+	Fire:
+		DSPS A 6
+		DSPS A 4 A_PlayWeaponSound("dsparil/attack")
+		TNT1 A 0 A_GunFlash
+		DSPS B 4 bright
+		DSPS C 4 bright A_FireCustomMissile("DSparilLightning")
+		DSPS B 4 bright
+		DSPS A 4 A_ReFire
+		goto ready
+	AltFire:
+		DSPS A 10 A_JumpIfInventory("DSparilSummonCooldown",1,"Ready")
+		DSPS A 5 A_PlayWeaponSound("dsparil/attack")
+		TNT1 A 0 A_GunFlash
+		DSPS D 5 bright
+		//TNT1 A 0 A_FireCustomMissile("DSparilSummon",25,0,0,0,0,0)
+		//TNT1 A 0 A_FireCustomMissile("DSparilSummon",-25,0,0,0,0,0)
+		TNT1 A 0 A_SpawnItemEx("DSparilWizard",0,0,2,0,12,0,105,48)
+		TNT1 A 0 A_SpawnItemEx("DSparilWizard2",0,0,2,0,12,0,75,48)
+		DSPS E 6 bright
+		DSPS D 6 bright A_GiveInventory("DSparilSummonCooldown",7)
+		DSPS A 8 bright ACS_ExecuteAlways(469)
+		goto ready
+}
+}
+
+actor DSparilLightning : Sorcerer2FX1
+{
+Obituary "%k overwhelmed %o with despair."
+Speed 45
+}
+
+Actor DSparilWizard : Wizard
+{
+Health 90
+DamageFactor "DSparilDamage", 0.0
+//+FRIENDLY
++THRUSPECIES
+Species "Villain"
+-SHOOTABLE
+DropItem "ArtiTomeOfPower", 16
+Obituary "A Disciple overwhelmed %o with Despair."
+States
+{
+Spawn:
+	TNT1 A 0 ThrustThing(angle*256/360+96, 2, 0, 0)
+	WZFX ABABABAB 5 BRIGHT A_SetTranslucent(0.9,1)//A_Wander 
+	TNT1 A 0 A_Stop
+	TNT1 A 0 A_SetTranslucent(1,0)
+	TNT1 A 0 A_SpawnItemEx("HereticTeleport",0,0,32,0,0,0,0,128)
+	WZRD A 5
+	WZRD A 5 A_SetShootable
+  Spawn2:
+	WZRD B 10 A_Look
+    WZRD A 10 A_Look
+	WZRD B 10 A_Look
+    goto See
+}
+}
+
+Actor DSparilWizard2 : DSparilWizard
+{
+States
+{
+Spawn:
+	TNT1 A 0 ThrustThing(angle*256/360+17, 2, 0, 0)
+	WZFX ABABABAB 5 BRIGHT A_SetTranslucent(0.9,1)//A_Wander 
+	TNT1 A 0 A_Stop
+	TNT1 A 0 A_SetTranslucent(1,0)
+	TNT1 A 0 A_SpawnItemEx("HereticTeleport",0,0,32,0,0,0,0,128)
+	WZRD A 5
+	WZRD A 5 A_SetShootable
+  Spawn2:
+    WZRD A 10 A_Look
+	WZRD B 10 A_Look
+    WZRD A 10 A_Look
+	WZRD B 10 A_Look
+    goto See
+}
+}
+
+Actor HereticTeleport
+{
+  +NOBLOCKMAP
+  +NOTELEPORT
+  +NOGRAVITY
+  +NOINTERACTION
+  +CLIENTSIDEONLY
+  Alpha 0.9
+  RenderStyle Add
+  States
+  {
+  Spawn:
+    HTEL ABCDEFGHGFEDC 6 Bright
+    Stop
+}
+}
+
+Actor DSparilWizardShot : WizardFX1 replaces WizardFX1
+{
+Obituary "A Disciple overwhelmed %o with Despair."
+DamageType "DSparilDamage"
+}

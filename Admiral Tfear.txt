@@ -1,0 +1,39 @@
+	TerminusEst13	Hey, man, do you have a few minutes free? Got a few questions for you.
+	PresidentPeople	Sure, what's up?
+	TerminusEst13	I'm going through with that Villains idea, bosses acting as dark counterparts for the heroes--and if this takes off, I'd really like to give Admiral Tfear a spin. Thing is, gameplay-wise, he's pretty much entirely a blank slate, isn't he?
+	PresidentPeople	Basically. We only see one picture of him, and only read one, maybe two terminals that he wrote. There's a lot of speculation on the Story Forum as to where he fits in the Pfhor caste system. Interesting stuff.
+	TerminusEst13	Since he's an admiral, assuming the Pfhor ranking system is any way similar to our own, that means he's probably a high-ranking badass. Ergo, he knows how to control himself in a fight--and the picture looks a lot like an Enforcer with a different helmet and a black cape, which at least means sprites will be easy to edit. But taking the facts that the games say, A: High ranking dude, B: The...
+	TerminusEst13	...AIs call him brilliant strategist, C: More than likely a badass in combat, I'm thinking of a few directions to go.
+	TerminusEst13	1: Uses both of the Alien Weapons, but with reloading once the ammo runs out. Since the Enforcers constantly fire without any sort of ammo deprivation, they probably know how to reload it. He can alternate between both of them and never has to worry about running dry. Maybe a third Pfhor weapon to round the entire thing.
+	TerminusEst13	2: Being a strategist, he probably knows quite a bit about engaging/disengaging the enemy. He relies primarily on stealth and subterfuge, with a carbine and laser rifle, and a stealth system. He can cloak himself and zoom in on enemies, picking them off at a distance and then disengaging via holographic distractions and/or electrical-or-smoke screens to distract the others, before going back...
+	TerminusEst13	...to sniping them again.
+	TerminusEst13	I'm wondering which of the two you think would be more appropriate for the mysterious admiral, or if you have a third idea you'd always thought he'd fit.
+	PresidentPeople	I can tell you one thing
+	PresidentPeople	His XDeath will be awesome
+	TerminusEst13	How so?
+	PresidentPeople	Well, you said his sprites will probably be Enforcer edits
+	PresidentPeople	and they have quite an interesting explosive death
+	TerminusEst13	Oh? What is it?
+	PresidentPeople	Well, I think it assumes the explosives reacted with the Alien Weapon cradled in the Enforcer's arms, and it envelops his whole torso in a bright flash and a *pop* sound
+	PresidentPeople	Both layers of his robes are burned off, and his gangly, headless form clatters to the ground
+	TerminusEst13	Niiiiice.
+	TerminusEst13	Which of the two combat methods would you prefer for him?
+	PresidentPeople	So anyway. I wonder if he could have a way to summon Pfhor warriors. Hiding behind underlings seems to be a Pfhor "thing"
+	PresidentPeople	Which method… I'm not sure sniping fits him
+	PresidentPeople	As observed on SF, he looks a bit bulkier than your typical Pfhor Fighter
+	TerminusEst13	Summoning Pfhor might be nice. Maybe he could have a permanent version of the Strife Beacon, with cooldown?
+	PresidentPeople	Sounds cool. Or maybe a modified and Pfhor-ish looking one, that brings them all out at once?
+	TerminusEst13	That'd work. It'd also fit his "strategizing" persona perfectly. Deploying formations of troops mid-battle, bringing out hordes and taking the fight to the field!
+	PresidentPeople	How many weapons are you thinking for these guys? And what tiers?
+	TerminusEst13	Maybe about one or two weapons per each villain. Stick with their attacks, the stuff they have. The Cyberdemon has a rocket launcher with accurate regular fire and three-shot inaccurate burst fire. D'Sparil starts out on his serpent, which spits fireballs either rapid-fire or in a wide spread--once it dies, he has his staff, which shoots electric bolts or summons Disciples.
+	TerminusEst13	Since Tfear is military, he may have more. Both Alien Weapons are practically a shoe-in for him, obviously--or maybe two entirely different Alien Weapons.
+	PresidentPeople	Maybe a Trooper rifle and a Pfhor staff - with ranged bolts, of course
+	TerminusEst13	Are there any sprites of either?
+	PresidentPeople	Marathon: Evil had a traditional Pfhor staff. Marathon: Eternal had a purple Pfhor staff, and an M1 Trooper rifle. I picture Tfear with an M2, one, though…
+	PresidentPeople	Hmm, looks like Evil shows just the stick
+	PresidentPeople	Eternal's colors and appearance are different than the classic staff, but the energy trailing from the crystal is nice. Evil's trail is… not so nice
+	TerminusEst13	Hhmmm. I wonder if the two could be combined, then.
+	PresidentPeople	Actually, I never thought the Trooper rifle sprites resembled the M1 version anyway. Looks like they could pass as an M2 version.
+	PresidentPeople	Plus, Evil is old. Eternal's project leader might still be around. Plus, new 3d modeled sprites are planned for the next release, making the sprites I'm looking at obsolete
+	PresidentPeople	er, I said plus twice
+	TerminusEst13	Oh, cool. I'll toss an e-mail to Eternal's leader and see if I can get permission to use them, then.

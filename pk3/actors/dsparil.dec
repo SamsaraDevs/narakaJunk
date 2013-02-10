@@ -670,6 +670,7 @@ actor DSparilWizard : Wizard
     DamageFactor "DSparilDamage", 0.0
     //+FRIENDLY
     +THRUSPECIES
+	-SOLID
     Species "Villain"
     -SHOOTABLE
     DropItem "ArtiTomeOfPower", 16
@@ -690,6 +691,31 @@ actor DSparilWizard : Wizard
         WZRD A 10 A_Look
         WZRD B 10 A_Look
         goto See
+		
+	  Missile:
+		TNT1 A 0 A_JumpIfInTargetInventory("DsparilRevived",1,"WhoopsThatsDSparil")
+	    WZRD C 4 A_WizAtk1
+        WZRD C 4 A_WizAtk2
+        WZRD C 4 A_WizAtk1
+        WZRD C 4 A_WizAtk2
+        WZRD C 4 A_WizAtk1
+        WZRD C 4 A_WizAtk2
+        WZRD C 4 A_WizAtk1
+        WZRD C 4 A_WizAtk2
+        WZRD D 12 A_WizAtk3
+        Goto See
+		
+	  WhoopsThatsDSparil:
+		TNT1 A 0 A_ClearTarget
+        WZRD A 3 A_Wander
+        WZRD A 4 A_Wander
+        WZRD A 3 A_Wander
+        WZRD A 4 A_Wander
+        WZRD B 3 A_Wander
+        WZRD B 4 A_Wander
+        WZRD B 3 A_Wander
+        WZRD B 4 A_Wander
+		goto See
     }
 }
 
@@ -707,7 +733,6 @@ actor DSparilWizard2 : DSparilWizard
         WZRD A 5 A_SetShootable
 
       Spawn2:
-        WZRD A 10 A_Look
         WZRD B 10 A_Look
         WZRD A 10 A_Look
         WZRD B 10 A_Look

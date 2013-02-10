@@ -3,7 +3,8 @@ FROM CONCEPT V0 TO V0.1:
 - Increased Cyberdemon's damagefactor from 0.5 to 0.45
 - Decreased D'Sparil's from 0.6 to 0.65, and on-foot from 0.7 to 0.8.
 - The Cyberdemon now no longer can be hurt by D'Sparil's Disciples.
-- D'Sparil's summon was changed from spawning Disciples from one of D'Sparil's missiles to spawning directly from D'Sparil. Unfortunately, this does not make the Disciples regard him as an ally, as it hoped it would have.
+- D'Sparil's summon was changed from spawning Disciples from one of D'Sparil's missiles to spawning directly from D'Sparil.
+- The Disciples of D'Sparil no longer regard their master as a threat.
 - The bulky and large size of the villains means moving in formation isn't quite as easy. Now the villains can pass through each other, like co-op players can.
 - D'Sparil no longer randomly resurrects himself again, after he was already resurrected.
 - Readjusted and tweaked Chaos Serpent death sequences--hopefully D'Sparil no longer gets stuck after his Chaos Serpent dies.

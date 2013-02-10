@@ -7,14 +7,9 @@ script 465 (void)
 	GiveInventory("Megasphere",1);
 }
 
-script 466 (void)
+script 466 (int toggle)
 {
-	SetPlayerProperty(0,1,4);
-}
-
-script 467 (void)
-{
-	SetPlayerProperty(0,0,4);
+	SetPlayerProperty(0,toggle,4);
 }
 
 script 468 (void)

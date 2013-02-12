@@ -94,7 +94,6 @@ actor DsparilPlayer : PlayerPawn
     +THRUSPECIES
     +NOSKIN
     -DONTBLAST
-    -THRUSPECIES
     +DONTRIP
     +BOSSDEATH
     +NOTDMATCH
@@ -305,7 +304,6 @@ actor DsparilOnFootPlayer : PlayerPawn
     +THRUSPECIES
     +NOSKIN
     -DONTBLAST
-    -THRUSPECIES
     +DONTRIP
     +BOSSDEATH
     +NOTDMATCH
@@ -670,7 +668,7 @@ actor DSparilWizard : Wizard
     DamageFactor "DSparilDamage", 0.0
     //+FRIENDLY
     +THRUSPECIES
-	-SOLID
+	//-SOLID
     Species "Villain"
     -SHOOTABLE
     DropItem "ArtiTomeOfPower", 16

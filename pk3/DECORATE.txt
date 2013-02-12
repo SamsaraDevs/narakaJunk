@@ -40,3 +40,4 @@ ACTOR QuakeDharmapala : QuakePlayer replaces QuakePlayer
 
 #include "actors/cyberdemon.dec"
 #include "actors/dsparil.dec"
+//#include "actors/tfear.dec"

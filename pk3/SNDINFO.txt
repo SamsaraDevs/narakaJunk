@@ -37,7 +37,7 @@ $playersound	DSparilOnFoot		 male	*death			DSPDSPH
 $playersound	DSparilOnFoot		 male	*xdeath			DSPDSPH
 $playersound	DSparilOnFoot		 male	*burndeath		DSPDSPH
 $playersound	DSparilOnFoot		 male	*crazydeath		DSPDSPH
-$playersounddup DSparilOnFoot		 male    *wimpydeath 	*death
+$playersounddup DSparilOnFoot		 male   *wimpydeath 	*death
 $playersound	DSparilOnFoot		 male	*gibbed			DSPDSPH
 $playersound	DSparilOnFoot		 male	*falling		chdsparl
 $playersound	DSparilOnFoot		 male	*pain100		DSPPAI
@@ -49,6 +49,23 @@ $playersound	DSparilOnFoot		 male	*land			DSPLAND
 $playersound	DSparilOnFoot		 male	*usefail		DSPGRUNT
 $playersound	DSparilOnFoot		 male	*puzzfail		DSPGRUNT
 $playersound	DSparilOnFoot		 male	*taunt			DSPACT
+
+$playersound	Tfear		 male	*death			TFERDETH
+$playersound	Tfear		 male	*xdeath			TFERXDTH
+$playersound	Tfear		 male	*burndeath		TFERBURN
+$playersound	Tfear		 male	*crazydeath		TFERXDTH
+$playersounddup Tfear		 male   *wimpydeath 	*death
+$playersound	Tfear		 male	*gibbed			TFERXDTH
+$playersound	Tfear		 male	*falling		TFERFALL
+$playersound	Tfear		 male	*pain100		TFERPAIN
+$playersounddup	Tfear		 male	*pain75			*pain100
+$playersounddup	Tfear		 male	*pain50			*pain100
+$playersounddup	Tfear		 male	*pain25			*pain100
+$playersound	Tfear		 male	*grunt			TFEROOF
+$playersound	Tfear		 male	*land			mrthland
+$playersound	Tfear		 male	*usefail		TFERNOPE
+$playersound	Tfear		 male	*puzzfail		TFERNOPE
+$playeralias	Tfear		 male	*taunt			tfear/taunt
 
 dsparilserpent/sight		srpsit
 dsparilserpent/attack		srpatk
@@ -74,3 +91,10 @@ wizard/death			discdth
 wizard/pain				discpai
 wizard/active1			discact
 $random wizard/active 		{ wizard/sight wizard/active1 }
+
+tfear/zoomin			tferzoom
+tfear/zoomout			tferzoo2
+$random tfear/taunt {tfear/taunt1 tfear/taunt2 tfear/taunt3}
+tfear/taunt1			tfertnt1
+tfear/taunt2			tfertnt2
+tfear/taunt3			tfertnt3

@@ -84,7 +84,7 @@ actor TfearPlayer : PlayerPawn
         TFER K -1
         Stop
 
-      Death.MarathonFusion:
+      //Death.MarathonFusion:
       XDeath:
         TNT1 A 0 A_TakeInventory("Zoomed",999)
         //TNT1 A 0 ThrustThing(angle*256/360+(random(0,360)), random(2,8), 0, 0)

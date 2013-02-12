@@ -66,6 +66,7 @@ $playersound	Tfear		 male	*land			mrthland
 $playersound	Tfear		 male	*usefail		TFERNOPE
 $playersound	Tfear		 male	*puzzfail		TFERNOPE
 $playeralias	Tfear		 male	*taunt			tfear/taunt
+$playersound	Tfear	     male	*splat		    MRTHSLOP
 
 dsparilserpent/sight		srpsit
 dsparilserpent/attack		srpatk

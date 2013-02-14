@@ -1,5 +1,32 @@
 actor TfearClass : Boolean { }
+actor TfearRefire : Boolean { }
 actor Zoomed : Boolean { }
+
+actor TfearPortCloak : CustomInventory
+{
+    //tag "Shadowsphere"
+    +INVBAR
+    +INVENTORY.UNDROPPABLE
+    Inventory.Icon "TFERCLOK"
+    +inventory.hubpower
+    inventory.usesound "tfear/cloak"
+    Inventory.MaxAmount 1
+    States
+    {
+      Use:
+        TNT1 A 0 A_JumpIfInventory("GhostsphereCooldown",1,"UseFail")
+        TNT1 A 1 A_PlaySound("tfear/cloak")
+        TNT1 A 0 A_GiveInventory("PowerShadow",1)
+        TNT1 A 0 A_GiveInventory("GhostsphereCooldown",90)
+        TNT1 A 0 ACS_ExecuteAlways(468)
+        fail
+        
+      UseFail:
+        TNT1 A 1
+        TNT1 A 0 A_Print("The Cloaking Device has not cooled down yet.")
+        fail
+    }
+}
 
 actor TfearPlayer : PlayerPawn
 {
@@ -22,8 +49,11 @@ actor TfearPlayer : PlayerPawn
     +NORADIUSDMG
     Species "Villain"
 	Player.StartItem "TfearClass", 1
-    Player.StartItem "Close Type 'Hatred'", 1
+	Player.StartItem "Aggregate Type 'Guilt'", 1
+    Player.StartItem "Scatter Type 'Hatred'", 1
     Player.StartItem "Rapid Type 'Flawed'", 1
+    Player.StartItem "TfearPortCloak", 1
+    Player.StartItem "GuiltAmmo", 500
     Player.StartItem "HatredAmmo", 500
     Player.StartItem "FlawedAmmo", 500
     
@@ -325,7 +355,316 @@ actor TfearPlayer : PlayerPawn
     }
 }
 
-actor "Close Type 'Hatred'" : Weapon
+actor "Aggregate Type 'Guilt'" : Weapon
+{
+    Weapon.SelectionOrder 1500
+    Weapon.SlotNumber 1
+	Weapon.AmmoType1 "GuiltAmmo"
+    Weapon.AmmoUse1 1
+    Weapon.AmmoGive1 25
+	Weapon.AmmoType2 "GuiltAmmo"
+    Weapon.AmmoUse2 1
+    Weapon.AmmoGive2 25
+    Weapon.KickBack 5500
+    Inventory.PickupMessage "system error 0xfded"
+    Obituary "%k judged %o guilty."
+    +UNDROPPABLE
+    +PIERCEARMOR
+	+AMMO_OPTIONAL
+	+ALT_AMMO_OPTIONAL
+    States
+    {
+
+      Select:
+        TSTF A 1 A_Raise
+        Loop
+
+      Deselect:
+        TSTF A 1 A_Lower
+        Loop
+
+      Ready:
+		TNT1 A 0 A_JumpIfNoAmmo("Reload")
+        TSTF A 1 A_WeaponReady
+        Loop
+
+      Reload:
+        //TNT1 A 0 A_JumpIfInventory("Cell",1,1)
+        //Goto Ready
+        TSTF A 0 Offset(0,32)
+        TSTF A 1 Offset(0,35)
+        TSTF A 1 Offset(0,40)
+        TSTF A 1 Offset(0,45)
+        TSTF A 1 Offset(0,50)
+        TSTF A 1 Offset(0,55)
+        TSTF A 1 Offset(0,60)
+        TSTF A 1 Offset(0,65)
+        TSTF A 1 Offset(0,70)
+        TSTF A 1 Offset(0,75)
+        TSTF A 1 Offset(0,80) // 10
+        TSTF A 1 Offset(0,85)
+        TSTF A 1 Offset(0,90)
+        TSTF A 1 Offset(0,95)
+        TSTF A 1 Offset(0,100)
+        TSTF A 1 Offset(0,105)
+        TSTF A 1 Offset(0,110)
+        TSTF A 1 Offset(0,115)
+        TSTF A 1 Offset(0,120)
+        TSTF A 1 Offset(0,125)
+        TSTF A 1 Offset(0,130) // 20
+        TSTF A 1 Offset(0,135)
+        TSTF A 1 Offset(0,140)
+        TSTF A 26
+
+      Reload2:
+        TNT1 A 0 //A_TakeInventory("Cell",1)
+        TNT1 A 0 A_GiveInventory("GuiltAmmo",1)
+        TNT1 A 0 A_JumpIfInventory("GuiltAmmo",49,3)
+        TNT1 A 0 //A_JumpIfInventory("Cell",1,1)
+        //Goto Ready
+        TNT1 A 0
+        Goto Reload2
+        TNT1 A 0
+        TSTF A 1 Offset(0,140)
+        TSTF A 1 Offset(0,135)
+        TSTF A 1 Offset(0,130) // 20
+        TSTF A 1 Offset(0,125)
+        TSTF A 1 Offset(0,120)
+        TSTF A 1 Offset(0,115)
+        TSTF A 1 Offset(0,110)
+        TSTF A 1 Offset(0,105)
+        TSTF A 1 Offset(0,100)
+        TSTF A 1 Offset(0,95)
+        TSTF A 1 Offset(0,90)
+        TSTF A 1 Offset(0,85)
+        TSTF A 1 Offset(0,80) // 10
+        TSTF A 1 Offset(0,75)
+        TSTF A 1 Offset(0,70)
+        TSTF A 1 Offset(0,65)
+        TSTF A 1 Offset(0,60)
+        TSTF A 1 Offset(0,55)
+        TSTF A 1 Offset(0,50)
+        TSTF A 1 Offset(0,45)
+        TSTF A 1 Offset(0,40)
+        TSTF A 1 Offset(0,35)
+        TSTF A 0 Offset(0,32)
+        Goto Ready
+
+      Fire:
+        TSTF ABCD 2
+        TNT1 A 5
+		TNT1 A 0 A_Refire
+		TSTF D 2 Offset(2,34)
+        TSTF E 1 Offset(-2,33) A_PlayWeaponSound("tfear/swing")
+		TSTF E 2 Offset(7,32)
+        TSTF F 1 Offset(-2,32) A_FireCustomMissile("GuiltAttack",0,0)//A_CustomPunch(random(100,140),1,1,"GuiltPuff",144)
+		TSTF F 2 Offset(7,30)
+        TSTF G 1 Offset(-2,32)
+		TSTF G 2 Offset(7,30)
+		TNT1 A 15 A_ClearRefire
+        TSTF DDCCB 1 A_ClearRefire
+		TSTF B 1 Offset(14,27)
+        Goto Ready
+	  Hold:
+        TNT1 A 5
+		TNT1 A 0 A_Refire
+		TSTF D 2 Offset(2,34) A_Recoil(-40)
+        TSTF E 1 Offset(-2,33) A_PlayWeaponSound("tfear/swing")
+		TSTF E 2 Offset(7,32)
+		TNT1 A 0 A_TakeInventory("GuiltAmmo",6)
+        TSTF F 1 Offset(-2,32) A_FireCustomMissile("GuiltAttack",0,1)//A_CustomPunch(random(100,140),1,1,"GuiltPuff",144)
+		TSTF F 2 Offset(7,30)
+        TSTF G 1 Offset(-2,32)
+		TSTF G 2 Offset(7,30)
+		TNT1 A 15 A_ClearRefire
+        TSTF DDCCB 1 A_ClearRefire
+		TSTF B 1 Offset(14,27)
+        Goto Ready
+		
+	  AltFire:
+        TSTF HHHIIJJKK 1
+	  AltHold:
+        TSTF L 4 A_JumpIfNoAmmo("GoToReload")
+		TNT1 A 0 A_JumpIfInventory("TfearRefire",1,"AltHold2")
+		TSTF L 1 Offset(0,32) 
+        TSTF L 1 Offset(0,36) A_PlayWeaponSound("tfear/shoot")
+		TSTF L 1 Offset(0,59)
+        TSTF L 1 Offset(0,52) A_FireCustomMissile("GuiltShot",0,1,0,0,0,0)//A_CustomPunch(random(100,140),1,1,"GuiltPuff",144)
+		TSTF L 1 Offset(0,46)
+        TSTF L 1 Offset(0,40)
+		TSTF L 1 Offset(0,36) A_GiveInventory("TfearRefire")
+		TSTF L 2 Offset(0,33)
+		TSTF L 5 A_Refire
+        TSTF KKKJJIIHH 1 A_ClearRefire
+		TSTF A 1 A_TakeInventory("TfearRefire")
+		goto Ready
+		
+	  AltHold2:
+        TSTF L 1 A_JumpIfNoAmmo("GoToReload")
+        TSTF L 1 Offset(0,35) A_PlayWeaponSound("tfear/shoot2")
+		TSTF L 1 Offset(0,46)
+        TSTF L 1 Offset(0,42) A_FireCustomMissile("GuiltShot2",random(-1,1),1,0,0,0,random(-1,1))//A_CustomPunch(random(100,140),1,1,"GuiltPuff",144)
+		TSTF L 1 Offset(0,38)
+        TSTF L 1 Offset(0,35)
+		TSTF L 1 Offset(0,33) A_GiveInventory("TfearRefire")
+		TSTF L 5 A_Refire
+        TSTF KKKJJIIHH 1 A_ClearRefire
+		TSTF A 1 A_TakeInventory("TfearRefire")
+		goto Ready
+		
+	  GotoReload:
+        TSTF KKKJJIIHH 1 A_ClearRefire
+		TSTF A 1 A_TakeInventory("TfearRefire")
+		goto Reload
+    }
+}
+
+actor GuiltAttack : FastProjectile
+{
+    Radius 16
+    Height 12
+    Projectile
+    Damage (random(100,140))
+    Speed 70
+	RenderStyle Translucent
+	Alpha 0.9
+	//Scale 1.5
+    Obituary "%k judged %o guilty"
+    SeeSound "none"
+    DeathSound "tfear/hit"
+    Decal "Scorch"
+	+PIERCEARMOR
+    +NOTIMEFREEZE
+    States
+    {
+      Spawn:
+        TNT1 A 1
+        TNT1 A 1
+        Stop
+
+      Death:
+      Crash:
+      XDeath:
+        TNT1 A 1 A_Stop
+		TNT1 A 0 A_Scream
+		TNT1 A 0 Radius_Quake(2,5,0,4,0)
+		STFX ABCDE 3 Bright
+        stop
+    }
+}
+
+ACTOR GuiltShot
+{
+	Decal DoomImpScorch
+	Radius 12
+	Height 10
+	Speed 30
+	Damage (random(30,35))
+	Species "Villain"
+	PROJECTILE
+	+THRUSPECIES
+	+SEEKERMISSILE
+	DeathSound "tfear/boom"
+	Scale 0.75
+	States
+	{
+	Spawn:
+		CSHT A 2 Bright A_SeekerMissile(10,15)
+		TNT1 A 0 A_SpawnItemEx("GuiltShotTrail",0,0,4)
+		CSHT B 2 Bright A_SeekerMissile(10,15)
+		CSHT C 2 Bright A_SeekerMissile(10,15)
+		TNT1 A 0 A_SpawnItemEx("GuiltShotTrail",0,0,4)
+		CSHT D 2 Bright A_SeekerMissile(10,15)
+		loop
+	Death:
+		TNT1 A 0 A_Explode(64,64)
+		CHIT ABCDEF 2 Bright
+		stop
+	}
+}
+
+ACTOR GuiltShotTrail
+{
+Radius 0
+Height 0
+RenderStyle Add
++CLIENTSIDEONLY
++NOGRAVITY
++NOTELEPORT
+States
+{
+	Spawn:
+		STAF AB 2 Bright A_FadeOut(0.1)
+		loop
+}
+}
+
+ACTOR GuiltShotTrail2
+{
+Radius 0
+Height 0
+RenderStyle Add
+Scale 0.5
++CLIENTSIDEONLY
++NOGRAVITY
++NOTELEPORT
+States
+{
+	Spawn:
+		DSHT AB 2 Bright A_FadeOut(0.2)
+		loop
+}
+}
+
+ACTOR GuiltShot2
+{
+	Decal DoomImpScorch
+	Radius 6
+	Height 8
+	Speed 40
+	Damage (random(25,30))
+	Species "Villain"
+	PROJECTILE
+	+THRUSPECIES
+	+SEEKERMISSILE
+	DeathSound "tfear/boom2"
+	States
+	{
+	Spawn:
+		STAF A 2 Bright A_SeekerMissile(10,15)
+		TNT1 A 0 A_SpawnItemEx("GuiltShotTrail2",0,0,2)
+		STAF B 2 Bright A_SeekerMissile(10,15)
+		STAF A 2 Bright A_SeekerMissile(10,15)
+		TNT1 A 0 A_SpawnItemEx("GuiltShotTrail2",0,0,2)
+		STAF B 2 Bright A_SeekerMissile(10,15)
+		loop
+	Death:
+	    TNT1 A 0
+	    TNT1 A 1 A_SpawnItemEx("GuiltPuff",0,0,3)
+		TNT1 A 1 A_Explode(32,32)
+		stop
+	}
+}
+
+ACTOR GuiltPuff
+{
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +PUFFONACTORS
+  +CLIENTSIDEONLY
+  Scale 0.5
+  SeeSound ""
+  AttackSound ""
+  ActiveSound ""
+  States
+  {
+  Spawn:
+    FHIT ABCD 4
+    Stop
+  }
+}
+
+actor "Scatter Type 'Hatred'" : Weapon
 {
     //Weapon.BobRangeX 0
     //Weapon.BobStyle Smooth
@@ -478,7 +817,7 @@ actor "Close Type 'Hatred'" : Weapon
       Reload2:
         TNT1 A 0 //A_TakeInventory("Cell",1)
         TNT1 A 0 A_GiveInventory("HatredAmmo",1)
-        TNT1 A 0 A_JumpIfInventory("HatredAmmo",74,3)
+        TNT1 A 0 A_JumpIfInventory("HatredAmmo",77,3)
         TNT1 A 0 //A_JumpIfInventory("Cell",1,1)
         //Goto Ready
         TNT1 A 0
@@ -634,7 +973,7 @@ actor "Rapid Type 'Flawed'" : Weapon//" Alien Weapon "
       Reload2:
         TNT1 A 0 //A_TakeInventory("Cell",1)
         TNT1 A 0 A_GiveInventory("FlawedAmmo",1)
-        TNT1 A 0 A_JumpIfInventory("FlawedAmmo",74,3)
+        TNT1 A 0 A_JumpIfInventory("FlawedAmmo",77,3)
         TNT1 A 0 //A_JumpIfInventory("Cell",1,1)
         //Goto Ready
         TNT1 A 0
@@ -692,12 +1031,16 @@ actor "Rapid Type 'Flawed'" : Weapon//" Alien Weapon "
         NKLZ B 1 A_SetBlend("Black",0.45,3)
         //TNT1 A 0 A_PlayWeaponSound("Weapons/PushkinZoomRdy")
         NKLZ B 1 A_SetBlend("Black",0.35,3)
-        NKLZ B 1 A_SetBlend("Black",0.32,3)
-        NKLZ B 1 A_SetBlend("Black",0.29,3)
-        NKLZ B 1 A_SetBlend("Black",0.26,3)
-        NKLZ B 1 A_SetBlend("Black",0.23,3)
+        NKLZ B 1 A_SetBlend("Black",0.30,3)
+        NKLZ B 1 A_SetBlend("Black",0.25,3)
         NKLZ B 1 A_SetBlend("Black",0.20,3)
-        NKLZ BBBBB 1 A_SetBlend("Black",0.20,3)
+        NKLZ B 1 A_SetBlend("Black",0.17,3)
+        NKLZ B 1 A_SetBlend("Black",0.15,3)
+        NKLZ B 1 A_SetBlend("Black",0.12,3)
+		NKLZ B 1 A_SetBlend("Black",0.09,3)
+		NKLZ B 1 A_SetBlend("Black",0.06,3)
+		NKLZ B 1 A_SetBlend("Black",0.04,3)
+		NKLZ B 1 A_SetBlend("Black",0.02,3)
         Goto ZoomedReady
 		
 	  ZoomedDeselect:
@@ -768,16 +1111,22 @@ actor "Rapid Type 'Flawed'" : Weapon//" Alien Weapon "
     }
 }
 
+actor GuiltAmmo : Ammo
+{
+    +IGNORESKILL
+    Inventory.MaxAmount 49
+}
+
 actor FlawedAmmo : Ammo
 {
     +IGNORESKILL
-    Inventory.MaxAmount 74
+    Inventory.MaxAmount 77
 }
 
 actor HatredAmmo : Ammo
 {
     +IGNORESKILL
-    Inventory.MaxAmount 74
+    Inventory.MaxAmount 77
 }
 
 ACTOR ZoomedVision : PowerLightAmp

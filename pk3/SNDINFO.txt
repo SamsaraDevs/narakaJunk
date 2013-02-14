@@ -99,3 +99,11 @@ $random tfear/taunt {tfear/taunt1 tfear/taunt2 tfear/taunt3}
 tfear/taunt1			tfertnt1
 tfear/taunt2			tfertnt2
 tfear/taunt3			tfertnt3
+
+tfear/swing				tferswng
+tfear/hit				tferhits
+tfear/boom				tferbom2
+tfear/boom2				tferbom3
+tfear/shoot				tfersht3
+tfear/shoot2			tfersht4
+tfear/cloak				tfernvis

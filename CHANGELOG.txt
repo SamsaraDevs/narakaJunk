@@ -1,5 +1,6 @@
 FROM CONCEPT V0 TO V0.1:
 =========================
+- Admiral Tfear, the villain for the Security Officer, has been added.
 - Increased Cyberdemon's damagefactor from 0.5 to 0.45
 - Decreased D'Sparil's from 0.6 to 0.65, and on-foot from 0.7 to 0.8.
 - The Cyberdemon now no longer can be hurt by D'Sparil's Disciples.
@@ -16,3 +17,6 @@ FROM CONCEPT V0 TO V0.1:
 - If D'Sparil on foot had died or gone to the next level, the Chaos Serpent would have his items. No longer.
 - The Cyberdemon's frozen death was not playing his frozen sound. Now he does.
 - The Staff of D'Sparil is no longer kept between lives or levels.
+- The bosses now have translations and can switch between colors. At the moment, this does not take D'Sparil on foot into account.
+- The Cyberdemon's stomp has a larger radius, now.
+- The Cyberdemon's rockets, body, and sounds have been added, and thus now he can be used in Heretic, HeXen, and other such iwads.

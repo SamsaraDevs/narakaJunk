@@ -30,6 +30,7 @@ actor TfearPortCloak : CustomInventory
 
 actor TfearPlayer : PlayerPawn
 {
+    LimitedToTeam 1
     Player.DisplayName "Tfear"
     Gravity 0.15
     Mass 450
@@ -49,6 +50,7 @@ actor TfearPlayer : PlayerPawn
     +NORADIUSDMG
     Species "Villain"
 	Player.StartItem "TfearClass", 1
+	Player.StartItem "IsSamsaraClass", 1
 	Player.StartItem "Aggregate Type 'Guilt'", 1
     Player.StartItem "Scatter Type 'Hatred'", 1
     Player.StartItem "Rapid Type 'Flawed'", 1
@@ -860,6 +862,7 @@ actor "Rapid Type 'Flawed'" : Weapon//" Alien Weapon "
     +UNDROPPABLE
     +AMMO_OPTIONAL
 	+ALT_AMMO_OPTIONAL
+	+NOALERT
 
     Weapon.SelectionOrder 500
     Weapon.SlotNumber 3
@@ -900,8 +903,31 @@ actor "Rapid Type 'Flawed'" : Weapon//" Alien Weapon "
         Loop
 
       Fire:
-        TNT1 A 0 A_JumpIfInventory("CoopModeOn", 1, "CoopFire")
+	    TNT1 A 0 A_AlertMonsters
 		TNT1 A 0 A_JumpIfInventory("Zoomed",1,"ZoomedFire")
+        AWP2 B 1 A_Recoil(0.1)
+        TNT1 A 0 A_Light2
+        TNT1 A 0 A_PlayWeaponSound("alienweapon/shoot")
+        TNT1 A 0 A_FireCustomMissile("AlienWeaponBullet", 0, 0, 0, 0)
+        AWP2 C 2 bright A_FireCustomMissile("AlienWeaponBullet", 0, 1, 0, 0)//A_FireBullets(7.5, 0, 3, 5, "alienpuff", 1, 0)
+        TNT1 A 0 A_Light0
+        AWP2 B 1
+		AWP2 A 1 A_Refire
+        goto Ready
+		
+	  ZoomedFire:
+        NKLZ A 1 A_Recoil(0.1)
+        TNT1 A 0 A_Light2
+        TNT1 A 0 A_PlayWeaponSound("alienweapon/shoot")
+        TNT1 A 0 A_FireCustomMissile("AlienWeaponBullet", 0, 0, 0, 0)
+        NKLZ A 2 bright A_FireCustomMissile("AlienWeaponBullet", 0, 1, 0, 0)//A_FireBullets(7.5, 0, 3, 5, "alienpuff", 1, 0)
+        TNT1 A 0 A_Light0
+        NKLZ A 1
+		NKLZ B 1 A_Refire
+        goto Ready
+
+      Hold:
+		TNT1 A 0 A_JumpIfInventory("Zoomed",1,"ZoomedHold")
         AWP2 B 1 A_Recoil(0.1)
         TNT1 A 0 A_Light2
         TNT1 A 0 A_PlayWeaponSound("alienweapon/shoot")
@@ -909,9 +935,11 @@ actor "Rapid Type 'Flawed'" : Weapon//" Alien Weapon "
         AWP2 C 2 bright A_FireCustomMissile("AlienWeaponBullet", random(-1, 1), 1, 0, 0)//A_FireBullets(7.5, 0, 3, 5, "alienpuff", 1, 0)
         TNT1 A 0 A_Light0
         AWP2 B 1
-        goto Ready
+		AWP2 A 1 A_Refire
+		AWP2 A 1 A_ClearRefire
+        Goto Ready
 		
-	  ZoomedFire:
+	  ZoomedHold:
         NKLZ A 1 A_Recoil(0.1)
         TNT1 A 0 A_Light2
         TNT1 A 0 A_PlayWeaponSound("alienweapon/shoot")
@@ -919,27 +947,8 @@ actor "Rapid Type 'Flawed'" : Weapon//" Alien Weapon "
         NKLZ A 2 bright A_FireCustomMissile("AlienWeaponBullet", random(-1, 1), 1, 0, 0)//A_FireBullets(7.5, 0, 3, 5, "alienpuff", 1, 0)
         TNT1 A 0 A_Light0
         NKLZ A 1
-        goto Ready
-
-      CoopFire:
-		TNT1 A 0 A_JumpIfInventory("Zoomed",1,"ZoomedCoopFire")
-        AWP2 B 1 A_Recoil(0.1)
-        TNT1 A 0 A_Light2
-        TNT1 A 0 A_PlayWeaponSound("alienweapon/shoot")
-        TNT1 A 0 A_FireCustomMissile("AlienWeaponBulletCoop", random(-2, 2), 0, 0, 0)
-        AWP2 C 2 bright A_FireCustomMissile("AlienWeaponBulletCoop", random(-1, 1), 1, 0, 0)//A_FireBullets(7.5, 0, 3, 5, "alienpuff", 1, 0)
-        TNT1 A 0 A_Light0
-        AWP2 B 1
-        Goto Ready
-		
-	  ZoomedCoopFire:
-        NKLZ A 1 A_Recoil(0.1)
-        TNT1 A 0 A_Light2
-        TNT1 A 0 A_PlayWeaponSound("alienweapon/shoot")
-        TNT1 A 0 A_FireCustomMissile("AlienWeaponBulletCoop", random(-2, 2), 0, 0, 0)
-        NKLZ A 2 bright A_FireCustomMissile("AlienWeaponBulletCoop", random(-1, 1), 1, 0, 0)//A_FireBullets(7.5, 0, 3, 5, "alienpuff", 1, 0)
-        TNT1 A 0 A_Light0
-        NKLZ A 1
+		NKLZ B 1 A_Refire
+		NKLZ B 1 A_ClearRefire
         goto Ready
 
       Reload:

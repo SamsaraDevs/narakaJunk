@@ -2015,14 +2015,14 @@ Playerclass Cyberdemon
 	DrawKeyBar 32, horizontal, auto, 72, 180;
 	DrawString CONFONT, White, "Kills", 250,170;
 	
-    gamemode deathmatch, teamplay, teamgame, OneFlagCTF, CTF, Skulltag, TeamLMS, TeamPossession
+    gamemode deathmatch, teamplay, teamgame, lastmanstanding, OneFlagCTF, CTF, Skulltag, TeamLMS, TeamPossession
     {
     DrawNumber 3, BIGFONT, White, Frags, drawshadow, 235, 180;
     }
-    gamemode cooperative, singleplayer
+    /*gamemode cooperative, singleplayer
     {
     DrawNumber 4, BIGFONT, untranslated, KillCountAmountTrue, 250, 180;
-	}
+	}*/
 	
 	DrawString CONFONT, White, "Armor", 310, 170;
 	DrawNumber 3, BIGFONT, Red, Armor, drawshadow, 308, 180;
@@ -2052,14 +2052,14 @@ Playerclass DSparil
 	DrawKeyBar 32, horizontal, auto, 72, 180;
 	DrawString CONFONT, White, "Kills", 250,170;
 	
-    gamemode deathmatch, teamplay, teamgame, OneFlagCTF, CTF, Skulltag, TeamLMS, TeamPossession
+    gamemode deathmatch, teamplay, teamgame, lastmanstanding, OneFlagCTF, CTF, Skulltag, TeamLMS, TeamPossession
     {
     DrawNumber 3, BIGFONT, White, Frags, drawshadow, 235, 180;
     }
-    gamemode cooperative, singleplayer
+    /*gamemode cooperative, singleplayer
     {
     DrawNumber 4, BIGFONT, untranslated, KillCountAmountTrue, 250, 180;
-	}
+	}*/
 	
 	DrawString CONFONT, White, "Armor", 310, 170;
 	DrawNumber 3, BIGFONT, Red, Armor, drawshadow, 308, 180;
@@ -2077,14 +2077,14 @@ InInventory DSparilClass, 1 // Unbelievably hacky.
 	DrawKeyBar 32, horizontal, auto, 72, 180;
 	DrawString CONFONT, White, "Kills", 250,170;
 	
-    gamemode deathmatch, teamplay, teamgame, OneFlagCTF, CTF, Skulltag, TeamLMS, TeamPossession
+    gamemode deathmatch, teamplay, teamgame, lastmanstanding, OneFlagCTF, CTF, Skulltag, TeamLMS, TeamPossession
     {
     DrawNumber 3, BIGFONT, White, Frags, drawshadow, 235, 180;
     }
-    gamemode cooperative, singleplayer
+    /*gamemode cooperative, singleplayer
     {
     DrawNumber 4, BIGFONT, untranslated, KillCountAmountTrue, 250, 180;
-	}
+	}*/
 	
 	DrawString CONFONT, White, "Armor", 310, 170;
 	DrawNumber 3, BIGFONT, Red, Armor, drawshadow, 308, 180;
@@ -2093,6 +2093,32 @@ InInventory DSparilClass, 1 // Unbelievably hacky.
 	InInventory GhostsphereCooldown, 1 {DrawNumber 3, BIGFONT, Red, GhostsphereCooldown, drawshadow, 190, 180;}
 }
 
+Playerclass Tfear
+{
+	drawimage "EVILHUD", 0, 168;
+	DrawString CONFONT, White, "Health", 58, 170;
+	DrawNumber 3, BIGFONT, Red, Health, drawshadow, 51, 180;
+	DrawString CONFONT, White, "Keys", 110, 170;
+	DrawKeyBar 32, horizontal, auto, 72, 180;
+	DrawString CONFONT, White, "Kills", 250,170;
+	
+    gamemode deathmatch, teamplay, teamgame, lastmanstanding, OneFlagCTF, CTF, Skulltag, TeamLMS, TeamPossession
+    {
+    DrawNumber 3, BIGFONT, White, Frags, drawshadow, 235, 180;
+    }
+    /*gamemode cooperative, singleplayer
+    {
+    DrawNumber 4, BIGFONT, untranslated, KillCountAmountTrue, 250, 180;
+	}*/
+	
+	DrawString CONFONT, White, "Armor", 310, 170;
+	DrawNumber 3, BIGFONT, Red, Armor, drawshadow, 308, 180;
+    drawselectedinventory alwaysshowcounter, DOOMHUDF, 290, 22, 293, 30, untranslated;
+
+	DrawString CONFONT, White, "Ammo", 177, 170;
+	DrawNumber 3, BIGFONT, Red, Ammo1, drawshadow, 152, 180;
+	InInventory GhostsphereCooldown, 1 {DrawNumber 3, BIGFONT, Red, GhostsphereCooldown, drawshadow, 190, 180;}
+}
 }
 
 statusbar inventory

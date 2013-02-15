@@ -1,19 +1,19 @@
-$playersound	Cyberdemon	 male	*death			dscybdth
-$playersound	Cyberdemon	 male	*xdeath			dscybdth
-$playersound	Cyberdemon	 male	*burndeath		dscybdth
-$playersound	Cyberdemon	 male	*crazydeath		dscybdth
-$playersounddup Cyberdemon   male    *wimpydeath 	*death
-$playersound	Cyberdemon	 male	*gibbed			dscybdth
-$playersound	Cyberdemon   male	*falling		dscybsit
-$playersound	Cyberdemon	 male	*pain100		dsdmpain
+$playersound	Cyberdemon	 male	*death			cycybdth
+$playersound	Cyberdemon	 male	*xdeath			cycybdth
+$playersound	Cyberdemon	 male	*burndeath		cycybdth
+$playersound	Cyberdemon	 male	*crazydeath		cycybdth
+$playersounddup Cyberdemon   male   *wimpydeath 	*death
+$playersound	Cyberdemon	 male	*gibbed			cycybdth
+$playersound	Cyberdemon   male	*falling		cycybsit
+$playersound	Cyberdemon	 male	*pain100		cydmpain
 $playersounddup	Cyberdemon	 male	*pain75			*pain100
 $playersounddup	Cyberdemon	 male	*pain50			*pain100
 $playersounddup	Cyberdemon	 male	*pain25			*pain100
-$playersound	Cyberdemon	 male	*grunt			dsdmact
+$playersound	Cyberdemon	 male	*grunt			cydmact
 $playersound	Cyberdemon	 male	*land			cybland
-$playersound	Cyberdemon	 male	*usefail		dsdmact
-$playersound	Cyberdemon   male	*puzzfail		dsdmact
-$playersound	Cyberdemon   male	*taunt			dscybsit
+$playersound	Cyberdemon	 male	*usefail		cydmact
+$playersound	Cyberdemon   male	*puzzfail		cydmact
+$playersound	Cyberdemon   male	*taunt			cycybsit
 
 $playersound	DSparil		 male	*death			SRPDTH
 $playersound	DSparil		 male	*xdeath			SRPDTH
@@ -31,7 +31,6 @@ $playersound	DSparil		 male	*land			SRPSTEP
 $playersound	DSparil		 male	*usefail		DSPGRUNT
 $playersound	DSparil		 male	*puzzfail		DSPGRUNT
 $playersound	DSparil		 male	*taunt			SRPACT
-
 
 $playersound	DSparilOnFoot		 male	*death			DSPDSPH
 $playersound	DSparilOnFoot		 male	*xdeath			DSPDSPH
@@ -67,6 +66,8 @@ $playersound	Tfear		 male	*usefail		TFERNOPE
 $playersound	Tfear		 male	*puzzfail		TFERNOPE
 $playeralias	Tfear		 male	*taunt			tfear/taunt
 $playersound	Tfear	     male	*splat		    MRTHSLOP
+
+cyber/hoof					cybhoof
 
 dsparilserpent/sight		srpsit
 dsparilserpent/attack		srpatk

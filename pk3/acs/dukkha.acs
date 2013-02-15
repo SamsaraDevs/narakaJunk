@@ -41,3 +41,107 @@ script 470 UNLOADING
 	TakeInventory("DSparilRevived",10);
 	TakeInventory("Staff of D'Sparil",10);
 }
+
+script 213 ENTER // Hey, ijon, it's this gross hack again!
+{
+if(GetCvar("lastmanstanding")==1)
+{
+//if(GetCvar("samsara_lmslife") == 3)
+//
+    if (CheckInventory("CyberdemonClass") == 1)
+	{
+		GiveInventory("LMSHealth",300);
+		GiveInventory("LMSArmor",1);
+	}
+    if (CheckInventory("DsparilClass") == 1)
+	{
+		GiveInventory("LMSHealth",300);
+		GiveInventory("LMSArmor",1);
+	}
+    if (CheckInventory("TfearClass") == 1)
+	{
+		GiveInventory("LMSHealth",300);
+		GiveInventory("LMSArmor",1);
+	}
+}
+else
+{
+if(GetCvar("teamlms")==1)
+{
+    if (CheckInventory("CyberdemonClass") == 1)
+	{
+		GiveInventory("LMSHealth",300);
+		GiveInventory("LMSArmor",1);
+	}
+    if (CheckInventory("DsparilClass") == 1)
+	{
+		GiveInventory("LMSHealth",300);
+		GiveInventory("LMSArmor",1);
+	}
+    if (CheckInventory("TfearClass") == 1)
+	{
+		GiveInventory("LMSHealth",300);
+		GiveInventory("LMSArmor",1);
+	}
+}
+else
+{
+    if (CheckInventory("DsparilClass") == 1)
+	{
+		GiveInventory("Chaos Serpent",1);
+        SetWeapon("Chaos Serpent");
+	}
+}
+}
+}
+
+script 218 RESPAWN
+{
+if(GetCvar("lastmanstanding")==1)
+{
+    if (CheckInventory("CyberdemonClass") == 1)
+	{
+		GiveInventory("LMSHealth",300);
+		GiveInventory("LMSArmor",1);
+	}
+    if (CheckInventory("DsparilClass") == 1)
+	{
+		GiveInventory("LMSHealth",300);
+		GiveInventory("LMSArmor",1);
+	}
+    if (CheckInventory("TfearClass") == 1)
+	{
+		GiveInventory("LMSHealth",300);
+		GiveInventory("LMSArmor",1);
+	}
+}
+else
+{
+if(GetCvar("teamlms")==1)
+{
+    if (CheckInventory("CyberdemonClass") == 1)
+	{
+		GiveInventory("LMSHealth",300);
+		GiveInventory("LMSArmor",1);
+	}
+    if (CheckInventory("DsparilClass") == 1)
+	{
+		GiveInventory("LMSHealth",300);
+		GiveInventory("LMSArmor",1);
+	}
+    if (CheckInventory("TfearClass") == 1)
+	{
+		GiveInventory("LMSHealth",300);
+		GiveInventory("LMSArmor",1);
+	}
+}
+else
+{
+    if (CheckInventory("DsparilClass") == 1)
+	{
+		GiveInventory("Chaos Serpent",1);
+        SetWeapon("Chaos Serpent");
+	}
+}
+}
+}

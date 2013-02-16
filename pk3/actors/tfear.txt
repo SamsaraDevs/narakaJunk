@@ -192,8 +192,8 @@ actor TfearPlayer : PlayerPawn
         TFER D 3 A_SetTranslucent(0.3,0)
         TFER D 3 A_SetTranslucent(0.2,0)
         TFER D 3 A_SetTranslucent(0.1,0)
-        TFER D 1 A_SetTranslucent(0,0)
-        TFER D -1
+        ACLO E 1 A_SetTranslucent(0,0)
+        ACLO E -1
         stop
 
       Death.DukeDamage:

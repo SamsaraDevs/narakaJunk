@@ -20,3 +20,5 @@ FROM CONCEPT V0 TO V0.1:
 - The bosses now have translations and can switch between colors. At the moment, this does not take D'Sparil on foot into account.
 - The Cyberdemon's stomp has a larger radius, now.
 - The Cyberdemon's rockets, body, and sounds have been added, and thus now he can be used in Heretic, HeXen, and other such iwads.
+- The Cyberdemon's stomp no longer kills allies.
+- The Cyberdemon's stomp has a proper obituary attached to it.

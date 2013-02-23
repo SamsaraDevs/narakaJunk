@@ -254,17 +254,34 @@ ACTOR "Cyber-Rocket Launcher" : Weapon
         Loop
 
       Fire:
-        CYBL A 4
+        CYBL A 1 ACS_ExecuteAlways(474)
+	  Hold:
+		CYBL A 3
         CYBL B 4
         CYBL A 0 A_GunFlash
+		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopHold")
         CYBL C 4 A_FireCustomMissile("CyberRocket2",0,0,-10,0)
-        CYBL DE 4 
+        CYBL DE 4
+		CYBL A 1 A_Refire
+		CYBL A 1 ACS_ExecuteAlways(476)
+		CYBL A 1 A_ClearRefire
+        goto Ready
+	 
+	 CoopHold:
+        CYBL C 4 A_FireCustomMissile("CyberRocketCoop",0,0,-10,0)
+        CYBL DE 4
+		CYBL A 1 A_Refire
+		CYBL A 1 ACS_ExecuteAlways(476)
+		CYBL A 1 A_ClearRefire
         goto Ready
 
       AltFire:
-        CYBL A 2
+        CYBL A 1 ACS_ExecuteAlways(475)
+	  AltHold:
+		CYBL A 1
         CYBL A 0 A_GunFlash
         CYBL B 3
+		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopAltHold")
         CYBL C 3 A_FireCustomMissile("CyberRocket3",random(-1,4),0,-10,0,random(-2,2))
         CYBL D 4
         CYBL E 1
@@ -279,6 +296,29 @@ ACTOR "Cyber-Rocket Launcher" : Weapon
         CYBL D 4
         CYBL E 5
         CYBL A 10
+		CYBL A 1 A_Refire
+		CYBL A 1 ACS_ExecuteAlways(476)
+		CYBL A 1 A_ClearRefire
+        goto Ready
+		
+	  CoopAltHold:
+        CYBL C 3 A_FireCustomMissile("CyberRocketCoop2",random(-1,4),0,-10,0,random(-2,2))
+        CYBL D 4
+        CYBL E 1
+        CYBL A 0 A_GunFlash
+        CYBL B 3
+        CYBL C 3 A_FireCustomMissile("CyberRocketCoop2",random(-1,4),0,-10,0,random(-2,2))
+        CYBL D 4
+        CYBL E 1
+        CYBL A 0 A_GunFlash
+        CYBL B 3
+        CYBL C 3 A_FireCustomMissile("CyberRocketCoop2",random(-1,4),0,-10,0,random(-2,2))
+        CYBL D 4
+        CYBL E 5
+        CYBL A 10
+		CYBL A 1 A_Refire
+		CYBL A 1 ACS_ExecuteAlways(476)
+		CYBL A 1 A_ClearRefire
         goto Ready
     }
 }
@@ -304,8 +344,32 @@ ACTOR CyberRocket2 : CyberRocket
     }
 }
 
+ACTOR CyberRocketCoop : CyberRocket2
+{
+	+THRUSPECIES
+	Species "Villain"
+}
+
 ACTOR CyberRocket3 : CyberRocket2
 {
     Obituary "%k splattered %o with a Cyber-Rocket."
     Speed 20
+}
+
+ACTOR CyberRocketCoop2 : CyberRocket3
+{
+	+THRUSPECIES
+	Species "Villain"
+}
+
+ACTOR CyberSpeed : PowerSpeed
+{
+  Powerup.Duration -45
+  Speed 0.75
+}
+
+ACTOR CyberSpeed2 : PowerSpeed
+{
+  Powerup.Duration -45
+  Speed 0.45
 }

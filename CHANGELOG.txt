@@ -22,3 +22,5 @@ FROM CONCEPT V0 TO V0.1:
 - The Cyberdemon's rockets, body, and sounds have been added, and thus now he can be used in Heretic, HeXen, and other such iwads.
 - The Cyberdemon's stomp no longer kills allies.
 - The Cyberdemon's stomp has a proper obituary attached to it.
+- D'Sparil's Chaos Serpent's alt-fire's first wave of fireballs no longer uses the primary fire's stats.
+- The villains now have a co-op mode, as requested by Zael and PresidentPeople. However, their shots only go through other villains! They do not get along with the heroes!

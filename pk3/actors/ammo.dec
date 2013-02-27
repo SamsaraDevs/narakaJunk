@@ -1,0 +1,213 @@
+actor Ammo1Small2 : Ammo1Small replaces Clip// replaces Clip
+{
+    States
+    {
+      Pickup:
+		TNT1 A 0 A_JumpIfInventory("VillainAmmoLight",0,"PickupFail")
+		TNT1 A 0 A_JumpIfInventory("IsNarakaClass",1,"PickupVillain")
+        TNT1 A 0 A_JumpIfInventory("MarathonClass", 0, "PickupMarathon")
+		TNT1 A 0 A_JumpIfInventory("Clip",0,"PickupFail")
+        TNT1 A 0 A_GiveInventory("Clip", 10)
+        TNT1 A 0 A_JumpIfInventory("QuakeClass", 0, "PickupQuake")
+        stop
+		
+	  PickupVillain:
+	    TNT1 A 0 A_GiveInventory("VillainAmmoLight",10)
+		stop
+    }
+}
+
+actor Ammo1Big2 : Ammo1Big replaces ClipBox// replaces ClipBox
+{
+    States
+    {
+	  Pickup:
+		TNT1 A 0 A_JumpIfInventory("VillainAmmoLight",0,"PickupFail")
+		TNT1 A 0 A_JumpIfInventory("IsNarakaClass",1,"PickupVillain")
+        TNT1 A 0 A_JumpIfInventory("MarathonClass", 0, "PickupMarathon")
+		TNT1 A 0 A_JumpIfInventory("Clip",0,"PickupFail")
+        TNT1 A 0 A_GiveInventory("Clip", 50)
+        TNT1 A 0 A_JumpIfInventory("QuakeClass", 0, "PickupQuake")
+        stop
+		
+	  PickupVillain:
+	    TNT1 A 0 A_GiveInventory("VillainAmmoLight",50)
+		stop
+    }
+}
+
+actor Ammo2Small2 : Ammo2Small replaces Shell
+{
+    States
+    {
+      Pickup:
+		TNT1 A 0 A_JumpIfInventory("VillainAmmoHeavy",0,"PickupFail")
+		TNT1 A 0 A_JumpIfInventory("IsNarakaClass",1,"PickupVillain")
+        TNT1 A 0 A_JumpIfInventory("HexenClass", 1, "PickupHexen")
+        TNT1 A 0 A_JumpIfInventory("WolfenClass", 1, "PickupWolfen")
+        TNT1 A 0 A_JumpIfInventory("MarathonClass", 0, "PickupMarathon")
+        TNT1 A 0 A_JumpIfInventory("AmmoShell", 0, "PickupFail")
+        TNT1 A 0 A_GiveInventory("AmmoShell", 4)
+        TNT1 A 0 A_GiveInventory("Shell", 4)
+        stop
+		
+	  PickupVillain:
+	    TNT1 A 0 A_GiveInventory("VillainAmmoHeavy",4)
+		stop
+    }
+}
+
+actor Ammo2Big2 : Ammo2Big replaces ShellBox
+{
+    States
+    {
+      Pickup:
+		TNT1 A 0 A_JumpIfInventory("VillainAmmoHeavy",0,"PickupFail")
+		TNT1 A 0 A_JumpIfInventory("IsNarakaClass",1,"PickupVillain")
+        TNT1 A 0 A_JumpIfInventory("HexenClass", 1, "PickupHexen")
+        TNT1 A 0 A_JumpIfInventory("WolfenClass", 1, "PickupWolfen")
+        TNT1 A 0 A_JumpIfInventory("MarathonClass", 0, "PickupMarathon")
+        TNT1 A 0 A_JumpIfInventory("AmmoShell", 0, "PickupFail")
+        TNT1 A 0 A_GiveInventory("AmmoShell", 20)
+        TNT1 A 0 A_GiveInventory("Shell", 20)
+        stop
+		
+	  PickupVillain:
+	    TNT1 A 0 A_GiveInventory("VillainAmmoHeavy",20)
+		stop
+    }
+}
+
+actor Ammo3Small2 : Ammo3Small replaces RocketAmmo// replaces RocketAmmo
+{
+    States
+    {
+      Pickup:
+		TNT1 A 0 A_JumpIfInventory("VillainAmmoHeavy",0,"PickupFail")
+		TNT1 A 0 A_JumpIfInventory("IsNarakaClass",1,"PickupVillain")
+        TNT1 A 0 A_JumpIfInventory("HexenClass", 1, "PickupHexen")
+        TNT1 A 0 A_JumpIfInventory("MarathonClass", 1, "PickupMarathon")
+        TNT1 A 0 A_JumpIfInventory("QuakeClass", 1, "PickupQuake")
+        TNT1 A 0 A_GiveInventory("RocketAmmo", 2)
+        stop
+		
+	  PickupVillain:
+	    TNT1 A 0 A_GiveInventory("VillainAmmoHeavy",2)
+		stop
+    }
+}
+
+actor Ammo3Big2 : Ammo3Big replaces RocketBox// replaces RocketBox
+{
+    States
+    {
+      Pickup:
+		TNT1 A 0 A_JumpIfInventory("VillainAmmoHeavy",0,"PickupFail")
+		TNT1 A 0 A_JumpIfInventory("IsNarakaClass",1,"PickupVillain")
+        TNT1 A 0 A_JumpIfInventory("HexenClass", 1, "PickupHexen")
+        TNT1 A 0 A_JumpIfInventory("MarathonClass", 1, "PickupMarathon")
+        TNT1 A 0 A_JumpIfInventory("QuakeClass", 1, "PickupQuake")
+        TNT1 A 0 A_GiveInventory("RocketAmmo", 6)
+        stop
+		
+	  PickupVillain:
+	    TNT1 A 0 A_GiveInventory("VillainAmmoHeavy",6)
+		stop
+    }
+}
+
+actor Ammo4Small2 : Ammo4Small replaces Cell// replaces Cell
+{
+    States
+    {
+      Pickup:
+		TNT1 A 0 A_JumpIfInventory("VillainAmmoLight",0,"PickupFail")
+		TNT1 A 0 A_JumpIfInventory("IsNarakaClass",1,"PickupVillain")
+        TNT1 A 0 A_JumpIfInventory("Cell", 0, "PickupFail")
+        TNT1 A 0 A_JumpIfInventory("MarathonClass", 0, "PickupMarathon")
+        TNT1 A 0 A_GiveInventory("Cell", 20)
+        stop
+		
+	  PickupVillain:
+	    TNT1 A 0 A_GiveInventory("VillainAmmoLight",20)
+		stop
+    }
+}
+
+actor Ammo4Big2 : Ammo4Big replaces Cellpack// replaces Cellpack
+{
+    States
+    {
+      Pickup:
+		TNT1 A 0 A_JumpIfInventory("VillainAmmoLight",0,"PickupFail")
+		TNT1 A 0 A_JumpIfInventory("IsNarakaClass",1,"PickupVillain")
+        TNT1 A 0 A_JumpIfInventory("Cell", 0, "PickupFail")
+        TNT1 A 0 A_JumpIfInventory("MarathonClass", 0, "PickupMarathon")
+        TNT1 A 0 A_GiveInventory("Cell", 100)
+        stop
+		
+	  PickupVillain:
+	    TNT1 A 0 A_GiveInventory("VillainAmmoLight",100)
+		stop
+    }
+}
+
+actor NarakaClip_Doom: SamsaraClip_Doom replaces SamsaraClip_Doom
+{
+    States
+    {
+      Pickup:
+		TNT1 A 0 A_JumpIfInventory("VillainAmmoLight",0,"PickupFail")
+		TNT1 A 0 A_JumpIfInventory("IsNarakaClass",1,"PickupVillain")
+        TNT1 A 0 A_JumpIfInventory("MarathonClass",1,"PickupMarathon")
+        TNT1 A 0 A_JumpIfInventory("Clip",0,"PickupFail")
+        TNT1 A 0 A_GiveInventory("Clip",5)
+        stop
+		
+	  PickupVillain:
+	    TNT1 A 0 A_GiveInventory("VillainAmmoLight",5)
+		stop
+    }
+}
+
+actor ShotgunDrop2: SamsaraSlotTwoDrop replaces ShotgunDrop
+{
+    States
+    {
+      Spawn:
+        SHOT A -1
+        stop
+		
+      Pickup:
+		TNT1 A 0 A_JumpIfInventory("VillainAmmoHeavy",0,"PickupFailure")
+	    TNT1 A 0 A_JumpIfInventory("IsNarakaClass",1,"PickupVillain")
+        TNT1 A 0 A_JumpIf((ACS_ExecuteWithResult(229, 2) & 3) == 1, "PickupSuccess")
+        goto PickupFailure
+		
+	  PickupVillain:
+		TNT1 A 0 A_PlaySound("ammo/shellsmall")
+	    TNT1 A 0 A_GiveInventory("VillainAmmoHeavy",4)
+		stop
+    }
+}
+
+actor ChingunDrop2: SamsaraSlotFourDrop replaces ChingunDrop
+{
+    States
+    {
+      Spawn:
+        MGUN A -1
+        stop
+		
+      Pickup:
+		TNT1 A 0 A_JumpIfInventory("VillainAmmoLight",0,"PickupFailure")
+	    TNT1 A 0 A_JumpIfInventory("IsNarakaClass",1,"PickupVillain")
+        TNT1 A 0 A_JumpIf((ACS_ExecuteWithResult(229, 4) & 3) == 1, "PickupSuccess")
+        goto PickupFailure
+		
+	  PickupVillain:
+		TNT1 A 0 A_PlaySound("ammo/bulletsmall")
+	    TNT1 A 0 A_GiveInventory("VillainAmmoLight",5)
+		stop
+    }
+}

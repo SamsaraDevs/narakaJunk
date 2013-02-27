@@ -1,0 +1,205 @@
+actor InheritedLMSArmor : BasicArmorPickup
+{
+  Armor.SaveAmount 1
+  Armor.SavePercent 50		// In Samsara LMS, armor takes half damage.
+  Armor.MaxFullAbsorb 10	// And always absorbs a minimum 10 damage.
+  states
+  {
+  Spawn:
+    ACLO E 1
+    Stop
+  }
+}
+
+actor InheritedLMSHealth : Health
+{
+  Inventory.Amount 1
+  Inventory.MaxAmount 1
+  States
+  {
+  Spawn:
+    ACLO E 1
+    Stop
+  }
+}
+
+// CYBERDEMON
+// Operates on a 2:1 health ratio. Big beefy dude.
+// Operates on a 1:1 armor ratio. Typical Doom armor.
+//==============
+
+//lmslife1
+actor CyberLMSArmor1 : InheritedLMSArmor
+{
+  Armor.SaveAmount 100
+}
+
+//lmslife2
+actor CyberLMSArmor2 : InheritedLMSArmor
+{
+  Armor.SaveAmount 200
+}
+
+actor CyberLMSHealth2 : InheritedLMSHealth
+{
+  Inventory.Amount 400
+  Inventory.MaxAmount 400
+}
+
+//lmslife3
+actor CyberLMSArmor3 : InheritedLMSArmor
+{
+  Armor.SaveAmount 300
+}
+
+actor CyberLMSHealth3 : InheritedLMSHealth
+{
+  Inventory.Amount 600
+  Inventory.MaxAmount 600
+}
+
+//lmslife4
+actor CyberLMSArmor4 : InheritedLMSArmor
+{
+  Armor.SaveAmount 400
+}
+
+actor CyberLMSHealth4 : InheritedLMSHealth
+{
+  Inventory.Amount 800
+  Inventory.MaxAmount 800
+}
+
+//lmslife5
+actor CyberLMSArmor5 : InheritedLMSArmor
+{
+  Armor.SaveAmount 500
+}
+
+actor CyberLMSHealth5 : InheritedLMSHealth
+{
+  Inventory.Amount 1000
+  Inventory.MaxAmount 1000
+}
+
+
+
+// D'Sparil
+// Operates on a 1.25:1 health ratio. Relatively frail magician dude.
+// Operates on a 1.25:1 armor ratio. Heretic armor was better than Doom's.
+//==============
+
+//lmslife1
+actor DSparilLMSArmor1 : InheritedLMSArmor
+{
+  Armor.SaveAmount 125
+}
+
+//lmslife2
+actor DSparilLMSArmor2 : InheritedLMSArmor
+{
+  Armor.SaveAmount 250
+}
+
+actor DSparilLMSHealth2 : InheritedLMSHealth
+{
+  Inventory.Amount 250
+  Inventory.MaxAmount 250
+}
+
+//lmslife3
+actor DSparilLMSArmor3 : InheritedLMSArmor
+{
+  Armor.SaveAmount 375
+}
+
+actor DSparilLMSHealth3 : InheritedLMSHealth
+{
+  Inventory.Amount 375
+  Inventory.MaxAmount 375
+}
+
+//lmslife4
+actor DSparilLMSArmor4 : InheritedLMSArmor
+{
+  Armor.SaveAmount 500
+}
+
+actor DSparilLMSHealth4 : InheritedLMSHealth
+{
+  Inventory.Amount 500
+  Inventory.MaxAmount 500
+}
+
+//lmslife5
+actor DSparilLMSArmor5 : InheritedLMSArmor
+{
+  Armor.SaveAmount 625
+}
+
+actor DSparilLMSHealth5 : InheritedLMSHealth
+{
+  Inventory.Amount 625
+  Inventory.MaxAmount 625
+}
+
+
+
+// Tfear
+// Operates on a 1:1 health ratio. Normal, heroic health.
+// Operates on a 1:1 armor ratio. Normal, heroic armor.
+//==============
+
+//lmslife1
+actor TfearLMSArmor1 : InheritedLMSArmor
+{
+  Armor.SaveAmount 100
+}
+
+//lmslife2
+actor TfearLMSArmor2 : InheritedLMSArmor
+{
+  Armor.SaveAmount 200
+}
+
+actor TfearLMSHealth2 : InheritedLMSHealth
+{
+  Inventory.Amount 200
+  Inventory.MaxAmount 200
+}
+
+//lmslife3
+actor TfearLMSArmor3 : InheritedLMSArmor
+{
+  Armor.SaveAmount 300
+}
+
+actor TfearLMSHealth3 : InheritedLMSHealth
+{
+  Inventory.Amount 300
+  Inventory.MaxAmount 300
+}
+
+//lmslife4
+actor TfearLMSArmor4 : InheritedLMSArmor
+{
+  Armor.SaveAmount 400
+}
+
+actor TfearLMSHealth4 : InheritedLMSHealth
+{
+  Inventory.Amount 400
+  Inventory.MaxAmount 400
+}
+
+//lmslife5
+actor TfearLMSArmor5 : InheritedLMSArmor
+{
+  Armor.SaveAmount 500
+}
+
+actor TfearLMSHealth5 : InheritedLMSHealth
+{
+  Inventory.Amount 500
+  Inventory.MaxAmount 500
+}

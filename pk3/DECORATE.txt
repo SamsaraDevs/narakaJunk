@@ -38,31 +38,9 @@ ACTOR QuakeDharmapala : QuakePlayer replaces QuakePlayer
  LimitedToTeam 0
 }
 
+#include "actors/core.dec"
+#include "actors/ammo.dec"
 #include "actors/cyberdemon.dec"
 #include "actors/dsparil.dec"
 #include "actors/tfear.dec"
-	
-actor LMSArmor : BasicArmorPickup
-{
-  Armor.SaveAmount 300
-  Armor.SavePercent 50
-  Armor.MaxFullAbsorb 10
-  states
-  {
-  Spawn:
-    ACLO E 1
-    Stop
-  }
-}
-
-actor LMSHealth : Health
-{
-  Inventory.Amount 300
-  Inventory.MaxAmount 300
-  States
-  {
-  Spawn:
-    ACLO E 1
-    Stop
-  }
-}
+#include "actors/lmsactors.dec"

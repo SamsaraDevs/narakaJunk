@@ -2009,115 +2009,335 @@ playerclass Ranger
 Playerclass Cyberdemon
 {
 	drawimage "EVILHUD", 0, 168;
-	DrawString CONFONT, White, "Health", 58, 170;
-	DrawNumber 3, BIGFONT, Red, Health, drawshadow, 51, 180;
-	DrawString CONFONT, White, "Keys", 110, 170;
-	DrawKeyBar 32, horizontal, auto, 72, 180;
-	DrawString CONFONT, White, "Kills", 250,170;
-	
+    drawmugshot "STF", 5, 147, 168;
+	DrawBar "HBARRED", "HBAREMPT", Health, Horizontal, 25, 175;
+	DrawBar "HBARRED", "HBAREMPT", Armor, Horizontal, 25, 186;
+    DrawNumber 3, INDEXFON, Gold, Health, 20, 176, Red, 50, White, 100;
+    DrawNumber 3, INDEXFON, White, Armor, FillZeros, 20, 187;
+    drawselectedinventory alwaysshowcounter, DOOMHUDF, 290, 22, 293, 30, gold;
+	DrawString CONFONT, White, "Kills", 218, 171;
     gamemode deathmatch, teamplay, teamgame, lastmanstanding, OneFlagCTF, CTF, Skulltag, TeamLMS, TeamPossession
-    {
-    DrawNumber 3, BIGFONT, White, Frags, drawshadow, 235, 180;
-    }
-    /*gamemode cooperative, singleplayer
-    {
-    DrawNumber 4, BIGFONT, untranslated, KillCountAmountTrue, 250, 180;
-	}*/
+    { DrawNumber 3, BIGFONT, Gold, Frags, drawshadow, 204, 181; }
+    gamemode cooperative, singleplayer
+    { DrawNumber 4, BIGFONT, Gold, KillCountAmountTrue, drawshadow, 223, 181; }
 	
-	DrawString CONFONT, White, "Armor", 310, 170;
-	DrawNumber 3, BIGFONT, Red, Armor, drawshadow, 308, 180;
-    drawselectedinventory alwaysshowcounter, DOOMHUDF, 290, 22, 293, 30, untranslated;
+	DrawString CONFONT, White, "Ammo", 139, 171;
+	DrawNumber 3, BIGFONT, Gold, Ammo1, drawshadow, 140, 181;
+    DrawNumber 3, INDEXFON, White, ammo VillainAmmoLight, 295, 174;
+    DrawNumber 3, INDEXFON, gold, ammocapacity VillainAmmoLight, 310, 174;
+    DrawNumber 3, INDEXFON, White, ammo VillainAmmoHeavy, 295, 183;
+    DrawNumber 3, INDEXFON, gold, ammocapacity VillainAmmoHeavy, 310, 183;
+	
+	DrawBar "CBARRED", "CBAREMPT", CyberdemonDashCount, Horizontal, 283, 191; //CyberdemonDashCount
+	DrawBar "CBARBLU", "CBAREMPT", CyberdemonDashCooldown, Horizontal, 283, 193; //CyberdemonDashCooldown
+	//DrawBar "CBARYEL", "CBAREMPT", CyberdemonDashCooldown, Horizontal, 283, 195; //CyberdemonDashCooldown
 
-	UsesAmmo
-	{
-	DrawString CONFONT, White, "Ammo", 177, 170;
-	UsesSecondaryAmmo not
-	{
-	DrawNumber 3, BIGFONT, Red, Ammo1, drawshadow, 174, 180;
-	}
-	UsesSecondaryAmmo
-	{
-	DrawNumber 3, BIGFONT, Red, Ammo1, drawshadow, 152, 180;
-	DrawNumber 3, BIGFONT, Red, Ammo2, drawshadow, 190, 180;
-	}
-}
+    //Doom keys
+        InInventory BlueCard, 1 {drawimage "STKEYS0", 236, 175;}
+        InInventory YellowCard, 1 {drawimage "STKEYS1", 248, 175;}
+        InInventory RedCard, 1 {drawimage "STKEYS2", 260, 175;}
+        InInventory BlueSkull, 1 {drawimage "STKEYS3", 236, 186;}
+        InInventory YellowSkull, 1 {drawimage "STKEYS4", 248, 186;}
+        InInventory RedSkull, 1 {drawimage "STKEYS5", 260, 186;}
+        //Chex keys
+        InInventory ChexBlueCard, 1 {drawimage "STKEYS0", 232, 175;}
+        InInventory ChexYellowCard, 1 {drawimage "STKEYS1", 245, 175;}
+        InInventory ChexRedCard, 1 {drawimage "STKEYS2", 258, 175;}
+        InInventory BlueFlemKey, 1 {drawimage "STKEYS3", 232, 186;}
+        InInventory YellowFlemKey, 1 {drawimage "STKEYS4", 245, 186;}
+        InInventory RedFlemKey, 1 {drawimage "STKEYS5", 258, 186;}
+        //Heretic keys
+        InInventory KeyYellow, 1 {drawimage "YKEYICON", 234, 181;}
+        InInventory KeyGreen, 1 {drawimage "GKEYICON", 248, 181;}
+        InInventory KeyBlue, 1 {drawimage "BKEYICON", 261, 181;}
+    //HeXen keys
+    InInventory KeySteel, 1 {drawimage "HEXKEY1", 233, 171;}
+    InInventory KeyCave, 1 {drawimage "HEXKEY2", 233, 181;}
+    InInventory KeyAxe, 1 {drawimage "HEXKEY3", 233, 191;}
+    InInventory KeyFire, 1 {drawimage "HEXKEY4", 243, 171;}
+    InInventory KeyEmerald, 1 {drawimage "HEXKEY5", 243, 181;}
+    InInventory KeyDungeon, 1 {drawimage "HEXKEY6", 243, 191;}
+    InInventory KeySilver, 1 {drawimage "HEXKEY7", 253, 171;}
+    InInventory KeyRusted, 1 {drawimage "HEXKEY8", 253, 181;}
+    InInventory KeyHorn, 1 {drawimage "HEXKEY9", 253, 191;}
+    InInventory KeySwamp, 1 {drawimage "HEXKEYA", 263, 171;}
+    InInventory KeyCastle, 1 {drawimage "HEXKEYB", 263, 181;}
+		//Strife keys
+		InInventory BaseKey, 1 {drawimage "STRIKEY1", 234, 171;}
+		InInventory GovsKey, 1 {drawimage "STRIKEY2", 240, 171;}
+		InInventory PassCard, 1 {drawimage "STRIKEY3", 246, 171;}
+		InInventory IDBadge, 1 {drawimage "STRIKEY4", 253, 171;}
+		InInventory PrisonKey, 1 {drawimage "STRIKEY5", 259, 171;}
+		InInventory SeveredHand, 1 {drawimage "STRIKEY6", 266, 171;}
+		InInventory Power1Key, 1 {drawimage "STRIKEY7", 234, 178;}
+		InInventory Power2Key, 1 {drawimage "STRIKEY8", 240, 178;}
+		InInventory Power3Key, 1 {drawimage "STRIKEY9", 246, 178;}
+		InInventory GoldKey, 1 {drawimage "STRIKEYA", 253, 178;}
+		InInventory IDCard, 1 {drawimage "STRIKEYB", 259, 178;}
+		InInventory SilverKey, 1 {drawimage "STRIKEYC", 266, 178;}
+		InInventory OracleKey, 1 {drawimage "STRIKEYD", 234, 185;}
+		InInventory MilitaryID, 1 {drawimage "STRIKEYE", 240, 185;}
+		InInventory OrderKey, 1 {drawimage "STRIKEYF", 246, 185;}
+		InInventory BrassKey, 1 {drawimage "STRIKEYG", 253, 185;}
+		InInventory RedCrystalKey, 1 {drawimage "STRIKEYH", 259, 185;}
+		InInventory BlueCrystalKey, 1 {drawimage "STRIKEYI", 266, 185;}
+		InInventory ChapelKey, 1 {drawimage "STRIKEYJ", 234, 192;}
+		InInventory CatacombKey, 1 {drawimage "STRIKEYK", 240, 192;}
+		InInventory CoreKey, 1 {drawimage "STRIKEYL", 246, 192;}
+		InInventory MaulerKey, 1 {drawimage "STRIKEYM", 253, 192;}
+		InInventory FactoryKey, 1 {drawimage "STRIKEYN", 259, 192;}
+		InInventory MineKey, 1 {drawimage "STRIKEYO", 266, 192;}
 }
 
 Playerclass DSparil
 {
-	drawimage "EVILHUD", 0, 168;
-	DrawString CONFONT, White, "Health", 58, 170;
-	DrawNumber 3, BIGFONT, Red, Health, drawshadow, 51, 180;
-	DrawString CONFONT, White, "Keys", 110, 170;
-	DrawKeyBar 32, horizontal, auto, 72, 180;
-	DrawString CONFONT, White, "Kills", 250,170;
-	
+	drawimage "EVILHUD2", 0, 168;
+    drawmugshot "EVL", 5, 147, 168;
+	DrawBar "HBARRED", "HBAREMPT", Health, Horizontal, 25, 175;
+	DrawBar "HBARRED", "HBAREMPT", Armor, Horizontal, 25, 186;
+    DrawNumber 3, INDEXFON, Gold, Health, 20, 176, Red, 50, White, 100;
+    DrawNumber 3, INDEXFON, White, Armor, FillZeros, 20, 187;
+    drawselectedinventory alwaysshowcounter, HEREHUDF2, 290, 22, 293, 30, green;
+	DrawString CONFONT, White, "Kills", 218, 171;
     gamemode deathmatch, teamplay, teamgame, lastmanstanding, OneFlagCTF, CTF, Skulltag, TeamLMS, TeamPossession
-    {
-    DrawNumber 3, BIGFONT, White, Frags, drawshadow, 235, 180;
-    }
-    /*gamemode cooperative, singleplayer
-    {
-    DrawNumber 4, BIGFONT, untranslated, KillCountAmountTrue, 250, 180;
-	}*/
+    { DrawNumber 3, HEREHUDF2, Green, Frags, drawshadow, 204, 178; }
+    gamemode cooperative, singleplayer
+    { DrawNumber 4, HEREHUDF2, Green, KillCountAmountTrue, drawshadow, 223, 178; }
 	
-	DrawString CONFONT, White, "Armor", 310, 170;
-	DrawNumber 3, BIGFONT, Red, Armor, drawshadow, 308, 180;
-    drawselectedinventory alwaysshowcounter, DOOMHUDF, 290, 22, 293, 30, untranslated;
-	InInventory TomeOfPowerCooldown, 1 {DrawNumber 3, BIGFONT, Red, TomeOfPowerCooldown, drawshadow, 152, 180;}
-	InInventory GhostsphereCooldown, 1 {DrawNumber 3, BIGFONT, Red, GhostsphereCooldown, drawshadow, 190, 180;}
+	DrawString CONFONT, White, "Ammo", 139, 171;
+	DrawNumber 3, HEREHUDF, Yellow, Ammo1, drawshadow, 136, 178;
+	DrawNumber 3, HEREHUDF, Yellow, Ammo2, drawshadow, 136, 188;
+    DrawNumber 3, INDEXFON, White, ammo VillainAmmoLight, 295, 174;
+    DrawNumber 3, INDEXFON, Green, ammocapacity VillainAmmoLight, 310, 174;
+    DrawNumber 3, INDEXFON, White, ammo VillainAmmoHeavy, 295, 183;
+    DrawNumber 3, INDEXFON, Green, ammocapacity VillainAmmoHeavy, 310, 183;
+	
+	DrawBar "CBARRED", "CBAREMPT", ChaosDeviceCooldown, Horizontal, 283, 191; //CyberdemonDashCount
+	DrawBar "CBARBLU", "CBAREMPT", GhostsphereCooldown, Horizontal, 283, 193; //CyberdemonDashCooldown
+	DrawBar "CBARYEL", "CBAREMPT", DSparilSummonCooldown, Horizontal, 283, 195; //CyberdemonDashCooldown
+
+    //Doom keys
+        InInventory BlueCard, 1 {drawimage "STKEYS0", 236, 175;}
+        InInventory YellowCard, 1 {drawimage "STKEYS1", 248, 175;}
+        InInventory RedCard, 1 {drawimage "STKEYS2", 260, 175;}
+        InInventory BlueSkull, 1 {drawimage "STKEYS3", 236, 186;}
+        InInventory YellowSkull, 1 {drawimage "STKEYS4", 248, 186;}
+        InInventory RedSkull, 1 {drawimage "STKEYS5", 260, 186;}
+        //Chex keys
+        InInventory ChexBlueCard, 1 {drawimage "STKEYS0", 232, 175;}
+        InInventory ChexYellowCard, 1 {drawimage "STKEYS1", 245, 175;}
+        InInventory ChexRedCard, 1 {drawimage "STKEYS2", 258, 175;}
+        InInventory BlueFlemKey, 1 {drawimage "STKEYS3", 232, 186;}
+        InInventory YellowFlemKey, 1 {drawimage "STKEYS4", 245, 186;}
+        InInventory RedFlemKey, 1 {drawimage "STKEYS5", 258, 186;}
+        //Heretic keys
+        InInventory KeyYellow, 1 {drawimage "YKEYICON", 234, 181;}
+        InInventory KeyGreen, 1 {drawimage "GKEYICON", 248, 181;}
+        InInventory KeyBlue, 1 {drawimage "BKEYICON", 261, 181;}
+		//HeXen keys
+		InInventory KeySteel, 1 {drawimage "HEXKEY1", 233, 171;}
+		InInventory KeyCave, 1 {drawimage "HEXKEY2", 233, 181;}
+		InInventory KeyAxe, 1 {drawimage "HEXKEY3", 233, 191;}
+		InInventory KeyFire, 1 {drawimage "HEXKEY4", 243, 171;}
+		InInventory KeyEmerald, 1 {drawimage "HEXKEY5", 243, 181;}
+		InInventory KeyDungeon, 1 {drawimage "HEXKEY6", 243, 191;}
+		InInventory KeySilver, 1 {drawimage "HEXKEY7", 253, 171;}
+		InInventory KeyRusted, 1 {drawimage "HEXKEY8", 253, 181;}
+		InInventory KeyHorn, 1 {drawimage "HEXKEY9", 253, 191;}
+		InInventory KeySwamp, 1 {drawimage "HEXKEYA", 263, 171;}
+		InInventory KeyCastle, 1 {drawimage "HEXKEYB", 263, 181;}
+		//Strife keys
+		InInventory BaseKey, 1 {drawimage "STRIKEY1", 234, 171;}
+		InInventory GovsKey, 1 {drawimage "STRIKEY2", 240, 171;}
+		InInventory PassCard, 1 {drawimage "STRIKEY3", 246, 171;}
+		InInventory IDBadge, 1 {drawimage "STRIKEY4", 253, 171;}
+		InInventory PrisonKey, 1 {drawimage "STRIKEY5", 259, 171;}
+		InInventory SeveredHand, 1 {drawimage "STRIKEY6", 266, 171;}
+		InInventory Power1Key, 1 {drawimage "STRIKEY7", 234, 178;}
+		InInventory Power2Key, 1 {drawimage "STRIKEY8", 240, 178;}
+		InInventory Power3Key, 1 {drawimage "STRIKEY9", 246, 178;}
+		InInventory GoldKey, 1 {drawimage "STRIKEYA", 253, 178;}
+		InInventory IDCard, 1 {drawimage "STRIKEYB", 259, 178;}
+		InInventory SilverKey, 1 {drawimage "STRIKEYC", 266, 178;}
+		InInventory OracleKey, 1 {drawimage "STRIKEYD", 234, 185;}
+		InInventory MilitaryID, 1 {drawimage "STRIKEYE", 240, 185;}
+		InInventory OrderKey, 1 {drawimage "STRIKEYF", 246, 185;}
+		InInventory BrassKey, 1 {drawimage "STRIKEYG", 253, 185;}
+		InInventory RedCrystalKey, 1 {drawimage "STRIKEYH", 259, 185;}
+		InInventory BlueCrystalKey, 1 {drawimage "STRIKEYI", 266, 185;}
+		InInventory ChapelKey, 1 {drawimage "STRIKEYJ", 234, 192;}
+		InInventory CatacombKey, 1 {drawimage "STRIKEYK", 240, 192;}
+		InInventory CoreKey, 1 {drawimage "STRIKEYL", 246, 192;}
+		InInventory MaulerKey, 1 {drawimage "STRIKEYM", 253, 192;}
+		InInventory FactoryKey, 1 {drawimage "STRIKEYN", 259, 192;}
+		InInventory MineKey, 1 {drawimage "STRIKEYO", 266, 192;}
 }
 
 InInventory DSparilClass, 1 // Unbelievably hacky.
 {
-	drawimage "EVILHUD", 0, 168;
-	DrawString CONFONT, White, "Health", 58, 170;
-	DrawNumber 3, BIGFONT, Red, Health, drawshadow, 51, 180;
-	DrawString CONFONT, White, "Keys", 110, 170;
-	DrawKeyBar 32, horizontal, auto, 72, 180;
-	DrawString CONFONT, White, "Kills", 250,170;
-	
+	drawimage "EVILHUD2", 0, 168;
+    drawmugshot "EVL", 5, 147, 168;
+	DrawBar "HBARRED", "HBAREMPT", Health, Horizontal, 25, 175;
+	DrawBar "HBARRED", "HBAREMPT", Armor, Horizontal, 25, 186;
+    DrawNumber 3, INDEXFON, Gold, Health, 20, 176, Red, 50, White, 100;
+    DrawNumber 3, INDEXFON, White, Armor, FillZeros, 20, 187;
+    drawselectedinventory alwaysshowcounter, HEREHUDF2, 290, 22, 293, 30, green;
+	DrawString CONFONT, White, "Kills", 218, 171;
     gamemode deathmatch, teamplay, teamgame, lastmanstanding, OneFlagCTF, CTF, Skulltag, TeamLMS, TeamPossession
-    {
-    DrawNumber 3, BIGFONT, White, Frags, drawshadow, 235, 180;
-    }
-    /*gamemode cooperative, singleplayer
-    {
-    DrawNumber 4, BIGFONT, untranslated, KillCountAmountTrue, 250, 180;
-	}*/
+    { DrawNumber 3, HEREHUDF2, Green, Frags, drawshadow, 204, 178; }
+    gamemode cooperative, singleplayer
+    { DrawNumber 4, HEREHUDF2, Green, KillCountAmountTrue, drawshadow, 223, 178; }
 	
-	DrawString CONFONT, White, "Armor", 310, 170;
-	DrawNumber 3, BIGFONT, Red, Armor, drawshadow, 308, 180;
-    drawselectedinventory alwaysshowcounter, DOOMHUDF, 290, 22, 293, 30, untranslated;
-	InInventory TomeOfPowerCooldown, 1 {DrawNumber 3, BIGFONT, Red, TomeOfPowerCooldown, drawshadow, 152, 180;}
-	InInventory GhostsphereCooldown, 1 {DrawNumber 3, BIGFONT, Red, GhostsphereCooldown, drawshadow, 190, 180;}
+	DrawString CONFONT, White, "Ammo", 139, 171;
+	DrawNumber 3, HEREHUDF, Yellow, Ammo1, drawshadow, 136, 178;
+	DrawNumber 3, HEREHUDF, Yellow, Ammo2, drawshadow, 136, 188;
+    DrawNumber 3, INDEXFON, White, ammo VillainAmmoLight, 295, 174;
+    DrawNumber 3, INDEXFON, Green, ammocapacity VillainAmmoLight, 310, 174;
+    DrawNumber 3, INDEXFON, White, ammo VillainAmmoHeavy, 295, 183;
+    DrawNumber 3, INDEXFON, Green, ammocapacity VillainAmmoHeavy, 310, 183;
+	
+	DrawBar "CBARRED", "CBAREMPT", ChaosDeviceCooldown, Horizontal, 283, 191; //CyberdemonDashCount
+	DrawBar "CBARBLU", "CBAREMPT", GhostsphereCooldown, Horizontal, 283, 193; //CyberdemonDashCooldown
+	DrawBar "CBARYEL", "CBAREMPT", DSparilSummonCooldown, Horizontal, 283, 195; //CyberdemonDashCooldown
+
+    //Doom keys
+        InInventory BlueCard, 1 {drawimage "STKEYS0", 236, 175;}
+        InInventory YellowCard, 1 {drawimage "STKEYS1", 248, 175;}
+        InInventory RedCard, 1 {drawimage "STKEYS2", 260, 175;}
+        InInventory BlueSkull, 1 {drawimage "STKEYS3", 236, 186;}
+        InInventory YellowSkull, 1 {drawimage "STKEYS4", 248, 186;}
+        InInventory RedSkull, 1 {drawimage "STKEYS5", 260, 186;}
+        //Chex keys
+        InInventory ChexBlueCard, 1 {drawimage "STKEYS0", 232, 175;}
+        InInventory ChexYellowCard, 1 {drawimage "STKEYS1", 245, 175;}
+        InInventory ChexRedCard, 1 {drawimage "STKEYS2", 258, 175;}
+        InInventory BlueFlemKey, 1 {drawimage "STKEYS3", 232, 186;}
+        InInventory YellowFlemKey, 1 {drawimage "STKEYS4", 245, 186;}
+        InInventory RedFlemKey, 1 {drawimage "STKEYS5", 258, 186;}
+        //Heretic keys
+        InInventory KeyYellow, 1 {drawimage "YKEYICON", 234, 181;}
+        InInventory KeyGreen, 1 {drawimage "GKEYICON", 248, 181;}
+        InInventory KeyBlue, 1 {drawimage "BKEYICON", 261, 181;}
+		//HeXen keys
+		InInventory KeySteel, 1 {drawimage "HEXKEY1", 233, 171;}
+		InInventory KeyCave, 1 {drawimage "HEXKEY2", 233, 181;}
+		InInventory KeyAxe, 1 {drawimage "HEXKEY3", 233, 191;}
+		InInventory KeyFire, 1 {drawimage "HEXKEY4", 243, 171;}
+		InInventory KeyEmerald, 1 {drawimage "HEXKEY5", 243, 181;}
+		InInventory KeyDungeon, 1 {drawimage "HEXKEY6", 243, 191;}
+		InInventory KeySilver, 1 {drawimage "HEXKEY7", 253, 171;}
+		InInventory KeyRusted, 1 {drawimage "HEXKEY8", 253, 181;}
+		InInventory KeyHorn, 1 {drawimage "HEXKEY9", 253, 191;}
+		InInventory KeySwamp, 1 {drawimage "HEXKEYA", 263, 171;}
+		InInventory KeyCastle, 1 {drawimage "HEXKEYB", 263, 181;}
+		//Strife keys
+		InInventory BaseKey, 1 {drawimage "STRIKEY1", 234, 171;}
+		InInventory GovsKey, 1 {drawimage "STRIKEY2", 240, 171;}
+		InInventory PassCard, 1 {drawimage "STRIKEY3", 246, 171;}
+		InInventory IDBadge, 1 {drawimage "STRIKEY4", 253, 171;}
+		InInventory PrisonKey, 1 {drawimage "STRIKEY5", 259, 171;}
+		InInventory SeveredHand, 1 {drawimage "STRIKEY6", 266, 171;}
+		InInventory Power1Key, 1 {drawimage "STRIKEY7", 234, 178;}
+		InInventory Power2Key, 1 {drawimage "STRIKEY8", 240, 178;}
+		InInventory Power3Key, 1 {drawimage "STRIKEY9", 246, 178;}
+		InInventory GoldKey, 1 {drawimage "STRIKEYA", 253, 178;}
+		InInventory IDCard, 1 {drawimage "STRIKEYB", 259, 178;}
+		InInventory SilverKey, 1 {drawimage "STRIKEYC", 266, 178;}
+		InInventory OracleKey, 1 {drawimage "STRIKEYD", 234, 185;}
+		InInventory MilitaryID, 1 {drawimage "STRIKEYE", 240, 185;}
+		InInventory OrderKey, 1 {drawimage "STRIKEYF", 246, 185;}
+		InInventory BrassKey, 1 {drawimage "STRIKEYG", 253, 185;}
+		InInventory RedCrystalKey, 1 {drawimage "STRIKEYH", 259, 185;}
+		InInventory BlueCrystalKey, 1 {drawimage "STRIKEYI", 266, 185;}
+		InInventory ChapelKey, 1 {drawimage "STRIKEYJ", 234, 192;}
+		InInventory CatacombKey, 1 {drawimage "STRIKEYK", 240, 192;}
+		InInventory CoreKey, 1 {drawimage "STRIKEYL", 246, 192;}
+		InInventory MaulerKey, 1 {drawimage "STRIKEYM", 253, 192;}
+		InInventory FactoryKey, 1 {drawimage "STRIKEYN", 259, 192;}
+		InInventory MineKey, 1 {drawimage "STRIKEYO", 266, 192;}
 }
 
 Playerclass Tfear
 {
-	drawimage "EVILHUD", 0, 168;
-	DrawString CONFONT, White, "Health", 58, 170;
-	DrawNumber 3, BIGFONT, Red, Health, drawshadow, 51, 180;
-	DrawString CONFONT, White, "Keys", 110, 170;
-	DrawKeyBar 32, horizontal, auto, 72, 180;
-	DrawString CONFONT, White, "Kills", 250,170;
-	
+	drawimage "EVILHUD3", 0, 168;
+    drawmugshot "STF", 5, 147, 168;
+	DrawBar "HBARRED", "HBAREMPT", Health, Horizontal, 25, 175;
+	DrawBar "HBARRED", "HBAREMPT", Armor, Horizontal, 25, 186;
+    DrawNumber 3, INDEXFON, Gold, Health, 20, 176, Red, 50, White, 100;
+    DrawNumber 3, INDEXFON, White, Armor, FillZeros, 20, 187;
+    drawselectedinventory alwaysshowcounter, TFERHUDF, 290, 22, 293, 30, Aqua;
+	DrawString CONFONT, White, "Kills", 218, 171;
     gamemode deathmatch, teamplay, teamgame, lastmanstanding, OneFlagCTF, CTF, Skulltag, TeamLMS, TeamPossession
-    {
-    DrawNumber 3, BIGFONT, White, Frags, drawshadow, 235, 180;
-    }
-    /*gamemode cooperative, singleplayer
-    {
-    DrawNumber 4, BIGFONT, untranslated, KillCountAmountTrue, 250, 180;
-	}*/
+    { DrawNumber 3, TFERHUDF, Aqua, Frags, drawshadow, 204, 183; }
+    gamemode cooperative, singleplayer
+    { DrawNumber 4, TFERHUDF, Aqua, KillCountAmountTrue, drawshadow, 213, 183; }
 	
-	DrawString CONFONT, White, "Armor", 310, 170;
-	DrawNumber 3, BIGFONT, Red, Armor, drawshadow, 308, 180;
-    drawselectedinventory alwaysshowcounter, DOOMHUDF, 290, 22, 293, 30, untranslated;
+	DrawString CONFONT, White, "Ammo", 139, 171;
+	DrawNumber 3, TFERHUDF, Aqua, Ammo1, drawshadow, 131, 183;
+    DrawNumber 3, INDEXFON, White, ammo VillainAmmoLight, 295, 174;
+    DrawNumber 3, INDEXFON, Aqua, ammocapacity VillainAmmoLight, 310, 174;
+    DrawNumber 3, INDEXFON, White, ammo VillainAmmoHeavy, 295, 183;
+    DrawNumber 3, INDEXFON, Aqua, ammocapacity VillainAmmoHeavy, 310, 183;
+	
+	DrawBar "CBARRED", "CBAREMPT", TfearCloakCount, Horizontal, 283, 191; //CyberdemonDashCount
+	DrawBar "CBARBLU", "CBAREMPT", TfearCloakCooldown, Horizontal, 283, 193; //CyberdemonDashCooldown
+	DrawBar "CBARYEL", "CBAREMPT", TfearBeaconCooldown, Horizontal, 283, 195; //CyberdemonDashCooldown
 
-	DrawString CONFONT, White, "Ammo", 177, 170;
-	DrawNumber 3, BIGFONT, Red, Ammo1, drawshadow, 152, 180;
-	InInventory GhostsphereCooldown, 1 {DrawNumber 3, BIGFONT, Red, GhostsphereCooldown, drawshadow, 190, 180;}
+    //Doom keys
+        InInventory BlueCard, 1 {drawimage "STKEYS0", 236, 175;}
+        InInventory YellowCard, 1 {drawimage "STKEYS1", 248, 175;}
+        InInventory RedCard, 1 {drawimage "STKEYS2", 260, 175;}
+        InInventory BlueSkull, 1 {drawimage "STKEYS3", 236, 186;}
+        InInventory YellowSkull, 1 {drawimage "STKEYS4", 248, 186;}
+        InInventory RedSkull, 1 {drawimage "STKEYS5", 260, 186;}
+        //Chex keys
+        InInventory ChexBlueCard, 1 {drawimage "STKEYS0", 232, 175;}
+        InInventory ChexYellowCard, 1 {drawimage "STKEYS1", 245, 175;}
+        InInventory ChexRedCard, 1 {drawimage "STKEYS2", 258, 175;}
+        InInventory BlueFlemKey, 1 {drawimage "STKEYS3", 232, 186;}
+        InInventory YellowFlemKey, 1 {drawimage "STKEYS4", 245, 186;}
+        InInventory RedFlemKey, 1 {drawimage "STKEYS5", 258, 186;}
+        //Heretic keys
+        InInventory KeyYellow, 1 {drawimage "YKEYICON", 234, 181;}
+        InInventory KeyGreen, 1 {drawimage "GKEYICON", 248, 181;}
+        InInventory KeyBlue, 1 {drawimage "BKEYICON", 261, 181;}
+		//HeXen keys
+		InInventory KeySteel, 1 {drawimage "HEXKEY1", 233, 171;}
+		InInventory KeyCave, 1 {drawimage "HEXKEY2", 233, 181;}
+		InInventory KeyAxe, 1 {drawimage "HEXKEY3", 233, 191;}
+		InInventory KeyFire, 1 {drawimage "HEXKEY4", 243, 171;}
+		InInventory KeyEmerald, 1 {drawimage "HEXKEY5", 243, 181;}
+		InInventory KeyDungeon, 1 {drawimage "HEXKEY6", 243, 191;}
+		InInventory KeySilver, 1 {drawimage "HEXKEY7", 253, 171;}
+		InInventory KeyRusted, 1 {drawimage "HEXKEY8", 253, 181;}
+		InInventory KeyHorn, 1 {drawimage "HEXKEY9", 253, 191;}
+		InInventory KeySwamp, 1 {drawimage "HEXKEYA", 263, 171;}
+		InInventory KeyCastle, 1 {drawimage "HEXKEYB", 263, 181;}
+		//Strife keys
+		InInventory BaseKey, 1 {drawimage "STRIKEY1", 234, 171;}
+		InInventory GovsKey, 1 {drawimage "STRIKEY2", 240, 171;}
+		InInventory PassCard, 1 {drawimage "STRIKEY3", 246, 171;}
+		InInventory IDBadge, 1 {drawimage "STRIKEY4", 253, 171;}
+		InInventory PrisonKey, 1 {drawimage "STRIKEY5", 259, 171;}
+		InInventory SeveredHand, 1 {drawimage "STRIKEY6", 266, 171;}
+		InInventory Power1Key, 1 {drawimage "STRIKEY7", 234, 178;}
+		InInventory Power2Key, 1 {drawimage "STRIKEY8", 240, 178;}
+		InInventory Power3Key, 1 {drawimage "STRIKEY9", 246, 178;}
+		InInventory GoldKey, 1 {drawimage "STRIKEYA", 253, 178;}
+		InInventory IDCard, 1 {drawimage "STRIKEYB", 259, 178;}
+		InInventory SilverKey, 1 {drawimage "STRIKEYC", 266, 178;}
+		InInventory OracleKey, 1 {drawimage "STRIKEYD", 234, 185;}
+		InInventory MilitaryID, 1 {drawimage "STRIKEYE", 240, 185;}
+		InInventory OrderKey, 1 {drawimage "STRIKEYF", 246, 185;}
+		InInventory BrassKey, 1 {drawimage "STRIKEYG", 253, 185;}
+		InInventory RedCrystalKey, 1 {drawimage "STRIKEYH", 259, 185;}
+		InInventory BlueCrystalKey, 1 {drawimage "STRIKEYI", 266, 185;}
+		InInventory ChapelKey, 1 {drawimage "STRIKEYJ", 234, 192;}
+		InInventory CatacombKey, 1 {drawimage "STRIKEYK", 240, 192;}
+		InInventory CoreKey, 1 {drawimage "STRIKEYL", 246, 192;}
+		InInventory MaulerKey, 1 {drawimage "STRIKEYM", 253, 192;}
+		InInventory FactoryKey, 1 {drawimage "STRIKEYN", 259, 192;}
+		InInventory MineKey, 1 {drawimage "STRIKEYO", 266, 192;}
 }
 }
 

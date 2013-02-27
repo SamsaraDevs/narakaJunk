@@ -1,8 +1,7 @@
 FROM CONCEPT V0 TO V0.1:
 =========================
 - Admiral Tfear, the villain for the Security Officer, has been added.
-- Increased Cyberdemon's damagefactor from 0.5 to 0.45
-- Decreased D'Sparil's from 0.6 to 0.65, and on-foot from 0.7 to 0.8.
+- Converted all damage factors to HP. The Cyberdemon has the highest HP of all.
 - The Cyberdemon now no longer can be hurt by D'Sparil's Disciples.
 - D'Sparil's summon was changed from spawning Disciples from one of D'Sparil's missiles to spawning directly from D'Sparil.
 - The Disciples of D'Sparil no longer regard their master as a threat.
@@ -10,6 +9,7 @@ FROM CONCEPT V0 TO V0.1:
 - D'Sparil no longer randomly resurrects himself again, after he was already resurrected.
 - Readjusted and tweaked Chaos Serpent death sequences--hopefully D'Sparil no longer gets stuck after his Chaos Serpent dies.
 - The SBarInfo has been updated to accomodate both D'Sparil and on-foot D'Sparil. Picking D'Sparil should no longer get people an HoM.
+- The SBarInfo has been updated, and now everyone has a psuedo-proper HUD.
 - The Radius of the bosses have been decreased to 16--now they can go through all the tunnels the heroes can, though they may need to crouch for it first.
 - The environmental damage resistance of the Villains has been changed from an actor inheriting from PowerIronFeet to a DamageFactor 0 against Slime and Lava.
 - D'Sparil's Disciples now only drop Lesser Tomes of Power, though with 4x the drop rate.
@@ -22,5 +22,9 @@ FROM CONCEPT V0 TO V0.1:
 - The Cyberdemon's rockets, body, and sounds have been added, and thus now he can be used in Heretic, HeXen, and other such iwads.
 - The Cyberdemon's stomp no longer kills allies.
 - The Cyberdemon's stomp has a proper obituary attached to it.
+- The Cyberdemon's rockets fire slightly slower.
+- The Cyberdemon now has a temporary sprint, which can help him overrun others or get away from a bad situation.
 - D'Sparil's Chaos Serpent's alt-fire's first wave of fireballs no longer uses the primary fire's stats.
 - The villains now have a co-op mode, as requested by Zael and PresidentPeople. However, their shots only go through other villains! They do not get along with the heroes!
+- When firing the trio burst of rockets, the Cyberdemon now stands still in order to absorb the recoil, like in Doom.
+- All of the villains, sans D'Sparil's Chaos Serpent, now run off ammo.

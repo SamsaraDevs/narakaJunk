@@ -1,0 +1,74 @@
+actor IsNarakaClass : Boolean { }
+actor TLMSModeOn : Boolean { }
+
+actor EmptyTelefog : TeleportFog
+{
+    Alpha 0
+    States
+    {
+      Spawn:
+        ACLO E 1
+        stop
+    }
+}
+
+actor VillainAmmoLight : Ammo
+{
+    Inventory.PickupMessage "You got some Light ammo."
+    Inventory.Amount 10
+    Inventory.MaxAmount 300
+    Ammo.BackpackAmount 50
+    Ammo.BackpackMaxAmount 600
+    States
+    {
+      Spawn:
+        ACLO E -1
+        Stop
+    }
+}
+
+actor VillainAmmoHeavy : Ammo
+{
+    Inventory.PickupMessage "You got some Heavy ammo."
+    Inventory.Amount 0
+    Inventory.MaxAmount 100
+    Ammo.BackpackAmount 10
+    Ammo.BackpackMaxAmount 200
+    States
+    {
+      Spawn:
+        ACLO E -1
+        Stop
+    }
+}
+
+actor HealPack2Naraka : HealPack2 replaces Medikit
+{
+	States
+    {
+      Spawn:
+        Med3 A -1 BRIGHT
+        stop
+
+      Pickup:
+		TNT1 A 0 A_JumpIfInventory("CyberdemonClass", 1, "PickupCyberdemon")
+		TNT1 A 0 A_JumpIfInventory("DsparilClass", 1, "PickupDsparil")
+        TNT1 A 0 A_JumpIfInventory("HexenClass", 1, "PickupHexen")
+        TNT1 A 0 A_JumpIfInventory("CorvusClass", 1, "PickupHeretic")
+        TNT1 A 0 A_JumpIfInventory("MarathonClass", 1, "PickupMarathon")
+        TNT1 A 0 A_JumpIfInventory("DukeClass", 1, "PickupDuke")
+        TNT1 A 0 A_JumpIfInventory("RuneProsperity", 1, "PickupProsperity")
+        TNT1 A 1
+        TNT1 A 0 A_JumpIfHealthLower(100, "PickUpSuccess")
+		
+	  PickupCyberdemon:
+        TNT1 A 0 A_JumpIfHealthLower(200, "PickUpSuccess")
+        TNT1 A 1
+		goto PickupFail
+	  
+	  PickupDsparil:
+        TNT1 A 0 A_JumpIfHealthLower(150, "PickUpSuccess")
+        TNT1 A 1
+		goto PickupFail
+    }
+}

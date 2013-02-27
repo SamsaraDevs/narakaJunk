@@ -68,6 +68,9 @@ $playeralias	Tfear		 male	*taunt			tfear/taunt
 $playersound	Tfear	     male	*splat		    MRTHSLOP
 
 cyber/hoof					cybhoof
+cyber/dashon				cydashon
+cyber/dashoff				cydashof
+cyber/dashfail				cydasher
 
 dsparilserpent/sight		srpsit
 dsparilserpent/attack		srpatk
@@ -108,3 +111,5 @@ tfear/boom2				tferbom3
 tfear/shoot				tfersht3
 tfear/shoot2			tfersht4
 tfear/cloak				tfernvis
+tfear/uncloak			tfervis
+tfear/summon			tfersmmn

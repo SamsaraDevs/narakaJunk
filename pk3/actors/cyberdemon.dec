@@ -8,7 +8,7 @@ ACTOR CyberDashToggle : CustomInventory
     Inventory.MaxAmount 1
     +INVBAR
     +INVENTORY.UNDROPPABLE
-    //Inventory.Icon ARTIJETP
+    Inventory.Icon CYSPRINT
     +inventory.hubpower
     States
     {
@@ -470,7 +470,7 @@ ACTOR "Cyber-Rocket Launcher" : Weapon
         CYBL C 4 A_FireCustomMissile("CyberRocket3",random(-1,3),0,-10,0,random(-2,2))
         CYBL D 4
         CYBL E 5
-        CYBL A 10
+        CYBL A 3
 		CYBL A 1 A_Refire
 		CYBL A 1 A_TakeInventory("CyberSpeed2")
 		CYBL A 1 A_ClearRefire
@@ -492,7 +492,7 @@ ACTOR "Cyber-Rocket Launcher" : Weapon
         CYBL C 3 A_FireCustomMissile("CyberRocketCoop2",random(-1,3),0,-10,0,random(-2,2))
         CYBL D 4
         CYBL E 5
-        CYBL A 10
+        CYBL A 3
 		CYBL A 1 A_Refire
 		CYBL A 1 A_TakeInventory("CyberSpeed2")
 		CYBL A 1 A_ClearRefire

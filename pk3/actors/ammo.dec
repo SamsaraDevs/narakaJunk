@@ -152,7 +152,7 @@ actor Ammo4Big2 : Ammo4Big replaces Cellpack// replaces Cellpack
     }
 }
 
-actor NarakaClip_Doom: SamsaraClip_Doom replaces SamsaraClip_Doom
+actor NarakaClip_Doom: Clip2 replaces Clip2
 {
     States
     {

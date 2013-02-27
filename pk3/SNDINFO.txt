@@ -72,6 +72,21 @@ cyber/dashon				cydashon
 cyber/dashoff				cydashof
 cyber/dashfail				cydasher
 
+cyber/up      				CYOVERUB
+cyber/unblock 				CYOVERUB
+cyber/windup  				CYOVERU
+cyber/fire    				CYGTFIRE
+cyber/winddown 				CYOVERD
+cyber/spin     				CYOVERS
+
+$random cyber/puff	{ cyber/puff1 cyber/puff2 cyber/puff3 cyber/puff4 cyber/puff5 cyber/puff6 }
+cyber/puff1					cyrich1
+cyber/puff2					cyrich2
+cyber/puff3					cyrich3
+cyber/puff4					cyrich4
+cyber/puff5 				cyrich5
+cyber/puff6					cyrich6
+
 dsparilserpent/sight		srpsit
 dsparilserpent/attack		srpatk
 dsparilserpent/attack2		srpatk2

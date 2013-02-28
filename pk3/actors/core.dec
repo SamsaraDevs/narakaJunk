@@ -67,8 +67,43 @@ actor HealPack2Naraka : HealPack2 replaces Medikit
 		goto PickupFail
 	  
 	  PickupDsparil:
-        TNT1 A 0 A_JumpIfHealthLower(150, "PickUpSuccess")
+        TNT1 A 0 A_JumpIfHealthLower(150, "PickUpSuccessDsparil")
         TNT1 A 1
 		goto PickupFail
+	  
+	  PickupSuccessDsparil: // The shit I do because of Morphclass.
+        TNT1 A 0 A_GiveInventory("HealthBonusDsparil")
+        TNT1 A 0 A_GiveInventory("HealthBonusDsparil")
+        TNT1 A 0 A_GiveInventory("HealthBonusDsparil")
+        TNT1 A 0 A_GiveInventory("HealthBonusDsparil")
+        TNT1 A 0 A_GiveInventory("HealthBonusDsparil") // 5
+        TNT1 A 0 A_GiveInventory("HealthBonusDsparil")
+        TNT1 A 0 A_GiveInventory("HealthBonusDsparil")
+        TNT1 A 0 A_GiveInventory("HealthBonusDsparil")
+        TNT1 A 0 A_GiveInventory("HealthBonusDsparil")
+        TNT1 A 0 A_GiveInventory("HealthBonusDsparil") // 10
+        TNT1 A 0 A_GiveInventory("HealthBonusDsparil")
+        TNT1 A 0 A_GiveInventory("HealthBonusDsparil")
+        TNT1 A 0 A_GiveInventory("HealthBonusDsparil")
+        TNT1 A 0 A_GiveInventory("HealthBonusDsparil")
+        TNT1 A 0 A_GiveInventory("HealthBonusDsparil") // 15
+        TNT1 A 0 A_GiveInventory("HealthBonusDsparil")
+        TNT1 A 0 A_GiveInventory("HealthBonusDsparil")
+        TNT1 A 0 A_GiveInventory("HealthBonusDsparil")
+        TNT1 A 0 A_GiveInventory("HealthBonusDsparil")
+        TNT1 A 0 A_GiveInventory("HealthBonusDsparil") // 20
+        TNT1 A 0 A_GiveInventory("HealthBonusDsparil")
+        TNT1 A 0 A_GiveInventory("HealthBonusDsparil")
+        TNT1 A 0 A_GiveInventory("HealthBonusDsparil")
+        TNT1 A 0 A_GiveInventory("HealthBonusDsparil")
+        TNT1 A 0 A_GiveInventory("HealthBonusDsparil") // 25
+        TNT1 A 0 A_PlaySound("healpack2pickup")
+		TNT1 A 1
+		stop
     }
+}
+
+ACTOR HealthBonusDSparil : HealthBonus
+{
+  Inventory.MaxAmount 150
 }

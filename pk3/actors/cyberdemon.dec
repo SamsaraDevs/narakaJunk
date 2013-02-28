@@ -1,6 +1,14 @@
 Actor CyberdemonClass : Boolean { }
 Actor CyberdemonDashCount : Counter { Inventory.MaxAmount 42 }//6 }
 Actor CyberdemonDashCooldown : Counter { Inventory.MaxAmount 210 }//30 }
+ACTOR RotorActive : Boolean { }
+
+ACTOR CyberBeef : PowerProtection
+{
+  Powerup.Duration 0x7FFFFFFF
+  DamageFactor "Normal", 0.825
+  DamageFactor "Telefrag", 1.5
+}
 
 ACTOR CyberDashToggle : CustomInventory
 {
@@ -62,7 +70,7 @@ actor CyberdemonPlayer : PlayerPawn
     DamageFactor "Nukage", 0
     DamageFactor "Hellslime", 0
     DamageFactor "SuperHellslime", 0
-    DamageFactor "Normal", 0.95
+    DamageFactor "Normal", 0.9
     DamageFactor "Telefrag", 2.0
     DamageFactor "PoisonCloud", 1.75
     DamageFactor "DukeExplosive", 0.5
@@ -103,6 +111,7 @@ actor CyberdemonPlayer : PlayerPawn
 
       WalkSound:
 		TNT1 A 0 A_JumpIfInventory("CyberDash",1,"WalkSoundRun")
+	    TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"WalkSoundTLMS")
 	    TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"WalkSoundTLMS")
         TNT1 A 0 Radius_Quake(2,4,0,2,0)
         CYBD A 3 A_PlaySoundEx("cyber/hoof","soundslot6")
@@ -125,6 +134,7 @@ actor CyberdemonPlayer : PlayerPawn
 
       WalkSound2:
 		TNT1 A 0 A_JumpIfInventory("CyberDash",1,"WalkSoundRun2")
+	    TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"WalkSoundTLMS2")
 	    TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"WalkSoundTLMS2")
         TNT1 A 0 Radius_Quake(2,4,0,2,0)
         CYBD C 3 A_PlaySoundEx("cyber/hoof","soundslot6")
@@ -149,6 +159,7 @@ actor CyberdemonPlayer : PlayerPawn
         goto ContinueOn
 
       WalkSoundRun:
+	    TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"WalkSoundTLMSRun")
 	    TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"WalkSoundTLMSRun")
         TNT1 A 0 Radius_Quake(2,4,0,2,0)
         CYBD A 2 A_PlaySoundEx("cyber/hoof","soundslot6")
@@ -169,6 +180,7 @@ actor CyberdemonPlayer : PlayerPawn
         goto ContinueOnRun2
 
       WalkSoundRun2:
+	    TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"WalkSoundTLMSRun2")
 	    TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"WalkSoundTLMSRun2")
         TNT1 A 0 Radius_Quake(2,4,0,2,0)
         CYBD C 2 A_PlaySoundEx("cyber/hoof","soundslot6")
@@ -245,7 +257,7 @@ ACTOR CyberdemonStomp
     +NOCLIP
 	+FORCERADIUSDMG
     -SOLID
-    Obituary "%k stomped %o under cloven hooves."
+    Obituary "%k \crstomped \c-%o \crunder cloven hooves.\c-"
     States
     {
       Spawn:
@@ -520,7 +532,7 @@ ACTOR CyberRocket2 : CyberRocket
     Decal Scorch
     SeeSound "doomguy/rocklf"
     DeathSound "doomguy/rocklx"
-    Obituary "%k splattered %o with a Cyber-Rocket."
+    Obituary "%k \crsplattered\c- %o \crwith a Cyber-Rocket.\c-"
     Speed 25
 	+FORCERADIUSDMG
     States
@@ -541,11 +553,12 @@ ACTOR CyberRocketCoop : CyberRocket2
 {
 	+THRUSPECIES
 	Species "Villain"
+	DamageType "VillainTeam"
 }
 
 ACTOR CyberRocket3 : CyberRocket2
 {
-    Obituary "%k splattered %o with a Cyber-Rocket."
+    Obituary "%k \crsplattered\c- %o \crwith a Cyber-Rocket.\c-"
     Speed 20
 }
 
@@ -553,6 +566,7 @@ ACTOR CyberRocketCoop2 : CyberRocket3
 {
 	+THRUSPECIES
 	Species "Villain"
+	DamageType "VillainTeam"
 }
 
 ACTOR CyberSpeed : PowerSpeed
@@ -570,7 +584,7 @@ ACTOR CyberSpeed2 : PowerSpeed
 ACTOR CyberDash : PowerSpeed
 {
   Powerup.Duration 0x7FFFFFFF
-  Speed 1.65
+  Speed 1.5
 }
 
 
@@ -586,6 +600,7 @@ ACTOR "Spider Chaingun" : Weapon
 	Weapon.AmmoUse 1
 	Weapon.AmmoGive 1000
 	Decal BulletChip
+	Obituary "%k \cremptied\c- %o \crover the cold floor.\c-"
 	States
 	{
 	Ready:
@@ -641,15 +656,15 @@ ACTOR "Spider Chaingun" : Weapon
 		TNT1 A 0 A_PlaySoundEx("cyber/fire","soundslot7",0,0)
 		TNT1 A 0 A_Recoil(0.1)
 		TNT1 A 0 A_GunFlash
-		TNT1 A 1 BRIGHT A_FireBullets(7, 3, -1, 7, "CyberBulletPuff", 0)
-		TNT1 A 1 BRIGHT A_FireBullets(7, 3, -1, 7, "CyberBulletPuff", 1)
+		TNT1 A 1 BRIGHT A_FireBullets(7, 0, -1, 6, "CyberBulletPuff", 0)
+		TNT1 A 1 BRIGHT A_FireBullets(7, 0, -1, 6, "CyberBulletPuff", 1)
 		TNT1 A 1
 		TNT1 A 0 Radius_Quake(4,2,0,3,0)
 		TNT1 A 0 A_PlaySoundEx("cyber/fire","soundslot7",0,0)
 		TNT1 A 0 A_Recoil(0.1)
 		TNT1 A 0 A_GunFlash
-		TNT1 A 0 BRIGHT A_FireBullets(7, 3, -1, 7, "CyberBulletPuff", 0)
-		TNT1 A 1 BRIGHT A_FireBullets(7, 3, -1, 7, "CyberBulletPuff", 1)
+		TNT1 A 0 BRIGHT A_FireBullets(7, 0, -1, 6, "CyberBulletPuff", 0)
+		TNT1 A 1 BRIGHT A_FireBullets(7, 0, -1, 6, "CyberBulletPuff", 1)
 		TNT1 A 1
 		TNT1 A 0 A_Refire
 		TNT1 A 0 A_ClearRefire
@@ -664,15 +679,15 @@ ACTOR "Spider Chaingun" : Weapon
 		TNT1 A 0 A_PlaySoundEx("cyber/fire","soundslot7",0,0)
 		TNT1 A 0 A_Recoil(0.1)
 		TNT1 A 0 A_GunFlash
-		TNT1 A 1 BRIGHT A_FireCustomMissile("CyberdemonBullet",random(-7,7),0,0,0,0,random(-3,3))//A_FireBullets(7, 3, -1, 7, "CyberBulletPuff", 0)
-		TNT1 A 1 BRIGHT A_FireCustomMissile("CyberdemonBullet",random(-7,7),1,0,0,0,random(-3,3))//A_FireBullets(7, 3, -1, 7, "CyberBulletPuff", 1)
+		TNT1 A 1 BRIGHT A_FireCustomMissile("CyberdemonBullet",random(-7,7),0,0,0,0,0)//A_FireBullets(7, 3, -1, 7, "CyberBulletPuff", 0)
+		TNT1 A 1 BRIGHT A_FireCustomMissile("CyberdemonBullet",random(-7,7),1,0,0,0,0)//A_FireBullets(7, 3, -1, 7, "CyberBulletPuff", 1)
 		TNT1 A 1
 		TNT1 A 0 Radius_Quake(4,2,0,3,0)
 		TNT1 A 0 A_PlaySoundEx("cyber/fire","soundslot7",0,0)
 		TNT1 A 0 A_Recoil(0.1)
 		TNT1 A 0 A_GunFlash
-		TNT1 A 0 BRIGHT A_FireCustomMissile("CyberdemonBullet",random(-7,7),0,0,0,0,random(-3,3))//A_FireBullets(7, 3, -1, 7, "CyberBulletPuff", 0)
-		TNT1 A 1 BRIGHT A_FireCustomMissile("CyberdemonBullet",random(-7,7),1,0,0,0,random(-3,3))//A_FireBullets(7, 3, -1, 7, "CyberBulletPuff", 1)
+		TNT1 A 0 BRIGHT A_FireCustomMissile("CyberdemonBullet",random(-7,7),0,0,0,0,0)//A_FireBullets(7, 3, -1, 7, "CyberBulletPuff", 0)
+		TNT1 A 1 BRIGHT A_FireCustomMissile("CyberdemonBullet",random(-7,7),1,0,0,0,0)//A_FireBullets(7, 3, -1, 7, "CyberBulletPuff", 1)
 		TNT1 A 1
 		TNT1 A 0 A_Refire
 		TNT1 A 0 A_ClearRefire
@@ -687,15 +702,15 @@ ACTOR "Spider Chaingun" : Weapon
 		TNT1 A 0 A_PlaySoundEx("cyber/fire","soundslot7",0,0)
 		TNT1 A 0 A_Recoil(0.1)
 		TNT1 A 0 A_GunFlash
-		TNT1 A 1 BRIGHT A_FireBullets(2, 0, -1, 6, "CyberBulletPuff", 0)
-		TNT1 A 1 BRIGHT A_FireBullets(2, 1, -1, 6, "CyberBulletPuff", 1)
+		TNT1 A 1 BRIGHT A_FireBullets(1, 0, -1, 6, "CyberBulletPuff", 0)
+		TNT1 A 1 BRIGHT A_FireBullets(2, 0, -1, 6, "CyberBulletPuff", 1)
 		TNT1 A 1
 		TNT1 A 0 Radius_Quake(4,2,0,3,0)
 		TNT1 A 0 A_PlaySoundEx("cyber/fire","soundslot7",0,0)
 		TNT1 A 0 A_Recoil(0.1)
 		TNT1 A 0 A_GunFlash
-		TNT1 A 0 BRIGHT A_FireBullets(2, 0, -1, 6, "CyberBulletPuff", 0)
-		TNT1 A 1 BRIGHT A_FireBullets(2, 1, -1, 6, "CyberBulletPuff", 1)
+		TNT1 A 0 BRIGHT A_FireBullets(1, 0, -1, 6, "CyberBulletPuff", 0)
+		TNT1 A 1 BRIGHT A_FireBullets(2, 0, -1, 6, "CyberBulletPuff", 1)
 		TNT1 A 1
 		TNT1 A 0 A_Refire
 		TNT1 A 0 A_ClearRefire
@@ -709,15 +724,15 @@ ACTOR "Spider Chaingun" : Weapon
 		TNT1 A 0 A_PlaySoundEx("cyber/fire","soundslot7",0,0)
 		TNT1 A 0 A_Recoil(0.1)
 		TNT1 A 0 A_GunFlash
-		TNT1 A 1 BRIGHT A_FireCustomMissile("CyberdemonBullet",random(-2,2),0,0,0,0,0)//A_FireBullets(2, 0, -1, 6, "CyberBulletPuff", 0)
-		TNT1 A 1 BRIGHT A_FireCustomMissile("CyberdemonBullet",random(-2,2),1,0,0,0,random(-1,1))//A_FireBullets(2, 1, -1, 6, "CyberBulletPuff", 1)
+		TNT1 A 1 BRIGHT A_FireCustomMissile("CyberdemonBullet",random(-1,1),0,0,0,0,0)//A_FireBullets(2, 0, -1, 6, "CyberBulletPuff", 0)
+		TNT1 A 1 BRIGHT A_FireCustomMissile("CyberdemonBullet",random(-2,2),1,0,0,0,0)//A_FireBullets(2, 1, -1, 6, "CyberBulletPuff", 1)
 		TNT1 A 1
 		TNT1 A 0 Radius_Quake(4,2,0,3,0)
 		TNT1 A 0 A_PlaySoundEx("cyber/fire","soundslot7",0,0)
 		TNT1 A 0 A_Recoil(0.1)
 		TNT1 A 0 A_GunFlash
-		TNT1 A 1 BRIGHT A_FireCustomMissile("CyberdemonBullet",random(-2,2),0,0,0,0,0)//A_FireBullets(2, 0, -1, 6, "CyberBulletPuff", 0)
-		TNT1 A 1 BRIGHT A_FireCustomMissile("CyberdemonBullet",random(-2,2),1,0,0,0,random(-1,1))//A_FireBullets(2, 1, -1, 6, "CyberBulletPuff", 1)
+		TNT1 A 1 BRIGHT A_FireCustomMissile("CyberdemonBullet",random(-1,1),0,0,0,0,0)//A_FireBullets(2, 0, -1, 6, "CyberBulletPuff", 0)
+		TNT1 A 1 BRIGHT A_FireCustomMissile("CyberdemonBullet",random(-2,2),1,0,0,0,0)//A_FireBullets(2, 1, -1, 6, "CyberBulletPuff", 1)
 		TNT1 A 1
 		TNT1 A 0 A_Refire
 		TNT1 A 0 A_ClearRefire
@@ -772,11 +787,13 @@ actor CyberdemonBullet : FastProjectile
     Projectile
     Renderstyle "Normal"
     Species "Villain"
+	DamageType "VillainTeam"
     +BLOODSPLATTER
     +THRUSPECIES
     +NOTIMEFREEZE
     Alpha 1.0
     Decal Bulletchip
+	Obituary "%k \cremptied\c- %o \crover the cold floor.\c-"
     States
     {
       Spawn:
@@ -792,8 +809,6 @@ actor CyberdemonBullet : FastProjectile
         stop
     }
 }
-
-ACTOR RotorActive : Boolean { }
 
 ACTOR CyberBulletPuff : BulletPuff
 {

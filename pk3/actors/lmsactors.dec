@@ -85,7 +85,7 @@ actor CyberLMSHealth5 : InheritedLMSHealth
 
 
 // D'Sparil
-// Operates on a 1.25:1 health ratio. Relatively frail magician dude.
+// Operates on a 1:1 health ratio. Relatively frail magician dude. 50 extra health to act as a buffer for the Serpent.
 // Operates on a 1.25:1 armor ratio. Heretic armor was better than Doom's.
 //==============
 
@@ -115,8 +115,8 @@ actor DSparilLMSArmor3 : InheritedLMSArmor
 
 actor DSparilLMSHealth3 : InheritedLMSHealth
 {
-  Inventory.Amount 375
-  Inventory.MaxAmount 375
+  Inventory.Amount 350
+  Inventory.MaxAmount 350
 }
 
 //lmslife4
@@ -127,8 +127,8 @@ actor DSparilLMSArmor4 : InheritedLMSArmor
 
 actor DSparilLMSHealth4 : InheritedLMSHealth
 {
-  Inventory.Amount 500
-  Inventory.MaxAmount 500
+  Inventory.Amount 450
+  Inventory.MaxAmount 450
 }
 
 //lmslife5
@@ -139,8 +139,8 @@ actor DSparilLMSArmor5 : InheritedLMSArmor
 
 actor DSparilLMSHealth5 : InheritedLMSHealth
 {
-  Inventory.Amount 625
-  Inventory.MaxAmount 625
+  Inventory.Amount 550
+  Inventory.MaxAmount 550
 }
 
 

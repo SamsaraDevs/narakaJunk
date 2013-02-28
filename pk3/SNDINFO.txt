@@ -90,6 +90,7 @@ cyber/puff6					cyrich6
 dsparilserpent/sight		srpsit
 dsparilserpent/attack		srpatk
 dsparilserpent/attack2		srpatk2
+dsparilserpent/bite			srpbite
 dsparilserpent/pain			srppai
 dsparilserpent/death		srpdth
 dsparilserpent/active		srpact

@@ -47,10 +47,25 @@ script 470 UNLOADING
 	TakeInventory("TfearCloak",999);
 	TakeInventory("TfearCloakCooldown",999);
 	TakeInventory("TfearCloakCount",999);
+	TakeInventory("TfearBeaconCooldown",999);
+	TakeInventory("RotorActive",999);
+	TakeInventory("DSparilDismountedSerpent",999);
+	TakeInventory("PowerShadow",999);
 }
 
 script 471 ENTER // Hey, ijon, it's this gross hack again!
 {
+if (GameType() == GAME_SINGLE_PLAYER || GameType() == GAME_NET_COOPERATIVE)
+{
+	if (CheckInventory("CyberdemonClass") == 1)
+	{
+	GiveInventory("CyberBeef",1);
+	}
+	if (CheckInventory("DsparilClass") == 1)
+	{
+	GiveInventory("DsparilBeef",1);
+	}
+}
 if(GetCvar("lastmanstanding")==1)
 {
 	GiveInventory("Backpack",1);
@@ -234,6 +249,8 @@ else
 	{
 		GiveInventory("Chaos Serpent",1);
         SetWeapon("Chaos Serpent");
+		GiveInventory("DsparilDismount",1);
+		TakeInventory("DsparilDismountedSerpent",1);
 	}
 }
 }
@@ -241,6 +258,17 @@ else
 
 script 472 RESPAWN
 {
+if (GameType() == GAME_SINGLE_PLAYER || GameType() == GAME_NET_COOPERATIVE)
+{
+	if (CheckInventory("CyberdemonClass") == 1)
+	{
+	GiveInventory("CyberBeef",1);
+	}
+	if (CheckInventory("DsparilClass") == 1)
+	{
+	GiveInventory("DsparilBeef",1);
+	}
+}
 if(GetCvar("lastmanstanding")==1)
 {
 	GiveInventory("Backpack",1);
@@ -424,6 +452,8 @@ else
 	{
 		GiveInventory("Chaos Serpent",1);
         SetWeapon("Chaos Serpent");
+		GiveInventory("DsparilDismount",1);
+		TakeInventory("DsparilDismountedSerpent",1);
 	}
 }
 }
@@ -490,27 +520,27 @@ if(GetCvar("lastmanstanding")==1)
 {
 	if(GetCvar("samsara_lmslife") == 1)
 	{
-		GiveInventory("DsparilLMSArmor1",1);
+		//GiveInventory("DsparilLMSArmor1",1);
 	}
 	if(GetCvar("samsara_lmslife") == 2)
 	{
 		GiveInventory("DsparilLMSHealth2",1000);
-		GiveInventory("DsparilLMSArmor2",1);
+		//GiveInventory("DsparilLMSArmor2",1);
 	}
 	if(GetCvar("samsara_lmslife") == 3)
 	{
 		GiveInventory("DsparilLMSHealth3",1000);
-		GiveInventory("DsparilLMSArmor3",1);
+		//GiveInventory("DsparilLMSArmor3",1);
 	}
 	if(GetCvar("samsara_lmslife") == 4)
 	{
 		GiveInventory("DsparilLMSHealth4",1000);
-		GiveInventory("DsparilLMSArmor4",1);
+		//GiveInventory("DsparilLMSArmor4",1);
 	}
 	if(GetCvar("samsara_lmslife") == 5)
 	{
-		GiveInventory("DsparilLMSHealth3",1000);
-		GiveInventory("DsparilLMSArmor3",1);
+		GiveInventory("DsparilLMSHealth5",1000);
+		//GiveInventory("DsparilLMSArmor5",1);
 	}
 }
 else
@@ -524,22 +554,22 @@ if(GetCvar("teamlms")==1)
 	if(GetCvar("samsara_lmslife") == 2)
 	{
 		GiveInventory("DsparilLMSHealth2",1000);
-		GiveInventory("DsparilLMSArmor2",1);
+		//GiveInventory("DsparilLMSArmor2",1);
 	}
 	if(GetCvar("samsara_lmslife") == 3)
 	{
 		GiveInventory("DsparilLMSHealth3",1000);
-		GiveInventory("DsparilLMSArmor3",1);
+		//GiveInventory("DsparilLMSArmor3",1);
 	}
 	if(GetCvar("samsara_lmslife") == 4)
 	{
 		GiveInventory("DsparilLMSHealth4",1000);
-		GiveInventory("DsparilLMSArmor4",1);
+		//GiveInventory("DsparilLMSArmor4",1);
 	}
 	if(GetCvar("samsara_lmslife") == 5)
 	{
-		GiveInventory("DsparilLMSHealth3",1000);
-		GiveInventory("DsparilLMSArmor3",1);
+		GiveInventory("DsparilLMSHealth5",1000);
+		//GiveInventory("DsparilLMSArmor5",1);
 	}
 }
 else
@@ -604,7 +634,7 @@ script 480 (int cloakanddagger) NET // It's time to H-H-H-HIDE!
 switch (cloakanddagger)
 {
 case 2:
-if (CheckInventory("TfearCloak") == 1)
+if (CheckInventory("TfearCloak") == 1 || CheckInventory("PowerShadow") == 1)
     {
 	ActivatorSound("tfear/uncloak", 127);
 	print(s:"You discard the shadows behind you...");
@@ -612,7 +642,16 @@ if (CheckInventory("TfearCloak") == 1)
 	delay(2);
 	TakeInventory("TfearCloakCount",20);
 	delay(2);
-	TakeInventory("TfearCloak",1);
+	if (GameType() == GAME_SINGLE_PLAYER || GameType() == GAME_NET_COOPERATIVE)
+	{
+		TakeInventory("PowerShadow",1);
+		delay(1);
+		TakeInventory("PowerShadow",1);
+	}
+	else
+	{
+		TakeInventory("TfearCloak",1);
+	}
 	ACS_ExecuteAlways(481,0);
 	}
 break;
@@ -624,7 +663,16 @@ if (CheckInventory("TfearCloak") == 0)
 	print(s:"You fade into the shadows...");
 	GiveInventory("TfearCloakCount",20);
 	delay(5);
-	GiveInventory("TfearCloak",1);
+	if (GameType() == GAME_SINGLE_PLAYER || GameType() == GAME_NET_COOPERATIVE)
+	{
+		GiveInventory("PowerShadow",1);
+		delay(1);
+		GiveInventory("PowerShadow",1);
+	}
+	else
+	{
+		GiveInventory("TfearCloak",1);
+	}
 	ACS_ExecuteAlways(482,0);
 	}
 break;

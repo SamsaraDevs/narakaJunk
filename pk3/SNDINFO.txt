@@ -129,3 +129,4 @@ tfear/shoot2			tfersht4
 tfear/cloak				tfernvis
 tfear/uncloak			tfervis
 tfear/summon			tfersmmn
+pfhortrooper/fire		pfrtfire

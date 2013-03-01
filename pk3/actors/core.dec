@@ -60,6 +60,7 @@ actor HealPack2Naraka : HealPack2 replaces Medikit
         TNT1 A 0 A_JumpIfInventory("RuneProsperity", 1, "PickupProsperity")
         TNT1 A 1
         TNT1 A 0 A_JumpIfHealthLower(100, "PickUpSuccess")
+		goto PickupFail
 		
 	  PickupCyberdemon:
         TNT1 A 0 A_JumpIfHealthLower(200, "PickUpSuccess")

@@ -5,9 +5,9 @@ ACTOR RotorActive : Boolean { }
 
 ACTOR CyberBeef : PowerProtection
 {
-  Powerup.Duration 0x7FFFFFFF
-  DamageFactor "Normal", 0.825
-  DamageFactor "Telefrag", 1.5
+	Powerup.Duration 0x7FFFFFFF
+	DamageFactor "Normal", 0.825
+	DamageFactor "Telefrag", 1.5
 }
 
 ACTOR CyberDashToggle : CustomInventory
@@ -538,7 +538,7 @@ ACTOR CyberRocket2 : CyberRocket
     States
     {
       Spawn:
-        DMSL A 1 bright
+        CBMS A 1 bright
         Loop
 
       Death:

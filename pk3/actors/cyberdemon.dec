@@ -267,7 +267,7 @@ ACTOR CyberdemonStomp
     }
 }
 
-ACTOR CyberdemonStompTLMS
+ACTOR CyberdemonStompTLMS : CyberdemonStomp
 {
 	DamageType "VillainTeam"
 }

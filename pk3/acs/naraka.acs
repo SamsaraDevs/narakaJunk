@@ -1,9 +1,39 @@
 #library "NARAKA"
 #include "zcommon.acs"
 
+// Big thanks to Carlcyber for this function:
+function int sqrt(int number)
+{
+	if(number <= 3)
+	{
+		if(number > 0)
+		{
+			return 1;
+		}
+		return 0;
+	}
+
+	int oldAns = number >> 1,                     // initial guess
+	    newAns = (oldAns + number / oldAns) >> 1; // first iteration
+
+	// main iterative method
+	while(newAns < oldAns)
+	{
+		oldAns = newAns;
+		newAns = (oldAns + number / oldAns) >> 1;
+	}
+
+	return oldAns;
+}
+
+global int 61:SerpentArmor[]; // These two need to be
+global int 62:SerpentHealth[]; // remembered between levels.
+int DSparilHealth[64];
+int playerOnFoot[64];
+
 script 465 (void)
 {
-	MorphActor(0, "DSparilOnFootPlayer", "", 0x7FFFFFFF, 0, "emptytelefog", "emptytelefog");
+	MorphActor(0, "DSparilOnFootPlayer", "", 0x7FFFFFFF, 194, "emptytelefog", "emptytelefog");
 	//GiveInventory("Megasphere",1);
 }
 
@@ -51,10 +81,12 @@ script 470 UNLOADING
 	TakeInventory("RotorActive",999);
 	TakeInventory("DSparilDismountedSerpent",999);
 	TakeInventory("PowerShadow",999);
+	TakeInventory("DSparilMount",999);
 }
 
 script 471 ENTER // Hey, ijon, it's this gross hack again!
 {
+int pNum = playerNumber();
 if (GameType() == GAME_SINGLE_PLAYER || GameType() == GAME_NET_COOPERATIVE)
 {
 	if (CheckInventory("CyberdemonClass") == 1)
@@ -63,6 +95,9 @@ if (GameType() == GAME_SINGLE_PLAYER || GameType() == GAME_NET_COOPERATIVE)
 	}
 	if (CheckInventory("DsparilClass") == 1)
 	{
+	DSparilHealth  [pNum] = 200;
+    SerpentArmor   [pNum] = 50;
+    SerpentHealth  [pNum] = 100;
 	GiveInventory("DsparilBeef",1);
 	}
 }
@@ -94,35 +129,40 @@ if(GetCvar("lastmanstanding")==1)
 		}
 		if(GetCvar("samsara_lmslife") == 5)
 		{
-			GiveInventory("CyberLMSHealth3",1000);
-			GiveInventory("CyberLMSArmor3",1);
+			GiveInventory("CyberLMSHealth5",1000);
+			GiveInventory("CyberLMSArmor5",1);
 		}
 	}
     if (CheckInventory("DsparilClass") == 1)
-	{
+	{	
 		if(GetCvar("samsara_lmslife") == 1)
 		{
+			DSparilHealth  [pNum] = 100;
 			GiveInventory("DsparilLMSArmor1",1);
 		}
 		if(GetCvar("samsara_lmslife") == 2)
 		{
 			GiveInventory("DsparilLMSHealth2",1000);
 			GiveInventory("DsparilLMSArmor2",1);
+			DSparilHealth  [pNum] = 200;
 		}
 		if(GetCvar("samsara_lmslife") == 3)
 		{
 			GiveInventory("DsparilLMSHealth3",1000);
 			GiveInventory("DsparilLMSArmor3",1);
+			DSparilHealth  [pNum] = 300;
 		}
 		if(GetCvar("samsara_lmslife") == 4)
 		{
 			GiveInventory("DsparilLMSHealth4",1000);
 			GiveInventory("DsparilLMSArmor4",1);
+			DSparilHealth  [pNum] = 400;
 		}
 		if(GetCvar("samsara_lmslife") == 5)
 		{
-			GiveInventory("DsparilLMSHealth3",1000);
-			GiveInventory("DsparilLMSArmor3",1);
+			GiveInventory("DsparilLMSHealth5",1000);
+			GiveInventory("DsparilLMSArmor5",1);
+			DSparilHealth  [pNum] = 500;
 		}
 	}
     if (CheckInventory("TfearClass") == 1)
@@ -148,8 +188,8 @@ if(GetCvar("lastmanstanding")==1)
 		}
 		if(GetCvar("samsara_lmslife") == 5)
 		{
-			GiveInventory("TfearLMSHealth3",1000);
-			GiveInventory("TfearLMSArmor3",1);
+			GiveInventory("TfearLMSHealth5",1000);
+			GiveInventory("TfearLMSArmor5",1);
 		}
 	}
 }
@@ -184,35 +224,40 @@ if(GetCvar("teamlms")==1)
 		}
 		if(GetCvar("samsara_lmslife") == 5)
 		{
-			GiveInventory("CyberLMSHealth3",1000);
-			GiveInventory("CyberLMSArmor3",1);
+			GiveInventory("CyberLMSHealth5",1000);
+			GiveInventory("CyberLMSArmor5",1);
 		}
 	}
     if (CheckInventory("DsparilClass") == 1)
-	{
+	{	
 		if(GetCvar("samsara_lmslife") == 1)
 		{
+			DSparilHealth  [pNum] = 100;
 			GiveInventory("DsparilLMSArmor1",1);
 		}
 		if(GetCvar("samsara_lmslife") == 2)
 		{
 			GiveInventory("DsparilLMSHealth2",1000);
 			GiveInventory("DsparilLMSArmor2",1);
+			DSparilHealth  [pNum] = 200;
 		}
 		if(GetCvar("samsara_lmslife") == 3)
 		{
 			GiveInventory("DsparilLMSHealth3",1000);
 			GiveInventory("DsparilLMSArmor3",1);
+			DSparilHealth  [pNum] = 300;
 		}
 		if(GetCvar("samsara_lmslife") == 4)
 		{
 			GiveInventory("DsparilLMSHealth4",1000);
 			GiveInventory("DsparilLMSArmor4",1);
+			DSparilHealth  [pNum] = 400;
 		}
 		if(GetCvar("samsara_lmslife") == 5)
 		{
-			GiveInventory("DsparilLMSHealth3",1000);
-			GiveInventory("DsparilLMSArmor3",1);
+			GiveInventory("DsparilLMSHealth5",1000);
+			GiveInventory("DsparilLMSArmor5",1);
+			DSparilHealth  [pNum] = 500;
 		}
 	}
     if (CheckInventory("TfearClass") == 1)
@@ -238,8 +283,8 @@ if(GetCvar("teamlms")==1)
 		}
 		if(GetCvar("samsara_lmslife") == 5)
 		{
-			GiveInventory("TfearLMSHealth3",1000);
-			GiveInventory("TfearLMSArmor3",1);
+			GiveInventory("TfearLMSHealth5",1000);
+			GiveInventory("TfearLMSArmor5",1);
 		}
 	}
 }
@@ -258,6 +303,7 @@ else
 
 script 472 RESPAWN
 {
+int pNum = playerNumber();
 if (GameType() == GAME_SINGLE_PLAYER || GameType() == GAME_NET_COOPERATIVE)
 {
 	if (CheckInventory("CyberdemonClass") == 1)
@@ -266,6 +312,9 @@ if (GameType() == GAME_SINGLE_PLAYER || GameType() == GAME_NET_COOPERATIVE)
 	}
 	if (CheckInventory("DsparilClass") == 1)
 	{
+	DSparilHealth  [pNum] = 200;
+    SerpentArmor   [pNum] = 50;
+    SerpentHealth  [pNum] = 100;
 	GiveInventory("DsparilBeef",1);
 	}
 }
@@ -297,35 +346,40 @@ if(GetCvar("lastmanstanding")==1)
 		}
 		if(GetCvar("samsara_lmslife") == 5)
 		{
-			GiveInventory("CyberLMSHealth3",1000);
-			GiveInventory("CyberLMSArmor3",1);
+			GiveInventory("CyberLMSHealth5",1000);
+			GiveInventory("CyberLMSArmor5",1);
 		}
 	}
     if (CheckInventory("DsparilClass") == 1)
-	{
+	{	
 		if(GetCvar("samsara_lmslife") == 1)
 		{
+			DSparilHealth  [pNum] = 100;
 			GiveInventory("DsparilLMSArmor1",1);
 		}
 		if(GetCvar("samsara_lmslife") == 2)
 		{
 			GiveInventory("DsparilLMSHealth2",1000);
 			GiveInventory("DsparilLMSArmor2",1);
+			DSparilHealth  [pNum] = 200;
 		}
 		if(GetCvar("samsara_lmslife") == 3)
 		{
 			GiveInventory("DsparilLMSHealth3",1000);
 			GiveInventory("DsparilLMSArmor3",1);
+			DSparilHealth  [pNum] = 300;
 		}
 		if(GetCvar("samsara_lmslife") == 4)
 		{
 			GiveInventory("DsparilLMSHealth4",1000);
 			GiveInventory("DsparilLMSArmor4",1);
+			DSparilHealth  [pNum] = 400;
 		}
 		if(GetCvar("samsara_lmslife") == 5)
 		{
-			GiveInventory("DsparilLMSHealth3",1000);
-			GiveInventory("DsparilLMSArmor3",1);
+			GiveInventory("DsparilLMSHealth5",1000);
+			GiveInventory("DsparilLMSArmor5",1);
+			DSparilHealth  [pNum] = 500;
 		}
 	}
     if (CheckInventory("TfearClass") == 1)
@@ -351,8 +405,8 @@ if(GetCvar("lastmanstanding")==1)
 		}
 		if(GetCvar("samsara_lmslife") == 5)
 		{
-			GiveInventory("TfearLMSHealth3",1000);
-			GiveInventory("TfearLMSArmor3",1);
+			GiveInventory("TfearLMSHealth5",1000);
+			GiveInventory("TfearLMSArmor5",1);
 		}
 	}
 }
@@ -392,30 +446,35 @@ if(GetCvar("teamlms")==1)
 		}
 	}
     if (CheckInventory("DsparilClass") == 1)
-	{
+	{	
 		if(GetCvar("samsara_lmslife") == 1)
 		{
+			DSparilHealth  [pNum] = 100;
 			GiveInventory("DsparilLMSArmor1",1);
 		}
 		if(GetCvar("samsara_lmslife") == 2)
 		{
 			GiveInventory("DsparilLMSHealth2",1000);
 			GiveInventory("DsparilLMSArmor2",1);
+			DSparilHealth  [pNum] = 200;
 		}
 		if(GetCvar("samsara_lmslife") == 3)
 		{
 			GiveInventory("DsparilLMSHealth3",1000);
 			GiveInventory("DsparilLMSArmor3",1);
+			DSparilHealth  [pNum] = 300;
 		}
 		if(GetCvar("samsara_lmslife") == 4)
 		{
 			GiveInventory("DsparilLMSHealth4",1000);
 			GiveInventory("DsparilLMSArmor4",1);
+			DSparilHealth  [pNum] = 400;
 		}
 		if(GetCvar("samsara_lmslife") == 5)
 		{
-			GiveInventory("DsparilLMSHealth3",1000);
-			GiveInventory("DsparilLMSArmor3",1);
+			GiveInventory("DsparilLMSHealth5",1000);
+			GiveInventory("DsparilLMSArmor5",1);
+			DSparilHealth  [pNum] = 500;
 		}
 	}
     if (CheckInventory("TfearClass") == 1)
@@ -516,30 +575,36 @@ break;
 
 script 475 (void) // D'Sparil's life-giving on Serpent kersploding.
 {
+int pNum = playerNumber();
 if(GetCvar("lastmanstanding")==1)
 {
 	if(GetCvar("samsara_lmslife") == 1)
 	{
+		SetActorProperty(0, APROP_HEALTH, DSparilHealth[pNum]);
 		//GiveInventory("DsparilLMSArmor1",1);
 	}
 	if(GetCvar("samsara_lmslife") == 2)
 	{
-		GiveInventory("DsparilLMSHealth2",1000);
+		SetActorProperty(0, APROP_HEALTH, DSparilHealth[pNum]);
+		GiveInventory("DsparilLMSHealth2",50);
 		//GiveInventory("DsparilLMSArmor2",1);
 	}
 	if(GetCvar("samsara_lmslife") == 3)
 	{
-		GiveInventory("DsparilLMSHealth3",1000);
+		SetActorProperty(0, APROP_HEALTH, DSparilHealth[pNum]);
+		GiveInventory("DsparilLMSHealth3",50);
 		//GiveInventory("DsparilLMSArmor3",1);
 	}
 	if(GetCvar("samsara_lmslife") == 4)
 	{
-		GiveInventory("DsparilLMSHealth4",1000);
+		SetActorProperty(0, APROP_HEALTH, DSparilHealth[pNum]);
+		GiveInventory("DsparilLMSHealth4",50);
 		//GiveInventory("DsparilLMSArmor4",1);
 	}
 	if(GetCvar("samsara_lmslife") == 5)
 	{
-		GiveInventory("DsparilLMSHealth5",1000);
+		SetActorProperty(0, APROP_HEALTH, DSparilHealth[pNum]);
+		GiveInventory("DsparilLMSHealth5",50);
 		//GiveInventory("DsparilLMSArmor5",1);
 	}
 }
@@ -549,32 +614,39 @@ if(GetCvar("teamlms")==1)
 {
 	if(GetCvar("samsara_lmslife") == 1)
 	{
-		GiveInventory("DsparilLMSArmor1",1);
+		SetActorProperty(0, APROP_HEALTH, DSparilHealth[pNum]);
+		//GiveInventory("DsparilLMSArmor1",1);
 	}
 	if(GetCvar("samsara_lmslife") == 2)
 	{
-		GiveInventory("DsparilLMSHealth2",1000);
+		SetActorProperty(0, APROP_HEALTH, DSparilHealth[pNum]);
+		GiveInventory("DsparilLMSHealth2",50);
 		//GiveInventory("DsparilLMSArmor2",1);
 	}
 	if(GetCvar("samsara_lmslife") == 3)
 	{
-		GiveInventory("DsparilLMSHealth3",1000);
+		SetActorProperty(0, APROP_HEALTH, DSparilHealth[pNum]);
+		GiveInventory("DsparilLMSHealth3",50);
 		//GiveInventory("DsparilLMSArmor3",1);
 	}
 	if(GetCvar("samsara_lmslife") == 4)
 	{
-		GiveInventory("DsparilLMSHealth4",1000);
+		SetActorProperty(0, APROP_HEALTH, DSparilHealth[pNum]);
+		GiveInventory("DsparilLMSHealth4",50);
 		//GiveInventory("DsparilLMSArmor4",1);
 	}
 	if(GetCvar("samsara_lmslife") == 5)
 	{
-		GiveInventory("DsparilLMSHealth5",1000);
+		SetActorProperty(0, APROP_HEALTH, DSparilHealth[pNum]);
+		GiveInventory("DsparilLMSHealth5",50);
 		//GiveInventory("DsparilLMSArmor5",1);
 	}
 }
 else
 {
-	GiveInventory("Megasphere",1);
+	SetActorProperty(0, APROP_HEALTH, DSparilHealth[pNum]);
+	GiveInventory("HealthBonus",50);
+	//GiveInventory("Megasphere",1);
 }
 }
 }
@@ -714,4 +786,120 @@ script 483 (void)
         TakeInventory("TfearBeaconCooldown",1);
         restart;
     }
+}
+
+script 888 (int ent)
+{
+	int pNum = PlayerNumber();
+	int serpentTID = 1500+pNum;	
+	if(!ent) {
+		// Dismount the Serpent. Spawn the Serpent actor in the player's current spot,
+		// change its health accordingly, and morph the player to the D'Sparil On Foot class.
+		if(Spawn("DSparilSerpentUnmounted", GetActorX(0), GetActorY(0), GetActorZ(0), serpentTID, GetActorAngle(0) >> 8 ) > 0)
+		{
+			Thing_SetTranslation(serpentTID, -1); // Make the Serpent use the translation the Player is!
+			SetActorProperty(serpentTID, APROP_HEALTH, GetActorProperty(0, APROP_HEALTH) * 5);
+			ThingSound(serpentTID, "dsparilserpent/active", 255);
+			// Takes the player's current health and multiplies it by 5 for the Serpent.
+			// Getting off the Serpent earlier means tankier Serpent!
+			
+			SerpentArmor [pNum] = CheckInventory("Armor");
+			SerpentHealth[pNum] = GetActorProperty(0, APROP_HEALTH);
+			
+			MorphActor(0, "DSparilOnFootPlayer", "", 0x7FFFFFFF, 194, "emptytelefog", "emptytelefog");
+			SetActorProperty(0, APROP_HEALTH, DSparilHealth[pNum]);
+			GiveInventory("DSparilDismountedSerpent",1);
+			TakeInventory("DSparilDismount",1);
+			GiveInventory("DSparilMount",1);
+			playerOnFoot[pNum] = 1;
+		}
+		
+	}
+	else
+	{
+		// Mount the Serpent.
+		// Can't get on the Serpent if it's dead!
+		if(ThingCount(0, serpentTID) > 0) {
+		// Check if the player is close enough to the Serpent, then
+		// remove the Serpent actor and morph the player back.
+			int x = (GetActorX(serpentTID) - GetActorX(0)) >> 16;
+			int y = (GetActorY(serpentTID) - GetActorY(0)) >> 16;
+			int z = (GetActorZ(serpentTID) - GetActorZ(0)) >> 16;		
+			if(z < 0) z = 0-z; // get abs of Z
+		
+			if(sqrt(x*x + y*y) <= 128 && z <= 128) {
+				ThingSound(serpentTID, "dsparilserpent/active", 255);
+				Thing_Remove(serpentTID);
+				
+				DSparilHealth[pNum] = GetActorProperty(0, APROP_HEALTH);
+				
+				UnmorphActor(0, 1);
+				GiveInventory("DSparilSerpentArmor",SerpentArmor[pNum]);
+				SetActorProperty(0, APROP_HEALTH, SerpentHealth[pNum]);
+
+				TakeInventory("DSparilDismountedSerpent",1);
+				GiveInventory("DSparilDismount",1);
+				TakeInventory("DSparilMount",1);
+				playerOnFoot[pNum] = 0;
+			}
+		}
+	}
+}
+
+script 889 (int ent)
+{
+	int pNum = PlayerNumber();
+	int serpentTID = 1500+pNum;	
+	if(!ent) {
+		// Dismount the Serpent. Spawn the Serpent actor in the player's current spot,
+		// change its health accordingly, and morph the player to the D'Sparil On Foot class.
+		if(Spawn("DSparilSerpentUnmountedTLMS", GetActorX(0), GetActorY(0), GetActorZ(0), serpentTID, GetActorAngle(0) >> 8 ) > 0)
+		{
+			Thing_SetTranslation(serpentTID, -1); // Make the Serpent use the translation the Player is!
+			SetActorProperty(serpentTID, APROP_HEALTH, GetActorProperty(0, APROP_HEALTH) * 5);
+			ThingSound(serpentTID, "dsparilserpent/active", 255);
+			// Takes the player's current health and multiplies it by 5 for the Serpent.
+			// Getting off the Serpent earlier means tankier Serpent!
+			
+			SerpentArmor [pNum] = CheckInventory("Armor");
+			SerpentHealth[pNum] = GetActorProperty(0, APROP_HEALTH);
+			
+			MorphActor(0, "DSparilOnFootPlayer", "", 0x7FFFFFFF, 194, "emptytelefog", "emptytelefog");
+			SetActorProperty(0, APROP_HEALTH, DSparilHealth[pNum]);
+			GiveInventory("DSparilDismountedSerpent",1);
+			TakeInventory("DSparilDismount",1);
+			GiveInventory("DSparilMount",1);
+			playerOnFoot[pNum] = 1;
+		}
+		
+	}
+	else
+	{
+		// Mount the Serpent.
+		// Can't get on the Serpent if it's dead!
+		if(ThingCount(0, serpentTID) > 0) {
+		// Check if the player is close enough to the Serpent, then
+		// remove the Serpent actor and morph the player back.
+			int x = (GetActorX(serpentTID) - GetActorX(0)) >> 16;
+			int y = (GetActorY(serpentTID) - GetActorY(0)) >> 16;
+			int z = (GetActorZ(serpentTID) - GetActorZ(0)) >> 16;		
+			if(z < 0) z = 0-z; // get abs of Z
+		
+			if(sqrt(x*x + y*y) <= 128 && z <= 128) {
+				ThingSound(serpentTID, "dsparilserpent/active", 255);
+				Thing_Remove(serpentTID);
+				
+				DSparilHealth[pNum] = GetActorProperty(0, APROP_HEALTH);
+				
+				UnmorphActor(0, 1);
+				GiveInventory("DSparilSerpentArmor",SerpentArmor[pNum]);
+				SetActorProperty(0, APROP_HEALTH, SerpentHealth[pNum]);
+
+				TakeInventory("DSparilDismountedSerpent",1);
+				GiveInventory("DSparilDismount",1);
+				TakeInventory("DSparilMount",1);
+				playerOnFoot[pNum] = 0;
+			}
+		}
+	}
 }

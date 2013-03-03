@@ -311,7 +311,7 @@ actor DsparilPortTeleport : CustomInventory
       Use:
         TNT1 A 0 A_JumpIfInventory("ChaosDeviceCooldown",1,"UseFail")
         TNT1 A 1
-        TNT1 A 0 A_SpawnItemEx("DsparilTeleport",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+        TNT1 A 0 A_SpawnItemEx("DsparilTeleport",0,0,0,0,0,0,0,33)
         TNT1 A 0 A_GiveInventory("DSparilChaosDevice",1)
         TNT1 A 0 A_GiveInventory("ChaosDeviceCooldown",20)
         TNT1 A 0 ACS_ExecuteAlways(484, 0, 4, 35)

@@ -68,7 +68,7 @@ actor TfearBeacon : CustomInventory
         TNT1 A 0 A_SpawnItemEx("TeleportFog",0,85,2,0,0,0,65,48)
 		TNT1 A 0 A_PlaySoundEx("tfear/summon","soundslot7",0,0)
 		TNT1 A 0 A_GiveInventory("TfearBeaconCooldown",30)
-        TNT1 A 1 ACS_ExecuteAlways(483)
+        TNT1 A 1 ACS_ExecuteAlways(484, 0, 7, 35)
         fail
 		
 	  TLMSUse:
@@ -79,7 +79,7 @@ actor TfearBeacon : CustomInventory
         TNT1 A 0 A_SpawnItemEx("TeleportFog",0,85,2,0,0,0,65,48)
 		TNT1 A 0 A_PlaySoundEx("tfear/summon","soundslot7",0,0)
 		TNT1 A 0 A_GiveInventory("TfearBeaconCooldown",30)
-        TNT1 A 1 ACS_ExecuteAlways(483)
+        TNT1 A 1 ACS_ExecuteAlways(484, 0, 7, 35)
         fail
 		
 	  UseFail:

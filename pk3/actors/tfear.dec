@@ -775,7 +775,7 @@ ACTOR GuiltShot
 	Radius 12
 	Height 10
 	Speed 30
-	Damage (random(30,35))
+	Damage (random(20,25))
 	PROJECTILE
 	+SEEKERMISSILE
 	DeathSound "tfear/boom"
@@ -842,7 +842,7 @@ ACTOR GuiltShot2
 	Radius 6
 	Height 8
 	Speed 40
-	Damage (random(25,30))
+	Damage (random(15,20))
 	PROJECTILE
 	+SEEKERMISSILE
 	DeathSound "tfear/boom2"
@@ -1082,11 +1082,13 @@ actor "Scatter Type 'Hatred'" : Weapon
 
 ACTOR EnforcerShot2 : EnforcerShot
 {
+Damage (random(25, 32))
 Obituary "%k \crflayed\c- %o \crto the bone with Hatred.\c-"
 }
 
 ACTOR EnforcerShotCoop2 : EnforcerShotCoop
 {
+Damage (random(25, 32))
 Species "Villain"
 }
 
@@ -1402,12 +1404,14 @@ actor "Rapid Type 'Flawed'" : Weapon//" Alien Weapon "
 
 ACTOR AlienWeaponBullet2 : AlienWeaponBullet
 {
+Damage (random(8, 12))
 Speed 110
 Obituary "%k \crshowed\c- %o \crhow flawed %g was.\c-"
 }
 
 ACTOR AlienWeaponBulletCoop2 : AlienWeaponBulletCoop
 {
+Damage (random(8, 12))
 Speed 110
 Species "Villain"
 }

@@ -36,7 +36,7 @@ actor TfearPortCloak : CustomInventory
         fail
 
       TurnOff:
-        TNT1 A 0 ACS_ExecuteAlways(480,0,2)
+        TNT1 A 0 ACS_ExecuteAlways(480,0,0)
 		TNT1 A 1
         fail
 		

@@ -221,46 +221,46 @@ script 480 (int cloakanddagger) // It's time to H-H-H-HIDE!
     switch (cloakanddagger)
     {
       case 0:
-        if (CheckInventory("TfearCloak") == 1 || CheckInventory("PowerShadow") == 1)
+        if (CheckInventory("TfearCloak") == 0 && CheckInventory("PowerShadow") == 0) { break; }
+
+        ActivatorSound("tfear/uncloak", 127);
+        print(s:"You discard the shadows behind you...");
+        GiveInventory("TfearCloakCooldown", ftoi(1.5 * (21-CheckInventory("TfearCloakCount"))));
+        delay(2);
+        TakeInventory("TfearCloakCount", 20);
+        delay(2);
+        ACS_ExecuteAlways(484, 0, 6, 35);
+
+        if (GameType() == GAME_SINGLE_PLAYER || GameType() == GAME_NET_COOPERATIVE)
         {
-            ActivatorSound("tfear/uncloak", 127);
-            print(s:"You discard the shadows behind you...");
-            GiveInventory("TfearCloakCooldown", 30);
-            delay(2);
-            TakeInventory("TfearCloakCount", 20);
-            delay(2);
-            if (GameType() == GAME_SINGLE_PLAYER || GameType() == GAME_NET_COOPERATIVE)
-            {
-                TakeInventory("PowerShadow", 1);
-                delay(1);
-                TakeInventory("PowerShadow", 1);
-            }
-            else
-            {
-                TakeInventory("TfearCloak", 1);
-            }
-            ACS_ExecuteAlways(484, 0, 6, 35);
+            TakeInventory("PowerShadow", 1);
+            delay(1);
+            TakeInventory("PowerShadow", 1);
+        }
+        else
+        {
+            TakeInventory("TfearCloak", 1);
         }
         break;
         
       case 1:
-        if (CheckInventory("TfearCloak") == 0)
+        if (CheckInventory("TfearCloak") > 0) { break; }
+
+        ActivatorSound("tfear/cloak", 127);
+        print(s:"You fade into the shadows...");
+        GiveInventory("TfearCloakCount", 20);
+        delay(5);
+        ACS_ExecuteAlways(484, 0, 5, 35, 480);
+
+        if (GameType() == GAME_SINGLE_PLAYER || GameType() == GAME_NET_COOPERATIVE)
         {
-            ActivatorSound("tfear/cloak", 127);
-            print(s:"You fade into the shadows...");
-            GiveInventory("TfearCloakCount", 20);
-            delay(5);
-            if (GameType() == GAME_SINGLE_PLAYER || GameType() == GAME_NET_COOPERATIVE)
-            {
-                GiveInventory("PowerShadow", 1);
-                delay(1);
-                GiveInventory("PowerShadow", 1);
-            }
-            else
-            {
-                GiveInventory("TfearCloak", 1);
-            }
-            ACS_ExecuteAlways(484, 0, 5, 35, 480);
+            GiveInventory("PowerShadow", 1);
+            delay(1);
+            GiveInventory("PowerShadow", 1);
+        }
+        else
+        {
+            GiveInventory("TfearCloak", 1);
         }
         break;
     }
@@ -384,10 +384,10 @@ script 889 (int ent)
             // remove the Serpent actor and morph the player back.
             int x = (GetActorX(serpentTID) - GetActorX(0)) >> 16;
             int y = (GetActorY(serpentTID) - GetActorY(0)) >> 16;
-            int z = (GetActorZ(serpentTID) - GetActorZ(0)) >> 16;		
-            if (z < 0) z = 0-z; // get abs of Z
+            int z = abs(GetActorZ(serpentTID) - GetActorZ(0)) >> 16;		
             
-            if (sqrt_i(x*x + y*y) <= 128 && z <= 128) {
+            if (sqrt_i(x*x + y*y) <= 128 && z <= 128)
+            {
                 ThingSound(serpentTID, "dsparilserpent/active", 255);
                 Thing_Remove(serpentTID);
                 

@@ -99,10 +99,12 @@ ACTOR TfearPfhorTrooper : FriendlyPfhorTrooper
     States
     {
       Spawn:
+        TNT1 A 0 A_GiveInventory("IsNarakaClass",1)
         PTRO E 15 A_Look
         goto see
 
       See:
+        TNT1 A 0 A_GiveInventory("IsNarakaClass",1)
         PTRO AABBCCDD 3 A_Chase
         LOOP
 

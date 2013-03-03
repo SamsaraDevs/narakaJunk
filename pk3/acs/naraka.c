@@ -129,7 +129,7 @@ script 474 (int cybermove) // It's time to D-D-D-DASH!
 script 475 (void) // D'Sparil's life-giving on Serpent kersploding.
 {
     int pNum = playerNumber();
-    if (GetCvar("lastmanstanding")==1)
+    if (isLMS())
     {
         if (GetCvar("samsara_lmslife") == 1)
         {
@@ -163,44 +163,9 @@ script 475 (void) // D'Sparil's life-giving on Serpent kersploding.
     }
     else
     {
-        if (GetCvar("teamlms")==1)
-        {
-            if (GetCvar("samsara_lmslife") == 1)
-            {
-                SetActorProperty(0, APROP_HEALTH, DSparilHealth[pNum]);
-                //GiveInventory("DsparilLMSArmor1", 1);
-            }
-            if (GetCvar("samsara_lmslife") == 2)
-            {
-                SetActorProperty(0, APROP_HEALTH, DSparilHealth[pNum]);
-                GiveInventory("DsparilLMSHealth2", 50);
-                //GiveInventory("DsparilLMSArmor2", 1);
-            }
-            if (GetCvar("samsara_lmslife") == 3)
-            {
-                SetActorProperty(0, APROP_HEALTH, DSparilHealth[pNum]);
-                GiveInventory("DsparilLMSHealth3", 50);
-                //GiveInventory("DsparilLMSArmor3", 1);
-            }
-            if (GetCvar("samsara_lmslife") == 4)
-            {
-                SetActorProperty(0, APROP_HEALTH, DSparilHealth[pNum]);
-                GiveInventory("DsparilLMSHealth4", 50);
-                //GiveInventory("DsparilLMSArmor4", 1);
-            }
-            if (GetCvar("samsara_lmslife") == 5)
-            {
-                SetActorProperty(0, APROP_HEALTH, DSparilHealth[pNum]);
-                GiveInventory("DsparilLMSHealth5", 50);
-                //GiveInventory("DsparilLMSArmor5", 1);
-            }
-        }
-        else
-        {
-            SetActorProperty(0, APROP_HEALTH, DSparilHealth[pNum]);
-            GiveInventory("HealthBonus", 50);
-            //GiveInventory("Megasphere", 1);
-        }
+        SetActorProperty(0, APROP_HEALTH, DSparilHealth[pNum]);
+        GiveInventory("HealthBonus", 50);
+        //GiveInventory("Megasphere", 1);
     }
 }
 

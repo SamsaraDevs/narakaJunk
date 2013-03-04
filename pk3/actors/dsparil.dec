@@ -1206,9 +1206,9 @@ actor DSparilLightningCoop : Sorcerer2FX1
 	}
 }
 
-actor DSparilWizard : Wizard
+actor DSparilWizard : Wizard2
 {
-    Health 90
+    Health 130
     DamageFactor "DSparilDamage", 0.0
     //+FRIENDLY
     +THRUSPECIES
@@ -1358,10 +1358,14 @@ actor DSparilWizardShot : WizardFX1
 {
     Obituary "\crA Disciple overwhelmed\c- %o \crwith Despair.\c-"
     DamageType "DSparilDamage"
+    Speed 25
+    Damage 5
 }
 
 actor DSparilWizardShotTLMS : WizardFX1
 {
     Obituary "\crA Disciple overwhelmed\c- %o \crwith Despair.\c-"
     DamageType "VillainTeam"
+    Speed 25
+    Damage 5
 }

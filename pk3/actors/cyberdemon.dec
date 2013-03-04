@@ -62,7 +62,7 @@ actor CyberdemonPlayer : PlayerPawn
 	Player.StartItem "IsNarakaClass", 1
     //Player.StartItem "BossDamageImmunity", 1
     Player.Soundclass "Cyberdemon"
-    RadiusDamageFactor 0.25
+    RadiusDamageFactor 0.5
     DamageFactor "VillainTeam", 0
     DamageFactor "Slime", 0
     DamageFactor "Lava", 0

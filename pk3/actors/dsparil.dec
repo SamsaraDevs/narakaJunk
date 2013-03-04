@@ -381,7 +381,7 @@ actor DsparilPlayer : PlayerPawn
 	Player.StartItem "DsparilDismount", 1
     //Player.StartItem "BossDamageImmunity", 1
     Player.Soundclass "DSparil"
-    RadiusDamageFactor 0.5
+    RadiusDamageFactor 0.625
     DamageFactor "VillainTeam", 0
     DamageFactor "DSparilDamage", 0
     DamageFactor "Slime", 0
@@ -607,7 +607,7 @@ actor DsparilOnFootPlayer : PlayerPawn
     Player.StartItem "DsparilPortTeleport", 1
     Player.StartItem "DsparilPortGhostsphere", 1
     Player.Soundclass "DSparilOnFoot"
-	RadiusDamageFactor 0.5
+	RadiusDamageFactor 0.85
     DamageFactor "VillainTeam", 0
     DamageFactor "DSparilDamage", 0
     DamageFactor "Slime", 0

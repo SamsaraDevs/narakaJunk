@@ -27,7 +27,7 @@ ACTOR CyberDashToggle : CustomInventory
         fail
 
       TurnOff:
-        TNT1 A 0 ACS_ExecuteAlways(474,0,2)
+        TNT1 A 0 ACS_ExecuteAlways(474,0,0)
 		TNT1 A 1
         fail
 		

@@ -40,8 +40,8 @@ ACTOR CyberDashToggle : CustomInventory
 
 actor CyberdemonPlayer : PlayerPawn
 {
-	Health 200
-	Player.MaxHealth 200
+    Health 200
+    Player.MaxHealth 200
     LimitedToTeam 1
     Player.DisplayName "Cyberdemon"
     BloodColor "Red"
@@ -62,6 +62,7 @@ actor CyberdemonPlayer : PlayerPawn
 	Player.StartItem "IsNarakaClass", 1
     //Player.StartItem "BossDamageImmunity", 1
     Player.Soundclass "Cyberdemon"
+    RadiusDamageFactor 0.25
     DamageFactor "VillainTeam", 0
     DamageFactor "Slime", 0
     DamageFactor "Lava", 0
@@ -73,8 +74,8 @@ actor CyberdemonPlayer : PlayerPawn
     DamageFactor "Normal", 0.9
     DamageFactor "Telefrag", 2.0
     DamageFactor "PoisonCloud", 1.75
-    DamageFactor "DukeExplosive", 0.5
-    DamageFactor "TimonsAxe", 0.5
+    DamageFactor "DukeExplosive", 0.375
+    DamageFactor "TimonsAxe", 0.45
     DamageFactor "WMCBeam", 0.5
     DamageFactor "WMCNade", 0.5
     Species "Villain"
@@ -285,12 +286,12 @@ ACTOR CyberdemonStomp
     +NOCLIP
 	+FORCERADIUSDMG
     -SOLID
-    Obituary "%k \crstomped \c-%o \crunder cloven hooves.\c-"
+    Obituary "%k \crcrushed \c-%o \crlike a bug.\c-"
     States
     {
       Spawn:
 		TNT1 A 0
-		TNT1 A 1 A_Explode(96,198,0)
+		TNT1 A 1 A_Explode(96,160,0)
         Stop
     }
 }

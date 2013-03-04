@@ -1,0 +1,29 @@
+actor AxePuff2 : AxePuff replaces AxePuff
+{
+DamageType "TimonsAxe"
+}
+
+actor AxePuffGlow2 : AxePuffGlow replaces AxePuffGlow
+{
+DamageType "TimonsAxe"
+}
+
+actor QuakeGrenade2 : QuakeGrenade replaces QuakeGrenade
+{
+Damage 20
+}
+
+actor QuakeClusterGrenade2 : QuakeClusterGrenade replaces QuakeClusterGrenade
+{
+Damage 10
+}
+
+actor QuakeRocket2 : QuakeRocket replaces QuakeRocket
+{
+Damage 10
+}
+
+actor QuakeClusterRocket2 : QuakeClusterRocket replaces QuakeClusterRocket
+{
+Damage 5
+}

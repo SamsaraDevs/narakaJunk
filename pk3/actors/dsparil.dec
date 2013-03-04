@@ -77,8 +77,10 @@ actor DSparilSerpentUnmounted : Demon1B
 {
     Health 750
 	Mass 600
+    RadiusDamageFactor 0.5
     DamageFactor "DSparilDamage", 0.0
     DamageFactor "DukeExplosive", 0.35
+    DamageFactor "Normal", 0.75
     +THRUSPECIES
     Species "Villain"
 	+NOBLOCKMONST
@@ -379,6 +381,7 @@ actor DsparilPlayer : PlayerPawn
 	Player.StartItem "DsparilDismount", 1
     //Player.StartItem "BossDamageImmunity", 1
     Player.Soundclass "DSparil"
+    RadiusDamageFactor 0.5
     DamageFactor "VillainTeam", 0
     DamageFactor "DSparilDamage", 0
     DamageFactor "Slime", 0
@@ -390,7 +393,7 @@ actor DsparilPlayer : PlayerPawn
     DamageFactor "SuperHellslime", 0
     DamageFactor "Telefrag", 2.0
     DamageFactor "PoisonCloud", 1.75
-    DamageFactor "DukeExplosive", 0.75
+    DamageFactor "DukeExplosive", 0.5
     DamageFactor "TimonsAxe", 0.55
     DamageFactor "WMCBeam", 0.55
     DamageFactor "WMCNade", 0.55
@@ -612,7 +615,7 @@ actor DsparilOnFootPlayer : PlayerPawn
     DamageFactor "Nuke", 0
     DamageFactor "Telefrag", 2.0
     DamageFactor "PoisonCloud", 1.75
-    DamageFactor "DukeExplosive", 0.75
+    DamageFactor "DukeExplosive", 0.625
     DamageFactor "TimonsAxe", 0.55
     DamageFactor "WMCBeam", 0.55
     DamageFactor "WMCNade", 0.55

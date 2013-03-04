@@ -143,12 +143,12 @@ ACTOR TfearPfhorTrooper : FriendlyPfhorTrooper
       DukeGibStart:
         PTRO E 1
         TNT1 A 0 A_UnsetSolid
-        TNT1 A 0 A_SpawnDebris("DukeGibs1")
-        TNT1 A 0 A_SpawnDebris("DukeGibs2")
-        TNT1 A 0 A_SpawnDebris("DukeGibs3")
-        TNT1 A 0 A_SpawnDebris("DukeGibs4")
-        TNT1 A 0 A_SpawnDebris("DukeGibs5")
-        TNT1 A 0 A_SpawnDebris("DukeGibs6")
+        TNT1 A 0 A_SpawnDebris("DukeGibs1Pfhor")
+        TNT1 A 0 A_SpawnDebris("DukeGibs2Pfhor")
+        TNT1 A 0 A_SpawnDebris("DukeGibs3Pfhor")
+        TNT1 A 0 A_SpawnDebris("DukeGibs4Pfhor")
+        TNT1 A 0 A_SpawnDebris("DukeGibs5Pfhor")
+        TNT1 A 0 A_SpawnDebris("DukeGibs6Pfhor")
         TNT1 A 0 A_PlaySound("duke/enemygib")
         TNT1 A 0 A_Jump(96,"XDeath")
         TNT1 A 0 A_GiveToTarget("DukeGibTaunt",1)
@@ -246,6 +246,36 @@ ACTOR TfearTrooperBullet : MarathonARBulletCoop
 ACTOR TfearTrooperBulletTLMS : TfearTrooperBullet
 {
 	DamageType "VillainTeam"
+}
+
+actor DukeGibs1Pfhor : DukeGibs1
+{
+Translation "16:47=160:167"
+}
+
+actor DukeGibs2Pfhor : DukeGibs2
+{
+Translation "16:47=160:167"
+}
+
+actor DukeGibs3Pfhor : DukeGibs3
+{
+Translation "16:47=160:167"
+}
+
+actor DukeGibs4Pfhor : DukeGibs4
+{
+Translation "16:47=160:167"
+}
+
+actor DukeGibs5Pfhor : DukeGibs5
+{
+Translation "16:47=160:167"
+}
+
+actor DukeGibs6Pfhor : DukeGibs6
+{
+Translation "16:47=160:167"
 }
 
 actor TfearPlayer : PlayerPawn
@@ -392,12 +422,12 @@ actor TfearPlayer : PlayerPawn
         loop
 
       DukeXDeath3:
-        TNT1 A 0 A_SpawnDebris("DukeGibs1")
-        TNT1 A 0 A_SpawnDebris("DukeGibs2")
-        TNT1 A 0 A_SpawnDebris("DukeGibs3")
-        TNT1 A 0 A_SpawnDebris("DukeGibs4")
-        TNT1 A 0 A_SpawnDebris("DukeGibs5")
-        TNT1 A 0 A_SpawnDebris("DukeGibs6")
+        TNT1 A 0 A_SpawnDebris("DukeGibs1Pfhor")
+        TNT1 A 0 A_SpawnDebris("DukeGibs2Pfhor")
+        TNT1 A 0 A_SpawnDebris("DukeGibs3Pfhor")
+        TNT1 A 0 A_SpawnDebris("DukeGibs4Pfhor")
+        TNT1 A 0 A_SpawnDebris("DukeGibs5Pfhor")
+        TNT1 A 0 A_SpawnDebris("DukeGibs6Pfhor")
         TFER N 4 A_PlaySound("duke/enemygib")
         TFER O 4 A_NoBlocking
         TFER OP 4

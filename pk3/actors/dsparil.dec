@@ -395,12 +395,6 @@ actor DsparilPlayer : PlayerPawn
     DamageFactor "PoisonCloud", 1.75
     DamageFactor "DukeExplosive", 0.5
     DamageFactor "TimonsAxe", 0.55
-    DamageFactor "DoomguyPlasma", 0.8
-    DamageFactor "DukeIce", 0.8
-    DamageFactor "CorvusHellstaff", 0.8
-    DamageFactor "WolfenFlamethrower", 0.8
-    DamageFactor "Fire", 0.8 // Effects Corvus' Phoenix Rod as well as the TOZT and Firestorm. Damn.
-    DamageFactor "PhasingZorch", 0.8 // Not in yet!
     DamageFactor "WMCBeam", 0.55
     DamageFactor "WMCNade", 0.55
     Species "Villain"
@@ -623,12 +617,6 @@ actor DsparilOnFootPlayer : PlayerPawn
     DamageFactor "PoisonCloud", 1.75
     DamageFactor "DukeExplosive", 0.625
     DamageFactor "TimonsAxe", 0.55
-    DamageFactor "DoomguyPlasma", 0.8
-    DamageFactor "DukeIce", 0.8
-    DamageFactor "CorvusHellstaff", 0.8
-    DamageFactor "WolfenFlamethrower", 0.8
-    DamageFactor "Fire", 0.8 // Effects Corvus' Phoenix Rod as well as the TOZT and Firestorm. Damn.
-    DamageFactor "PhasingZorch", 0.8 // Not in yet!
     DamageFactor "WMCBeam", 0.55
     DamageFactor "WMCNade", 0.55
     Player.MorphWeapon "Staff of D'Sparil"
@@ -1168,8 +1156,8 @@ actor "Staff of D'Sparil" : weapon
         //TNT1 A 0 A_FireCustomMissile("DSparilSummon",-25,0,0,0,0,0)
 		TNT1 A 0 A_TakeInventory("VillainAmmoHeavy",9)
 		TNT1 A 0 A_FireCustomMissile("BFGAmmoWaster")
-        TNT1 A 0 A_SpawnItemEx("DSparilWizard",0,0,2,0,12,0,105,48)
-        TNT1 A 0 A_SpawnItemEx("DSparilWizard2",0,0,2,0,12,0,75,48)
+        TNT1 A 0 A_SpawnItemEx("DSparilWizard",0,0,2,0,12,0,105,49)
+        TNT1 A 0 A_SpawnItemEx("DSparilWizard2",0,0,2,0,12,0,75,49)
         DSPS E 6 bright
         DSPS D 6 bright A_GiveInventory("DSparilSummonCooldown",10)
         DSPS A 8 bright ACS_ExecuteAlways(484, 0, 1, 35)
@@ -1179,8 +1167,8 @@ actor "Staff of D'Sparil" : weapon
         DSPS D 5 bright
 		TNT1 A 0 A_TakeInventory("VillainAmmoHeavy",9)
 		TNT1 A 0 A_FireCustomMissile("BFGAmmoWaster")
-        TNT1 A 0 A_SpawnItemEx("DSparilWizardTLMS",0,0,2,0,12,0,105,48)
-        TNT1 A 0 A_SpawnItemEx("DSparilWizardTLMS2",0,0,2,0,12,0,75,48)
+        TNT1 A 0 A_SpawnItemEx("DSparilWizardTLMS",0,0,2,0,12,0,105,49)
+        TNT1 A 0 A_SpawnItemEx("DSparilWizardTLMS2",0,0,2,0,12,0,75,49)
         DSPS E 6 bright
         DSPS D 6 bright A_GiveInventory("DSparilSummonCooldown",10)
         DSPS A 8 bright ACS_ExecuteAlways(484, 0, 1, 35)

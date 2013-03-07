@@ -1,3 +1,11 @@
+FROM V0.1 TO V0.11:
+========================
+- The villains are now resistant to everyone's VIs.
+- D'Sparil can mount and dismount his Serpent at will.
+- Villains should be more resistant to axing.
+- Tfear and his Pfhor Troopers should now spew the proper-colored gibs.
+- The Disciples of D'Sparil have been buffed and now have more HP and more damaging attacks.
+
 FROM CONCEPT V0 TO V0.1:
 =========================
 - Admiral Tfear, the villain for the Security Officer, has been added.

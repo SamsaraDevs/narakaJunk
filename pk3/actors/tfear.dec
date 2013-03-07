@@ -305,6 +305,12 @@ actor TfearPlayer : PlayerPawn
 	DamageFactor "DukeExplosive", 0.9
 	DamageFactor "PfhorDamage", 0.0
 	DamageFactor "VillainTeam", 0.0
+    DamageFactor "DoomguyPlasma", 0.9
+    DamageFactor "DukeIce", 0.9
+    DamageFactor "CorvusHellstaff", 0.9
+    DamageFactor "WolfenFlamethrower", 0.9
+    DamageFactor "Fire", 0.9 // Effects Corvus' Phoenix Rod as well as the TOZT and Firestorm. Damn.
+    DamageFactor "PhasingZorch", 0.9 // Not in yet!
     -THRUSPECIES
     +NOSKIN
     -DONTBLAST

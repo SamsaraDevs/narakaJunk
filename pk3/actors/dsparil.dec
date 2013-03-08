@@ -395,6 +395,12 @@ actor DsparilPlayer : PlayerPawn
     DamageFactor "PoisonCloud", 1.75
     DamageFactor "DukeExplosive", 0.5
     DamageFactor "TimonsAxe", 0.55
+    DamageFactor "DoomguyPlasma", 0.8
+    DamageFactor "DukeIce", 0.8
+    DamageFactor "CorvusHellstaff", 0.8
+    DamageFactor "WolfenFlamethrower", 0.8
+    DamageFactor "Fire", 0.8 // Effects Corvus' Phoenix Rod as well as the TOZT and Firestorm. Damn.
+    DamageFactor "PhasingZorch", 0.8 // Not in yet!
     DamageFactor "WMCBeam", 0.55
     DamageFactor "WMCNade", 0.55
     Species "Villain"
@@ -617,6 +623,12 @@ actor DsparilOnFootPlayer : PlayerPawn
     DamageFactor "PoisonCloud", 1.75
     DamageFactor "DukeExplosive", 0.625
     DamageFactor "TimonsAxe", 0.55
+    DamageFactor "DoomguyPlasma", 0.8
+    DamageFactor "DukeIce", 0.8
+    DamageFactor "CorvusHellstaff", 0.8
+    DamageFactor "WolfenFlamethrower", 0.8
+    DamageFactor "Fire", 0.8 // Effects Corvus' Phoenix Rod as well as the TOZT and Firestorm. Damn.
+    DamageFactor "PhasingZorch", 0.8 // Not in yet!
     DamageFactor "WMCBeam", 0.55
     DamageFactor "WMCNade", 0.55
     Player.MorphWeapon "Staff of D'Sparil"

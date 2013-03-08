@@ -67,6 +67,24 @@ $playersound	Tfear		 male	*puzzfail		TFERNOPE
 $playeralias	Tfear		 male	*taunt			tfear/taunt
 $playersound	Tfear	     male	*splat		    MRTHSLOP
 
+$playersound	Korax		 male	*death			KORDTH1
+$playersounddup	Korax		 male	*xdeath			*death
+$playersounddup	Korax		 male	*burndeath		*death
+$playersounddup	Korax		 male	*crazydeath		*death
+$playersounddup Korax		 male   *wimpydeath 	*death
+$playersounddup	Korax		 male	*gibbed			*death
+$playersound	Korax		 male	*falling		KORFALL
+$playersound	Korax		 male	*pain100		KORPN1
+$playersounddup	Korax		 male	*pain75			*pain100
+$playersounddup	Korax		 male	*pain50			*pain100
+$playersounddup	Korax		 male	*pain25			*pain100
+$playersound	Korax		 male	*grunt			KOROOF
+$playersound	Korax		 male	*land			KORLAND
+$playersound	Korax		 male	*usefail		KORNOPE
+$playersound	Korax		 male	*puzzfail		KORNOPE
+$playersound	Korax		 male	*taunt			KORTAUNT
+$playersounddup	Korax	     male	*splat		    *death
+
 cyber/hoof					cybhoof
 cyber/dashon				cydashon
 cyber/dashoff				cydashof
@@ -96,37 +114,63 @@ dsparilserpent/death		srpdth
 dsparilserpent/active		srpact
 dsparilserpent/step			srpstep
 
-dsparil/sight			dspsit
-dsparil/attack			dspatk
-dsparil/pain			dsppai
-dsparil/active			dspact
-dsparil/rise			dsprise
-dsparil/zap				dspzap
-dsparil/scream			dspdsph
-dsparil/explode			dspdexp
-dsparil/bones			dspdbon
+dsparil/sight				dspsit
+dsparil/attack				dspatk
+dsparil/pain				dsppai
+dsparil/active				dspact
+dsparil/rise				dsprise
+dsparil/zap					dspzap
+dsparil/scream				dspdsph
+dsparil/explode				dspdexp
+dsparil/bones				dspdbon
 
-wizard/sight			discsit
-wizard/attack			discatk
-wizard/death			discdth
-wizard/pain				discpai
-wizard/active1			discact
+wizard/sight				discsit
+wizard/attack				discatk
+wizard/death				discdth
+wizard/pain					discpai
+wizard/active1				discact
 $random wizard/active 		{ wizard/sight wizard/active1 }
 
-tfear/zoomin			tferzoom
-tfear/zoomout			tferzoo2
-$random tfear/taunt {tfear/taunt1 tfear/taunt2 tfear/taunt3}
-tfear/taunt1			tfertnt1
-tfear/taunt2			tfertnt2
-tfear/taunt3			tfertnt3
+tfear/zoomin				tferzoom
+tfear/zoomout				tferzoo2
+$random tfear/taunt 		{tfear/taunt1 tfear/taunt2 tfear/taunt3}
+tfear/taunt1				tfertnt1
+tfear/taunt2				tfertnt2
+tfear/taunt3				tfertnt3
 
-tfear/swing				tferswng
-tfear/hit				tferhits
-tfear/boom				tferbom2
-tfear/boom2				tferbom3
-tfear/shoot				tfersht3
-tfear/shoot2			tfersht4
-tfear/cloak				tfernvis
-tfear/uncloak			tfervis
-tfear/summon			tfersmmn
-pfhortrooper/fire		pfrtfire
+tfear/swing					tferswng
+tfear/hit					tferhits
+tfear/boom					tferbom2
+tfear/boom2					tferbom3
+tfear/shoot					tfersht3
+tfear/shoot2				tfersht4
+tfear/cloak					tfernvis
+tfear/uncloak				tfervis
+tfear/summon				tfersmmn
+pfhortrooper/fire			pfrtfire
+
+SpiritActive				silence
+korax/step					korstep
+korax/attack				koratk
+korax/command				korcom
+$random korax/intro 		{ korintro1 korintro2 korintro3 korintro4 korintro5 korintro6 korintro7 }
+korintro1					korntro1
+korintro2					korntro2
+korintro3					korntro3
+korintro4					korntro4
+korintro5					korntro5
+korintro6					korntro6
+korintro7					korntro7
+korax/swap					korswap
+korax/spiritscream			spirt8
+$limit korax/spiritscream	255
+WraithMissileFire       	impfire2
+WraithMissileExplode    	impact3
+DemonMissileFire        	impfire2
+DemonMissileExplode     	impact3
+FireDemonAttack         	spit6
+FireDemonMissileHit     	firedhit
+CentaurLeaderAttack     	cntshld4
+CentaurMissileExplode   	impact3
+SerpentFXContinuous     	glbhiss1
+SerpentFXHit            	glbhit4

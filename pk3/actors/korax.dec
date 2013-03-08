@@ -1,0 +1,660 @@
+actor KoraxClass : Boolean { }
+actor KoraxDecide : Counter { Inventory.MaxAmount 5 }
+actor KoraxFireSequence : Counter { Inventory.MaxAmount 5 }
+
+ACTOR KoraxBeef : PowerProtection
+{
+  Powerup.Duration 0x7FFFFFFF
+  DamageFactor "Normal", 0.875
+  DamageFactor "Telefrag", 1.5
+}
+
+actor KoraxPlayer : PlayerPawn
+{
+	Health 100
+	Player.MaxHealth 100
+    LimitedToTeam 1
+    Player.DisplayName "Korax"
+    BloodColor "Green"
+    Player.Face "EVL"
+    Radius 20 // Previously 25
+    Height 67
+	Scale 0.75
+    Mass 1000
+    Player.Viewheight 67
+    Player.AttackZOffset 22
+    Player.ForwardMove 1.05 1.05
+    Player.SideMove 0.95 0.95
+    Player.DamageScreenColor "Green"
+    Player.JumpZ 7//Default is 8
+    Player.StartItem "Spells", 1
+	Player.StartItem "VillainAmmoLight", 50
+    Player.StartItem "KoraxClass", 1
+	Player.StartItem "IsNarakaClass", 1
+    Player.Soundclass "Korax"
+    DamageFactor "VillainTeam", 0
+    DamageFactor "Slime", 0
+    DamageFactor "Lava", 0
+    DamageFactor "LavaHefty", 0
+    DamageFactor "Nuke", 0
+    DamageFactor "Nukage", 0
+    DamageFactor "Hellslime", 0
+    DamageFactor "SuperHellslime", 0
+    DamageFactor "Normal", 0.85
+    DamageFactor "Telefrag", 2.0
+    DamageFactor "PoisonCloud", 1.75
+    DamageFactor "DukeExplosive", 0.45
+    DamageFactor "TimonsAxe", 0.45
+    DamageFactor "DoomguyPlasma", 0.8
+    DamageFactor "DukeIce", 0.8
+    DamageFactor "CorvusHellstaff", 0.8
+    DamageFactor "WolfenFlamethrower", 0.8
+    DamageFactor "Fire", 0.8 // Effects Corvus' Phoenix Rod as well as the TOZT and Firestorm. Damn.
+    DamageFactor "PhasingZorch", 0.8 // Not in yet!
+    DamageFactor "WMCBeam", 0.45
+    DamageFactor "WMCNade", 0.45
+    Species "Villain"
+    -THRUSPECIES
+    +NOSKIN
+    -DONTBLAST
+    +DONTRIP
+    +BOSSDEATH
+    +NOTDMATCH
+    +NOICEDEATH
+    +NORADIUSDMG
+    //Species "Player"
+    Player.ColorRange 96, 111
+    States
+    {
+      CoOpModeOn:
+        TNT1 A 0
+        TNT1 A 0 A_ChangeFlag("THRUSPECIES",1)
+        KORX A 1
+        goto Spawn
+		
+      Spawn:
+        KORX A 1
+        KORX A 1 A_PlaySoundEx("korax/intro","soundslot7",0,0)
+		
+      Spawn2:
+        KORX A -1
+        Loop
+        
+      See:
+        KORX A 3
+        KORX A 0 A_CheckFloor("WalkSound")
+        KORX A 3
+        goto ContinueOn
+
+      WalkSound:
+        TNT1 A 0 Radius_Quake(1,4,0,2,0)
+        KORX A 3 A_PlaySoundEx("korax/step","soundslot6")
+		goto ContinueOn
+
+      ContinueOn:
+        KORX ABB 6
+        KORX C 3
+        KORX A 0 A_CheckFloor("WalkSound2")
+        KORX C 3
+        goto ContinueOn2
+
+      WalkSound2:
+        TNT1 A 0 Radius_Quake(1,4,0,2,0)
+        KORX C 3 A_PlaySoundEx("korax/step","soundslot6")
+		goto ContinueOn2
+
+      ContinueOn2:
+        KORX CDD 6 
+        goto Spawn2
+        
+      Missile:
+        KORX E 12 
+        Goto Spawn2
+        
+      Melee:
+        KORX F 6 BRIGHT
+        Goto Missile
+        
+      Pain:
+        KORX H 4 
+        KORX H 4 A_Pain
+        Goto Spawn2
+        
+      Death.DukeDamage:
+      Death.DukeExplosive:
+      Death.DukePistol:
+      Death.MightyBoot:
+        TNT1 A 0 A_Jump(218,"Death")
+        TNT1 A 0 A_GiveToTarget("DukeBossKillTaunt",1)
+        goto Death
+        
+      XDeath:
+      Death:
+        KORX H 1 A_SpawnItemEx("KilledKorax",0,0,0,0,0,0,0,49)
+        TNT1 A 0 A_PlayerScream
+        TNT1 A 0 A_NoBlocking
+        ACLO E -1
+        stop
+        
+      Death.DukeIce:
+        TNT1 A 0 A_Jump(218,"Ice")
+        TNT1 A 0 A_GiveToTarget("DukeBossKillTaunt",1)
+        goto Ice
+        
+      Death.ZorchPistol:
+      Death.Zorch:
+        KORX H 0 A_Stop
+        KORX H 1 A_SpawnItemEx("ZorchedKorax",0,0,0,0,0,0,0,49)
+        TNT1 A 0 A_NoBlocking
+        ACLO E -1
+        stop
+        
+      Ice:
+      Death.HexenIce:
+      Death.Ice:
+        KORX H 1 A_SpawnItemEx("FrozenKorax",0,0,0,0,0,0,0,49)
+        TNT1 A 0 A_NoBlocking
+        ACLO E -1
+        stop
+    }
+}
+
+ACTOR KilledKorax : Korax
+{
+	Health 1
+    Radius 1
+    Height 1
+    +NOCLIP
+    -SOLID
+	+FORCERADIUSDMG
+	+PAINLESS
+	Scale 0.75
+	Obituary "%k showed %o one last surprise."
+    States
+    {
+      Spawn:
+	  See:
+		KORX I 1 A_UnsetShootable//A_Die
+	  //Death:
+		KORX I 4
+		KORX J 5 A_FaceTarget
+		KORX K 5 A_Scream
+		KORX LMNOP 5
+		KORX Q 20
+	Death:
+        TNT1 A 0 Radius_Quake(4,16,0,16,0)
+		TNT1 A 0 A_Explode(128,198,0)
+		KORX R 5 A_KoraxBonePop
+		KORX S 5 A_NoBlocking
+		KORX TU 5
+		KORX V -1
+		stop
+    }
+}
+
+ACTOR ZorchedKorax : Korax
+{
+	Health 1
+    Radius 1
+    Height 1
+    +NOCLIP
+    -SOLID
+	+FORCERADIUSDMG
+	+PAINLESS
+	Scale 0.75
+	Obituary "%k showed %o one last surprise."
+    States
+    {
+      Spawn:
+	  See:
+		KORX H 1 A_UnsetShootable//A_Die
+	  //Death:
+        TNT1 A 0 A_Stop
+        TNT1 A 0 A_ChangeFlag("DONTGIB",1)
+        TNT1 A 0 A_PlaySoundEx("chex/zorchhuge","soundslot5",0,0)
+        KORX H 10 A_SpawnItem("ZorchEffectHuge")
+        KORX H 10 A_SetTranslucent(0.9,0)
+        TNT1 A 0 A_PlaySoundEx("chex/koraxzorch","soundslot6",0,2)
+        KORX H 10 A_SetTranslucent(0.8,0)
+        TNT1 A 0 A_NoBlocking
+        KORX H 10 A_SetTranslucent(0.7,0)
+        KORX H 10 A_SetTranslucent(0.6,0)
+        KORX H 10 A_SetTranslucent(0.5,0)
+	Death:
+        TNT1 A 0 Radius_Quake(4,16,0,16,0)
+		TNT1 A 0 A_Explode(128,198,0)
+        TNT1 A 0 A_KoraxBonePop
+        KORX H 10 A_SetTranslucent(0.4,0)
+        KORX H 10 A_SetTranslucent(0.3,0)
+        KORX H 10 A_SetTranslucent(0.2,0)
+        KORX H 10 A_SetTranslucent(0.1,0)
+        ACLO E 1 A_SetTranslucent(1,0)
+        ACLO E -1
+        stop
+    }
+}
+
+ACTOR FrozenKorax : Korax
+{
+    Radius 1
+    Height 1
+    +NOCLIP
+    -SOLID
+	+FORCERADIUSDMG
+	+PAINLESS
+	Scale 0.75
+	Obituary "%k showed %o one last surprise."
+    States
+    {
+      Spawn:
+	  See:
+		KORX H 1 A_UnsetShootable//A_Die
+	  //Death:
+        TNT1 A 0 A_NoBlocking
+        KORX Z 0 
+        KORX Z 0 A_PlaySoundEx("freeze/korax","soundslot6",0,0)
+        KORX Z 0 A_GenericFreezeDeath
+        KORX Z 80 A_UnsetSolid
+	Death:
+        TNT1 A 0 Radius_Quake(4,8,0,16,0)
+		TNT1 A 0 A_Explode(128,198,0)
+        TNT1 A 0 A_KoraxBonePop
+        KORX Z 60 A_UnsetSolid
+        KORX Z 0 A_PlaySoundEx("freeze/break","soundslot6",0,0)
+        KORX HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 0 A_SpawnItemEx("IceChunk2",random(-1,1),random(-1,1),random(16,96),random(-2,2),random(-2,2),random(5,15))
+		KORX Z 0 A_KoraxBonePop
+        KORX Z 0 A_IceGuyDie
+        KORX Z 1 A_IceGuyDie
+        ACLO A -1
+        stop
+    }
+}
+
+ACTOR KoraxSpirit2 : KoraxSpirit replaces KoraxSpirit
+{
+  +NOCLIP
+  -ACTIVATEPCROSS
+  -ACTIVATEIMPACT
+  +CLIENTSIDEONLY
+  +BRIGHT
+  RenderStyle Add
+  Alpha 0.75
+  States
+  {
+  Spawn:
+    SPIR A 5 A_KSpiritRoam
+	TNT1 A 0 A_Jump(13,"Scream")
+  Spawn2:
+	SPIR B 5 A_KSpiritRoam
+	TNT1 A 0 A_Jump(13,"Scream2")
+    goto Spawn
+  Scream:
+	TNT1 A 0 A_PlaySoundEx("korax/spiritscream","voice",0,0)
+	goto Spawn2
+  Scream2:
+	TNT1 A 0 A_PlaySoundEx("korax/spiritscream","voice",0,0)
+	goto Spawn
+}
+}
+
+
+
+actor "Spells" : weapon
+{
+    Weapon.SlotNumber 4
+	Weapon.AmmoType "VillainAmmoLight"
+	Weapon.AmmoGive 0
+	Weapon.AmmoGive2 0
+	Weapon.AmmoUse 1
+	Weapon.AmmoUse2 0
+    +AMMO_OPTIONAL
+    +ALT_AMMO_OPTIONAL
+    Weapon.Kickback 100
+    States
+    {
+      Ready:
+        TNT1 A 1 A_WeaponReady
+        loop
+
+      Select:
+        TNT1 A 1 A_Raise
+        loop
+
+      Deselect:
+        TNT1 A 1 A_Lower
+        loop
+
+      Fire: // Ethereal Wraith
+        TNT1 A 1 A_JumpIfNoAmmo("Nope")
+		TNT1 A 0 A_JumpIfInventory("KoraxDecide",5,"Fire5")
+		TNT1 A 0 A_JumpIfInventory("KoraxDecide",4,"Fire4")
+		TNT1 A 0 A_JumpIfInventory("KoraxDecide",3,"Fire3")
+		TNT1 A 0 A_JumpIfInventory("KoraxDecide",2,"Fire2")
+		TNT1 A 0 A_JumpIfInventory("KoraxDecide",1,"Fire1")
+		TNT1 A 2 A_GunFlash
+		TNT1 A 0 A_PlayWeaponSound("Korax/Attack")
+		TNT1 A 0 A_FireCustomMissile("KoraxWraithFX1",random(-2,2),0,-10,25,0,random(-1,3))
+		TNT1 A 0 A_FireCustomMissile("KoraxWraithFX1",random(-2,2),0,10,25,0,random(-1,3))
+		TNT1 A 0 A_FireCustomMissile("KoraxWraithFX1",random(-2,2),0,-20,10,0,random(-1,3))
+		TNT1 A 0 A_FireCustomMissile("KoraxWraithFX1",random(-2,2),0,20,10,0,random(-1,3))
+		TNT1 A 0 A_FireCustomMissile("KoraxWraithFX1",random(-2,2),0,-20,-5,0,random(-1,3))
+		TNT1 A 0 A_FireCustomMissile("KoraxWraithFX1",random(-2,2),1,20,-5,0,random(-1,3))
+		TNT1 A 0 A_TakeInventory("VillainAmmoLight",9)
+		TNT1 A 35 A_WeaponReady(7)
+        goto ready
+		
+	  Nope:
+        TNT1 A 35 A_WeaponReady(6)
+        goto ready
+		
+	  Fire1: // Green Chaos
+		TNT1 A 2 A_GunFlash
+		TNT1 A 0 A_PlayWeaponSound("Korax/Attack")
+		TNT1 A 0 A_FireCustomMissile("KoraxDemon1FX1",random(-1,1),0,-10,25,0,random(-1,1))
+		TNT1 A 0 A_FireCustomMissile("KoraxDemon1FX1",random(-1,1),0,10,25,0,random(-1,1))
+		TNT1 A 0 A_FireCustomMissile("KoraxDemon1FX1",random(-1,1),0,-20,10,0,random(-1,1))
+		TNT1 A 0 A_FireCustomMissile("KoraxDemon1FX1",random(-1,1),0,20,10,0,random(-1,1))
+		TNT1 A 0 A_FireCustomMissile("KoraxDemon1FX1",random(-1,1),0,-20,-5,0,random(-1,1))
+		TNT1 A 0 A_FireCustomMissile("KoraxDemon1FX1",random(-1,1),1,20,-5,0,random(-1,1))
+		TNT1 A 0 A_TakeInventory("VillainAmmoLight",3)
+		TNT1 A 15 A_WeaponReady(7)
+		goto Ready
+		
+	  Fire2: // Brown Chaos
+		TNT1 A 2 A_GunFlash
+		TNT1 A 0 A_PlayWeaponSound("Korax/Attack")
+		TNT1 A 0 A_FireCustomMissile("KoraxDemon2FX1",random(-1,1),0,-10,25,0,random(-1,1))
+		TNT1 A 0 A_FireCustomMissile("KoraxDemon2FX1",random(-1,1),0,10,25,0,random(-1,1))
+		TNT1 A 0 A_FireCustomMissile("KoraxDemon2FX1",random(-1,1),0,-20,10,0,random(-1,1))
+		TNT1 A 0 A_FireCustomMissile("KoraxDemon2FX1",random(-1,1),0,20,10,0,random(-1,1))
+		TNT1 A 0 A_FireCustomMissile("KoraxDemon2FX1",random(-1,1),0,-20,-5,0,random(-1,1))
+		TNT1 A 0 A_FireCustomMissile("KoraxDemon2FX1",random(-1,1),1,20,-5,0,random(-1,1))
+		TNT1 A 0 A_TakeInventory("VillainAmmoLight",3)
+		TNT1 A 25 A_WeaponReady(7)
+		goto Ready
+		
+	  Fire3: // Hell Fire
+		TNT1 A 2 A_GunFlash
+		TNT1 A 0 A_PlayWeaponSound("Korax/Attack")
+		TNT1 A 0 A_JumpIfInventory("KoraxFireSequence",5,"Fire3e")
+		TNT1 A 0 A_JumpIfInventory("KoraxFireSequence",4,"Fire3d")
+		TNT1 A 0 A_JumpIfInventory("KoraxFireSequence",3,"Fire3c")
+		TNT1 A 0 A_JumpIfInventory("KoraxFireSequence",2,"Fire3b")
+		TNT1 A 0 A_JumpIfInventory("KoraxFireSequence",1,"Fire3a")
+		TNT1 A 0 A_FireCustomMissile("KoraxFireDemonMissile",random(-2,2),1,-10,25,0,random(-1,1))
+		TNT1 A 1 A_GiveInventory("KoraxFireSequence",1)
+		goto Ready
+	
+	  Fire3a:
+		TNT1 A 0 A_FireCustomMissile("KoraxFireDemonMissile",random(-2,2),1,10,25,0,random(-1,1))
+		TNT1 A 1 A_GiveInventory("KoraxFireSequence",1)
+		goto Ready
+	
+	  Fire3b:
+		TNT1 A 0 A_FireCustomMissile("KoraxFireDemonMissile",random(-2,2),1,-20,10,0,random(-1,1))
+		TNT1 A 1 A_GiveInventory("KoraxFireSequence",1)
+		goto Ready
+	
+	  Fire3c:
+		TNT1 A 0 A_FireCustomMissile("KoraxFireDemonMissile",random(-2,2),1,20,10,0,random(-1,1))
+		TNT1 A 1 A_GiveInventory("KoraxFireSequence",1)
+		goto Ready
+	
+	  Fire3d:
+		TNT1 A 0 A_FireCustomMissile("KoraxFireDemonMissile",random(-2,2),1,-20,-5,0,random(-1,1))
+		TNT1 A 1 A_GiveInventory("KoraxFireSequence",1)
+		goto Ready
+	
+	  Fire3e:
+		TNT1 A 0 A_FireCustomMissile("KoraxFireDemonMissile",random(-2,2),1,20,-5,0,random(-1,1))
+		TNT1 A 1 A_TakeInventory("KoraxFireSequence",10)
+		goto Ready
+		
+	  Fire4: // Force
+		TNT1 A 2 A_GunFlash
+		TNT1 A 0 A_PlayWeaponSound("Korax/Attack")
+		TNT1 AA 0 A_FireCustomMissile("KoraxCentaurFX",random(-4,4),0,-10,25,0,random(-3,2))
+		TNT1 AAA 0 A_FireCustomMissile("KoraxCentaurFX",random(-3,3),0,10,25,0,random(-2,2))
+		TNT1 AA 0 A_FireCustomMissile("KoraxCentaurFX",random(-4,4),0,-20,10,0,random(-3,2))
+		TNT1 AAA 0 A_FireCustomMissile("KoraxCentaurFX",random(-3,3),0,20,10,0,random(-2,2))
+		TNT1 AA 0 A_FireCustomMissile("KoraxCentaurFX",random(-4,4),0,-20,-5,0,random(-3,2))
+		TNT1 AAA 0 A_FireCustomMissile("KoraxCentaurFX",random(-3,3),1,20,-5,0,random(-2,2))
+		TNT1 A 0 A_TakeInventory("VillainAmmoLight",7)
+		TNT1 A 35 A_WeaponReady(7)
+		goto Ready
+		
+	  Fire5: // Swamp Poison
+		TNT1 A 2 A_GunFlash
+		TNT1 A 0 A_PlayWeaponSound("Korax/Attack")
+		TNT1 A 0 A_FireCustomMissile("KoraxSerpentFX",0,0,-10,25,0,0)
+		TNT1 A 0 A_FireCustomMissile("KoraxSerpentFX",0,0,10,25,0,0)
+		TNT1 A 0 A_FireCustomMissile("KoraxSerpentFX",0,0,-20,10,0,0)
+		TNT1 A 0 A_FireCustomMissile("KoraxSerpentFX",0,0,20,10,0,0)
+		TNT1 A 0 A_FireCustomMissile("KoraxSerpentFX",0,0,-20,-5,0,0)
+		TNT1 A 0 A_FireCustomMissile("KoraxSerpentFX",0,1,20,-5,0,0)
+		TNT1 A 0 A_TakeInventory("VillainAmmoLight",9)
+		TNT1 A 35 A_WeaponReady(7)
+		goto Ready
+
+      AltFire:
+		TNT1 A 1
+        TNT1 A 1 A_JumpIfInventory("KoraxDecide",5,"AltFire5")
+        TNT1 A 1 A_JumpIfInventory("KoraxDecide",4,"AltFire4")
+        TNT1 A 1 A_JumpIfInventory("KoraxDecide",3,"AltFire3")
+        TNT1 A 1 A_JumpIfInventory("KoraxDecide",2,"AltFire2")
+        TNT1 A 1 A_JumpIfInventory("KoraxDecide",1,"AltFire1")
+		TNT1 A 1
+		TNT1 A 0 A_PlayWeaponSound("korax/swap")
+		TNT1 A 0 A_Print("Now wielding Green Chaos Magic.")
+		TNT1 A 0 A_GiveInventory("KoraxDecide",1)
+		TNT1 A 10 A_WeaponReady(8)
+        goto ready
+	
+	  AltFire1:
+		TNT1 A 1
+		TNT1 A 0 A_PlayWeaponSound("korax/swap")
+		TNT1 A 0 A_Print("Now wielding Brown Chaos Magic.")
+		TNT1 A 0 A_GiveInventory("KoraxDecide",1)
+		TNT1 A 10 A_WeaponReady(8)
+        goto ready
+	
+	  AltFire2:
+		TNT1 A 1
+		TNT1 A 0 A_PlayWeaponSound("korax/swap")
+		TNT1 A 0 A_Print("Now wielding Hell Fire Magic.")
+		TNT1 A 0 A_GiveInventory("KoraxDecide",1)
+		TNT1 A 10 A_WeaponReady(8)
+        goto ready
+	
+	  AltFire3:
+		TNT1 A 1 A_TakeInventory("KoraxFireSequence",10)
+		TNT1 A 0 A_PlayWeaponSound("korax/swap")
+		TNT1 A 0 A_Print("Now wielding Force Magic.")
+		TNT1 A 0 A_GiveInventory("KoraxDecide",1)
+		TNT1 A 10 A_WeaponReady(8)
+        goto ready
+	
+	  AltFire4:
+		TNT1 A 1
+		TNT1 A 0 A_PlayWeaponSound("korax/swap")
+		TNT1 A 0 A_Print("Now wielding Swamp Poison Magic.")
+		TNT1 A 0 A_GiveInventory("KoraxDecide",1)
+		TNT1 A 10 A_WeaponReady(8)
+        goto ready
+	
+	  AltFire5:
+		TNT1 A 1
+		TNT1 A 0 A_PlayWeaponSound("korax/swap")
+		TNT1 A 0 A_Print("Now wielding Ethereal Wraith Magic.")
+		TNT1 A 0 A_TakeInventory("KoraxDecide",100)
+		TNT1 A 10 A_WeaponReady(8)
+        goto ready
+    }
+}
+
+// Swamp Poison Magic. Semi-accurate, brutal ripping power with poison damage.
+ACTOR KoraxSerpentFX
+{
+  Speed 35 // Original is 15
+  Radius 8
+  Height 10
+  Damage 5 // Original is 4
+  Projectile
+  -ACTIVATEIMPACT
+  -ACTIVATEPCROSS
+  +RIPPER
+  DamageType "PoisonCloud"
+  RenderStyle Add
+  SeeSound "CentaurLeaderAttack"
+  DeathSound "SerpentFXHit"
+  States
+  {
+  Spawn:
+    SSFX A 0
+    SSFX A 3 Bright A_PlaySoundEx("SerpentFXContinuous", "Body", 1)
+    SSFX BAB 3 Bright
+    Goto Spawn+1
+  Death:
+    SSFX C 4 Bright A_StopSoundEx("Body")
+    SSFX DEFGH 4 Bright
+    Stop
+  }
+}
+
+// Force Magic. Shotgun spread.
+ACTOR KoraxCentaurFX
+{
+  Speed 30 // Original is 20
+  Damage 5 // Original is 4
+  Scale 0.65
+  Projectile
+  //+SPAWNSOUNDSOURCE
+  RenderStyle Add
+  SeeSound "CentaurLeaderAttack"
+  DeathSound "CentaurMissileExplode"
+  States
+  {
+  Spawn:
+    CTFX A -1 Bright
+    Stop
+  Death:
+    CTFX B 4 Bright A_RadiusThrust(2500,128,0)
+    CTFX C 3 Bright
+    CTFX D 4 Bright
+    CTFX E 3 Bright
+    CTFX F 2 Bright
+    Stop
+  }
+}
+
+// Hell Fire Magic. Rapid fire, fast, inaccurate, low damage.
+ACTOR KoraxFireDemonMissile
+{
+  Health 1000
+  ReactionTime 8
+  Speed 45 // Original is 10
+  Radius 10
+  Height 6
+  Mass 5
+  Damage 3 // Original is 1
+  DamageType "Fire"
+  Projectile
+  RenderStyle Add
+  SeeSound "FireDemonAttack"
+  DeathSound "FireDemonMissileHit"
+  States
+  {
+  Spawn:
+    FDMB A 5 Bright
+    Loop
+  Death:
+    FDMB BCDE 5 Bright
+    Stop
+  }
+}
+
+// Brown Chaos Magic. Staple slow-but-strong.
+ACTOR KoraxDemon2FX1
+{
+  Speed 15
+  Scale 0.9
+  Radius 10
+  Height 6
+  Damage 6 // Original is 5
+  DamageType Fire
+  Projectile
+  //+SPAWNSOUNDSOURCE
+  RenderStyle Add
+  SeeSound "DemonMissileFire"
+  DeathSound "DemonMissileExplode"
+  States
+  {
+  Spawn:
+    D2FX ABCDEF 4 Bright
+    Loop
+  Death:
+    D2FX GHIJ 4 Bright
+    D2FX KL 3 Bright
+    Stop
+  }
+}
+
+// Green Chaos Magic. Staple fast-but-weak.
+ACTOR KoraxDemon1FX1
+{
+  Speed 25 // Original was 15
+  Scale 0.9
+  Radius 10
+  Height 6
+  Damage 6 // Original is 5
+  DamageType Fire
+  Projectile
+  //+SPAWNSOUNDSOURCE
+  +STRIFEDAMAGE
+  RenderStyle Add
+  SeeSound "DemonMissileFire"
+  DeathSound "DemonMissileExplode"
+  States
+  {
+  Spawn:
+    DMFX ABC 4 Bright
+    Loop
+  Death:
+    DMFX DE 4 Bright
+    DMFX FGH 3 Bright
+    Stop
+  }
+}
+
+// Ethereal Wraith Magic. Effectively arcane grenades, lobbed a distance and affected by gravity.
+ACTOR KoraxWraithFX1 : WraithFX1
+{
+  Speed 15 // Original is 14
+  Radius 10
+  Height 6
+  Mass 5
+  Damage 10 // Original is 5
+  DamageType "Fire"
+  Projectile
+  +FLOORCLIP
+  -NOGRAVITY
+  +LOWGRAVITY
+  +FORCERADIUSDMG
+  SeeSound "WraithMissileFire"
+  DeathSound "WraithMissileExplode"
+  States
+  {
+  Spawn:
+    WRBL A 3 Bright
+    WRBL B 3 Bright A_WraithFX2
+    WRBL C 3 Bright
+    Loop
+  Death:
+    WRBL D 4 Bright A_Explode(32,32,0)
+    WRBL E 4 Bright A_WraithFX2
+    WRBL F 4 Bright A_WraithFX2
+    WRBL GH 3 Bright A_WraithFX2
+    WRBL I 3 Bright
+    Stop
+  }
+}

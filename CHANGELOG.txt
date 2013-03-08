@@ -1,5 +1,6 @@
 FROM V0.1 TO V0.11:
 ========================
+- Korax has been added as Parias' villain.
 - The villains are now resistant to everyone's VIs.
 - D'Sparil can mount and dismount his Serpent at will.
 - Villains should be more resistant to axing.

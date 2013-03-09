@@ -11,8 +11,8 @@ ACTOR KoraxBeef : PowerProtection
 
 actor KoraxPlayer : PlayerPawn
 {
-	Health 100
-	Player.MaxHealth 100
+	Health 150
+	Player.MaxHealth 150
     LimitedToTeam 1
     Player.DisplayName "Korax"
     BloodColor "Green"
@@ -40,7 +40,7 @@ actor KoraxPlayer : PlayerPawn
     DamageFactor "Nukage", 0
     DamageFactor "Hellslime", 0
     DamageFactor "SuperHellslime", 0
-    DamageFactor "Normal", 0.85
+    DamageFactor "Normal", 0.95
     DamageFactor "Telefrag", 2.0
     DamageFactor "PoisonCloud", 1.75
     DamageFactor "DukeExplosive", 0.45

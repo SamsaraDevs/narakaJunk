@@ -52,6 +52,7 @@ actor HealPack2Naraka : HealPack2 replaces Medikit
 
       Pickup:
 		TNT1 A 0 A_JumpIfInventory("CyberdemonClass", 1, "PickupCyberdemon")
+		TNT1 A 0 A_JumpIfInventory("KoraxClass", 1, "PickupKorax")
 		TNT1 A 0 A_JumpIfInventory("DsparilClass", 1, "PickupDsparil")
         TNT1 A 0 A_JumpIfInventory("HexenClass", 1, "PickupHexen")
         TNT1 A 0 A_JumpIfInventory("CorvusClass", 1, "PickupHeretic")
@@ -64,6 +65,11 @@ actor HealPack2Naraka : HealPack2 replaces Medikit
 		
 	  PickupCyberdemon:
         TNT1 A 0 A_JumpIfHealthLower(200, "PickUpSuccess")
+        TNT1 A 1
+		goto PickupFail
+	  
+	  PickupKorax:
+        TNT1 A 0 A_JumpIfHealthLower(150, "PickUpSuccess")
         TNT1 A 1
 		goto PickupFail
 	  

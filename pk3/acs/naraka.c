@@ -18,6 +18,10 @@ script 465 (void)
     //GiveInventory("Megasphere", 1);
 }
 
+script 255 (void)
+{
+}
+
 script 466 (int toggle)
 {
     SetPlayerProperty(0, toggle, 4);
@@ -63,6 +67,10 @@ script NARAKA_SPAWN (int respawning)
             SerpentArmor[pNum]  = 50;
             SerpentHealth[pNum] = 100;
             GiveInventory("DsparilBeef", 1);
+        }
+        if (CheckInventory("KoraxClass") == 1)
+        {
+            GiveInventory("KoraxBeef", 1);
         }
     }
 

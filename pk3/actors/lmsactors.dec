@@ -203,3 +203,64 @@ actor TfearLMSHealth5 : InheritedLMSHealth
   Inventory.Amount 500
   Inventory.MaxAmount 500
 }
+
+
+
+// Korax
+// Operates on a 1.5:1 health ratio. Beefier, though not as much as Cyber.
+// Operates on a 1:1 armor ratio. Normal armor.
+//==============
+
+//lmslife1
+actor KoraxLMSArmor1 : InheritedLMSArmor
+{
+  Armor.SaveAmount 100
+}
+
+//lmslife2
+actor KoraxLMSArmor2 : InheritedLMSArmor
+{
+  Armor.SaveAmount 200
+}
+
+actor KoraxLMSHealth2 : InheritedLMSHealth
+{
+  Inventory.Amount 300
+  Inventory.MaxAmount 200
+}
+
+//lmslife3
+actor KoraxLMSArmor3 : InheritedLMSArmor
+{
+  Armor.SaveAmount 300
+}
+
+actor KoraxLMSHealth3 : InheritedLMSHealth
+{
+  Inventory.Amount 450
+  Inventory.MaxAmount 450
+}
+
+//lmslife4
+actor KoraxLMSArmor4 : InheritedLMSArmor
+{
+  Armor.SaveAmount 400
+}
+
+actor KoraxLMSHealth4 : InheritedLMSHealth
+{
+  Inventory.Amount 600
+  Inventory.MaxAmount 600
+}
+
+//lmslife5
+actor KoraxLMSArmor5 : InheritedLMSArmor
+{
+  Armor.SaveAmount 500
+}
+
+actor KoraxLMSHealth5 : InheritedLMSHealth
+{
+  Inventory.Amount 750
+  Inventory.MaxAmount 750
+}

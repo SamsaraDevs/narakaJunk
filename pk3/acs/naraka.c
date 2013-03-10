@@ -115,7 +115,7 @@ script 474 (int cybermove) // It's time to D-D-D-DASH!
             GiveInventory("CyberdemonDashCount", 42);
             delay(30);
             GiveInventory("CyberDash", 1);
-            ACS_ExecuteAlways(NARAKA_COOLDOWN, 0, 2, 7, 474);
+            ACS_ExecuteAlways(NARAKA_COOLDOWN, 0, 2, 1, 474);
         }
         break;
 

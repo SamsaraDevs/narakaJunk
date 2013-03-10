@@ -81,6 +81,12 @@ actor DSparilSerpentUnmounted : Demon1B
     DamageFactor "DSparilDamage", 0.0
     DamageFactor "DukeExplosive", 0.35
     DamageFactor "Normal", 0.75
+    DamageFactor "DoomguyPlasma", 0.8
+    DamageFactor "DukeIce", 0.8
+    DamageFactor "CorvusHellstaff", 0.8
+    DamageFactor "WolfenFlamethrower", 0.8
+    DamageFactor "Fire", 0.8 // Effects Corvus' Phoenix Rod as well as the TOZT and Firestorm. Damn.
+    DamageFactor "PhasingZorch", 0.8 // Not in yet!
     +THRUSPECIES
     Species "Villain"
 	+NOBLOCKMONST
@@ -98,7 +104,7 @@ actor DSparilSerpentUnmounted : Demon1B
 	PainSound "dsparilserpent/Pain"
 	DeathSound "dsparilserpent/Death"
 	ActiveSound "dsparilserpent/Active"
-	Obituary "%k \crfed\c- %o \crto the Serpent.\c-"
+	Obituary "\crA Chaos Serpent had\c- %o \crfor lunch.\c-"
 	States
 	{
 	  Spawn:
@@ -394,7 +400,7 @@ actor DsparilPlayer : PlayerPawn
     DamageFactor "Telefrag", 2.0
     DamageFactor "PoisonCloud", 1.75
     DamageFactor "DukeExplosive", 0.5
-    DamageFactor "TimonsAxe", 0.55
+    DamageFactor "TimonsAxe", 0.75
     DamageFactor "DoomguyPlasma", 0.8
     DamageFactor "DukeIce", 0.8
     DamageFactor "CorvusHellstaff", 0.8
@@ -419,7 +425,7 @@ actor DsparilPlayer : PlayerPawn
       CoOpModeOn:
         TNT1 A 0
         TNT1 A 0 A_ChangeFlag("THRUSPECIES",1)
-        SRCR A 1
+        SRCR A 1 A_GiveInventory("CoopModeOn")
         goto Spawn
 		
       Spawn:
@@ -622,7 +628,7 @@ actor DsparilOnFootPlayer : PlayerPawn
     DamageFactor "Telefrag", 2.0
     DamageFactor "PoisonCloud", 1.75
     DamageFactor "DukeExplosive", 0.625
-    DamageFactor "TimonsAxe", 0.55
+    DamageFactor "TimonsAxe", 0.75
     DamageFactor "DoomguyPlasma", 0.8
     DamageFactor "DukeIce", 0.8
     DamageFactor "CorvusHellstaff", 0.8

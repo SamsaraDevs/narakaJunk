@@ -102,7 +102,7 @@ actor CyberdemonPlayer : PlayerPawn
       CoOpModeOn:
         TNT1 A 0
         TNT1 A 0 A_ChangeFlag("THRUSPECIES",1)
-        CYBD A 1
+        CYBD A 1 A_GiveInventory("CoopModeOn")
         goto Spawn
 		
       Spawn:

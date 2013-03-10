@@ -91,8 +91,9 @@ actor TfearBeacon : CustomInventory
 
 ACTOR TfearPfhorTrooper : FriendlyPfhorTrooper
 {
-	Health 200
+	Health 210
 	Species "Villain"
+	DamageFactor "Normal", 1.25
     Radius 16
     Height 56
 	+MISSILEMORE
@@ -336,7 +337,7 @@ actor TfearPlayer : PlayerPawn
       CoOpModeOn:
         TNT1 A 0
         TNT1 A 0 A_ChangeFlag("THRUSPECIES",1)
-        TFER A 1
+        TFER A 1 A_GiveInventory("CoopModeOn")
         goto Spawn
 		
       Spawn:

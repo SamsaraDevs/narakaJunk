@@ -658,11 +658,13 @@ actor "Aggregate Type 'Guilt'" : Weapon
     {
 
       Select:
-        TSTF A 0 A_Lower
+        TSTF A 0 A_Raise
+        TSTF A 0 A_Raise
         TSTF A 1 A_Raise
         Loop
 
       Deselect:
+        TSTF A 0 A_Lower
         TSTF A 0 A_Lower
         TSTF A 1 A_Lower
         Loop

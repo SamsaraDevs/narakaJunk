@@ -98,6 +98,7 @@ cyber/windup  				CYOVERU
 cyber/fire    				CYGTFIRE
 cyber/winddown 				CYOVERD
 cyber/spin     				CYOVERS
+cyber/sgcock				CYSGCOCK
 
 cyber/targeter     			CYTRGTON
 

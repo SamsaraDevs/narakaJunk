@@ -1,0 +1,16 @@
+- The Cyberdemon, Doom, and everything associated are copyright id Software.
+ ^-: Portrait for the tipbox drawn by LukeDenby.
+ ^-: Translations by Repo Man.
+ ^-: The Spider Mastermind Chaingun uses code from RSL's Overdrive Gun.
+ ^-: Ricochet sparks inspired by WildWeasel's many mods featuring them.
+ ^-: Hoof sounds taken from PSX Doom.
+ ^-: Dash sound effects taken from a few mods I can't remember. Please yell at me if you know their source!
+- D'Sparil, Heretic, and everything associated are copyright Raven Software.
+ ^-: The mount/dismount system was basically lifted wholesale from Xaser's Necrodoom. All credit goes to him!
+ ^-: The Staff of D'Sparil was drawn by Ichor and coded by Gothic, and taken off Realm667.
+- Korax, HeXen, and everything associated are copyright Raven Software.
+ ^-: Translations by Repo Man.
+- Admiral Tfear, Marathon, and everything associated are copyright Bungie.
+ ^-: Shock Staff sprites by Forrest Cameranesi.
+ ^-: Numerous sounds ripped by Hopper.
+ ^-: Flawed zoom-in sequence by PillowBlaster.

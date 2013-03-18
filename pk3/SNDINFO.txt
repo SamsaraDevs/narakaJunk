@@ -89,6 +89,8 @@ cyber/hoof					cybhoof
 cyber/dashon				cydashon
 cyber/dashoff				cydashof
 cyber/dashfail				cydasher
+cyber/rocket				cyrlaunc
+cyber/rockethit				cyrckexp
 
 cyber/up      				CYOVERUB
 cyber/unblock 				CYOVERUB
@@ -96,6 +98,8 @@ cyber/windup  				CYOVERU
 cyber/fire    				CYGTFIRE
 cyber/winddown 				CYOVERD
 cyber/spin     				CYOVERS
+
+cyber/targeter     			CYTRGTON
 
 $random cyber/puff	{ cyber/puff1 cyber/puff2 cyber/puff3 cyber/puff4 cyber/puff5 cyber/puff6 }
 cyber/puff1					cyrich1

@@ -38,6 +38,29 @@ ACTOR CyberDashToggle : CustomInventory
 	}
 }
 
+ACTOR CyberTargeter : CustomInventory
+{
+    Inventory.Amount 1
+    Inventory.MaxAmount 16
+    +INVBAR
+    +INVENTORY.UNDROPPABLE
+    Inventory.Icon CYBTRGTR
+    +inventory.hubpower
+    States
+    {
+      Use:
+		TNT1 A 0 A_JumpIfInventory("PowerTargeter",1,"UseFail")
+        TNT1 A 1 A_SetBlend("Yellow",0.5,7)
+		TNT1 A 1 A_PlaySoundEx("cyber/targeter","soundslot7")
+		TNT1 A 1 A_GiveInventory("PowerTargeter")
+        stop
+		
+	  UseFail:
+		TNT1 A 1
+		fail
+	}
+}
+
 actor CyberdemonPlayer : PlayerPawn
 {
     Health 200
@@ -81,7 +104,7 @@ actor CyberdemonPlayer : PlayerPawn
     DamageFactor "WolfenFlamethrower", 0.75
     DamageFactor "Fire", 0.75 // Effects Corvus' Phoenix Rod as well as the TOZT and Firestorm. Damn.
     DamageFactor "PhasingZorch", 0.75 // Not in yet!
-    DamageFactor "TimonsAxe", 0.45
+    DamageFactor "TimonsAxe", 0.55
     DamageFactor "WMCBeam", 0.5
     DamageFactor "WMCNade", 0.5
     Species "Villain"
@@ -488,7 +511,17 @@ ACTOR "Cyber-Rocket Launcher" : Weapon
 		TNT1 A 0 A_JumpIfInventory("SPModeOn",1,"CoopHold")
 		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopHold")
 		TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"TLMSHold")
+		TNT1 A 0 A_JumpIfInventory("PowerTargeter",1,"TargeterRocket")
         CYBL C 5 A_FireCustomMissile("CyberRocket2",0,0,-10,0)
+        CYBL DE 5
+		CYBL A 3
+		CYBL A 1 A_Refire
+		CYBL A 1 A_TakeInventory("CyberSpeed2")
+		CYBL A 1 A_ClearRefire
+        goto Ready
+		
+	 TargeterRocket:
+        CYBL C 5 A_FireCustomMissile("CyberRocketTargeter",0,0,-10,0)
         CYBL DE 5
 		CYBL A 3
 		CYBL A 1 A_Refire
@@ -497,7 +530,17 @@ ACTOR "Cyber-Rocket Launcher" : Weapon
         goto Ready
 	 
 	 CoopHold:
+		TNT1 A 0 A_JumpIfInventory("PowerTargeter",1,"TargeterRocketCoop")
         CYBL C 5 A_FireCustomMissile("CyberRocketCoop",0,0,-10,0)
+        CYBL DE 5
+		CYBL A 3
+		CYBL A 1 A_Refire
+		CYBL A 1 A_TakeInventory("CyberSpeed2")
+		CYBL A 1 A_ClearRefire
+        goto Ready
+		
+	 TargeterRocketCoop:
+        CYBL C 5 A_FireCustomMissile("CyberRocketTargeterCoop",0,0,-10,0)
         CYBL DE 5
 		CYBL A 3
 		CYBL A 1 A_Refire
@@ -506,7 +549,17 @@ ACTOR "Cyber-Rocket Launcher" : Weapon
         goto Ready
 	 
 	 TLMSHold:
+		TNT1 A 0 A_JumpIfInventory("PowerTargeter",1,"TargeterRocketTLMS")
         CYBL C 5 A_FireCustomMissile("CyberRocketTLMS",0,0,-10,0)
+        CYBL DE 5
+		CYBL A 3
+		CYBL A 1 A_Refire
+		CYBL A 1 A_TakeInventory("CyberSpeed2")
+		CYBL A 1 A_ClearRefire
+        goto Ready
+	 
+	 TargeterRocketTLMS:
+        CYBL C 5 A_FireCustomMissile("CyberRocketTargeterTLMS",0,0,-10,0)
         CYBL DE 5
 		CYBL A 3
 		CYBL A 1 A_Refire
@@ -527,6 +580,7 @@ ACTOR "Cyber-Rocket Launcher" : Weapon
 		TNT1 A 0 A_JumpIfInventory("SPModeOn",1,"CoopAltHold")
 		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopAltHold")
 		TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"TLMSAltHold")
+		TNT1 A 0 A_JumpIfInventory("PowerTargeter",1,"AltTargeterRocket")
         CYBL C 4 A_FireCustomMissile("CyberRocket3",random(-1,3),0,-10,0,random(-2,2))
         CYBL D 4
         CYBL E 2
@@ -540,6 +594,28 @@ ACTOR "Cyber-Rocket Launcher" : Weapon
         CYBL B 3
 		TNT1 A 0 A_TakeInventory("VillainAmmoHeavy",1)
         CYBL C 4 A_FireCustomMissile("CyberRocket3",random(-1,3),0,-10,0,random(-2,2))
+        CYBL D 4
+        CYBL E 5
+        CYBL A 3
+		CYBL A 1 A_Refire
+		CYBL A 1 A_TakeInventory("CyberSpeed2")
+		CYBL A 1 A_ClearRefire
+        goto Ready
+		
+	  AltTargeterRocket:
+        CYBL C 4 A_FireCustomMissile("CyberRocketTargeter2",random(-1,3),0,-10,0,random(-2,2))
+        CYBL D 4
+        CYBL E 2
+        CYBL A 0 A_GunFlash
+        CYBL B 3
+		TNT1 A 0 A_TakeInventory("VillainAmmoHeavy",1)
+        CYBL C 4 A_FireCustomMissile("CyberRocketTargeter2",random(-1,3),0,-10,0,random(-2,2))
+        CYBL D 4
+        CYBL E 2
+        CYBL A 0 A_GunFlash
+        CYBL B 3
+		TNT1 A 0 A_TakeInventory("VillainAmmoHeavy",1)
+        CYBL C 4 A_FireCustomMissile("CyberRocketTargeter2",random(-1,3),0,-10,0,random(-2,2))
         CYBL D 4
         CYBL E 5
         CYBL A 3
@@ -549,6 +625,7 @@ ACTOR "Cyber-Rocket Launcher" : Weapon
         goto Ready
 		
 	  CoopAltHold:
+		TNT1 A 0 A_JumpIfInventory("PowerTargeter",1,"AltTargeterRocketCoop")
         CYBL C 3 A_FireCustomMissile("CyberRocketCoop2",random(-1,3),0,-10,0,random(-2,2))
         CYBL D 4
         CYBL E 1
@@ -570,7 +647,30 @@ ACTOR "Cyber-Rocket Launcher" : Weapon
 		CYBL A 1 A_ClearRefire
         goto Ready
 		
+	  AltTargeterRocketCoop:
+        CYBL C 3 A_FireCustomMissile("CyberRocketTargeterCoop2",random(-1,3),0,-10,0,random(-2,2))
+        CYBL D 4
+        CYBL E 1
+        CYBL A 0 A_GunFlash
+        CYBL B 3
+		TNT1 A 0 A_TakeInventory("VillainAmmoHeavy",1)
+        CYBL C 3 A_FireCustomMissile("CyberRocketTargeterCoop2",random(-1,3),0,-10,0,random(-2,2))
+        CYBL D 4
+        CYBL E 1
+        CYBL A 0 A_GunFlash
+        CYBL B 3
+		TNT1 A 0 A_TakeInventory("VillainAmmoHeavy",1)
+        CYBL C 3 A_FireCustomMissile("CyberRocketTargeterCoop2",random(-1,3),0,-10,0,random(-2,2))
+        CYBL D 4
+        CYBL E 5
+        CYBL A 3
+		CYBL A 1 A_Refire
+		CYBL A 1 A_TakeInventory("CyberSpeed2")
+		CYBL A 1 A_ClearRefire
+        goto Ready
+		
 	  TLMSAltHold:
+		TNT1 A 0 A_JumpIfInventory("PowerTargeter",1,"AltTargeterRocketTLMS")
         CYBL C 3 A_FireCustomMissile("CyberRocketTLMS2",random(-1,3),0,-10,0,random(-2,2))
         CYBL D 4
         CYBL E 1
@@ -584,6 +684,28 @@ ACTOR "Cyber-Rocket Launcher" : Weapon
         CYBL B 3
 		TNT1 A 0 A_TakeInventory("VillainAmmoHeavy",1)
         CYBL C 3 A_FireCustomMissile("CyberRocketTLMS2",random(-1,3),0,-10,0,random(-2,2))
+        CYBL D 4
+        CYBL E 5
+        CYBL A 3
+		CYBL A 1 A_Refire
+		CYBL A 1 A_TakeInventory("CyberSpeed2")
+		CYBL A 1 A_ClearRefire
+        goto Ready
+		
+	  AltTargeterRocketTLMS:
+        CYBL C 3 A_FireCustomMissile("CyberRocketTargeterTLMS2",random(-1,3),0,-10,0,random(-2,2))
+        CYBL D 4
+        CYBL E 1
+        CYBL A 0 A_GunFlash
+        CYBL B 3
+		TNT1 A 0 A_TakeInventory("VillainAmmoHeavy",1)
+        CYBL C 3 A_FireCustomMissile("CyberRocketTargeterTLMS2",random(-1,3),0,-10,0,random(-2,2))
+        CYBL D 4
+        CYBL E 1
+        CYBL A 0 A_GunFlash
+        CYBL B 3
+		TNT1 A 0 A_TakeInventory("VillainAmmoHeavy",1)
+        CYBL C 3 A_FireCustomMissile("CyberRocketTargeterTLMS2",random(-1,3),0,-10,0,random(-2,2))
         CYBL D 4
         CYBL E 5
         CYBL A 3
@@ -601,6 +723,7 @@ ACTOR "Cyber-Rocket Launcher" : Weapon
 		TNT1 A 0 A_JumpIfInventory("SPModeOn",1,"CoopHold")
 		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopHold")
 		TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"TLMSHold")
+		TNT1 A 0 A_JumpIfInventory("PowerTargeter",1,"TargeterRocket")
         CYBL C 5 A_FireCustomMissile("CyberRocket2",0,0,-10,0)
         CYBL DE 5
 		CYBL A 3
@@ -614,8 +737,8 @@ ACTOR "Cyber-Rocket Launcher" : Weapon
 ACTOR CyberRocket2 : CyberRocket
 {
     Decal Scorch
-    SeeSound "doomguy/rocklf"
-    DeathSound "doomguy/rocklx"
+    SeeSound "cyber/rocket"
+    DeathSound "cyber/rockethit"
     Obituary "%k \crsplattered\c- %o \crwith a Cyber-Rocket.\c-"
     Speed 25
 	+FORCERADIUSDMG
@@ -633,6 +756,18 @@ ACTOR CyberRocket2 : CyberRocket
     }
 }
 
+ACTOR CyberRocketTargeter : CyberRocket2
+{
+	+SEEKERMISSILE
+	Speed 40
+	States
+	{
+      Spawn:
+        CBMS A 3 bright A_SeekerMissile(10,15)
+        Loop
+	}
+}
+
 ACTOR CyberRocketCoop : CyberRocket2
 {
 	+THRUSPECIES
@@ -648,7 +783,27 @@ ACTOR CyberRocketCoop : CyberRocket2
 	}
 }
 
+ACTOR CyberRocketTargeterCoop : CyberRocketTargeter
+{
+	+THRUSPECIES
+	Species "Villain"
+	DamageType "VillainTeam"
+	States
+	{
+      Death:
+        DMSL B 8 bright A_Explode(128,128,0)
+        DMSL C 6 bright
+        DMSL D 4 bright
+        Stop
+	}
+}
+
 ACTOR CyberRocketTLMS : CyberRocket2
+{
+	DamageType "VillainTeam"
+}
+
+ACTOR CyberRocketTargeterTLMS : CyberRocketTargeter
 {
 	DamageType "VillainTeam"
 }
@@ -657,6 +812,11 @@ ACTOR CyberRocket3 : CyberRocket2
 {
     Obituary "%k \crsplattered\c- %o \crwith a Cyber-Rocket.\c-"
     Speed 20
+}
+
+ACTOR CyberRocketTargeter2 : CyberRocketTargeter
+{
+	Speed 30
 }
 
 ACTOR CyberRocketCoop2 : CyberRocket3
@@ -674,9 +834,19 @@ ACTOR CyberRocketCoop2 : CyberRocket3
 	}
 }
 
+ACTOR CyberRocketTargeterCoop2 : CyberRocketTargeterCoop
+{
+	Speed 30
+}
+
 ACTOR CyberRocketTLMS2 : CyberRocket3
 {
 	DamageType "VillainTeam"
+}
+
+ACTOR CyberRocketTargeterTLMS2 : CyberRocketTargeterTLMS
+{
+	Speed 30
 }
 
 ACTOR CyberSpeed : PowerSpeed

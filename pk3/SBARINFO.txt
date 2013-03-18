@@ -202,6 +202,7 @@ StatusBar Fullscreen
     InInventory DukeClass, 1 {
     InInventory DukeFlying, 1 {drawnumber 3, INDEXFON, White, DukeJetpackFuel, 293, 48;}
     InInventory DukeVision, 1 {drawnumber 3, INDEXFON, White, DukeVisionFuel, 293, 48;}}
+	InInventory CyberdemonTargeter, 1 {drawimage "CYBTRG", 0, 0;}
 }
 
 StatusBar normal, forcescaled
@@ -2010,6 +2011,7 @@ Playerclass Cyberdemon
 {
 	drawimage "EVILHUD", 0, 168;
     drawmugshot "STF", 5, 147, 168;
+	InInventory CyberdemonTargeter, 1 {drawimage "CYBTRG", 0, -16;}
 	DrawBar "HBARRED", "HBAREMPT", Health, Horizontal, 25, 175;
 	DrawBar "HBARRED", "HBAREMPT", Armor, Horizontal, 25, 186;
     DrawNumber 3, INDEXFON, Gold, Health, 20, 176, Red, 50, White, 100;
@@ -2273,7 +2275,8 @@ Playerclass Korax
     { DrawNumber 4, HEREHUDF2, Red, KillCountAmountTrue, drawshadow, 223, 178; }
 	
 	DrawString CONFONT, White, "Ammo", 139, 171;
-	DrawNumber 3, HEREHUDF2, Red, Ammo1, drawshadow, 140, 178;
+	DrawNumber 3, HEREHUDF, White, Ammo1, drawshadow, 136, 178;
+	DrawNumber 3, HEREHUDF, White, Ammo2, drawshadow, 136, 188;
     DrawNumber 3, INDEXFON, White, ammo VillainAmmoLight, 295, 174;
     DrawNumber 3, INDEXFON, Red, ammocapacity VillainAmmoLight, 310, 174;
     DrawNumber 3, INDEXFON, White, ammo VillainAmmoHeavy, 295, 183;

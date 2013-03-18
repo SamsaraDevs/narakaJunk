@@ -189,7 +189,7 @@ actor DSparilSerpentUnmounted : Demon1B
         goto "Super::XDeath"
 
       Death.ZorchPistol:
-
+      Death.PhasingZorch:
       Death.Zorch:
 		TNT1 A 0 Thing_ChangeTID(0, 0)
         TNT1 A 0 A_GiveToTarget("KillCount",1)
@@ -489,6 +489,7 @@ actor DsparilPlayer : PlayerPawn
         
       Pain.Zorch:
       Pain.ZorchPistol:
+      Pain.PhasingZorch:
         TNT1 A 0 A_JumpIfHealthLower(50,"FakeZorch")
         SRCR R 4 
         SRCR R 4 A_Pain
@@ -727,16 +728,17 @@ actor DsparilOnFootPlayer : PlayerPawn
         
       Pain.Zorch:
       Pain.ZorchPistol:
+      Pain.PhasingZorch:
         SOR2 Q 4 
         SOR2 Q 4 A_Pain
-        Goto Spawn
+        Goto Spawn2
         
       Pain.Ice:
       Pain.DukeIce:
       Pain.HexenIce:
         SOR2 Q 4 
         SOR2 Q 4 A_Pain
-        Goto Spawn
+        Goto Spawn2
         
       Death.DukeDamage:
       Death.DukeExplosive:
@@ -756,6 +758,7 @@ actor DsparilOnFootPlayer : PlayerPawn
         
       Death.ZorchPistol:
       Death.Zorch:
+      Death.PhasingZorch:
         SOR2 Q 1 A_KillChildren
         SOR2 Q 1 A_SpawnItemEx("DSparilZorch",0,0,0,0,0,0,0,128)
         TNT1 A 0 A_NoBlocking
@@ -1284,6 +1287,9 @@ actor DSparilWizard : Wizard2
         WZRD B 3 A_Wander
         WZRD B 4 A_Wander
 		goto See
+		
+      Death.PhasingZorch:
+	    goto Death.Zorch
     }
 }
 

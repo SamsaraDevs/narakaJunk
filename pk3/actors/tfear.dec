@@ -165,6 +165,7 @@ ACTOR TfearPfhorTrooper : FriendlyPfhorTrooper
 
       Death.ZorchPistol:
       Death.Zorch:
+      Death.PhasingZorch:
         TNT1 A 0 A_GiveToTarget("KillCount",1)
         TNT1 A 0 A_Stop
         TNT1 A 0 A_ChangeFlag("DONTGIB",1)
@@ -455,6 +456,7 @@ actor TfearPlayer : PlayerPawn
 
       Death.ZorchPistol:
       Death.Zorch:
+      Death.PhasingZorch:
         TNT1 A 0 A_TakeInventory("Zoomed",999)
         TNT1 A 0 A_Stop
         TNT1 A 0 A_PlaySoundEx("chex/zorch","soundslot5",0,0)

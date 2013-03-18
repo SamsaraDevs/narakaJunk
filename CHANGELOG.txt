@@ -8,6 +8,7 @@ FROM V0.1 TO V0.11:
 - The Disciples of D'Sparil have been buffed and now have more HP and more damaging attacks.
 - The Cyberdemon's rocket launch and explosion sounds are different from Doomguy's.
 - The Cyberdemon now has his unique item.
+- D'Sparil on foot getting hurt with the Zorchers or ice no longer regains him his health.
 
 FROM CONCEPT V0 TO V0.1:
 =========================

@@ -1,47 +1,88 @@
 ACTOR DoomguyDharmapala : DoomguyPlayer replaces DoomguyPlayer
 {
  LimitedToTeam 0
+ States
+ {
+ Death.PhasingZorch:
+    goto Death.Zorch
+ }
 }
 
 ACTOR ChexWarriorDharmapala : ChexWarrior replaces ChexWarrior
 {
  LimitedToTeam 0
+ States
+ {
+ Death.PhasingZorch:
+    goto Death.Zorch
+ }
 }
 
 ACTOR CorvusDharmapala : CorvusPlayer replaces CorvusPlayer
 {
  LimitedToTeam 0
+ States
+ {
+ Death.PhasingZorch:
+    goto Death.Zorch
+ }
 }
 
 ACTOR WolfenDharmapala : WolfenPlayer replaces WolfenPlayer
 {
  LimitedToTeam 0
+ States
+ {
+ Death.PhasingZorch:
+    goto Death.Zorch
+ }
 }
 
 ACTOR HexenPlayerDharmapala : HexenPlayer replaces HexenPlayer
 {
  LimitedToTeam 0
+ States
+ {
+ Death.PhasingZorch:
+    goto Death.Zorch
+ }
 }
 
 ACTOR DukeDharmapala : DukePlayer replaces DukePlayer
 {
  LimitedToTeam 0
+ States
+ {
+ Death.PhasingZorch:
+    goto Death.Zorch
+ }
 }
 
 ACTOR MarathonDharmapala : MarathonPlayer replaces MarathonPlayer
 {
  LimitedToTeam 0
+ States
+ {
+ Death.PhasingZorch:
+    goto Death.Zorch
+ }
 }
 
 ACTOR QuakeDharmapala : QuakePlayer replaces QuakePlayer
 {
  LimitedToTeam 0
+ States
+ {
+ Death.PhasingZorch:
+    goto Death.Zorch
+ }
 }
 
 #include "actors/core.dec"
 #include "actors/ammo.dec"
 #include "actors/cyberdemon.dec"
 #include "actors/dsparil.dec"
+#include "actors/korax.dec"
 #include "actors/tfear.dec"
 #include "actors/lmsactors.dec"
 #include "actors/heroshit.txt"

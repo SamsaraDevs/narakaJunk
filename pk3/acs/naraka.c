@@ -239,6 +239,120 @@ script 480 (int cloakanddagger) // It's time to H-H-H-HIDE!
     }
 }
 
+script 490 (void)
+{
+	if(GetCvar("sv_weaponstay") == 1)
+		setresultvalue(1);
+		else setresultvalue(0);
+}
+
+script 492 (void)
+{
+	if(GetCvar("samsara_permault") == 1)
+		setresultvalue(1);
+		else setresultvalue(0);
+}
+
+script 491 (int messageshit)
+{
+	switch (messageshit)
+	{
+		case 1:
+			if(GetCvar("samsara_cl_printpickup") == 1)
+			{
+			Print(s:"You feel your power surging.");
+			}
+			else
+			{
+			Log(s:"You feel your power surging.");
+			}
+			break;
+			
+		case 2:
+			if(GetCvar("samsara_cl_printpickup") == 1)
+			{
+			Print(s:"You feel your arsenal expanding.");
+			}
+			else
+			{
+			Log(s:"You feel your arsenal expanding.");
+			}
+			break;
+			
+		case 3:
+			if(GetCvar("samsara_cl_printpickup") == 1)
+			{
+			Print(s:"You feel your armor hardening.");
+			}
+			else
+			{
+			Log(s:"You feel your armor hardening.");
+			}
+			break;
+			
+		case 4:
+			if(GetCvar("samsara_cl_printpickup") == 1)
+			{
+			Print(s:"You feel your arsenal expanding.");
+			}
+			else
+			{
+			Log(s:"You feel your arsenal expanding.");
+			}
+			break;
+			
+		case 5:
+			if(GetCvar("samsara_cl_printpickup") == 1)
+			{
+			Print(s:"You feel utterly impenetrable.");
+			}
+			else
+			{
+			Log(s:"You feel utterly impenetrable.");
+			}
+			break;
+			
+		case 6:
+			if(GetCvar("samsara_cl_printpickup") == 1)
+			{
+			Print(s:"You feel your strength has no limits.");
+			}
+			else
+			{
+			Log(s:"You feel your strength has no limits.");
+			}
+			break;
+			
+		case 7:
+			if(CheckInventory("CyberdemonClass") == 1)
+			{
+				if(GetCvar("samsara_cl_printpickup") == 1)
+				{
+				Print(s:"You got the Spider Mastermind's Chaingun! Show them Hell!");
+				}
+				else
+				{
+				Log(s:"You got the Spider Mastermind's Chaingun! Show them Hell!");
+				}
+			}
+			break;
+			
+		case 8:
+			if(CheckInventory("CyberdemonClass") == 1)
+			{
+				if(GetCvar("samsara_cl_printpickup") == 1)
+				{
+				Print(s:"You got a Targeting System! Hell yes.");
+				}
+				else
+				{
+				Log(s:"You got a Targeting System! Hell yes.");
+				}
+			}
+			break;
+	}
+}
+
 script NARAKA_COOLDOWN (int index, int delayTime, int endScript)
 {
     if (index < 0 || index >= COOLDOWNITEMCOUNT)

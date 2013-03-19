@@ -179,3 +179,9 @@ CentaurLeaderAttack     	cntshld4
 CentaurMissileExplode   	impact3
 SerpentFXContinuous     	glbhiss1
 SerpentFXHit            	glbhit4
+
+
+pickup/defense				PKDEFENS // Taken from Trickster
+pickup/offense				PKOFFENS // Taken from Trickster
+pickup/equipment			PKARTILL // Taken from Tribes: Ascend
+pickup/ultimate				PKULTIMT // Taken from Trickster

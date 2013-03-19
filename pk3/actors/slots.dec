@@ -748,7 +748,7 @@ actor SamsaraUniquePickup1_Naraka: CustomInventory
     }
 }
 
-actor SamsaraUniquePickup2_Naraka: SamsaraUniquePickup1
+actor SamsaraUniquePickup2_Naraka: SamsaraUniquePickup1_Naraka
 {
     States
     {

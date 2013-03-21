@@ -18,7 +18,7 @@ script 465 (void)
     int myTID  = defaultTID(-1);
     Spawn("TranslationHolder", GetActorX(0), GetActorY(0), GetActorZ(0)+8.0, newTID);
     Thing_SetTranslation(newTID, -1);
-    
+
     MorphActor(0, "DSparilOnFootPlayer", "", 0x7FFFFFFF, 194, "emptytelefog", "emptytelefog");
     Thing_ChangeTID(0, myTID);
     SetActivator(newTID);
@@ -407,7 +407,21 @@ script 888 (int ent)
             SerpentArmor [pNum] = CheckInventory("Armor");
             SerpentHealth[pNum] = GetActorProperty(0, APROP_HEALTH);
             
-            MorphActor(0, "DSparilOnFootPlayer", "", 0x7FFFFFFF, 194, "emptytelefog", "emptytelefog");
+			int newTID = unusedTID(23000, 25000);
+			int myTID  = defaultTID(-1);
+			Spawn("TranslationHolder", GetActorX(0), GetActorY(0), GetActorZ(0)+8.0, newTID);
+			Thing_SetTranslation(newTID, -1);
+
+			MorphActor(0, "DSparilOnFootPlayer", "", 0x7FFFFFFF, 194, "emptytelefog", "emptytelefog");
+			Thing_ChangeTID(0, myTID);
+			SetActivator(newTID);
+
+			Thing_SetTranslation(myTID, -1);
+			//GiveInventory("Megasphere", 1);
+
+			SetActivator(myTID);
+			Thing_Remove(newTID);
+	
             SetActorProperty(0, APROP_HEALTH, DSparilHealth[pNum]);
             GiveInventory("DSparilDismountedSerpent", 1);
             TakeInventory("DSparilDismount", 1);
@@ -465,7 +479,21 @@ script 889 (int ent)
             SerpentArmor [pNum] = CheckInventory("Armor");
             SerpentHealth[pNum] = GetActorProperty(0, APROP_HEALTH);
             
-            MorphActor(0, "DSparilOnFootPlayer", "", 0x7FFFFFFF, 194, "emptytelefog", "emptytelefog");
+			int newTID = unusedTID(23000, 25000);
+			int myTID  = defaultTID(-1);
+			Spawn("TranslationHolder", GetActorX(0), GetActorY(0), GetActorZ(0)+8.0, newTID);
+			Thing_SetTranslation(newTID, -1);
+
+			MorphActor(0, "DSparilOnFootPlayer", "", 0x7FFFFFFF, 194, "emptytelefog", "emptytelefog");
+			Thing_ChangeTID(0, myTID);
+			SetActivator(newTID);
+
+			Thing_SetTranslation(myTID, -1);
+			//GiveInventory("Megasphere", 1);
+
+			SetActivator(myTID);
+			Thing_Remove(newTID);
+	
             SetActorProperty(0, APROP_HEALTH, DSparilHealth[pNum]);
             GiveInventory("DSparilDismountedSerpent", 1);
             TakeInventory("DSparilDismount", 1);

@@ -23,13 +23,11 @@ script 465 (void)
     Thing_ChangeTID(0, myTID);
     SetActivator(newTID);
 
-    PrintBold(s:"Yo dawg I herd u liek translations");
     Thing_SetTranslation(myTID, -1);
     //GiveInventory("Megasphere", 1);
 
     SetActivator(myTID);
     Thing_Remove(newTID);
-    Print(s:"yep");
 }
 
 script 255 (void)

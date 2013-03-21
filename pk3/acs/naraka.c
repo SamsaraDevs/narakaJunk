@@ -14,8 +14,22 @@ int playerOnFoot[PLAYERMAX];
 
 script 465 (void)
 {
+    int newTID = unusedTID(23000, 25000);
+    int myTID  = defaultTID(-1);
+    Spawn("TranslationHolder", GetActorX(0), GetActorY(0), GetActorZ(0)+8.0, newTID);
+    Thing_SetTranslation(newTID, -1);
+    
     MorphActor(0, "DSparilOnFootPlayer", "", 0x7FFFFFFF, 194, "emptytelefog", "emptytelefog");
+    Thing_ChangeTID(0, myTID);
+    SetActivator(newTID);
+
+    PrintBold(s:"Yo dawg I herd u liek translations");
+    Thing_SetTranslation(myTID, -1);
     //GiveInventory("Megasphere", 1);
+
+    SetActivator(myTID);
+    Thing_Remove(newTID);
+    Print(s:"yep");
 }
 
 script 255 (void)

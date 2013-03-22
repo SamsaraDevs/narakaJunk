@@ -8,35 +8,82 @@ global int 61:SerpentArmor[];  // These two need to be
 global int 62:SerpentHealth[]; // remembered between levels.
 
 int DSparilHealth[PLAYERMAX];
+int DSparilChasecam[PLAYERMAX];
 int playerOnFoot[PLAYERMAX];
 
 #include "narakaFuncs.h"
 
 script 465 (void)
 {
-    int newTID = unusedTID(23000, 25000);
+    int newTID = unusedTID(23000, 27000);
     int myTID  = defaultTID(-1);
+
     Spawn("TranslationHolder", GetActorX(0), GetActorY(0), GetActorZ(0)+8.0, newTID);
     Thing_SetTranslation(newTID, -1);
 
-    MorphActor(0, "DSparilOnFootPlayer", "", 0x7FFFFFFF, 194, "emptytelefog", "emptytelefog");
+    ACS_ExecuteAlways(NARAKA_CAMERA, 0, PlayerNumber(), 0);
+    MorphActor(0, "DSparilOnFootPlayer", "", 0x7FFFFFFF, 194, "NoTeleportFog", "NoTeleportFog");
     Thing_ChangeTID(0, myTID);
     SetActivator(newTID);
+
 
     Thing_SetTranslation(myTID, -1);
     //GiveInventory("Megasphere", 1);
 
     SetActivator(myTID);
     Thing_Remove(newTID);
+
 }
 
-script 255 (void)
-{
-}
+script 255 (void) { }
 
 script 466 (int toggle)
 {
     SetPlayerProperty(0, toggle, 4);
+    ACS_ExecuteAlways(NARAKA_CAMERA, 0, PlayerNumber(), toggle);
+}
+
+
+script NARAKA_CAMERA (int pln, int toggle, int dist) clientside
+{
+    int angle, pitch;
+    int cameraTID = unusedTID(27000, 32000);
+
+    dist = cond(dist > 0, dist, 128);
+
+    if (toggle == 1)
+    {
+        angle = -GetActorAngle(0);
+        pitch = -0.05;
+        Spawn("CameraDummy", GetActorX(0), GetActorY(0), GetActorZ(0)+8.0, cameraTID);
+        ChangeCamera(cameraTID, 0, 0);
+        DSparilChasecam[pln] = cameraTID;
+
+        while (DSparilChasecam[pln] == cameraTID)
+        {
+            angle -= GetPlayerInput(-1, INPUT_YAW);
+            pitch += GetPlayerInput(-1, INPUT_PITCH);
+            angle = mod(angle, 1.0);
+            pitch = middle(-0.1, pitch, 0.1);
+
+            SetActorPosition(cameraTID,
+                    GetActorX(0) + (dist * FixedMul(-cos(angle), cos(pitch))),
+                    GetActorY(0) + (dist * FixedMul(sin(angle), cos(pitch))),
+                    middle(GetActorFloorZ(0), GetActorZ(0) + 32.0 + (dist * -sin(pitch)), GetActorCeilingZ(0)),
+                    0);
+
+            SetActorAngle(cameraTID, -angle);
+            SetActorPitch(cameraTID, -pitch);
+
+            Delay(1);
+        }
+
+        Thing_Remove(cameraTID);
+    }
+    else
+    {
+        DSparilChasecam[pln] = 0;
+    }
 }
 
 script 470 UNLOADING

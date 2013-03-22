@@ -78,9 +78,44 @@ ACTOR QuakeDharmapala : QuakePlayer replaces QuakePlayer
     }
 }
 
+actor CameraDummy
+{
+    +NOINTERACTION
+    +CLIENTSIDEONLY
+    
+    Radius 8
+    Height 8
+
+    States
+    {
+      Spawn:
+        TNT1 A -1
+        stop
+    }
+}
+
+actor NoTeleportFog
+{
+    +NOINTERACTION
+    +CLIENTSIDEONLY
+
+    Radius 1
+    Height 1
+
+    States
+    {
+      Spawn:
+        TNT1 A 0
+        stop
+    }
+}
+
 actor TranslationHolder
 {
     +NOINTERACTION
+
+    Radius 1
+    Height 1
     
     States
     {

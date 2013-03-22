@@ -1,4 +1,5 @@
 #define NARAKA_COOLDOWN     484
+#define NARAKA_CAMERA       485
 #define NARAKA_SPAWN        573
 
 #define CLASSCOUNT 4

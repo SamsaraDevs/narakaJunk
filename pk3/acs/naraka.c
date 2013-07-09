@@ -116,10 +116,7 @@ script NARAKA_SPAWN (int respawning)
     int pNum = playerNumber();
     if (GameType() == GAME_SINGLE_PLAYER || GameType() == GAME_NET_COOPERATIVE)
     {
-        if (CheckInventory("CyberdemonClass") == 1)
-        {
-            GiveInventory("CyberBeef", 1);
-        }
+        if (CheckInventory("CyberdemonClass") == 1) { GiveInventory("CyberBeef", 1); }
         if (CheckInventory("DsparilClass") == 1)
         {
             DSparilHealth[pNum] = 200;
@@ -127,10 +124,7 @@ script NARAKA_SPAWN (int respawning)
             SerpentHealth[pNum] = 100;
             GiveInventory("DsparilBeef", 1);
         }
-        if (CheckInventory("KoraxClass") == 1)
-        {
-            GiveInventory("KoraxBeef", 1);
-        }
+        if (CheckInventory("KoraxClass") == 1) { GiveInventory("KoraxBeef", 1); }
     }
 
     if (isLMS())
@@ -317,96 +311,48 @@ script 491 (int messageshit)
 	switch (messageshit)
 	{
 		case 1:
-			if(GetCvar("samsara_cl_printpickup") == 1)
-			{
-			Print(s:"You feel your power surging.");
-			}
-			else
-			{
-			Log(s:"You feel your power surging.");
-			}
+			if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"You feel your power surging."); }
+			else { Log(s:"You feel your power surging."); }
 			break;
 			
 		case 2:
-			if(GetCvar("samsara_cl_printpickup") == 1)
-			{
-			Print(s:"You feel your arsenal expanding.");
-			}
-			else
-			{
-			Log(s:"You feel your arsenal expanding.");
-			}
+			if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"You feel your arsenal expanding."); }
+			else { Log(s:"You feel your arsenal expanding."); }
 			break;
 			
 		case 3:
-			if(GetCvar("samsara_cl_printpickup") == 1)
-			{
-			Print(s:"You feel your armor hardening.");
-			}
-			else
-			{
-			Log(s:"You feel your armor hardening.");
-			}
+			if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"You feel your armor hardening."); }
+			else { Log(s:"You feel your armor hardening."); }
 			break;
 			
 		case 4:
-			if(GetCvar("samsara_cl_printpickup") == 1)
-			{
-			Print(s:"You feel your arsenal expanding.");
-			}
-			else
-			{
-			Log(s:"You feel your arsenal expanding.");
-			}
+			if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"You feel your arsenal expanding."); }
+			else { Log(s:"You feel your arsenal expanding."); }
 			break;
 			
 		case 5:
-			if(GetCvar("samsara_cl_printpickup") == 1)
-			{
-			Print(s:"You feel utterly impenetrable.");
-			}
-			else
-			{
-			Log(s:"You feel utterly impenetrable.");
-			}
+			if(GetCvar("samsara_cl_printpickup") == 1)	{ Print(s:"You feel utterly impenetrable."); }
+			else	{ Log(s:"You feel utterly impenetrable."); }
 			break;
 			
 		case 6:
-			if(GetCvar("samsara_cl_printpickup") == 1)
-			{
-			Print(s:"You feel your strength has no limits.");
-			}
-			else
-			{
-			Log(s:"You feel your strength has no limits.");
-			}
+			if(GetCvar("samsara_cl_printpickup") == 1)	{ Print(s:"You feel your strength has no limits."); }
+			else { Log(s:"You feel your strength has no limits."); }
 			break;
 			
 		case 7:
 			if(CheckInventory("CyberdemonClass") == 1)
 			{
-				if(GetCvar("samsara_cl_printpickup") == 1)
-				{
-				Print(s:"You got the Spider Mastermind's Chaingun! Show them Hell!");
-				}
-				else
-				{
-				Log(s:"You got the Spider Mastermind's Chaingun! Show them Hell!");
-				}
+				if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"You got the Spider Mastermind's Chaingun! Show them Hell!"); }
+				else { Log(s:"You got the Spider Mastermind's Chaingun! Show them Hell!"); }
 			}
 			break;
 			
 		case 8:
 			if(CheckInventory("CyberdemonClass") == 1)
 			{
-				if(GetCvar("samsara_cl_printpickup") == 1)
-				{
-				Print(s:"You got a Targeting System! Hell yes.");
-				}
-				else
-				{
-				Log(s:"You got a Targeting System! Hell yes.");
-				}
+				if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"You got a Targeting System! Hell yes."); }
+				else { Log(s:"You got a Targeting System! Hell yes."); }
 			}
 			break;
 	}
@@ -578,4 +524,33 @@ script 889 (int ent)
             }
         }
     }
+}
+
+script 890 ENTER
+{
+    int i;
+	
+	if(CheckInventory("IsNarakaClass") == 1);
+	{
+        /*if (CheckInventory("TfearClass") == 1);
+		{
+            if (GetCVar("samsara_nocustomgravity"))
+			{ SetActorProperty(0, APROP_Gravity, 1.0); }
+            else
+			{ SetActorProperty(0, APROP_Gravity, 0.15); }
+		}
+		if (CheckInventory("TfearClass") == 0);
+		{ SetActorProperty(0, APROP_Gravity, 1.0); }
+		
+        if (CheckInventory("KoraxClass") == 1);
+		{ i = JumpZFromHeight(41 + GetCVar("samsara_jumpmod"), GetActorProperty(0, APROP_Gravity)); }
+        if (CheckInventory("KoraxClass") == 0);
+		{*/ i = JumpZFromHeight(32 + GetCVar("samsara_jumpmod"), GetActorProperty(0, APROP_Gravity)); //}
+
+        SetActorProperty(0, APROP_JumpZ, max(i, 0));
+	}
+        
+        //if (isDead(0)) { endloop = 1; }       
+        Delay(1);
+		Restart;
 }

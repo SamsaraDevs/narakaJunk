@@ -27,8 +27,3 @@ actor QuakeClusterRocket2 : QuakeClusterRocket replaces QuakeClusterRocket
 {
 Damage 5
 }
-
-actor ChexPlasma3 : ChexPlasma replaces ChexPlasma
-{
-DamageType "PhasingZorch"
-}

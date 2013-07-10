@@ -47,7 +47,15 @@ int LMSLifeArmors[CLASSCOUNT][LMSMODES] =
 
 int LMSUlts[CLASSCOUNT] = 
 {
-    "Spider Chaingun",
+    "Master Chaingun",
+    "",
+    "",
+    "",
+};
+
+int LMSUniques[CLASSCOUNT] = 
+{
+    "CyberTargeter",
     "",
     "",
     "",

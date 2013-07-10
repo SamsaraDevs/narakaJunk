@@ -480,7 +480,7 @@ ACTOR CyberDash : PowerSpeed
 
 // Made from referencing Richard Smith Long's Overdrive Gun.
 // Hooray for an awesome rotor system!
-ACTOR "Spider Chaingun" : Weapon
+ACTOR "Master Chaingun" : Weapon
 {
 	Weapon.SlotNumber 7
 	Weapon.Kickback 70

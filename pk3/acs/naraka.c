@@ -530,27 +530,42 @@ script 890 ENTER
 {
     int i;
 	
-	if(CheckInventory("IsNarakaClass") == 1);
+	if(CheckInventory("IsNarakaClass") == 1)
 	{
-        /*if (CheckInventory("TfearClass") == 1);
+	
+		// JUMPING SHIT
+        if (CheckInventory("TfearClass") == 1)
 		{
             if (GetCVar("samsara_nocustomgravity"))
 			{ SetActorProperty(0, APROP_Gravity, 1.0); }
             else
 			{ SetActorProperty(0, APROP_Gravity, 0.15); }
 		}
-		if (CheckInventory("TfearClass") == 0);
+		else
 		{ SetActorProperty(0, APROP_Gravity, 1.0); }
 		
-        if (CheckInventory("KoraxClass") == 1);
+        /*if (CheckInventory("KoraxClass") == 1);
 		{ i = JumpZFromHeight(41 + GetCVar("samsara_jumpmod"), GetActorProperty(0, APROP_Gravity)); }
         if (CheckInventory("KoraxClass") == 0);
 		{*/ i = JumpZFromHeight(32 + GetCVar("samsara_jumpmod"), GetActorProperty(0, APROP_Gravity)); //}
 
         SetActorProperty(0, APROP_JumpZ, max(i, 0));
+		
+		
+		// POWERUPS SHIT
+	    if(CheckInventory("GotWeapon0") == 1) { GiveInventory("CoopLesserBamf",1); }
+		else { TakeInventory("CoopLesserBamf",1); }
+	    if(CheckInventory("GotWeapon3") == 1) { GiveInventory("CoopBeefStringy",1); }
+		else { TakeInventory("CoopBeefStringy",1); }
+	    if(CheckInventory("GotWeapon5") == 1) { GiveInventory("CoopBeef",1); }
+		else { TakeInventory("CoopBeef",1); }
+	    if(CheckInventory("GotWeapon6") == 1) { GiveInventory("CoopBamf",1); }
+		else { TakeInventory("CoopBamf",1); }
 	}
-        
-        //if (isDead(0)) { endloop = 1; }       
-        Delay(1);
-		Restart;
+    Delay(1);
+	Restart;
 }
+
+//script 891 enter { ACS_ExecuteWithResult(890, 0,0,0); }
+script 891 respawn { ACS_ExecuteWithResult(890, 0,0,0); }
+script 892 return { ACS_ExecuteWithResult(890, 0,0,0); }

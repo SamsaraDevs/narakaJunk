@@ -92,6 +92,7 @@ cyber/dashfail				cydasher
 cyber/rocket				cyrlaunc
 cyber/rockethit				cyrckexp
 
+$limit cyber/rockethit 0
 $rolloff cyber/rockethit 400 2400
 
 cyber/up      				CYOVERUB

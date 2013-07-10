@@ -4,7 +4,7 @@ actor Zoomed : Boolean { }
 actor TfearCloakCount : Counter { Inventory.MaxAmount 20 }
 actor TfearCloakCooldown : Counter { Inventory.MaxAmount 30 }
 actor TfearBeaconCooldown : Counter { Inventory.MaxAmount 30 }
-actor TfearSummonLimit : Counter { Inventory.MaxAmount 7 }
+actor TfearSummonLimit : Counter { Inventory.MaxAmount 4 }
 actor TfearCloak : PowerShadow
 {
   Powerup.Duration -25

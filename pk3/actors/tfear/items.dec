@@ -47,12 +47,12 @@ actor TfearBeacon : CustomInventory
     States
     {		
       Use:
-	    TNT1 A 0 A_JumpIfInventory("TfearSummonLimit",7,"UseFail")
+	    TNT1 A 0 A_JumpIfInventory("TfearSummonLimit",4,"UseFail")
         TNT1 A 0 A_JumpIfInventory("TfearBeaconCooldown",1,"UseFail")
 		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"TLMSUse")
 		TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"TLMSUse")
 		TNT1 A 0 A_SetBlend("CCFF00",0.8,10)
-		TNT1 A 0 A_JumpIfInventory("TfearSummonLimit",6,"SummonOnlyOne")
+		TNT1 A 0 A_JumpIfInventory("TfearSummonLimit",3,"SummonOnlyOne")
         TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooper",0,85,2,0,0,0,105,48)
         TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooper",0,85,2,0,0,0,65,48)
         TNT1 A 0 A_SpawnItemEx("TeleportFog",0,85,2,0,0,0,105,48)
@@ -74,7 +74,7 @@ actor TfearBeacon : CustomInventory
 		
 	  TLMSUse:
 		TNT1 A 0 A_SetBlend("CCFF00",0.8,10)
-		TNT1 A 0 A_JumpIfInventory("TfearSummonLimit",6,"SummonOnlyOneTLMS")
+		TNT1 A 0 A_JumpIfInventory("TfearSummonLimit",3,"SummonOnlyOneTLMS")
         TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooperTLMS",0,85,2,0,0,0,105,48)
         TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooperTLMS",0,85,2,0,0,0,65,48)
         TNT1 A 0 A_SpawnItemEx("TeleportFog",0,85,2,0,0,0,105,48)
@@ -95,7 +95,7 @@ actor TfearBeacon : CustomInventory
         fail
 		
 	  UseFail:
-        TNT1 A 0 A_Print("Your distress signal falls flat.")
+        TNT1 A 0 A_Print("Your signal falls flat.")
 		TNT1 A 1
 		fail
     }

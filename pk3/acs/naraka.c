@@ -575,5 +575,5 @@ script 892 return { ACS_ExecuteWithResult(890, 0,0,0); }
 script 893 (void)
 { 
 	int tid = GetActorProperty(0, APROP_MASTERTID);
-	TakeActorInventory(tid, "DroneCapacity", 1);
+	TakeActorInventory(tid, "TfearSummonLimit", 1);
 }

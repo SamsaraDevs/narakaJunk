@@ -6,11 +6,18 @@ FROM V0.1 TO V0.11:
 - Villains should be more resistant to axing.
 - Tfear and his Pfhor Troopers should now spew the proper-colored gibs.
 - The Disciples of D'Sparil have been buffed and now have more HP and more damaging attacks.
-- The Cyberdemon's rocket launch and explosion sounds are different from Doomguy's.
+- The Cyberdemon's rocket launch and explosion sounds are different from Doomguy's, for easier identification.
 - The Cyberdemon now has his unique item.
 - D'Sparil on foot getting hurt with the Zorchers or ice no longer regains him his health.
 - Tfear's Flawed zoom-in is now much faster.
 - Tfear's Guilt no longer raises instantly. Does raise and lower faster than before, though.
+- D'Sparil's death sequence now properly shows his translation.
+- Villains now respect samsara_jumpmod.
+- Villain ammo and weapon pickups now flash the screen like normal pickups.
+- The Cyberdemon's rockets have a less static-y launch sound and have twice the rolloff.
+- Naraka weapon pickup buffs now persist from level to level.
+- Naraka's health pickups now support infinite health.
+- Tfear now can only have four Troopers out at one time.
 
 FROM CONCEPT V0 TO V0.1:
 =========================

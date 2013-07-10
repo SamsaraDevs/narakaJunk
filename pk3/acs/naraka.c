@@ -106,6 +106,7 @@ script 470 UNLOADING
     TakeInventory("DSparilDismountedSerpent", 999);
     TakeInventory("PowerShadow", 999);
     TakeInventory("DSparilMount", 999);
+    TakeInventory("TfearSummonLimit", 999);
 }
 
 script 571 ENTER   { ACS_ExecuteAlways(NARAKA_SPAWN, 0, 0,0,0); }
@@ -131,6 +132,7 @@ script NARAKA_SPAWN (int respawning) // This differs from 890 in that this works
     {
         ApplyLMS();
     }
+	if(CheckInventory("TfearClass") == 1) { Thing_ChangeTID(0, 13150 + PlayerNumber()); }
 }
 
 script 473 (void)
@@ -569,3 +571,9 @@ script 890 ENTER // This differs from Naraka_Spawn in that this is a constant lo
 //script 891 enter { ACS_ExecuteWithResult(890, 0,0,0); }
 script 891 respawn { ACS_ExecuteWithResult(890, 0,0,0); }
 script 892 return { ACS_ExecuteWithResult(890, 0,0,0); }
+
+script 893 (void)
+{ 
+	int tid = GetActorProperty(0, APROP_MASTERTID);
+	TakeActorInventory(tid, "DroneCapacity", 1);
+}

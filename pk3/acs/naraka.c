@@ -111,7 +111,7 @@ script 470 UNLOADING
 script 571 ENTER   { ACS_ExecuteAlways(NARAKA_SPAWN, 0, 0,0,0); }
 script 572 RESPAWN { ACS_ExecuteAlways(NARAKA_SPAWN, 0, 1,0,0); }
 
-script NARAKA_SPAWN (int respawning)
+script NARAKA_SPAWN (int respawning) // This differs from 890 in that this works only once.
 {
     int pNum = playerNumber();
     if (GameType() == GAME_SINGLE_PLAYER || GameType() == GAME_NET_COOPERATIVE)
@@ -526,7 +526,7 @@ script 889 (int ent)
     }
 }
 
-script 890 ENTER
+script 890 ENTER // This differs from Naraka_Spawn in that this is a constant loop to be played.
 {
     int i;
 	

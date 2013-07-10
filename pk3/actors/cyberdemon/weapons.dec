@@ -1,433 +1,3 @@
-Actor CyberdemonClass : Boolean { }
-Actor CyberdemonDashCount : Counter { Inventory.MaxAmount 42 }//6 }
-Actor CyberdemonDashCooldown : Counter { Inventory.MaxAmount 210 }//30 }
-ACTOR RotorActive : Boolean { }
-
-ACTOR CyberBeef : PowerProtection
-{
-	Powerup.Duration 0x7FFFFFFF
-	DamageFactor "Normal", 0.825
-	DamageFactor "Telefrag", 1.5
-}
-
-ACTOR CyberDashToggle : CustomInventory
-{
-    Inventory.Amount 1
-    Inventory.MaxAmount 1
-    +INVBAR
-    +INVENTORY.UNDROPPABLE
-    Inventory.Icon CYSPRINT
-    +inventory.hubpower
-    States
-    {
-      Use:
-		TNT1 A 0 A_JumpIfInventory("CyberdemonDashCooldown",1,"UseFail")
-        TNT1 A 0 A_JumpIfInventory("CyberDash",1,"TurnOff")
-        TNT1 A 1 ACS_ExecuteAlways(474,0,1)
-        fail
-
-      TurnOff:
-        TNT1 A 0 ACS_ExecuteAlways(474,0,0)
-		TNT1 A 1
-        fail
-		
-	  UseFail:
-		TNT1 A 0 A_PlaySoundEx("cyber/dashfail","soundslot7",0,0)
-		TNT1 A 1
-		fail
-	}
-}
-
-ACTOR CyberTargeter : CustomInventory
-{
-    Inventory.Amount 1
-    Inventory.MaxAmount 16
-    +INVBAR
-    +INVENTORY.UNDROPPABLE
-    Inventory.Icon CYBTRGTR
-    +inventory.hubpower
-    States
-    {
-      Use:
-		TNT1 A 0 A_JumpIfInventory("CyberdemonTargeter",1,"UseFail")
-        TNT1 A 1 A_SetBlend("Yellow",0.5,7)
-		TNT1 A 1 A_PlaySoundEx("cyber/targeter","soundslot7")
-		TNT1 A 1 A_GiveInventory("CyberdemonTargeter")
-		TNT1 A 1 A_GiveInventory("CyberdemonVision")
-        stop
-		
-	  UseFail:
-		TNT1 A 1
-		fail
-	}
-}
-
-actor CyberdemonVision : PowerLightAmp
-{
-Powerup.Duration -120
-}
-
-ACTOR CyberdemonTargeter : Powerup//PowerTargeter
-{
-  Powerup.Duration -120
-}
-
-actor CyberdemonPlayer : PlayerPawn
-{
-    Health 200
-    Player.MaxHealth 200
-    LimitedToTeam 1
-    Player.DisplayName "Cyberdemon"
-    BloodColor "Red"
-    Player.Face "EVL"
-    Radius 20 // Previously 25
-    Height 67
-    Mass 1000
-    Player.Viewheight 67
-    Player.AttackZOffset 22
-    Player.ForwardMove 0.6 0.6
-    Player.SideMove 0.55 0.55
-    Player.JumpZ 6//Default is 8
-    Player.StartItem "Cyber-Rocket Launcher", 1
-    //Player.StartItem "Spider Chaingun", 1
-	Player.StartItem "VillainAmmoHeavy", 20
-    Player.StartItem "CyberDashToggle", 1
-    Player.StartItem "CyberdemonClass", 1
-	Player.StartItem "IsNarakaClass", 1
-    //Player.StartItem "BossDamageImmunity", 1
-    Player.Soundclass "Cyberdemon"
-    RadiusDamageFactor 0.5
-    DamageFactor "VillainTeam", 0
-    DamageFactor "Slime", 0
-    DamageFactor "Lava", 0
-    DamageFactor "LavaHefty", 0
-    DamageFactor "Nuke", 0
-    DamageFactor "Nukage", 0
-    DamageFactor "Hellslime", 0
-    DamageFactor "SuperHellslime", 0
-    DamageFactor "Normal", 0.9
-    DamageFactor "Telefrag", 2.0
-    DamageFactor "PoisonCloud", 1.75
-    DamageFactor "DukeExplosive", 0.375
-    DamageFactor "DoomguyPlasma", 0.75
-    DamageFactor "DukeIce", 0.75
-    DamageFactor "CorvusHellstaff", 0.75
-    DamageFactor "WolfenFlamethrower", 0.75
-    DamageFactor "Fire", 0.75 // Effects Corvus' Phoenix Rod as well as the TOZT and Firestorm. Damn.
-    DamageFactor "PhasingZorch", 0.75 // Not in yet!
-    DamageFactor "TimonsAxe", 0.55
-    DamageFactor "WMCBeam", 0.5
-    DamageFactor "WMCNade", 0.5
-    Species "Villain"
-    //DamageFactor "MarathonFusion", 2.0 // Maybe not for this.
-    //DamageFactor "CorvusHellstaffTomed", 0.2 // Or this...
-    -THRUSPECIES
-    +NOSKIN
-    -DONTBLAST
-    +DONTRIP
-    +BOSSDEATH
-    +NOTDMATCH
-    +NOICEDEATH
-    +NORADIUSDMG
-    //Species "Player"
-    Player.ColorRange 112, 127
-    States
-    {
-      CoOpModeOn:
-        TNT1 A 0
-        TNT1 A 0 A_ChangeFlag("THRUSPECIES",1)
-        CYBD A 1 A_GiveInventory("CoopModeOn")
-        goto Spawn
-		
-      Spawn:
-        CYBD A -1
-        Loop
-        
-      See:
-		TNT1 A 0 A_JumpIfInventory("CyberDash",1,"See2")
-        CYBD A 3
-        CYBD A 0 A_CheckFloor("WalkSound")
-        CYBD A 3
-        goto ContinueOn
-
-      WalkSound:
-		TNT1 A 0 A_JumpIfInventory("CyberDash",1,"WalkSoundRun")
-	    TNT1 A 0 A_JumpIfInventory("SPModeOn",1,"WalkSoundCoop")
-	    TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"WalkSoundCoop")
-	    TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"WalkSoundTLMS")
-        TNT1 A 0 Radius_Quake(2,4,0,2,0)
-        CYBD A 3 A_PlaySoundEx("cyber/hoof","soundslot6")
-        TNT1 A 0 A_SpawnItemEx("CyberdemonStomp",0,0,0,0,0,0,0,48)//A_Explode(128,192,0)
-		goto ContinueOn
-
-      WalkSoundTLMS:
-        TNT1 A 0 Radius_Quake(2,4,0,2,0)
-        CYBD A 3 A_PlaySoundEx("cyber/hoof","soundslot6")
-        TNT1 A 0 A_SpawnItemEx("CyberdemonStompTLMS",0,0,0,0,0,0,0,48)//A_Explode(128,192,0)
-		goto ContinueOn
-
-      WalkSoundCoop:
-        TNT1 A 0 Radius_Quake(2,4,0,2,0)
-        CYBD A 3 A_PlaySoundEx("cyber/hoof","soundslot6")
-        TNT1 A 0 A_SpawnItemEx("CyberdemonStompCoop",0,0,0,0,0,0,0,48)//A_Explode(128,192,0)
-		goto ContinueOn
-
-      ContinueOn:
-		TNT1 A 0 A_JumpIfInventory("CyberDash",1,"ContinueOnRun")
-        CYBD ABB 6
-        CYBD C 3
-        CYBD A 0 A_CheckFloor("WalkSound2")
-        CYBD C 3
-        goto ContinueOn2
-
-      WalkSound2:
-		TNT1 A 0 A_JumpIfInventory("CyberDash",1,"WalkSoundRun2")
-	    TNT1 A 0 A_JumpIfInventory("SPModeOn",1,"WalkSoundCoop2")
-	    TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"WalkSoundCoop2")
-	    TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"WalkSoundTLMS2")
-        TNT1 A 0 Radius_Quake(2,4,0,2,0)
-        CYBD C 3 A_PlaySoundEx("cyber/hoof","soundslot6")
-        TNT1 A 0 A_SpawnItemEx("CyberdemonStomp",0,0,0,0,0,0,0,48)//A_Explode(128,192,0)
-		goto ContinueOn2
-
-      WalkSoundTLMS2:
-        TNT1 A 0 Radius_Quake(2,4,0,2,0)
-        CYBD C 3 A_PlaySoundEx("cyber/hoof","soundslot6")
-        TNT1 A 0 A_SpawnItemEx("CyberdemonStompTLMS",0,0,0,0,0,0,0,48)//A_Explode(128,192,0)
-		goto ContinueOn2
-
-      WalkSoundCoop2:
-        TNT1 A 0 Radius_Quake(2,4,0,2,0)
-        CYBD C 3 A_PlaySoundEx("cyber/hoof","soundslot6")
-        TNT1 A 0 A_SpawnItemEx("CyberdemonStompCoop",0,0,0,0,0,0,0,48)//A_Explode(128,192,0)
-		goto ContinueOn2
-
-      ContinueOn2:
-		TNT1 A 0 A_JumpIfInventory("CyberDash",1,"ContinueOnRun2")
-        CYBD CDD 6 
-        goto Spawn
-		
-	  See2:
-        CYBD A 1
-        CYBD A 0 A_CheckFloor("WalkSoundRun")
-        CYBD A 2
-        goto ContinueOn
-
-      WalkSoundRun:
-	    TNT1 A 0 A_JumpIfInventory("SPModeOn",1,"WalkSoundCoopRun")
-	    TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"WalkSoundCoopRun")
-	    TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"WalkSoundTLMSRun")
-        TNT1 A 0 Radius_Quake(2,4,0,2,0)
-        CYBD A 2 A_PlaySoundEx("cyber/hoof","soundslot6")
-        TNT1 A 0 A_SpawnItemEx("CyberdemonStomp",0,0,0,0,0,0,0,48)//A_Explode(128,192,0)
-		goto ContinueOnRun
-
-      WalkSoundTLMSRun:
-        TNT1 A 0 Radius_Quake(2,4,0,2,0)
-        CYBD A 2 A_PlaySoundEx("cyber/hoof","soundslot6")
-        TNT1 A 0 A_SpawnItemEx("CyberdemonStompTLMS",0,0,0,0,0,0,0,48)//A_Explode(128,192,0)
-		goto ContinueOnRun
-
-      WalkSoundCoopRun:
-        TNT1 A 0 Radius_Quake(2,4,0,2,0)
-        CYBD A 2 A_PlaySoundEx("cyber/hoof","soundslot6")
-        TNT1 A 0 A_SpawnItemEx("CyberdemonStompCoop",0,0,0,0,0,0,0,48)//A_Explode(128,192,0)
-		goto ContinueOnRun
-
-      ContinueOnRun:
-        CYBD ABB 3
-        CYBD C 1
-        CYBD A 0 A_CheckFloor("WalkSoundRun2")
-        CYBD C 2
-        goto ContinueOnRun2
-
-      WalkSoundRun2:
-	    TNT1 A 0 A_JumpIfInventory("SPModeOn",1,"WalkSoundCoopRun2")
-	    TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"WalkSoundCoopRun2")
-	    TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"WalkSoundTLMSRun2")
-        TNT1 A 0 Radius_Quake(2,4,0,2,0)
-        CYBD C 2 A_PlaySoundEx("cyber/hoof","soundslot6")
-        TNT1 A 0 A_SpawnItemEx("CyberdemonStomp",0,0,0,0,0,0,0,48)//A_Explode(128,192,0)
-		goto ContinueOnRun2
-
-      WalkSoundTLMSRun2:
-        TNT1 A 0 Radius_Quake(2,4,0,2,0)
-        CYBD C 2 A_PlaySoundEx("cyber/hoof","soundslot6")
-        TNT1 A 0 A_SpawnItemEx("CyberdemonStompTLMS",0,0,0,0,0,0,0,48)//A_Explode(128,192,0)
-		goto ContinueOnRun2
-
-      WalkSoundCoopRun2:
-        TNT1 A 0 Radius_Quake(2,4,0,2,0)
-        CYBD C 2 A_PlaySoundEx("cyber/hoof","soundslot6")
-        TNT1 A 0 A_SpawnItemEx("CyberdemonStompCoop",0,0,0,0,0,0,0,48)//A_Explode(128,192,0)
-		goto ContinueOnRun2
-
-      ContinueOnRun2:
-        CYBD CDD 3 
-        goto Spawn
-        
-      Missile:
-        CYBD E 12 
-        Goto Spawn
-        
-      Melee:
-        CYBD F 6 BRIGHT
-        Goto Missile
-        
-      Pain:
-        CYBD G 4 
-        CYBD G 4 A_Pain
-        Goto Spawn
-        
-      Death.DukeDamage:
-      Death.DukeExplosive:
-      Death.DukePistol:
-      Death.MightyBoot:
-        TNT1 A 0 A_Jump(218,"Death")
-        TNT1 A 0 A_GiveToTarget("DukeBossKillTaunt",1)
-        goto Death
-        
-      XDeath:
-      Death:
-        CYBD H 1 A_SpawnItemEx("KilledCyberdemon",0,0,0,0,0,0,0,33)
-        TNT1 A 0 A_PlayerScream
-        TNT1 A 0 A_NoBlocking
-        ACLO E -1
-        stop
-        
-      Death.DukeIce:
-        TNT1 A 0 A_Jump(218,"Ice")
-        TNT1 A 0 A_GiveToTarget("DukeBossKillTaunt",1)
-        goto Ice
-        
-      Death.ZorchPistol:
-      Death.Zorch:
-      Death.PhasingZorch:
-        CYBD G 0 A_Stop
-        CYBD G 1 A_SpawnItemEx("ZorchedCyberdemon",0,0,0,0,0,0,0,33)
-        TNT1 A 0 A_NoBlocking
-        ACLO E -1
-        stop
-        
-      Ice:
-      Death.HexenIce:
-      Death.Ice:
-        CYBD G 1 A_SpawnItemEx("FrozenCyberdemon",0,0,0,0,0,0,0,32)
-        TNT1 A 0 A_NoBlocking
-        ACLO E -1
-        stop
-    }
-}
-
-ACTOR CyberdemonStomp
-{
-    Radius 1
-    Height 1
-	Speed 0
-    +NOCLIP
-	+FORCERADIUSDMG
-    -SOLID
-    Obituary "%k \crcrushed \c-%o \crlike a bug.\c-"
-    States
-    {
-      Spawn:
-		TNT1 A 0
-		TNT1 A 1 A_Explode(96,160,0)
-        Stop
-    }
-}
-
-ACTOR CyberdemonStompTLMS : CyberdemonStomp
-{
-	DamageType "VillainTeam"
-}
-
-ACTOR CyberdemonStompCoop : CyberdemonStomp
-{
-	DamageType "VillainTeam"
-    States
-    {
-      Spawn:
-		TNT1 A 0
-		TNT1 A 1 A_Explode(128,198,0)
-        Stop
-    }
-}
-
-ACTOR KilledCyberdemon
-{
-    Radius 1
-    Height 1
-    +NOCLIP
-    -SOLID
-    +CLIENTSIDEONLY
-    States
-    {
-      Spawn:
-        CYBD H 8
-        CYBD I 8 //A_PlayerScream
-        CYBD JKL 8
-        CYBD M 8
-        CYBD NO 8
-        CYBD P 10
-        CYBD P -1
-        Stop
-    }
-}
-
-ACTOR ZorchedCyberdemon
-{
-    Radius 1
-    Height 1
-    +NOCLIP
-    -SOLID
-    +CLIENTSIDEONLY
-    States
-    {
-      Spawn:
-        TNT1 A 0 A_ChangeFlag("DONTGIB",1)
-        TNT1 A 0 A_PlaySoundEx("chex/zorchhuge","soundslot5",0,0)
-        CYBD G 8 A_SpawnItem("ZorchEffectHuge")
-        CYBD G 8 A_SetTranslucent(0.9,0)
-        CYBD G 0 A_PlaySoundEx("chex/cyberzorch","soundslot6",0,2)
-        CYBD G 8 A_SetTranslucent(0.8,0)
-        CYBD G 0 A_NoBlocking
-        CYBD G 8 A_SetTranslucent(0.7,0)
-        CYBD G 8 A_SetTranslucent(0.6,0)
-        CYBD G 8 A_SetTranslucent(0.5,0)
-        CYBD G 8 A_SetTranslucent(0.4,0)
-        CYBD G 8 A_SetTranslucent(0.3,0)
-        CYBD G 8 A_SetTranslucent(0.2,0)
-        CYBD G 8 A_SetTranslucent(0.1,0)
-        TNT1 A 1 A_SetTranslucent(1,0)
-        TNT1 A -1
-        stop
-    }
-}
-
-ACTOR FrozenCyberdemon
-{
-    Radius 1
-    Height 1
-    +NOCLIP
-    -SOLID
-    +CLIENTSIDEONLY
-    States
-    {
-      Spawn:
-        CYBD G 0 A_PlaySoundEx("freeze/cyberdemon","soundslot6",0,0)
-        CYBD G 0 //A_GenericFreezeDeath
-        CYBD G 0 A_UnsetShootable
-        CYBD Z 105 A_UnsetSolid
-        CYBD G 0 A_PlaySoundEx("freeze/break","soundslot6",0,0)
-        CYBD GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 0 A_SpawnItemEx("IceChunk2",random(-1,1),random(-1,1),random(16,96),random(-2,2),random(-2,2),random(5,15))//A_SpawnDebris("IceChunk2")
-        CYBD G 0 A_IceGuyDie
-        ACLO E 1 A_IceGuyDie
-        ACLO E -1
-        stop
-    }
-}
-
 ACTOR "Cyber-Rocket Launcher" : Weapon
 {
     Weapon.AmmoType1 "VillainAmmoHeavy"
@@ -923,7 +493,7 @@ ACTOR "Spider Chaingun" : Weapon
 	States
 	{
 	Ready:
-		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("CyberDash",1,"D_RUNNIN")
 		CYCH A 1 A_WeaponReady
 		Loop
 	Deselect:
@@ -963,6 +533,61 @@ ACTOR "Spider Chaingun" : Weapon
 		TNT1 A 0 A_AlertMonsters
 		CYCH ACAC 1 A_WeaponReady
 		Goto ReadySpinning
+		
+	  D_RUNNIN:
+	    CYCH A 0 Offset(0,32)
+        CYCH A 1 Offset(0,35)
+        CYCH A 1 Offset(0,40)
+        CYCH A 1 Offset(0,45)
+        CYCH A 1 Offset(0,50)
+        CYCH A 1 Offset(0,55)
+        CYCH A 1 Offset(0,60)
+        CYCH A 1 Offset(0,65)
+        CYCH A 1 Offset(0,70)
+        CYCH A 1 Offset(0,75)
+        CYCH A 1 Offset(0,80) // 10
+        CYCH A 1 Offset(0,85)
+        CYCH A 1 Offset(0,90)
+        CYCH A 1 Offset(0,95)
+        CYCH A 1 Offset(0,100)
+        CYCH A 1 Offset(0,105)
+        CYCH A 1 Offset(0,110)
+        CYCH A 1 Offset(0,115)
+        CYCH A 1 Offset(0,120)
+        CYCH A 1 Offset(0,125)
+        CYCH A 1 Offset(0,130) // 20
+        CYCH A 1 Offset(0,135)
+        CYCH A 1 Offset(0,140)
+	  IdleLoop:
+		TNT1 A 1
+		tnt1 A 0 A_JumpIfInventory("CyberDash",1,"IdleLoop")
+		goto BackToNormal
+	  BackToNormal:
+        CYCH A 1 Offset(0,140)
+        CYCH A 1 Offset(0,135)
+        CYCH A 1 Offset(0,130) // 20
+        CYCH A 1 Offset(0,125)
+        CYCH A 1 Offset(0,120)
+        CYCH A 1 Offset(0,115)
+        CYCH A 1 Offset(0,110)
+        CYCH A 1 Offset(0,105)
+        CYCH A 1 Offset(0,100)
+        CYCH A 1 Offset(0,95)
+        CYCH A 1 Offset(0,90)
+        CYCH A 1 Offset(0,85)
+        CYCH A 1 Offset(0,80) // 10
+        CYCH A 1 Offset(0,75)
+        CYCH A 1 Offset(0,70)
+        CYCH A 1 Offset(0,65)
+        CYCH A 1 Offset(0,60)
+        CYCH A 1 Offset(0,55)
+        CYCH A 1 Offset(0,50)
+        CYCH A 1 Offset(0,45)
+        CYCH A 1 Offset(0,40)
+        CYCH A 1 Offset(0,35)
+        CYCH A 0 Offset(0,32)
+        Goto Ready
+		
    Fire:
 		TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("CyberDash",1,"NuhUh")

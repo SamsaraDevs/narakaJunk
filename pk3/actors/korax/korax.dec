@@ -1,0 +1,332 @@
+actor KoraxClass : Boolean { }
+actor KoraxDecide : Counter { Inventory.MaxAmount 5 }
+actor KoraxFireSequence : Counter { Inventory.MaxAmount 5 }
+
+ACTOR KoraxBeef : PowerProtection
+{
+  Powerup.Duration 0x7FFFFFFF
+  DamageFactor "Normal", 0.875
+  DamageFactor "Telefrag", 1.5
+}
+
+actor KoraxPlayer : PlayerPawn
+{
+	Health 150
+	Player.MaxHealth 150
+    LimitedToTeam 1
+    Player.DisplayName "Korax"
+    BloodColor "Green"
+    Player.Face "EVL"
+    Radius 20 // Previously 25
+    Height 67
+	Scale 0.75
+    Mass 1000
+    Player.Viewheight 67
+    Player.AttackZOffset 22
+    Player.ForwardMove 0.8 0.8
+    Player.SideMove 0.75 0.75
+    Player.DamageScreenColor "Green"
+    Player.JumpZ 7//Default is 8
+    Player.StartItem "Ethereal Wraith Magic", 1
+    Player.StartItem "Green Chaos Magic", 1
+    Player.StartItem "Brown Chaos Magic", 1
+    Player.StartItem "Hell Fire Magic", 1
+    Player.StartItem "Iron Force Magic", 1
+    Player.StartItem "Swamp Poison Magic", 1
+	Player.StartItem "VillainAmmoLight", 50
+	Player.StartItem "VillainAmmoHeavy", 20
+    Player.StartItem "KoraxClass", 1
+	Player.StartItem "IsNarakaClass", 1
+    Player.Soundclass "Korax"
+    DamageFactor "VillainTeam", 0
+    DamageFactor "Slime", 0
+    DamageFactor "Lava", 0
+    DamageFactor "LavaHefty", 0
+    DamageFactor "Nuke", 0
+    DamageFactor "Nukage", 0
+    DamageFactor "Hellslime", 0
+    DamageFactor "SuperHellslime", 0
+    DamageFactor "Normal", 0.95
+    DamageFactor "Telefrag", 2.0
+    DamageFactor "PoisonCloud", 1.75
+    DamageFactor "DukeExplosive", 0.45
+    DamageFactor "TimonsAxe", 0.75
+    DamageFactor "DoomguyPlasma", 0.8
+    DamageFactor "DukeIce", 0.8
+    DamageFactor "CorvusHellstaff", 0.8
+    DamageFactor "WolfenFlamethrower", 0.8
+    DamageFactor "Fire", 0.8 // Effects Corvus' Phoenix Rod as well as the TOZT and Firestorm. Damn.
+    DamageFactor "PhasingZorch", 0.8 // Not in yet!
+    DamageFactor "WMCBeam", 0.45
+    DamageFactor "WMCNade", 0.45
+    Species "Villain"
+    -THRUSPECIES
+    +NOSKIN
+    -DONTBLAST
+    +DONTRIP
+    +BOSSDEATH
+    +NOTDMATCH
+    +NOICEDEATH
+    +NORADIUSDMG
+    //Species "Player"
+    Player.ColorRange 96, 111
+    States
+    {
+      CoOpModeOn:
+        TNT1 A 0
+        TNT1 A 0 A_ChangeFlag("THRUSPECIES",1)
+        KORX A 1 A_GiveInventory("CoopModeOn")
+        goto Spawn
+		
+      Spawn:
+        KORX A 1
+        KORX A 1 A_PlaySoundEx("korax/intro","soundslot7",0,0)
+		
+      Spawn2:
+        KORX A -1
+        Loop
+        
+      See:
+        KORX A 2
+        KORX A 0 A_CheckFloor("WalkSound")
+        KORX A 2
+        goto ContinueOn
+
+      WalkSound:
+        TNT1 A 0 Radius_Quake(1,4,0,2,0)
+        KORX A 2 A_PlaySoundEx("korax/step","soundslot6")
+		goto ContinueOn
+
+      ContinueOn:
+        KORX ABB 4
+        KORX C 2
+        KORX A 0 A_CheckFloor("WalkSound2")
+        KORX C 2
+        goto ContinueOn2
+
+      WalkSound2:
+        TNT1 A 0 Radius_Quake(1,4,0,2,0)
+        KORX C 2 A_PlaySoundEx("korax/step","soundslot6")
+		goto ContinueOn2
+
+      ContinueOn2:
+        KORX CDD 4 
+        goto Spawn2
+        
+      Missile:
+        KORX E 12 
+        Goto Spawn2
+        
+      Melee:
+        KORX F 6 BRIGHT
+        Goto Missile
+        
+      Pain:
+        KORX H 4 
+        KORX H 4 A_Pain
+        Goto Spawn2
+        
+      Death.DukeDamage:
+      Death.DukeExplosive:
+      Death.DukePistol:
+      Death.MightyBoot:
+        TNT1 A 0 A_Jump(218,"Death")
+        TNT1 A 0 A_GiveToTarget("DukeBossKillTaunt",1)
+        goto Death
+        
+      XDeath:
+      Death:
+        KORX H 1 A_SpawnItemEx("KilledKorax",0,0,0,0,0,0,0,49)
+        TNT1 A 0 A_PlayerScream
+        TNT1 A 0 A_NoBlocking
+        ACLO E -1
+        stop
+        
+      Death.DukeIce:
+        TNT1 A 0 A_Jump(218,"Ice")
+        TNT1 A 0 A_GiveToTarget("DukeBossKillTaunt",1)
+        goto Ice
+        
+      Death.ZorchPistol:
+      Death.Zorch:
+      Death.PhasingZorch:
+      Death.ZorchKamikaze:
+        KORX H 0 A_Stop
+        KORX H 1 A_SpawnItemEx("ZorchedKorax",0,0,0,0,0,0,0,49)
+        TNT1 A 0 A_NoBlocking
+        ACLO E -1
+        stop
+        
+      Ice:
+      Death.HexenIce:
+      Death.Ice:
+        KORX H 1 A_SpawnItemEx("FrozenKorax",0,0,0,0,0,0,0,49)
+        TNT1 A 0 A_NoBlocking
+        ACLO E -1
+        stop
+    }
+}
+
+ACTOR KilledKorax : Korax
+{
+	Health 1
+    Radius 1
+    Height 1
+    +NOCLIP
+    -SOLID
+	+FORCERADIUSDMG
+	-SHOOTABLE
+	+PAINLESS
+	Scale 0.75
+	Obituary "%k \crleft\c- %o \crone last surprise.\c-"
+    States
+    {
+      Spawn:
+	  See:
+		KORX I 1 A_UnsetShootable//A_Die
+	  //Death:
+		KORX I 4
+		KORX J 5 A_FaceTarget
+		KORX K 5 A_Scream
+		KORX LMNOP 5
+		KORX Q 20
+	Death:
+        TNT1 A 0 Radius_Quake(4,16,0,16,0)
+		TNT1 A 0 A_Explode(198,256,0)
+		KORX R 5 A_KoraxBonePop
+		KORX S 5 A_NoBlocking
+		KORX TU 5
+		KORX V -1
+		stop
+	Missile:
+		goto See
+	Pain:
+		goto See
+	Attack:
+		goto See
+	Command:
+		goto See
+    }
+}
+
+ACTOR ZorchedKorax : Korax
+{
+	Health 1
+    Radius 1
+    Height 1
+    +NOCLIP
+    -SOLID
+	+FORCERADIUSDMG
+	-SHOOTABLE
+	+PAINLESS
+	Scale 0.75
+	Obituary "%k \crleft\c- %o \crone last surprise.\c-"
+    States
+    {
+      Spawn:
+	  See:
+		KORX H 1 A_UnsetShootable//A_Die
+	  //Death:
+        TNT1 A 0 A_Stop
+        TNT1 A 0 A_ChangeFlag("DONTGIB",1)
+        TNT1 A 0 A_PlaySoundEx("chex/zorchhuge","soundslot5",0,0)
+        KORX H 10 A_SpawnItem("ZorchEffectHuge")
+        KORX H 10 A_SetTranslucent(0.9,0)
+        TNT1 A 0 A_PlaySoundEx("chex/koraxzorch","soundslot6",0,2)
+        KORX H 10 A_SetTranslucent(0.8,0)
+        TNT1 A 0 A_NoBlocking
+        KORX H 10 A_SetTranslucent(0.7,0)
+        KORX H 10 A_SetTranslucent(0.6,0)
+        KORX H 10 A_SetTranslucent(0.5,0)
+	Death:
+        TNT1 A 0 Radius_Quake(4,16,0,16,0)
+		TNT1 A 0 A_Explode(198,256,0)
+        TNT1 A 0 A_KoraxBonePop
+        KORX H 10 A_SetTranslucent(0.4,0)
+        KORX H 10 A_SetTranslucent(0.3,0)
+        KORX H 10 A_SetTranslucent(0.2,0)
+        KORX H 10 A_SetTranslucent(0.1,0)
+        ACLO E 1 A_SetTranslucent(1,0)
+        ACLO E -1
+        stop
+	Missile:
+		goto See
+	Pain:
+		goto See
+	Attack:
+		goto See
+	Command:
+		goto See
+    }
+}
+
+ACTOR FrozenKorax : Korax
+{
+    Radius 1
+    Height 1
+    +NOCLIP
+    -SOLID
+	+FORCERADIUSDMG
+	-SHOOTABLE
+	+PAINLESS
+	Scale 0.75
+	Obituary "%k \crleft\c- %o \crone last surprise.\c-"
+    States
+    {
+      Spawn:
+	  See:
+		KORX H 1 A_UnsetShootable//A_Die
+	  //Death:
+        TNT1 A 0 A_NoBlocking
+        KORX Z 0 
+        KORX Z 0 A_PlaySoundEx("freeze/korax","soundslot6",0,0)
+        KORX Z 0 A_GenericFreezeDeath
+        KORX Z 80 A_UnsetSolid
+	Death:
+        TNT1 A 0 Radius_Quake(4,8,0,16,0)
+		TNT1 A 0 A_Explode(198,256,0)
+        TNT1 A 0 A_KoraxBonePop
+        KORX Z 60 A_UnsetSolid
+        KORX Z 0 A_PlaySoundEx("freeze/break","soundslot6",0,0)
+        KORX HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 0 A_SpawnItemEx("IceChunk2",random(-1,1),random(-1,1),random(16,96),random(-2,2),random(-2,2),random(5,15))
+        KORX Z 0 A_IceGuyDie
+        KORX Z 1 A_IceGuyDie
+        ACLO A -1
+        stop
+	Missile:
+		goto See
+	Pain:
+		goto See
+	Attack:
+		goto See
+	Command:
+		goto See
+    }
+}
+
+ACTOR KoraxSpirit2 : KoraxSpirit replaces KoraxSpirit
+{
+  +NOCLIP
+  -ACTIVATEPCROSS
+  -ACTIVATEIMPACT
+  +CLIENTSIDEONLY
+  +BRIGHT
+  RenderStyle Add
+  Alpha 0.75
+  States
+  {
+  Spawn:
+    SPIR A 5 A_KSpiritRoam
+	TNT1 A 0 A_Jump(13,"Scream")
+  Spawn2:
+	SPIR B 5 A_KSpiritRoam
+	TNT1 A 0 A_Jump(13,"Scream2")
+    goto Spawn
+  Scream:
+	TNT1 A 0 A_PlaySoundEx("korax/spiritscream","voice",0,0)
+	goto Spawn2
+  Scream2:
+	TNT1 A 0 A_PlaySoundEx("korax/spiritscream","voice",0,0)
+	goto Spawn
+}
+}

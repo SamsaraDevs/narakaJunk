@@ -46,8 +46,8 @@ actor Ammo2Small2 : Ammo2Small replaces Shell
         TNT1 A 0 A_JumpIfInventory("HexenClass", 1, "PickupHexen")
         TNT1 A 0 A_JumpIfInventory("WolfenClass", 1, "PickupWolfen")
         TNT1 A 0 A_JumpIfInventory("MarathonClass", 0, "PickupMarathon")
-        TNT1 A 0 A_JumpIfInventory("AmmoShell", 0, "PickupFail")
-        TNT1 A 0 A_GiveInventory("AmmoShell", 4)
+        TNT1 A 0 A_JumpIfInventory("Shell", 0, "PickupFail")
+        TNT1 A 0 A_GiveInventory("Shell", 4)
         TNT1 A 0 A_GiveInventory("Shell", 4)
         stop
 		
@@ -67,8 +67,8 @@ actor Ammo2Big2 : Ammo2Big replaces ShellBox
         TNT1 A 0 A_JumpIfInventory("HexenClass", 1, "PickupHexen")
         TNT1 A 0 A_JumpIfInventory("WolfenClass", 1, "PickupWolfen")
         TNT1 A 0 A_JumpIfInventory("MarathonClass", 0, "PickupMarathon")
-        TNT1 A 0 A_JumpIfInventory("AmmoShell", 0, "PickupFail")
-        TNT1 A 0 A_GiveInventory("AmmoShell", 20)
+        TNT1 A 0 A_JumpIfInventory("Shell", 0, "PickupFail")
+        TNT1 A 0 A_GiveInventory("Shell", 20)
         TNT1 A 0 A_GiveInventory("Shell", 20)
         stop
 		

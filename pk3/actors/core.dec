@@ -51,17 +51,17 @@ actor HealPack2Naraka : HealPack2 replaces Medikit
         stop
 
       Pickup:
+        TNT1 A 0 A_JumpIfInventory("HexenClass", 1, "PickupHexen")
+        TNT1 A 0 A_JumpIfInventory("CorvusClass", 1, "PickupHeretic")
+
+        TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(SAMSARA_DECORATE, 22), "Infinite")
+        TNT1 A 0 A_JumpIfInventory("RuneProsperity", 1, "PickupProsperity")
 		TNT1 A 0 A_JumpIfInventory("CyberdemonClass", 1, "PickupCyberdemon")
 		TNT1 A 0 A_JumpIfInventory("KoraxClass", 1, "PickupKorax")
 		TNT1 A 0 A_JumpIfInventory("DsparilClass", 1, "PickupDsparil")
-        TNT1 A 0 A_JumpIfInventory("HexenClass", 1, "PickupHexen")
-        TNT1 A 0 A_JumpIfInventory("CorvusClass", 1, "PickupHeretic")
-        TNT1 A 0 A_JumpIfInventory("MarathonClass", 1, "PickupMarathon")
-        TNT1 A 0 A_JumpIfInventory("DukeClass", 1, "PickupDuke")
-        TNT1 A 0 A_JumpIfInventory("RuneProsperity", 1, "PickupProsperity")
-        TNT1 A 1
-        TNT1 A 0 A_JumpIfHealthLower(100, "PickUpSuccess")
-		goto PickupFail
+		//TNT1 A 0 A_JumpIfInventory("TfearClass", 1, "PickupTfear") // Not even bothering.
+        TNT1 A 0 A_JumpIfHealthLower(100, "PickupSuccess")
+        goto PickupFail
 		
 	  PickupCyberdemon:
         TNT1 A 0 A_JumpIfHealthLower(200, "PickUpSuccess")

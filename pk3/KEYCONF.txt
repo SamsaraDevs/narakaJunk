@@ -16,3 +16,5 @@ addplayerclass "KoraxPlayer"
 //addplayerclass "UndecidedDukeVillainPlayer"
 addplayerclass "TfearPlayer"
 //addplayerclass "UndecidedQuakeVillainPlayer"
+
+alias changelog_naraka  "puke -894 1"

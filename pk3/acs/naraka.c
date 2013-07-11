@@ -577,3 +577,19 @@ script 893 (void)
 	int tid = GetActorProperty(0, APROP_MASTERTID);
 	TakeActorInventory(tid, "TfearSummonLimit", 1);
 }
+
+script 894 (int changelogshit2) NET CLIENTSIDE
+{
+switch (changelogshit2)
+{
+        case 1:
+        Log(s:ChangelogNaraka);
+        break;
+		
+        /*case 2:
+        SetHudSize(1024,768,1);
+        SetFont("");
+        HudMessage(s:"";HUDMSG_PLAIN,1,1,512.0,384.0,0);
+        break;*/
+}
+}

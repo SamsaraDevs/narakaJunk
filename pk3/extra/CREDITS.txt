@@ -14,3 +14,4 @@
  ^-: Shock Staff sprites by Forrest Cameranesi.
  ^-: Numerous sounds ripped by Hopper.
  ^-: Flawed zoom-in sequence by PillowBlaster.
+ ^-: Duke Gib sequence for the Pfhor Troopers by PresidentPeople.

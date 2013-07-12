@@ -91,6 +91,7 @@ actor DSparilSerpentUnmounted : Demon1B
 	  Spawn:
 		TNT1 A 0 A_GiveInventory("IsNarakaClass",1)
 		DEMN AA 10 //A_Look
+		DEMN AA 5 A_Look
 		goto See
 		
       See:
@@ -112,7 +113,8 @@ actor DSparilSerpentUnmounted : Demon1B
 		TNT1 A 0 A_JumpIfInTargetInventory("DsparilClass",1,"OhBuggerNotHim")
 		DEMN EF 3 A_FaceTarget
 		TNT1 A 0 A_PlaySound("dsparilserpent/bite")
-		DEMN G 4 A_CustomMeleeAttack(random(1,8)*8)
+                TNT1 A 0 HealThing(5)
+		DEMN G 3 A_CustomMeleeAttack(random(1,8)*16)
 		Goto See
 		
 	  Missile:

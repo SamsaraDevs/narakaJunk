@@ -26,16 +26,18 @@ actor "Chaos Serpent" : Weapon
 	  Nomnomnom:
         SPRN BC 3 A_WeaponReady(1)
 		TNT1 A 0 A_PlayWeaponSound("dsparilserpent/bite")
-		TNT1 A 0 A_CustomPunch(random(1,8)*8,1,0,"BlankPuff",160)//A_Saw("dsparilserpent/bite","",random(1,8)*8,"EmptyPuff")//,0,160)
-        SPRN D 4 A_WeaponReady(1)
+		TNT1 A 0 A_CustomPunch(random(1,8)*16,1,0,"BlankPuff",160)//A_Saw("dsparilserpent/bite","",random(1,8)*8,"EmptyPuff")//,0,160)
+        TNT1 A 0 HealThing(2)
+        SPRN D 3 A_WeaponReady(1)
         goto Ready
 		
 	  NomnomnomCoopTLMS:
 		TNT1 A 0 A_JumpIfInTargetInventory("IsNarakaClass",1,"ReadyCoop")
         SPRN BC 3 A_WeaponReady(1)
 		TNT1 A 0 A_PlayWeaponSound("dsparilserpent/bite")
-		TNT1 A 0 A_CustomPunch(random(1,8)*8,1,0,"BlankPuff",160)//A_Saw("dsparilserpent/bite","",random(1,8)*8,"EmptyPuff")//,0,160)
-        SPRN D 4 A_WeaponReady(1)
+		TNT1 A 0 A_CustomPunch(random(1,8)*16,1,0,"BlankPuff",160)//A_Saw("dsparilserpent/bite","",random(1,8)*8,"EmptyPuff")//,0,160)
+        TNT1 A 0 HealThing(2)
+        SPRN D 3 A_WeaponReady(1)
         goto Ready
 
       Walking:

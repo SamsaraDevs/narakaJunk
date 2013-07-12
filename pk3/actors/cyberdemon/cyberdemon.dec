@@ -422,8 +422,8 @@ ACTOR FrozenCyberdemon
         CYBD Z 105 A_UnsetSolid
         CYBD G 0 A_PlaySoundEx("freeze/break","soundslot6",0,0)
         CYBD GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 0 A_SpawnItemEx("IceChunk2",random(-1,1),random(-1,1),random(16,96),random(-2,2),random(-2,2),random(5,15))//A_SpawnDebris("IceChunk2")
-        CYBD G 0 A_IceGuyDie
-        ACLO E 1 A_IceGuyDie
+        CYBD G 0 //A_IceGuyDie
+        ACLO E 1 //A_IceGuyDie
         ACLO E -1
         stop
     }

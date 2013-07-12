@@ -607,3 +607,21 @@ switch (changelogshit2)
         break;*/
 }
 }
+
+script 895 ENTER clientside
+{
+    if (GetCVar("teamlms") == 1)
+	{
+	    if (PlayerCount() > 2)
+	    {
+			if (GetTeamProperty(1,TPROP_NumPlayers) > GetTeamProperty(0,TPROP_NumPlayers))
+			{ Print(s:"\cgVillains\cf have too many players!");
+			ConsoleCommand("spectate");	}
+			if (GetTeamProperty(0,TPROP_NumPlayers) > (GetTeamProperty(1,TPROP_NumPlayers)*2))
+			{ Print(s:"\chHeroes\cf have too many players!");
+			ConsoleCommand("spectate");	}
+	    }
+	}
+	delay(1);
+	terminate;
+}

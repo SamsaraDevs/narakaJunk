@@ -308,7 +308,7 @@ script 492 (void)
 		else setresultvalue(0);
 }
 
-script 491 (int messageshit)
+script 491 (int messageshit) CLIENTSIDE
 {
 	switch (messageshit)
 	{
@@ -344,18 +344,32 @@ script 491 (int messageshit)
 			
 		case 7:
 			if(CheckInventory("CyberdemonClass") == 1)
-			{
-				if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"You got the Spider Mastermind's Chaingun! Show them Hell!"); }
-				else { Log(s:"You got the Spider Mastermind's Chaingun! Show them Hell!"); }
-			}
+			{	if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"You got the Spider Mastermind's Chaingun! Show them Hell!"); }
+				else { Log(s:"You got the Spider Mastermind's Chaingun! Show them Hell!"); }	}
+			if(CheckInventory("DSparilClass") == 1)
+			{	if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"Nope, nothin' yet."); }
+				else { Log(s:"Nope, nothin' yet."); }	}
+			if(CheckInventory("KoraxClass") == 1)
+			{	if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"Nope, nothin' yet."); }
+				else { Log(s:"Nope, nothin' yet."); }	}
+			if(CheckInventory("TfearClass") == 1)
+			{	if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"Nope, nothin' yet."); }
+				else { Log(s:"Nope, nothin' yet."); }	}
 			break;
 			
 		case 8:
 			if(CheckInventory("CyberdemonClass") == 1)
-			{
-				if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"You got a Targeting System! Hell yes."); }
-				else { Log(s:"You got a Targeting System! Hell yes."); }
-			}
+			{	if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"You got a Targeting System! Hell yes."); }
+				else { Log(s:"You got a Targeting System! Hell yes."); }	}
+			if(CheckInventory("DSparilClass") == 1)
+			{	if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"Nope, nothin' yet."); }
+				else { Log(s:"Nope, nothin' yet."); }	}
+			if(CheckInventory("KoraxClass") == 1)
+			{	if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"Nope, nothin' yet."); }
+				else { Log(s:"Nope, nothin' yet."); }	}
+			if(CheckInventory("TfearClass") == 1)
+			{	if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"Nope, nothin' yet."); }
+				else { Log(s:"Nope, nothin' yet."); }	}
 			break;
 	}
 }

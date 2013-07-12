@@ -217,7 +217,20 @@ actor "Staff of D'Sparil" : weapon
         loop
 
       Fire:
-        DSPS A 6 A_JumpIfNoAmmo("Melee")
+	    DSPS A 2
+		TNT1 A 0 A_JumpIfInventory("VillainAmmoLight",1,"Fire2")
+        DSPS A 2 Offset(0,33)
+        DSPS A 4 Offset(0,37) 
+	    TNT1 A 0 A_CustomPunch(random(60,120),1,0,"StaffPuff4")
+		DSPS A 6 offset(0,12)
+		DSPS A 4 offset(0,18)
+		DSPS A 4 offset(0,24)
+		DSPS A 3 offset(0,28)
+		DSPS A 2 offset(0,32)
+		goto Ready
+	  
+	  Fire2:
+        DSPS A 4
         DSPS A 4 A_PlayWeaponSound("dsparil/attack")
         TNT1 A 0 A_GunFlash
         DSPS B 2 bright Offset(0,33)
@@ -234,17 +247,6 @@ actor "Staff of D'Sparil" : weapon
 		DSPS A 3 offset(0,32)
         DSPS A 4 A_ReFire
         goto ready
-		
-	  Melee:
-        DSPS A 2 Offset(0,33)
-        DSPS A 4 Offset(0,37) 
-	    TNT1 A 0 A_CustomPunch(random(60,120),1,0,"StaffPuff4")
-		DSPS A 6 offset(0,12)
-		DSPS A 4 offset(0,18)
-		DSPS A 4 offset(0,24)
-		DSPS A 3 offset(0,28)
-		DSPS A 2 offset(0,32)
-		goto Ready
 		
 	  CoopFire:
 		TNT1 A 0 A_FireCustomMissile("DSparilLightningCoop",0,1)
@@ -269,11 +271,12 @@ actor "Staff of D'Sparil" : weapon
         //TNT1 A 0 A_FireCustomMissile("DSparilSummon",25,0,0,0,0,0)
         //TNT1 A 0 A_FireCustomMissile("DSparilSummon",-25,0,0,0,0,0)
 		TNT1 A 0 A_TakeInventory("VillainAmmoHeavy",9)
+		TNT1 A 0 A_GiveInventory("DSparilSummonCooldown",10)
 		TNT1 A 0 A_FireCustomMissile("BFGAmmoWaster")
         TNT1 A 0 A_SpawnItemEx("DSparilWizard",0,0,2,0,12,0,105,49)
         TNT1 A 0 A_SpawnItemEx("DSparilWizard2",0,0,2,0,12,0,75,49)
         DSPS E 6 bright
-        DSPS D 6 bright A_GiveInventory("DSparilSummonCooldown",10)
+        DSPS D 6 bright
         DSPS A 8 bright ACS_ExecuteAlways(484, 0, 1, 35)
         goto ready
 		
@@ -283,8 +286,9 @@ actor "Staff of D'Sparil" : weapon
 		TNT1 A 0 A_FireCustomMissile("BFGAmmoWaster")
         TNT1 A 0 A_SpawnItemEx("DSparilWizardTLMS",0,0,2,0,12,0,105,49)
         TNT1 A 0 A_SpawnItemEx("DSparilWizardTLMS2",0,0,2,0,12,0,75,49)
+		TNT1 A 0 A_GiveInventory("DSparilSummonCooldown",10)
         DSPS E 6 bright
-        DSPS D 6 bright A_GiveInventory("DSparilSummonCooldown",10)
+        DSPS D 6 bright
         DSPS A 8 bright ACS_ExecuteAlways(484, 0, 1, 35)
         goto ready
     }

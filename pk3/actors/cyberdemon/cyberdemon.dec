@@ -416,8 +416,8 @@ ACTOR FrozenCyberdemon
     States
     {
       Spawn:
+	    TNT1 A 0
         CYBD G 0 A_PlaySoundEx("freeze/cyberdemon","soundslot6",0,0)
-        CYBD G 0 //A_GenericFreezeDeath
         CYBD G 0 A_UnsetShootable
         CYBD Z 105 A_UnsetSolid
         CYBD G 0 A_PlaySoundEx("freeze/break","soundslot6",0,0)

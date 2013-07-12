@@ -62,7 +62,7 @@ actor DsparilPlayer : PlayerPawn
     DamageFactor "CorvusHellstaff", 0.8
     DamageFactor "WolfenFlamethrower", 0.8
     DamageFactor "Fire", 0.8 // Effects Corvus' Phoenix Rod as well as the TOZT and Firestorm. Damn.
-    DamageFactor "PhasingZorch", 0.8 // Not in yet!
+    DamageFactor "PhasingZorch", 0.8
     DamageFactor "WMCBeam", 0.55
     DamageFactor "WMCNade", 0.55
     Species "Villain"
@@ -184,6 +184,7 @@ actor DsparilPlayer : PlayerPawn
         
       Death.ZorchPistol:
       Death.Zorch:
+      Death.PhasingZorch:
         SRCR E 0 A_Stop
         SRCR E 1 A_SpawnItemEx("DSparilSerpentZorch",0,0,0,0,0,0,0,31)
         TNT1 A 0 A_NoBlocking
@@ -292,7 +293,7 @@ actor DsparilOnFootPlayer : PlayerPawn
     DamageFactor "CorvusHellstaff", 0.8
     DamageFactor "WolfenFlamethrower", 0.8
     DamageFactor "Fire", 0.8 // Effects Corvus' Phoenix Rod as well as the TOZT and Firestorm. Damn.
-    DamageFactor "PhasingZorch", 0.8 // Not in yet!
+    DamageFactor "PhasingZorch", 0.8
     DamageFactor "WMCBeam", 0.55
     DamageFactor "WMCNade", 0.55
     Player.MorphWeapon "Staff of D'Sparil"

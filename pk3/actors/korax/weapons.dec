@@ -33,7 +33,7 @@ actor "Ethereal Wraith Magic" : InstantSwitchWeapon
 		TNT1 A 0 A_FireCustomMissile("KoraxWraithFX1",random(-1,1),0,20,10,0,random(0,2))
 		TNT1 A 0 A_FireCustomMissile("KoraxWraithFX1",random(-1,1),0,-20,-5,0,random(0,2))
 		TNT1 A 0 A_FireCustomMissile("KoraxWraithFX1",random(-1,1),0,20,-5,0,random(0,2))
-		TNT1 A 0 A_TakeInventory("VillainAmmoHeavy",2)
+		TNT1 A 0 A_TakeInventory("VillainAmmoHeavy",3)
 		RMKX HIIJJJK 3
 		RMKX A 14
         goto ready
@@ -45,7 +45,7 @@ actor "Ethereal Wraith Magic" : InstantSwitchWeapon
 		TNT1 A 0 A_FireCustomMissile("KoraxWraithFX1TLMS",random(-1,1),0,20,10,0,random(0,2))
 		TNT1 A 0 A_FireCustomMissile("KoraxWraithFX1TLMS",random(-1,1),0,-20,-5,0,random(0,2))
 		TNT1 A 0 A_FireCustomMissile("KoraxWraithFX1TLMS",random(-1,1),0,20,-5,0,random(0,2))
-		TNT1 A 0 A_TakeInventory("VillainAmmoHeavy",2)
+		TNT1 A 0 A_TakeInventory("VillainAmmoHeavy",3)
 		RMKX HIIJJJK 3
 		RMKX A 14
         goto ready
@@ -57,7 +57,7 @@ actor "Ethereal Wraith Magic" : InstantSwitchWeapon
 		TNT1 A 0 A_FireCustomMissile("KoraxWraithFX1Coop",random(-1,1),0,20,10,0,random(0,2))
 		TNT1 A 0 A_FireCustomMissile("KoraxWraithFX1Coop",random(-1,1),0,-20,-5,0,random(0,2))
 		TNT1 A 0 A_FireCustomMissile("KoraxWraithFX1Coop",random(-1,1),0,20,-5,0,random(0,2))
-		TNT1 A 0 A_TakeInventory("VillainAmmoHeavy",2)
+		TNT1 A 0 A_TakeInventory("VillainAmmoHeavy",3)
 		RMKX HIIJJJK 3
 		RMKX A 14
         goto ready
@@ -193,7 +193,7 @@ actor "Brown Chaos Magic" : InstantSwitchWeapon
 
       Fire:
         RMKX A 1 A_AlertMonsters
-		TNT1 A 0 A_JumpIfInventory("VillainAmmoLight",1,1)
+		TNT1 A 0 A_JumpIfInventory("VillainAmmoHeavy",1,1)
 		goto Nope
 		RMKX B 2 A_GunFlash
 		TNT1 A 0 A_PlayWeaponSound("Korax/Attack")
@@ -602,7 +602,7 @@ actor "Swamp Poison Magic" : InstantSwitchWeapon
 
       Fire:
         RMKX A 1 A_AlertMonsters
-		TNT1 A 0 A_JumpIfInventory("VillainAmmoHeavy",1,1)
+		TNT1 A 0 A_JumpIfInventory("VillainAmmoLight",1,1)
 		goto Nope
 		RMKX B 2 A_GunFlash
 		TNT1 A 0 A_PlayWeaponSound("Korax/Attack")
@@ -703,7 +703,7 @@ DamageType "VillainTeam"
 // Swamp Poison Magic. Semi-accurate, very fast with poison damage.
 ACTOR KoraxSerpentFX
 {
-  Speed 65 // Original is 15
+  Speed 75 // Original is 15
   Radius 8
   Height 10
   Damage 5 // Original is 4
@@ -830,7 +830,7 @@ ACTOR KoraxDemon2FX1
   Scale 0.9
   Radius 10
   Height 6
-  Damage 7 // Original is 5
+  Damage 8 // Original is 5
   DamageType Fire
   Projectile
   //+SPAWNSOUNDSOURCE

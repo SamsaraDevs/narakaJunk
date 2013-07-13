@@ -93,4 +93,5 @@ int ChangelogNaraka =
 - D'Sparil's firing/melee animations should now show properly to spectators.\n\
 - SBARINFO updated to 0.29b's SBARINFO.\n\
 - The Pfhor Troopers now have their own Duke gib sequence and sprites, thanks to President People.\n\
-- A primitive team balancer has been implemented. It checks to see if there are more villains than heroes, or if there's twice as many heroes than villains, and if so forces the joinee to spectate.";
+- A primitive team balancer has been implemented. It checks to see if there are more villains than heroes, or if there's twice as many heroes than villains, and if so forces the joinee to spectate.\n\
+- D'Sparil can no longer cancel his summon cooldown.";

@@ -610,8 +610,15 @@ switch (changelogshit2)
 
 script 895 ENTER clientside
 {
+    if (PlayerNumber() != ConsolePlayerNumber()) { terminate; }
     if (GetCVar("teamlms") == 1)
 	{
+	    if (PlayerCount() == 2)
+	    {
+			if (GetTeamProperty(1,TPROP_NumPlayers) == 2)
+			{ Print(s:"\cgVillains\cf have too many players!");
+			ConsoleCommand("spectate");	}
+	    }
 	    if (PlayerCount() > 2)
 	    {
 			if (GetTeamProperty(1,TPROP_NumPlayers) > GetTeamProperty(0,TPROP_NumPlayers))

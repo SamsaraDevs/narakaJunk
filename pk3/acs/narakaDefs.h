@@ -62,7 +62,7 @@ int LMSUniques[CLASSCOUNT] =
 };
 
 int ChangelogNaraka =
-"FROM V0.1 TO V0.11d:\n\
+"FROM V0.1 TO V0.11e:\n\
 ========================\n\
 - Korax has been added as Parias' villain.\n\
 - The villains are now resistant to everyone's VIs.\n\
@@ -82,4 +82,15 @@ int ChangelogNaraka =
 - Naraka weapon pickup buffs now persist from level to level.\n\
 - Naraka's health pickups now support infinite health.\n\
 - Tfear now can only have four Troopers out at one time.\n\
-- Implemented Naraka changelog.";
+- Implemented Naraka changelog.\n\
+- With the summon limit in place, Tfear's summon cooldown has been reduced from 30 to 21.\n\
+- D'Sparil's serpent now moves faster, bites harder and faster, and heals itself slightly on every bite. On dismount, it also pauses momentarily, for people who like to dismount, summon, and remount.\n\
+- D'Sparil on his Serpent should now zorch properly.\n\
+- D'Sparil's zorch effect is no longer green.\n\
+- Cyberdemon should now freeze properly, and his freeze roar should now play properly.\n\
+- D'Sparil's sprites have been converted to .png. Not sure why they weren't already.\n\
+- Weapon pickup messages have been clientsided, so now the server doesn't speak every time someone picks up a weapon.\n\
+- D'Sparil's firing/melee animations should now show properly to spectators.\n\
+- SBARINFO updated to 0.29b's SBARINFO.\n\
+- The Pfhor Troopers now have their own Duke gib sequence and sprites, thanks to President People.\n\
+- A primitive team balancer has been implemented. It checks to see if there are more villains than heroes, or if there's twice as many heroes than villains, and if so forces the joinee to spectate.";

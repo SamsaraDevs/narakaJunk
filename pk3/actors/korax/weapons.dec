@@ -749,7 +749,7 @@ ACTOR KoraxCentaurFX
   Scale 0.65
   Projectile
   //+SPAWNSOUNDSOURCE
-  //+STRIFEDAMAGE
+  +STRIFEDAMAGE
   +HEXENBOUNCE
   BounceCount 4
   BounceFactor 0.9

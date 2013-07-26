@@ -13,7 +13,7 @@ actor KoraxPlayer : PlayerPawn
 {
 	Health 150
 	Player.MaxHealth 150
-    LimitedToTeam 1
+    //LimitedToTeam 1
     Player.DisplayName "Korax"
     BloodColor "Green"
     Player.Face "EVL"

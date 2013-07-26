@@ -1,11 +1,11 @@
-ACTOR DoomguyDharmapala : DoomguyPlayer replaces DoomguyPlayer { LimitedToTeam 0 }
+/*ACTOR DoomguyDharmapala : DoomguyPlayer replaces DoomguyPlayer { LimitedToTeam 0 }
 ACTOR ChexWarriorDharmapala : ChexWarrior replaces ChexWarrior { LimitedToTeam 0 }
 ACTOR CorvusDharmapala : CorvusPlayer replaces CorvusPlayer { LimitedToTeam 0 }
 ACTOR WolfenDharmapala : WolfenPlayer replaces WolfenPlayer { LimitedToTeam 0 }
 ACTOR HexenPlayerDharmapala : HexenPlayer replaces HexenPlayer { LimitedToTeam 0 }
 ACTOR DukeDharmapala : DukePlayer replaces DukePlayer { LimitedToTeam 0 }
 ACTOR MarathonDharmapala : MarathonPlayer replaces MarathonPlayer { LimitedToTeam 0 }
-ACTOR QuakeDharmapala : QuakePlayer replaces QuakePlayer { LimitedToTeam 0 }
+ACTOR QuakeDharmapala : QuakePlayer replaces QuakePlayer { LimitedToTeam 0 }*/
 
 actor CameraDummy
 {

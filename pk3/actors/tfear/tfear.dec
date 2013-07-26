@@ -12,7 +12,7 @@ actor TfearCloak : PowerShadow
 
 actor TfearPlayer : PlayerPawn
 {
-    LimitedToTeam 1
+    //LimitedToTeam 1
     Player.DisplayName "Tfear"
     Gravity 0.15
     Mass 450

@@ -76,7 +76,7 @@ actor CyberdemonPlayer : PlayerPawn
 {
     Health 200
     Player.MaxHealth 200
-    LimitedToTeam 1
+    //LimitedToTeam 1
     Player.DisplayName "Cyberdemon"
     BloodColor "Red"
     Player.Face "EVL"

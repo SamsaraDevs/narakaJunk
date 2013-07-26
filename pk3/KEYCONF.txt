@@ -1,4 +1,4 @@
-clearplayerclasses
+/*clearplayerclasses
 addplayerclass "DoomguyDharmapala"
 addplayerclass "ChexWarriorDharmapala"
 addplayerclass "CorvusDharmapala"
@@ -6,7 +6,7 @@ addplayerclass "WolfenDharmapala"
 addplayerclass "HexenPlayerDharmapala"
 addplayerclass "DukeDharmapala"
 addplayerclass "MarathonDharmapala"
-addplayerclass "QuakeDharmapala"
+addplayerclass "QuakeDharmapala"*/
 
 addplayerclass "CyberdemonPlayer"
 //addplayerclass "SnotfolusPlayer"

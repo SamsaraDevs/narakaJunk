@@ -614,8 +614,8 @@ script 895 ENTER clientside
     if (PlayerNumber() != ConsolePlayerNumber()) { terminate; }
     if (GetCVar("teamlms") == 1)
 	{
-    if (ACS_ExecuteWithResult(897,0,0,0)==1)
-	{
+    //if (ACS_ExecuteWithResult(897,0,0,0)==1)
+	//{
 	    if (PlayerCount() >= 2)
 	    {
 			if (GetTeamProperty(1,TPROP_NumPlayers) > GetTeamProperty(0,TPROP_NumPlayers))
@@ -654,12 +654,12 @@ script 895 ENTER clientside
 			{ ConsoleCommand("spectate"); }}}}}}
 	    }
 	}
-	}
+	//}
 	delay(1);
 	terminate;
 }
 
-script 896 open
+/*script 896 open
 {
     if (!GetCVar("naraka_teambalancer"))
     {   ConsoleCommand("set naraka_teambalancer 0");
@@ -671,4 +671,4 @@ script 897 (void)
 	if(GetCvar("naraka_teambalancer") == 1)
 		setresultvalue(1);
 		else setresultvalue(0);
-}
+}*/

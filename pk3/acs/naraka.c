@@ -569,6 +569,7 @@ script 890 ENTER // This differs from Naraka_Spawn in that this is a constant lo
 		
 		
 		// POWERUPS SHIT
+		// Because this seems to break on co-op
 	    if(CheckInventory("GotWeapon0") == 1) { GiveInventory("CoopLesserBamf",1); }
 		else { TakeInventory("CoopLesserBamf",1); }
 	    if(CheckInventory("GotWeapon3") == 1) { GiveInventory("CoopBeefStringy",1); }
@@ -613,6 +614,8 @@ script 895 ENTER clientside
     if (PlayerNumber() != ConsolePlayerNumber()) { terminate; }
     if (GetCVar("teamlms") == 1)
 	{
+    if (ACS_ExecuteWithResult(897,0,0,0)==1)
+	{
 	    if (PlayerCount() >= 2)
 	    {
 			if (GetTeamProperty(1,TPROP_NumPlayers) > GetTeamProperty(0,TPROP_NumPlayers))
@@ -651,6 +654,21 @@ script 895 ENTER clientside
 			{ ConsoleCommand("spectate"); }}}}}}
 	    }
 	}
+	}
 	delay(1);
 	terminate;
+}
+
+script 896 open
+{
+    if (!GetCVar("naraka_teambalancer"))
+    {   ConsoleCommand("set naraka_teambalancer 0");
+    ConsoleCommand("archivecvar naraka_teambalancer"); }
+}
+
+script 897 (void)
+{
+	if(GetCvar("naraka_teambalancer") == 1)
+		setresultvalue(1);
+		else setresultvalue(0);
 }

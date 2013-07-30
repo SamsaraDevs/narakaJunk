@@ -5,7 +5,7 @@ actor KoraxFireSequence : Counter { Inventory.MaxAmount 5 }
 ACTOR KoraxBeef : PowerProtection
 {
   Powerup.Duration 0x7FFFFFFF
-  DamageFactor "Normal", 0.875
+  DamageFactor "Normal", 0.85
   DamageFactor "Telefrag", 1.5
 }
 
@@ -23,7 +23,7 @@ actor KoraxPlayer : PlayerPawn
     Mass 1000
     Player.Viewheight 67
     Player.AttackZOffset 22
-    Player.ForwardMove 0.8 0.8
+    Player.ForwardMove 0.9 0.9
     Player.SideMove 0.75 0.75
     Player.DamageScreenColor "Green"
     Player.JumpZ 7//Default is 8

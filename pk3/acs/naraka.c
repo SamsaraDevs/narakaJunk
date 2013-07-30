@@ -117,6 +117,7 @@ script NARAKA_SPAWN (int respawning) // This differs from 890 in that this works
     int pNum = playerNumber();
     if (GameType() == GAME_SINGLE_PLAYER || GameType() == GAME_NET_COOPERATIVE)
     {
+	    GiveInventory("CoopModeOn",1);
         if (CheckInventory("CyberdemonClass") == 1) { GiveInventory("CyberBeef", 1); }
         if (CheckInventory("DsparilClass") == 1)
         {
@@ -126,6 +127,7 @@ script NARAKA_SPAWN (int respawning) // This differs from 890 in that this works
             GiveInventory("DsparilBeef", 1);
         }
         if (CheckInventory("KoraxClass") == 1) { GiveInventory("KoraxBeef", 1); }
+        if (CheckInventory("TfearClass") == 1) { GiveInventory("DsparilBeef", 1); }
     }
 
     if (isLMS())

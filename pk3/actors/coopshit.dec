@@ -9,7 +9,7 @@
 ACTOR CoopLesserBamf : PowerDamage
 {
 	Powerup.Duration 0x7FFFFFFF
-	DamageFactor "Normal", 1.1
+	DamageFactor "Normal", 1.15
 }
 
 // Replaces Shotgun
@@ -20,7 +20,7 @@ ACTOR CoopLesserBamf : PowerDamage
 ACTOR CoopBeefStringy : PowerProtection
 {
 	Powerup.Duration 0x7FFFFFFF
-	DamageFactor "Normal", 0.9
+	DamageFactor "Normal", 0.85
 	DamageFactor "Telefrag", 1.0
 }
 
@@ -32,7 +32,7 @@ ACTOR CoopBeefStringy : PowerProtection
 ACTOR CoopBeef : PowerProtection
 {
 	Powerup.Duration 0x7FFFFFFF
-	DamageFactor "Normal", 0.75
+	DamageFactor "Normal", 0.7
 	DamageFactor "Telefrag", 1.0
 }
 
@@ -41,5 +41,5 @@ ACTOR CoopBeef : PowerProtection
 ACTOR CoopBamf : PowerDamage
 {
 	Powerup.Duration 0x7FFFFFFF
-	DamageFactor "Normal", 1.25
+	DamageFactor "Normal", 1.3
 }

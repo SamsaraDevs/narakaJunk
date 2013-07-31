@@ -84,7 +84,7 @@ actor "Ethereal Wraith Magic" : InstantSwitchWeapon
 	}
 }
 
-actor "Green Chaos Magic" : InstantSwitchWeapon
+actor "Chaos Serpent Magic" : InstantSwitchWeapon
 {
     Weapon.SlotNumber 2
 	Weapon.AmmoType "VillainAmmoLight"
@@ -170,7 +170,7 @@ actor "Green Chaos Magic" : InstantSwitchWeapon
 	}
 }
 
-actor "Brown Chaos Magic" : InstantSwitchWeapon
+actor "Steel Chain Magic" : InstantSwitchWeapon
 {
     Weapon.SlotNumber 3
 	Weapon.AmmoType "VillainAmmoHeavy"
@@ -787,14 +787,13 @@ Species "Villain"
 // Hell Fire Magic. Rapid fire, fast, inaccurate, low damage.
 ACTOR KoraxFireDemonMissile
 {
-  Health 1000
   ReactionTime 8
   Speed 45 // Original is 10
   Radius 10
   Height 6
   Mass 5
   Damage 5 // Original is 1
-  +STRIFEDAMAGE
+  //+STRIFEDAMAGE
   DamageType "Fire"
   Projectile
   RenderStyle Add
@@ -823,29 +822,39 @@ ACTOR KoraxFireDemonMissileCoop : KoraxFireDemonMissile
 Species "Villain"
 }
 
-// Brown Chaos Magic. Staple slow-but-strong.
-ACTOR KoraxDemon2FX1
+// Steel Chain magic. Grabs people and yanks them over.
+ACTOR KoraxDemon2FX1 : LoreShot
 {
-  Speed 15
+  Speed 60
   Scale 0.9
   Radius 10
-  Height 6
-  Damage 8 // Original is 5
-  DamageType Fire
+  Height 14
+  Damage 2 // Original is 5
+  //DamageType Fire
   Projectile
   //+SPAWNSOUNDSOURCE
-  RenderStyle Add
-  SeeSound "DemonMissileFire"
-  DeathSound "DemonMissileExplode"
+  //RenderStyle Add
+  SeeSound "chains/fire"
+  DeathSound "CentaurMissileExplode"
   Obituary "%k \crswept\c- %o \croff the board."
   States
   {
   Spawn:
-    D2FX ABCDEF 4 Bright
+    BLAD A 2 A_LoremasterChain
     Loop
   Death:
-    D2FX GHIJ 4 Bright
-    D2FX KL 3 Bright
+    BLAD A 6
+    Stop
+  }
+}
+
+ACTOR LoreShot3 : LoreShot2 replaces LoreShot2
+{
+ Scale 0.25
+ States
+  {
+  Spawn:
+    RIPP ABC 6
     Stop
   }
 }
@@ -864,15 +873,15 @@ Species "Villain"
 // Green Chaos Magic. Staple fast-but-weak.
 ACTOR KoraxDemon1FX1
 {
-  Speed 25 // Original was 15
+  Speed 30 // Original was 15
   Scale 0.9
   Radius 10
   Height 6
-  Damage 7 // Original is 5
+  Damage 6 // Original is 5
   DamageType Fire
   Projectile
   //+SPAWNSOUNDSOURCE
-  +STRIFEDAMAGE
+  //+STRIFEDAMAGE
   RenderStyle Add
   SeeSound "DemonMissileFire"
   DeathSound "DemonMissileExplode"
@@ -903,7 +912,7 @@ Species "Villain"
 // Ethereal Wraith Magic. Effectively arcane grenades, lobbed a distance and affected by gravity.
 ACTOR KoraxWraithFX1 : WraithFX1
 {
-  Speed 25 // Original is 14
+  Speed 20 // Original is 14
   Radius 10
   Height 6
   Mass 5

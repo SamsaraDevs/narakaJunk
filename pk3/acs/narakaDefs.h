@@ -66,4 +66,6 @@ int ChangelogNaraka =
 ========================\n\
 - Korax's speed has been slightly increased, as has the speed and damage of his Ethereal Wraith magic.\n\
 - Coop powerups for the villains have had their power slightly enhanced.\n\
-- Villains now get CoopModeOn when playing in coop games.";
+- Villains now get CoopModeOn when playing in coop games.\n\
+- Korax's Green/Brown Chaos Magics have been combined into one Chaos Serpent Magic.\n\
+- Korax now has Steel Chain magic to grab enemies at long range and yank them over to him.";

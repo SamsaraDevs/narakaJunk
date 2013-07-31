@@ -182,6 +182,8 @@ CentaurLeaderAttack     	cntshld4
 CentaurMissileExplode   	impact3
 SerpentFXContinuous     	glbhiss1
 SerpentFXHit            	glbhit4
+loremaster/active           CHNSWCH8
+chains/fire                 SHNSHOT
 
 
 pickup/defense				PKDEFENS // Taken from Trickster

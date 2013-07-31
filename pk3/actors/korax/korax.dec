@@ -28,8 +28,8 @@ actor KoraxPlayer : PlayerPawn
     Player.DamageScreenColor "Green"
     Player.JumpZ 7//Default is 8
     Player.StartItem "Ethereal Wraith Magic", 1
-    Player.StartItem "Green Chaos Magic", 1
-    Player.StartItem "Brown Chaos Magic", 1
+    Player.StartItem "Chaos Serpent Magic", 1
+    Player.StartItem "Steel Chain Magic", 1
     Player.StartItem "Hell Fire Magic", 1
     Player.StartItem "Iron Force Magic", 1
     Player.StartItem "Swamp Poison Magic", 1

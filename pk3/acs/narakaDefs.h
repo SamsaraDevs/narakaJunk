@@ -68,4 +68,5 @@ int ChangelogNaraka =
 - Coop powerups for the villains have had their power slightly enhanced.\n\
 - Villains now get CoopModeOn when playing in coop games.\n\
 - Korax's Green/Brown Chaos Magics have been combined into one Chaos Serpent Magic.\n\
-- Korax now has Steel Chain magic to grab enemies at long range and yank them over to him.";
+- Korax now has Steel Chain magic to grab enemies at long range and yank them over to him.\n\
+- Team balancer now runs after 5 people join the game, and now only runs on the joining team.";

@@ -643,19 +643,19 @@ script 895 ENTER clientside
 			if (GetTeamProperty(0,TPROP_NumPlayers) > (GetTeamProperty(1,TPROP_NumPlayers)*2))
 			{ Print(s:"\chHeroes\cf have too many players!\n\n\cfSpectating in five...");
 			delay(35);
-			if (GetTeamProperty(1,TPROP_NumPlayers) > GetTeamProperty(0,TPROP_NumPlayers))
+			if (GetTeamProperty(0,TPROP_NumPlayers) > (GetTeamProperty(1,TPROP_NumPlayers)*2))
 			{ Print(s:"\chHeroes\cf have too many players!\n\n\cfSpectating in four...");
 			delay(35);
-			if (GetTeamProperty(1,TPROP_NumPlayers) > GetTeamProperty(0,TPROP_NumPlayers))
+			if (GetTeamProperty(0,TPROP_NumPlayers) > (GetTeamProperty(1,TPROP_NumPlayers)*2))
 			{ Print(s:"\chHeroes\cf have too many players!\n\n\cfSpectating in three...");
 			delay(35);
-			if (GetTeamProperty(1,TPROP_NumPlayers) > GetTeamProperty(0,TPROP_NumPlayers))
+			if (GetTeamProperty(0,TPROP_NumPlayers) > (GetTeamProperty(1,TPROP_NumPlayers)*2))
 			{ Print(s:"\chHeroes\cf have too many players!\n\n\cfSpectating in two...");
 			delay(35);
-			if (GetTeamProperty(1,TPROP_NumPlayers) > GetTeamProperty(0,TPROP_NumPlayers))
+			if (GetTeamProperty(0,TPROP_NumPlayers) > (GetTeamProperty(1,TPROP_NumPlayers)*2))
 			{ Print(s:"\chHeroes\cf have too many players!\n\n\cfSpectating in one...");
 			delay(35);
-			if (GetTeamProperty(1,TPROP_NumPlayers) > GetTeamProperty(0,TPROP_NumPlayers))
+			if (GetTeamProperty(0,TPROP_NumPlayers) > (GetTeamProperty(1,TPROP_NumPlayers)*2))
 			{ ConsoleCommand("spectate"); }}}}}}
 		}
 	    }

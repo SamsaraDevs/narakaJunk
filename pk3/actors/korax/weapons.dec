@@ -878,7 +878,7 @@ ACTOR KoraxDemon1FX1
   Radius 10
   Height 6
   Damage 6 // Original is 5
-  DamageType Fire
+  DamageType HexGreenFire
   Projectile
   //+SPAWNSOUNDSOURCE
   //+STRIFEDAMAGE
@@ -889,11 +889,12 @@ ACTOR KoraxDemon1FX1
   States
   {
   Spawn:
-    DMFX ABC 4 Bright
+    D2FX ABC 4 Bright
     Loop
   Death:
-    DMFX DE 4 Bright
-    DMFX FGH 3 Bright
+    D2FX DE 4 Bright
+    D2FX FGH 3 Bright
+	D2FX IJKL 2 Bright
     Stop
   }
 }

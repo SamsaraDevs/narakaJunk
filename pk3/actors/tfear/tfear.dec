@@ -61,6 +61,7 @@ actor TfearPlayer : PlayerPawn
     Player.StartItem "TfearPortCloak", 1
 	Player.StartItem "VillainAmmoLight", 50
     Player.StartItem "GuiltAmmo", 500
+    Player.StartItem "AbandonAmmo", 500
     Player.StartItem "HatredAmmo", 500
     Player.StartItem "FlawedAmmo", 500
     

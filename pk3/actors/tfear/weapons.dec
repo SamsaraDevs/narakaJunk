@@ -101,32 +101,32 @@ actor "Aggregate Type 'Guilt'" : Weapon
       Fire:
 		TNT1 A 0
         TSTF ABCD 2
-        TNT1 A 5 A_JumpIfNoAmmo(2)
+        TNT1 A 3 A_JumpIfNoAmmo(2)
 		TNT1 A 0 A_Refire
 		TNT1 A 0
-		TSTF D 2 Offset(2,34)
+		TSTF D 1 Offset(2,34)
         TSTF E 1 Offset(-2,33) A_PlayWeaponSound("tfear/swing")
-		TSTF E 2 Offset(7,32)
+		TSTF E 1 Offset(7,32)
         TSTF F 1 Offset(-2,32) A_FireCustomMissile("GuiltAttack",0,0)//A_CustomPunch(random(100,140),1,1,"GuiltPuff",144)
-		TSTF F 2 Offset(7,30)
+		TSTF F 1 Offset(7,30)
         TSTF G 1 Offset(-2,32)
-		TSTF G 2 Offset(7,30)
-		TNT1 A 15 A_ClearRefire
+		TSTF G 1 Offset(7,30)
+		TNT1 A 12 A_ClearRefire
         TSTF DDCCB 1 A_ClearRefire
 		TSTF B 1 Offset(14,27)
         Goto Ready
 	  Hold:
-        TNT1 A 5
+        TNT1 A 3
 		TNT1 A 0 A_Refire
-		TSTF D 2 Offset(2,34) A_Recoil(-25)
+		TSTF D 1 Offset(2,34) A_Recoil(-25)
         TSTF E 1 Offset(-2,33) A_PlayWeaponSound("tfear/swing")
-		TSTF E 2 Offset(7,32)
-		TNT1 A 0 A_TakeInventory("GuiltAmmo",6)
+		TSTF E 1 Offset(7,32)
+		//TNT1 A 0 A_TakeInventory("GuiltAmmo",6)
         TSTF F 1 Offset(-2,32) A_FireCustomMissile("GuiltAttack",0,1)//A_CustomPunch(random(100,140),1,1,"GuiltPuff",144)
-		TSTF F 2 Offset(7,30)
+		TSTF F 1 Offset(7,30)
         TSTF G 1 Offset(-2,32)
-		TSTF G 2 Offset(7,30)
-		TNT1 A 15 A_ClearRefire
+		TSTF G 1 Offset(7,30)
+		TNT1 A 12 A_ClearRefire
         TSTF DDCCB 1 A_ClearRefire
 		TSTF B 1 Offset(14,27)
         Goto Ready
@@ -682,8 +682,8 @@ actor "Rapid Type 'Flawed'" : Weapon//" Alien Weapon "
         TNT1 A 0 A_Light2
         TNT1 A 0 A_PlayWeaponSound("alienweapon/shoot")
 		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopHold")
-        TNT1 A 0 A_FireCustomMissile("AlienWeaponBullet2", random(-2, 2), 0, 0, 0)
-        AWP2 C 2 bright A_FireCustomMissile("AlienWeaponBullet2", random(-1, 1), 1, 0, 0)//A_FireBullets(7.5, 0, 3, 5, "alienpuff", 1, 0)
+        TNT1 A 0 A_FireCustomMissile("AlienWeaponBullet2", random(-200, 200)/100.00, 0, 0, 0)
+        AWP2 C 2 bright A_FireCustomMissile("AlienWeaponBullet2", random(-100, 100)/100.00, 1, 0, 0)//A_FireBullets(7.5, 0, 3, 5, "alienpuff", 1, 0)
         TNT1 A 0 A_Light0
         AWP2 B 1
 		AWP2 A 1 A_Refire
@@ -691,8 +691,8 @@ actor "Rapid Type 'Flawed'" : Weapon//" Alien Weapon "
         Goto Ready
 		
 	  CoopHold:
-        TNT1 A 0 A_FireCustomMissile("AlienWeaponBulletCoop2", random(-2, 2), 0, 0, 0)
-        AWP2 C 2 bright A_FireCustomMissile("AlienWeaponBulletCoop2", random(-1, 1), 1, 0, 0)//A_FireBullets(7.5, 0, 3, 5, "alienpuff", 1, 0)
+        TNT1 A 0 A_FireCustomMissile("AlienWeaponBulletCoop2", random(-200, 200)/100.00, 0, 0, 0)
+        AWP2 C 2 bright A_FireCustomMissile("AlienWeaponBulletCoop2", random(-100, 100)/100.00, 1, 0, 0)//A_FireBullets(7.5, 0, 3, 5, "alienpuff", 1, 0)
         TNT1 A 0 A_Light0
         AWP2 B 1
 		AWP2 A 1 A_Refire
@@ -705,8 +705,8 @@ actor "Rapid Type 'Flawed'" : Weapon//" Alien Weapon "
         TNT1 A 0 A_Light2
         TNT1 A 0 A_PlayWeaponSound("alienweapon/shoot")
 		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopZoomedHold")
-        TNT1 A 0 A_FireCustomMissile("AlienWeaponBullet2", random(-2, 2), 0, 0, 0)
-        NKLZ A 2 bright A_FireCustomMissile("AlienWeaponBullet2", random(-1, 1), 1, 0, 0)//A_FireBullets(7.5, 0, 3, 5, "alienpuff", 1, 0)
+        TNT1 A 0 A_FireCustomMissile("AlienWeaponBullet2", random(-100, 100)/100.00, 0, 0, 0)
+        NKLZ A 2 bright A_FireCustomMissile("AlienWeaponBullet2", random(-100, 100)/100.00, 1, 0, 0)//A_FireBullets(7.5, 0, 3, 5, "alienpuff", 1, 0)
         TNT1 A 0 A_Light0
         NKLZ A 1
 		NKLZ B 1 A_Refire
@@ -714,8 +714,8 @@ actor "Rapid Type 'Flawed'" : Weapon//" Alien Weapon "
         goto Ready
 		
 	  CoopZoomedHold:
-        TNT1 A 0 A_FireCustomMissile("AlienWeaponBulletCoop2", random(-2, 2), 0, 0, 0)
-        NKLZ A 2 bright A_FireCustomMissile("AlienWeaponBulletCoop2", random(-1, 1), 1, 0, 0)//A_FireBullets(7.5, 0, 3, 5, "alienpuff", 1, 0)
+        TNT1 A 0 A_FireCustomMissile("AlienWeaponBulletCoop2", random(-100, 100)/100.00, 0, 0, 0)
+        NKLZ A 2 bright A_FireCustomMissile("AlienWeaponBulletCoop2", random(-100, 100)/100.00, 1, 0, 0)//A_FireBullets(7.5, 0, 3, 5, "alienpuff", 1, 0)
         TNT1 A 0 A_Light0
         NKLZ A 1
 		NKLZ B 1 A_Refire

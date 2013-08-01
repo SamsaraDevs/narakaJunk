@@ -121,6 +121,10 @@ script NARAKA_SPAWN (int respawning) // This differs from 890 in that this works
         if (CheckInventory("CyberdemonClass") == 1) { GiveInventory("CyberBeef", 1); }
         if (CheckInventory("DsparilClass") == 1)
         {
+			//Print(s:"I'm working! - Enter");
+			if (CheckInventory("DsparilMount") == 1)
+			{ TakeInventory("DsparilMount", 1);
+			GiveInventory("DsparilDismount", 1); }
             DSparilHealth[pNum] = 200;
             SerpentArmor[pNum]  = 50;
             SerpentHealth[pNum] = 100;
@@ -406,10 +410,12 @@ script 888 (int ent)
     int pNum = PlayerNumber();
     int serpentTID = 1500+pNum;	
     if (!ent) {
+			//Print(s:"I'm working! - Normal - Unspawned");
         // Dismount the Serpent. Spawn the Serpent actor in the player's current spot,
         // change its health accordingly, and morph the player to the D'Sparil On Foot class.
         if (Spawn("DSparilSerpentUnmounted", GetActorX(0), GetActorY(0), GetActorZ(0), serpentTID, GetActorAngle(0) >> 8 ) > 0)
         {
+			//Print(s:"I'm working! - Normal - Spawned");
             Thing_SetTranslation(serpentTID, -1); // Make the Serpent use the translation the Player is!
             SetActorProperty(serpentTID, APROP_HEALTH, GetActorProperty(0, APROP_HEALTH) * 5);
             ThingSound(serpentTID, "dsparilserpent/active", 255);
@@ -446,6 +452,7 @@ script 888 (int ent)
     {
         // Mount the Serpent.
         // Can't get on the Serpent if it's dead!
+			//Print(s:"I'm working! - Normal - Mount");
         if (ThingCount(0, serpentTID) > 0) {
             // Check if the player is close enough to the Serpent, then
             // remove the Serpent actor and morph the player back.
@@ -478,10 +485,12 @@ script 889 (int ent)
     int pNum = PlayerNumber();
     int serpentTID = 1500+pNum;	
     if (!ent) {
+			//Print(s:"I'm working! - Coop - Unspawned");
         // Dismount the Serpent. Spawn the Serpent actor in the player's current spot,
         // change its health accordingly, and morph the player to the D'Sparil On Foot class.
         if (Spawn("DSparilSerpentUnmountedTLMS", GetActorX(0), GetActorY(0), GetActorZ(0), serpentTID, GetActorAngle(0) >> 8 ) > 0)
         {
+			//Print(s:"I'm working! - Coop - Spawned");
             Thing_SetTranslation(serpentTID, -1); // Make the Serpent use the translation the Player is!
             SetActorProperty(serpentTID, APROP_HEALTH, GetActorProperty(0, APROP_HEALTH) * 5);
             ThingSound(serpentTID, "dsparilserpent/active", 255);
@@ -518,6 +527,7 @@ script 889 (int ent)
     {
         // Mount the Serpent.
         // Can't get on the Serpent if it's dead!
+			//Print(s:"I'm working! - Coop - Mount");
         if (ThingCount(0, serpentTID) > 0) {
             // Check if the player is close enough to the Serpent, then
             // remove the Serpent actor and morph the player back.

@@ -7,6 +7,7 @@ FROM V0.11 TO V0.12:
 - Korax now has Steel Chain magic to grab enemies at long range and yank them over to him.
 - Team balancer now runs after 5 people join the game, and now only runs on the joining team.
 - Vllain pickup messages no longer display globally.
+- D'Sparil can now dismount after respawning.
 
 FROM V0.1 TO V0.11:
 ========================

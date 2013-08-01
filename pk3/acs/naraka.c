@@ -616,10 +616,10 @@ script 895 ENTER clientside
     if (PlayerNumber() != ConsolePlayerNumber()) { terminate; }
     if (GetCVar("teamlms") == 1)
 	{
-    //if (ACS_ExecuteWithResult(897,0,0,0)==1)
-	//{
-	    if (PlayerCount() >= 2)
+	    if (PlayerCount() >= 4)
 	    {
+		if (PlayerTeam() == 1)
+		{
 			if (GetTeamProperty(1,TPROP_NumPlayers) > GetTeamProperty(0,TPROP_NumPlayers))
 			{ Print(s:"\cgVillains\cf have too many players!\n\n\cfSpectating in five...");
 			delay(35);
@@ -637,6 +637,9 @@ script 895 ENTER clientside
 			delay(35);
 			if (GetTeamProperty(1,TPROP_NumPlayers) > GetTeamProperty(0,TPROP_NumPlayers))
 			{ ConsoleCommand("spectate"); }}}}}}
+		}
+		if (PlayerTeam() == 0)
+		{
 			if (GetTeamProperty(0,TPROP_NumPlayers) > (GetTeamProperty(1,TPROP_NumPlayers)*2))
 			{ Print(s:"\chHeroes\cf have too many players!\n\n\cfSpectating in five...");
 			delay(35);
@@ -654,9 +657,9 @@ script 895 ENTER clientside
 			delay(35);
 			if (GetTeamProperty(1,TPROP_NumPlayers) > GetTeamProperty(0,TPROP_NumPlayers))
 			{ ConsoleCommand("spectate"); }}}}}}
+		}
 	    }
 	}
-	//}
 	delay(1);
 	terminate;
 }

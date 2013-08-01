@@ -10,6 +10,9 @@ FROM V0.11 TO V0.12:
 - D'Sparil can now dismount after respawning.
 - Tfear's Flawed now runs off Light ammo, rather than Heavy.
 - Admiral Tfear now has a new weapon: The Predator Type 'Abandon', a rapid-fire grenade launcher that arcs low and bounces, allowing him to cover an area.
+- The Hatred's projectiles now move a slight bit faster, for slightly easier hitting.
+- Guilt's lunge no longer uses ammo, and comes out slightly faster.
+- Korax's death sequence has been completely reworked in DECORATE, thanks to Popsoap.
 
 FROM V0.1 TO V0.11:
 ========================

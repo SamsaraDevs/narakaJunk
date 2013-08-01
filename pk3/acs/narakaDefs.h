@@ -73,4 +73,7 @@ int ChangelogNaraka =
 - Vllain pickup messages no longer display globally.\n\
 - D'Sparil can now dismount after respawning.\n\
 - Tfear's Flawed now runs off Light ammo, rather than Heavy.\n\
-- Admiral Tfear now has a new weapon: The Predator Type 'Abandon', a rapid-fire grenade launcher that arcs low and bounces, allowing him to cover an area.";
+- Admiral Tfear now has a new weapon: The Predator Type 'Abandon', a rapid-fire grenade launcher that arcs low and bounces, allowing him to cover an area.\n\
+- The Hatred's projectiles now move a slight bit faster, for slightly easier hitting.\n\
+- Guilt's lunge no longer uses ammo, and comes out slightly faster.\n\
+- Korax's death sequence has been completely reworked in DECORATE, thanks to Popsoap.";

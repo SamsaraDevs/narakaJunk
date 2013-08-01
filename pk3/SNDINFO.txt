@@ -160,7 +160,6 @@ tfear/abandonshot			tferglgo
 tfear/abandonboom           tferboom
 tfear/abandonload           tferglld
 
-SpiritActive				silence
 korax/step					korstep
 korax/attack				koratk
 korax/command				korcom

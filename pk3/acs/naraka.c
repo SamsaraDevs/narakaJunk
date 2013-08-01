@@ -312,6 +312,7 @@ script 492 (void)
 
 script 491 (int messageshit) CLIENTSIDE
 {
+    if (PlayerNumber() != ConsolePlayerNumber()) { terminate; }
 	switch (messageshit)
 	{
 		case 1:
@@ -616,7 +617,7 @@ script 895 ENTER clientside
     if (PlayerNumber() != ConsolePlayerNumber()) { terminate; }
     if (GetCVar("teamlms") == 1)
 	{
-	    if (PlayerCount() >= 4)
+	    if (PlayerCount() >= 5)
 	    {
 		if (PlayerTeam() == 1)
 		{

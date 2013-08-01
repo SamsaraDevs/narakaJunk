@@ -1036,7 +1036,7 @@ actor AbandonGrenade
         
       Death:
         TNT1 A 0 A_NoGravity
-        ABDS F 4 Bright A_Explode(70+random(0, 20), 128)
+        ABDS F 4 Bright A_Explode(54+random(0, 20), 128)
         ABDS G 4 Bright
         Stop
     }

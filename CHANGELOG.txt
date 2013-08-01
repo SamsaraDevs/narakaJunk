@@ -8,6 +8,8 @@ FROM V0.11 TO V0.12:
 - Team balancer now runs after 5 people join the game, and now only runs on the joining team.
 - Vllain pickup messages no longer display globally.
 - D'Sparil can now dismount after respawning.
+- Tfear's Flawed now runs off Light ammo, rather than Heavy.
+- Admiral Tfear now has a new weapon: The Predator Type 'Abandon', a rapid-fire grenade launcher that arcs low and bounces, allowing him to cover an area.
 
 FROM V0.1 TO V0.11:
 ========================

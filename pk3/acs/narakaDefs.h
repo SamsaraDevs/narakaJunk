@@ -71,4 +71,6 @@ int ChangelogNaraka =
 - Korax now has Steel Chain magic to grab enemies at long range and yank them over to him.\n\
 - Team balancer now runs after 5 people join the game, and now only runs on the joining team.\n\
 - Vllain pickup messages no longer display globally.\n\
-- D'Sparil can now dismount after respawning.";
+- D'Sparil can now dismount after respawning.\n\
+- Tfear's Flawed now runs off Light ammo, rather than Heavy.\n\
+- Admiral Tfear now has a new weapon: The Predator Type 'Abandon', a rapid-fire grenade launcher that arcs low and bounces, allowing him to cover an area.";

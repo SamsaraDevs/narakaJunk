@@ -56,6 +56,7 @@ actor TfearPlayer : PlayerPawn
 	Player.StartItem "Aggregate Type 'Guilt'", 1
     Player.StartItem "Scatter Type 'Hatred'", 1
     Player.StartItem "Rapid Type 'Flawed'", 1
+    Player.StartItem "Predator Type 'Abandon'", 1
 	Player.StartItem "TfearBeacon", 1
     Player.StartItem "TfearPortCloak", 1
 	Player.StartItem "VillainAmmoLight", 50

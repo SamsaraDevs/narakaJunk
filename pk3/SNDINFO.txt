@@ -156,6 +156,9 @@ tfear/cloak					tfernvis
 tfear/uncloak				tfervis
 tfear/summon				tfersmmn
 pfhortrooper/fire			pfrtfire
+tfear/abandonshot			tferglgo
+tfear/abandonboom           tferboom
+tfear/abandonload           tferglld
 
 SpiritActive				silence
 korax/step					korstep

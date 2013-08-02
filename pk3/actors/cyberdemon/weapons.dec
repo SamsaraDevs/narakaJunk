@@ -348,7 +348,7 @@ ACTOR CyberRocket2 : CyberRocket
     Decal Scorch
     SeeSound ""
     DeathSound "cyber/rockethit"
-    Obituary "%k \crsplattered\c- %o \crwith a Cyber-Rocket.\c-"
+    Obituary "%k \crsplattered\c- %o \crwith a rocket.\c-"
     Speed 25
 	+FORCERADIUSDMG
     States

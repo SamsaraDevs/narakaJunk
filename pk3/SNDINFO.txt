@@ -159,6 +159,7 @@ pfhortrooper/fire			pfrtfire
 tfear/abandonshot			tferglgo
 tfear/abandonboom           tferboom
 tfear/abandonload           tferglld
+tfear/abandonshot2          tferglg2
 
 korax/step					korstep
 korax/attack				koratk

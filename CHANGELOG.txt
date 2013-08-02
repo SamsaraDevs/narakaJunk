@@ -13,6 +13,7 @@ FROM V0.11 TO V0.12:
 - The Hatred's projectiles now move a slight bit faster, for slightly easier hitting.
 - Guilt's lunge no longer uses ammo, and comes out slightly faster.
 - Korax's death sequence has been completely reworked in DECORATE, thanks to Popsoap.
+- Admiral Tfear did not have any CoopMode or TLMS mode checks for his weapons, meaning all his attacks would get stuck on allies. This has been fixed.
 
 FROM V0.1 TO V0.11:
 ========================

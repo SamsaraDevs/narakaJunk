@@ -1835,8 +1835,8 @@ Playerclass Cyberdemon
 	drawimage "EVILHUD", 0, 168;
     drawmugshot "STF", 5, 147, 168;
 	InInventory CyberdemonTargeter, 1 {drawimage "CYBTRG", 0, -16;}
-	DrawBar "HBARRED", "HBAREMPT", Health, Horizontal, 25, 175;
-	DrawBar "HBARRED", "HBAREMPT", Armor, Horizontal, 25, 186;
+	DrawBar "HBARRED", "HBAREMPT", Health, Horizontal, 24, 175;
+	DrawBar "HBARRED", "HBAREMPT", Armor, Horizontal, 24, 186;
     DrawNumber 3, INDEXFON, Gold, Health, 20, 176, Red, 50, White, 100;
     DrawNumber 3, INDEXFON, White, Armor, FillZeros, 20, 187;
     drawselectedinventory alwaysshowcounter, DOOMHUDF, 290, 22, 293, 30, gold;
@@ -1853,9 +1853,9 @@ Playerclass Cyberdemon
     DrawNumber 3, INDEXFON, White, ammo VillainAmmoHeavy, 295, 183;
     DrawNumber 3, INDEXFON, gold, ammocapacity VillainAmmoHeavy, 310, 183;
 	
-	DrawBar "CBARRED", "CBAREMPT", CyberdemonDashCount, Horizontal, 283, 191; //CyberdemonDashCount
-	DrawBar "CBARBLU", "CBAREMPT", CyberdemonDashCooldown, Horizontal, 283, 193; //CyberdemonDashCooldown
-	//DrawBar "CBARYEL", "CBAREMPT", CyberdemonDashCooldown, Horizontal, 283, 195; //CyberdemonDashCooldown
+	DrawBar "CBARRED", "CBAREMPT", CyberdemonDashCount, Horizontal, 282, 191; //CyberdemonDashCount
+	DrawBar "CBARBLU", "CBAREMPT", CyberdemonDashCooldown, Horizontal, 282, 193; //CyberdemonDashCooldown
+	//DrawBar "CBARYEL", "CBAREMPT", CyberdemonDashCooldown, Horizontal, 282, 195; //CyberdemonDashCooldown
 
     //Doom keys
         InInventory BlueCard, 1 {drawimage "STKEYS0", 236, 175;}
@@ -1918,8 +1918,8 @@ Playerclass DSparil
 {
 	drawimage "EVILHUD2", 0, 168;
     drawmugshot "EVL", 5, 147, 168;
-	DrawBar "HBARRED", "HBAREMPT", Health, Horizontal, 25, 175;
-	DrawBar "HBARRED", "HBAREMPT", Armor, Horizontal, 25, 186;
+	DrawBar "HBARRED", "HBAREMPT", Health, Horizontal, 24, 175;
+	DrawBar "HBARRED", "HBAREMPT", Armor, Horizontal, 24, 186;
     DrawNumber 3, INDEXFON, Gold, Health, 20, 176, Red, 50, White, 100;
     DrawNumber 3, INDEXFON, White, Armor, FillZeros, 20, 187;
     drawselectedinventory alwaysshowcounter, HEREHUDF2, 290, 22, 293, 30, green;
@@ -1937,9 +1937,9 @@ Playerclass DSparil
     DrawNumber 3, INDEXFON, White, ammo VillainAmmoHeavy, 295, 183;
     DrawNumber 3, INDEXFON, Green, ammocapacity VillainAmmoHeavy, 310, 183;
 	
-	DrawBar "CBARRED", "CBAREMPT", ChaosDeviceCooldown, Horizontal, 283, 191; //CyberdemonDashCount
-	DrawBar "CBARBLU", "CBAREMPT", GhostsphereCooldown, Horizontal, 283, 193; //CyberdemonDashCooldown
-	DrawBar "CBARYEL", "CBAREMPT", DSparilSummonCooldown, Horizontal, 283, 195; //CyberdemonDashCooldown
+	DrawBar "CBARRED", "CBAREMPT", ChaosDeviceCooldown, Horizontal, 282, 191; //CyberdemonDashCount
+	DrawBar "CBARBLU", "CBAREMPT", GhostsphereCooldown, Horizontal, 282, 193; //CyberdemonDashCooldown
+	DrawBar "CBARYEL", "CBAREMPT", DSparilSummonCooldown, Horizontal, 282, 195; //CyberdemonDashCooldown
 
     //Doom keys
         InInventory BlueCard, 1 {drawimage "STKEYS0", 236, 175;}
@@ -2002,8 +2002,8 @@ InInventory DSparilClass, 1 // Unbelievably hacky.
 {
 	drawimage "EVILHUD2", 0, 168;
     drawmugshot "EVL", 5, 147, 168;
-	DrawBar "HBARRED", "HBAREMPT", Health, Horizontal, 25, 175;
-	DrawBar "HBARRED", "HBAREMPT", Armor, Horizontal, 25, 186;
+	DrawBar "HBARRED", "HBAREMPT", Health, Horizontal, 24, 175;
+	DrawBar "HBARRED", "HBAREMPT", Armor, Horizontal, 24, 186;
     DrawNumber 3, INDEXFON, Gold, Health, 20, 176, Red, 50, White, 100;
     DrawNumber 3, INDEXFON, White, Armor, FillZeros, 20, 187;
     drawselectedinventory alwaysshowcounter, HEREHUDF2, 290, 22, 293, 30, green;
@@ -2021,9 +2021,9 @@ InInventory DSparilClass, 1 // Unbelievably hacky.
     DrawNumber 3, INDEXFON, White, ammo VillainAmmoHeavy, 295, 183;
     DrawNumber 3, INDEXFON, Green, ammocapacity VillainAmmoHeavy, 310, 183;
 	
-	DrawBar "CBARRED", "CBAREMPT", ChaosDeviceCooldown, Horizontal, 283, 191; //CyberdemonDashCount
-	DrawBar "CBARBLU", "CBAREMPT", GhostsphereCooldown, Horizontal, 283, 193; //CyberdemonDashCooldown
-	DrawBar "CBARYEL", "CBAREMPT", DSparilSummonCooldown, Horizontal, 283, 195; //CyberdemonDashCooldown
+	DrawBar "CBARRED", "CBAREMPT", ChaosDeviceCooldown, Horizontal, 282, 191; //CyberdemonDashCount
+	DrawBar "CBARBLU", "CBAREMPT", GhostsphereCooldown, Horizontal, 282, 193; //CyberdemonDashCooldown
+	DrawBar "CBARYEL", "CBAREMPT", DSparilSummonCooldown, Horizontal, 282, 195; //CyberdemonDashCooldown
 
     //Doom keys
         InInventory BlueCard, 1 {drawimage "STKEYS0", 236, 175;}
@@ -2086,8 +2086,8 @@ Playerclass Korax
 {
 	drawimage "EVILHUD2", 0, 168;
     drawmugshot "EVL", 5, 147, 168;
-	DrawBar "HBARRED", "HBAREMPT", Health, Horizontal, 25, 175;
-	DrawBar "HBARRED", "HBAREMPT", Armor, Horizontal, 25, 186;
+	DrawBar "HBARRED", "HBAREMPT", Health, Horizontal, 24, 175;
+	DrawBar "HBARRED", "HBAREMPT", Armor, Horizontal, 24, 186;
     DrawNumber 3, INDEXFON, Gold, Health, 20, 176, Red, 50, White, 100;
     DrawNumber 3, INDEXFON, White, Armor, FillZeros, 20, 187;
     drawselectedinventory alwaysshowcounter, HEREHUDF2, 290, 22, 293, 30, Red;
@@ -2170,8 +2170,8 @@ Playerclass Tfear
 {
 	drawimage "EVILHUD3", 0, 168;
     drawmugshot "STF", 5, 147, 168;
-	DrawBar "HBARRED", "HBAREMPT", Health, Horizontal, 25, 175;
-	DrawBar "HBARRED", "HBAREMPT", Armor, Horizontal, 25, 186;
+	DrawBar "HBARRED", "HBAREMPT", Health, Horizontal, 24, 175;
+	DrawBar "HBARRED", "HBAREMPT", Armor, Horizontal, 24, 186;
     DrawNumber 3, INDEXFON, Gold, Health, 20, 176, Red, 50, White, 100;
     DrawNumber 3, INDEXFON, White, Armor, FillZeros, 20, 187;
     drawselectedinventory alwaysshowcounter, TFERHUDF, 290, 22, 293, 30, Aqua;
@@ -2188,9 +2188,9 @@ Playerclass Tfear
     DrawNumber 3, INDEXFON, White, ammo VillainAmmoHeavy, 295, 183;
     DrawNumber 3, INDEXFON, Aqua, ammocapacity VillainAmmoHeavy, 310, 183;
 	
-	DrawBar "CBARRED", "CBAREMPT", TfearCloakCount, Horizontal, 283, 191; //CyberdemonDashCount
-	DrawBar "CBARBLU", "CBAREMPT", TfearCloakCooldown, Horizontal, 283, 193; //CyberdemonDashCooldown
-	DrawBar "CBARYEL", "CBAREMPT", TfearBeaconCooldown, Horizontal, 283, 195; //CyberdemonDashCooldown
+	DrawBar "CBARRED", "CBAREMPT", TfearCloakCount, Horizontal, 282, 191; //CyberdemonDashCount
+	DrawBar "CBARBLU", "CBAREMPT", TfearCloakCooldown, Horizontal, 282, 193; //CyberdemonDashCooldown
+	DrawBar "CBARYEL", "CBAREMPT", TfearBeaconCooldown, Horizontal, 282, 195; //CyberdemonDashCooldown
 
     //Doom keys
         InInventory BlueCard, 1 {drawimage "STKEYS0", 236, 175;}

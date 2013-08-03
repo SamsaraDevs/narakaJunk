@@ -14,7 +14,8 @@ FROM V0.11 TO V0.12:
 - Guilt's lunge no longer uses ammo, and comes out slightly faster.
 - Korax's death sequence has been completely reworked in DECORATE, thanks to Popsoap.
 - Admiral Tfear did not have any CoopMode or TLMS mode checks for his weapons, meaning all his attacks would get stuck on allies. This has been fixed.
-- The Cyberdemon now has a proper bar HUD. Only three more to go!
+- The Cyberdemon and D'Sparil now have proper bar HUDs. Only two more to go!
+- Spectating unmounted D'Sparil now no longer results in an HOM.
 
 FROM V0.1 TO V0.11:
 ========================

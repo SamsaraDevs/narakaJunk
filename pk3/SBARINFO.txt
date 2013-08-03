@@ -1914,22 +1914,22 @@ Playerclass Cyberdemon
 
 Playerclass DSparil
 {
-	drawimage "EVILHUD2", 0, 168;
+	drawimage "EVILHUD4", 0, 168;
     drawmugshot "EVL", 5, 147, 168;
 	DrawBar "HBARRED", "HBAREMPT", Health, Horizontal, 24, 175;
 	DrawBar "HBARRED", "HBAREMPT", Armor, Horizontal, 24, 186;
     DrawNumber 3, INDEXFON, Gold, Health, 20, 176, Red, 50, White, 100;
     DrawNumber 3, INDEXFON, White, Armor, FillZeros, 20, 187;
     drawselectedinventory alwaysshowcounter, HEREHUDF2, 290, 22, 293, 30, green;
-	DrawString CONFONT, White, "Kills", 218, 171;
+	//DrawString CONFONT, White, "Kills", 218, 171;
     gamemode deathmatch, teamplay, teamgame, lastmanstanding, OneFlagCTF, CTF, Skulltag, TeamLMS, TeamPossession
-    { DrawNumber 3, HEREHUDF2, Green, Frags, drawshadow, 204, 178; }
+    { DrawNumber 3, HEREHUDF, Yellow, Frags, drawshadow, 211, 181; }
     gamemode cooperative, singleplayer
-    { DrawNumber 4, HEREHUDF2, Green, KillCountAmountTrue, drawshadow, 223, 178; }
+    { DrawNumber 4, HEREHUDF, Yellow, KillCountAmountTrue, drawshadow, 211, 181; }
 	
-	DrawString CONFONT, White, "Ammo", 139, 171;
-	DrawNumber 3, HEREHUDF, Yellow, Ammo1, drawshadow, 136, 178;
-	DrawNumber 3, HEREHUDF, Yellow, Ammo2, drawshadow, 136, 188;
+	//DrawString CONFONT, White, "Ammo", 139, 171;
+	DrawNumber 3, INDEXFON, Yellow, Ammo1, drawshadow, 122, 185;
+	DrawNumber 3, INDEXFON, Yellow, Ammo2, drawshadow, 138, 185;
     DrawNumber 3, INDEXFON, White, ammo VillainAmmoLight, 295, 174;
     DrawNumber 3, INDEXFON, Green, ammocapacity VillainAmmoLight, 310, 174;
     DrawNumber 3, INDEXFON, White, ammo VillainAmmoHeavy, 295, 183;
@@ -1996,24 +1996,24 @@ Playerclass DSparil
 		InInventory MineKey, 1 {drawimage "STRIKEYO", 266, 192;}
 }
 
-InInventory DSparilClass, 1 // Unbelievably hacky.
+IsSelected "Staff of D'Sparil" // Unbelievably hacky, but it gets his transformed HUD working.
 {
-	drawimage "EVILHUD2", 0, 168;
-    drawmugshot "EVL", 5, 147, 168;
+	drawimage "EVILHUD4", 0, 168;
+    drawmugshot "EVL", 5, 143, 168;
 	DrawBar "HBARRED", "HBAREMPT", Health, Horizontal, 24, 175;
 	DrawBar "HBARRED", "HBAREMPT", Armor, Horizontal, 24, 186;
     DrawNumber 3, INDEXFON, Gold, Health, 20, 176, Red, 50, White, 100;
     DrawNumber 3, INDEXFON, White, Armor, FillZeros, 20, 187;
     drawselectedinventory alwaysshowcounter, HEREHUDF2, 290, 22, 293, 30, green;
-	DrawString CONFONT, White, "Kills", 218, 171;
+	//DrawString CONFONT, White, "Kills", 218, 171;
     gamemode deathmatch, teamplay, teamgame, lastmanstanding, OneFlagCTF, CTF, Skulltag, TeamLMS, TeamPossession
-    { DrawNumber 3, HEREHUDF2, Green, Frags, drawshadow, 204, 178; }
+    { DrawNumber 3, HEREHUDF, Yellow, Frags, drawshadow, 211, 181; }
     gamemode cooperative, singleplayer
-    { DrawNumber 4, HEREHUDF2, Green, KillCountAmountTrue, drawshadow, 223, 178; }
+    { DrawNumber 4, HEREHUDF, Yellow, KillCountAmountTrue, drawshadow, 211, 181; }
 	
-	DrawString CONFONT, White, "Ammo", 139, 171;
-	DrawNumber 3, HEREHUDF, Yellow, Ammo1, drawshadow, 136, 178;
-	DrawNumber 3, HEREHUDF, Yellow, Ammo2, drawshadow, 136, 188;
+	//DrawString CONFONT, White, "Ammo", 139, 171;
+	DrawNumber 3, INDEXFON, Yellow, Ammo1, drawshadow, 122, 185;
+	DrawNumber 3, INDEXFON, Yellow, Ammo2, drawshadow, 138, 185;
     DrawNumber 3, INDEXFON, White, ammo VillainAmmoLight, 295, 174;
     DrawNumber 3, INDEXFON, Green, ammocapacity VillainAmmoLight, 310, 174;
     DrawNumber 3, INDEXFON, White, ammo VillainAmmoHeavy, 295, 183;

@@ -79,4 +79,6 @@ int ChangelogNaraka =
 - Korax's death sequence has been completely reworked in DECORATE, thanks to Popsoap.\n\
 - Admiral Tfear did not have any CoopMode or TLMS mode checks for his weapons, meaning all his attacks would get stuck on allies. This has been fixed.\n\
 - The Cyberdemon and D'Sparil now have proper bar HUDs. Only two more to go!\n\
-- Spectating unmounted D'Sparil now no longer results in an HOM.";
+- Spectating unmounted D'Sparil now no longer results in an HOM.\n\
+- Tfear's Pfhor summons now can no longer be summoned in the environment and rendered useless.\n\
+- Tfear's Pfhor now have a more Marathon-esque teleport sequence.";

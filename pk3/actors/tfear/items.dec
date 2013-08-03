@@ -53,10 +53,12 @@ actor TfearBeacon : CustomInventory
 		TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"TLMSUse")
 		TNT1 A 0 A_SetBlend("CCFF00",0.8,10)
 		TNT1 A 0 A_JumpIfInventory("TfearSummonLimit",3,"SummonOnlyOne")
-        TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooper",0,85,2,0,0,0,105,48)
-        TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooper",0,85,2,0,0,0,65,48)
-        TNT1 A 0 A_SpawnItemEx("TeleportFog",0,85,2,0,0,0,105,48)
-        TNT1 A 0 A_SpawnItemEx("TeleportFog",0,85,2,0,0,0,65,48)
+        //TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooper",0,85,2,0,0,0,105,48)
+        //TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooper",0,85,2,0,0,0,65,48)
+        //TNT1 A 0 A_SpawnItemEx("TeleportFog",0,85,2,0,0,0,105,48)
+        //TNT1 A 0 A_SpawnItemEx("TeleportFog",0,85,2,0,0,0,65,48)
+        TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooper",0,0,2,0,80,0,105,49)
+        TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooper",0,0,2,0,80,0,75,49)
 		TNT1 A 0 A_GiveInventory("TfearSummonLimit",2)
 		TNT1 A 0 A_PlaySoundEx("tfear/summon","soundslot7",0,0)
 		TNT1 A 0 A_GiveInventory("TfearBeaconCooldown",21)
@@ -64,7 +66,7 @@ actor TfearBeacon : CustomInventory
         fail
 		
 	  SummonOnlyOne:
-        TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooper",0,85,2,0,0,0,85,48)
+        TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooper",0,0,2,0,80,0,85,48)
         TNT1 A 0 A_SpawnItemEx("TeleportFog",0,85,2,0,0,0,85,48)
 		TNT1 A 0 A_GiveInventory("TfearSummonLimit",1)
 		TNT1 A 0 A_PlaySoundEx("tfear/summon","soundslot7",0,0)
@@ -75,10 +77,12 @@ actor TfearBeacon : CustomInventory
 	  TLMSUse:
 		TNT1 A 0 A_SetBlend("CCFF00",0.8,10)
 		TNT1 A 0 A_JumpIfInventory("TfearSummonLimit",3,"SummonOnlyOneTLMS")
-        TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooperTLMS",0,85,2,0,0,0,105,48)
+        /*TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooperTLMS",0,85,2,0,0,0,105,48)
         TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooperTLMS",0,85,2,0,0,0,65,48)
         TNT1 A 0 A_SpawnItemEx("TeleportFog",0,85,2,0,0,0,105,48)
-        TNT1 A 0 A_SpawnItemEx("TeleportFog",0,85,2,0,0,0,65,48)
+        TNT1 A 0 A_SpawnItemEx("TeleportFog",0,85,2,0,0,0,65,48)*/
+        TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooperTLMS",0,0,2,0,80,0,105,49)
+        TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooperTLMS",0,0,2,0,80,0,75,49)
 		TNT1 A 0 A_GiveInventory("TfearSummonLimit",2)
 		TNT1 A 0 A_PlaySoundEx("tfear/summon","soundslot7",0,0)
 		TNT1 A 0 A_GiveInventory("TfearBeaconCooldown",21)
@@ -86,7 +90,7 @@ actor TfearBeacon : CustomInventory
         fail
 		
 	  SummonOnlyOneTLMS:
-        TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooperTLMS",0,85,2,0,0,0,85,48)
+        TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooperTLMS",0,0,2,0,80,0,85,48)
         TNT1 A 0 A_SpawnItemEx("TeleportFog",0,85,2,0,0,0,85,48)
 		TNT1 A 0 A_GiveInventory("TfearSummonLimit",1)
 		TNT1 A 0 A_PlaySoundEx("tfear/summon","soundslot7",0,0)
@@ -103,15 +107,27 @@ actor TfearBeacon : CustomInventory
 
 ACTOR TfearPfhorTrooper : FriendlyPfhorTrooper
 {
-	Health 210
+	Health 170
 	Species "Villain"
-	DamageFactor "Normal", 1.25
     Radius 16
     Height 56
+	-SOLID
 	+MISSILEMORE
+    -SHOOTABLE
     States
     {
       Spawn:
+        TNT1 A 0 //ThrustThing(angle*256/360+96, 80, 0, 0)
+        TNT1 A 1 //BRIGHT A_SetTranslucent(0.9,1)//A_Wander 
+        TNT1 A 0 A_Stop
+        //TNT1 A 0 A_SetTranslucent(1,0)
+        //TNT1 A 0 A_SpawnItemEx("TeleportFog",0,0,32,0,0,0,0,128)
+        PTRO Q 1 BRIGHT A_GiveInventory("IsNarakaClass",1)
+		PTRO RSTUUV 1 BRIGHT
+        PTRO V 1 BRIGHT A_SetShootable
+		goto Spawn2
+		
+      Spawn2:
         TNT1 A 0 A_GiveInventory("IsNarakaClass",1)
         PTRO E 15 A_Look
         goto see

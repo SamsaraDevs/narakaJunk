@@ -1113,7 +1113,7 @@ actor AbandonGrenade
     //Gravity 0.11
     DeathSound "tfear/abandonboom"
     Projectile
-    Obituary "%k \crabandoned \c-%o \cr.\c-"
+    Obituary "%k \crabandoned \c-%o\cr.\c-"
     -NOGRAVITY
     +LOWGRAVITY
     +FORCERADIUSDMG

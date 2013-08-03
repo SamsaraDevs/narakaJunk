@@ -1840,13 +1840,11 @@ Playerclass Cyberdemon
     DrawNumber 3, INDEXFON, Gold, Health, 20, 176, Red, 50, White, 100;
     DrawNumber 3, INDEXFON, White, Armor, FillZeros, 20, 187;
     drawselectedinventory alwaysshowcounter, DOOMHUDF, 290, 22, 293, 30, gold;
-	DrawString CONFONT, White, "Kills", 218, 171;
     gamemode deathmatch, teamplay, teamgame, lastmanstanding, OneFlagCTF, CTF, Skulltag, TeamLMS, TeamPossession
     { DrawNumber 3, BIGFONT, Gold, Frags, drawshadow, 204, 181; }
     gamemode cooperative, singleplayer
     { DrawNumber 4, BIGFONT, Gold, KillCountAmountTrue, drawshadow, 223, 181; }
-	
-	DrawString CONFONT, White, "Ammo", 139, 171;
+
 	DrawNumber 3, BIGFONT, Gold, Ammo1, drawshadow, 140, 181;
     DrawNumber 3, INDEXFON, White, ammo VillainAmmoLight, 295, 174;
     DrawNumber 3, INDEXFON, gold, ammocapacity VillainAmmoLight, 310, 174;

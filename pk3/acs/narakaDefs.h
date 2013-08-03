@@ -77,4 +77,5 @@ int ChangelogNaraka =
 - The Hatred's projectiles now move a slight bit faster, for slightly easier hitting.\n\
 - Guilt's lunge no longer uses ammo, and comes out slightly faster.\n\
 - Korax's death sequence has been completely reworked in DECORATE, thanks to Popsoap.\n\
-- Admiral Tfear did not have any CoopMode or TLMS mode checks for his weapons, meaning all his attacks would get stuck on allies. This has been fixed.";
+- Admiral Tfear did not have any CoopMode or TLMS mode checks for his weapons, meaning all his attacks would get stuck on allies. This has been fixed.\n\
+- The Cyberdemon now has a proper bar HUD. Only three more to go!";

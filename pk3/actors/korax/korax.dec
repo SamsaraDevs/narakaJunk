@@ -136,7 +136,17 @@ actor KoraxPlayer : PlayerPawn
         
       XDeath:
       Death:
-        KORX H 1 A_SpawnItemEx("KilledKorax",0,0,0,0,0,0,0,49)
+        KORX H 1
+		TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"CoopDeath")
+		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopDeath")
+		KORX H 1 A_SpawnItemEx("KilledKorax",0,0,0,0,0,0,0,49)
+        TNT1 A 0 A_PlayerScream
+        TNT1 A 0 A_NoBlocking
+        ACLO E -1
+        stop
+		
+	  CoopDeath:
+		KORX H 1 A_SpawnItemEx("KilledKoraxCoop",0,0,0,0,0,0,0,49)
         TNT1 A 0 A_PlayerScream
         TNT1 A 0 A_NoBlocking
         ACLO E -1
@@ -151,8 +161,18 @@ actor KoraxPlayer : PlayerPawn
       Death.Zorch:
       Death.PhasingZorch:
       Death.ZorchKamikaze:
+        KORX H 1
+		TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"CoopZorch")
+		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopZorch")
         KORX H 0 A_Stop
         KORX H 1 A_SpawnItemEx("ZorchedKorax",0,0,0,0,0,0,0,49)
+        TNT1 A 0 A_NoBlocking
+        ACLO E -1
+        stop
+		
+	  CoopZorch:
+        KORX H 0 A_Stop
+        KORX H 1 A_SpawnItemEx("ZorchedKoraxCoop",0,0,0,0,0,0,0,49)
         TNT1 A 0 A_NoBlocking
         ACLO E -1
         stop
@@ -160,7 +180,16 @@ actor KoraxPlayer : PlayerPawn
       Ice:
       Death.HexenIce:
       Death.Ice:
+        KORX H 1
+		TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"CoopFreeze")
+		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopFreeze")
         KORX H 1 A_SpawnItemEx("FrozenKorax",0,0,0,0,0,0,0,49)
+        TNT1 A 0 A_NoBlocking
+        ACLO E -1
+        stop
+		
+	  CoopFreeze:
+        KORX H 1 A_SpawnItemEx("FrozenKoraxCoop",0,0,0,0,0,0,0,49)
         TNT1 A 0 A_NoBlocking
         ACLO E -1
         stop
@@ -203,6 +232,34 @@ ACTOR KilledKorax
     }
 }
 
+actor KilledKoraxCoop : KilledKorax
+{
+DamageType "VillainTeam"
+States
+{
+      Spawn:
+		KORX I 1 A_UnsetShootable
+		KORX I 4
+		KORX J 5 A_FaceTarget
+		KORX K 5 A_Scream
+		KORX LMNOP 5
+		KORX Q 20
+        TNT1 A 0 Radius_Quake(4,16,0,16,0)
+		TNT1 A 0 A_Explode(384,384,0)
+		KORX R 1 A_SpawnItemEx("KoraxTracer",0,0,0,0,0,0,0,32)
+		KORX R 0 A_CustomMissile("KoraxPlayerSpiritCoop",32,0,0,2,40)
+		KORX R 0 A_CustomMissile("KoraxPlayerSpiritCoop",32,0,60,2,40)
+		KORX R 0 A_CustomMissile("KoraxPlayerSpiritCoop",32,0,120,2,40)
+		KORX R 0 A_CustomMissile("KoraxPlayerSpiritCoop",32,0,180,2,40)
+		KORX R 0 A_CustomMissile("KoraxPlayerSpiritCoop",32,0,240,2,40)
+		KORX R 4 A_CustomMissile("KoraxPlayerSpiritCoop",32,0,300,2,40)
+		KORX S 5 A_NoBlocking
+		KORX TU 5
+		KORX V -1
+		stop
+}
+}
+
 Actor KoraxTracer
 {
 	Radius 65
@@ -230,7 +287,7 @@ Actor KoraxTracer
 Actor KoraxPlayerSpirit : KoraxSpirit
 {
 	Health 35
-	RenderStyle Add
+	//RenderStyle Add
 	+NODAMAGE
 	+SHOOTABLE
 	+NONSHOOTABLE
@@ -257,6 +314,13 @@ Actor KoraxPlayerSpirit : KoraxSpirit
 		SPIR B 5 A_KSpiritRoam
 		Goto Spawn+4
 	}
+}
+
+Actor KoraxPlayerSpiritCoop : KoraxPlayerSpirit
+{
++THRUSPECIES
+Species "Villain"
+DamageType "VillainTeam"
 }
 
 Actor HolyPlayerTail : HolyTail
@@ -323,6 +387,43 @@ ACTOR ZorchedKorax
     }
 }
 
+actor ZorchedKoraxCoop : ZorchedKorax
+{
+DamageType "VillainTeam"
+States
+{
+      Spawn:
+		KORX H 1 A_UnsetShootable
+        TNT1 A 0 A_Stop
+        TNT1 A 0 A_ChangeFlag("DONTGIB",1)
+        TNT1 A 0 A_PlaySoundEx("chex/zorchhuge","soundslot5",0,0)
+        KORX H 10 A_SpawnItem("ZorchEffectHuge")
+        KORX H 10 A_SetTranslucent(0.9,0)
+        TNT1 A 0 A_PlaySoundEx("chex/koraxzorch","soundslot6",0,2)
+        KORX H 10 A_SetTranslucent(0.8,0)
+        TNT1 A 0 A_NoBlocking
+        KORX H 10 A_SetTranslucent(0.7,0)
+        KORX H 10 A_SetTranslucent(0.6,0)
+        KORX H 10 A_SetTranslucent(0.5,0)
+        TNT1 A 0 Radius_Quake(4,16,0,16,0)
+		TNT1 A 0 A_Explode(384,384,0)
+		KORX R 0 A_SpawnItemEx("KoraxTracer",0,0,0,0,0,0,0,32)
+		KORX R 0 A_CustomMissile("KoraxPlayerSpiritCoop",32,0,0,2,40)
+		KORX R 0 A_CustomMissile("KoraxPlayerSpiritCoop",32,0,60,2,40)
+		KORX R 0 A_CustomMissile("KoraxPlayerSpiritCoop",32,0,120,2,40)
+		KORX R 0 A_CustomMissile("KoraxPlayerSpiritCoop",32,0,180,2,40)
+		KORX R 0 A_CustomMissile("KoraxPlayerSpiritCoop",32,0,240,2,40)
+		KORX R 0 A_CustomMissile("KoraxPlayerSpiritCoop",32,0,300,2,40)
+        KORX H 10 A_SetTranslucent(0.4,0)
+        KORX H 10 A_SetTranslucent(0.3,0)
+        KORX H 10 A_SetTranslucent(0.2,0)
+        KORX H 10 A_SetTranslucent(0.1,0)
+        ACLO E 1 A_SetTranslucent(1,0)
+        ACLO E -1
+        stop
+	}
+}
+
 ACTOR FrozenKorax
 {
     Radius 1
@@ -337,7 +438,6 @@ ACTOR FrozenKorax
     States
     {
       Spawn:
-	  See:
 		KORX H 1 A_UnsetShootable
         TNT1 A 0 A_NoBlocking
         KORX Z 0 
@@ -360,4 +460,34 @@ ACTOR FrozenKorax
         ACLO A -1
         stop
     }
+}
+
+actor FrozenKoraxCoop : FrozenKorax
+{
+DamageType "VillainTeam"
+States
+    {
+      Spawn:
+		KORX H 1 A_UnsetShootable
+        TNT1 A 0 A_NoBlocking
+        KORX Z 0 
+        KORX Z 0 A_PlaySoundEx("freeze/korax","soundslot6",0,0)
+        KORX Z 80 A_UnsetSolid
+        TNT1 A 0 Radius_Quake(4,8,0,16,0)
+		TNT1 A 0 A_Explode(384,384,0)
+		KORX R 0 A_SpawnItemEx("KoraxTracer",0,0,0,0,0,0,0,32)
+		KORX R 0 A_CustomMissile("KoraxPlayerSpiritCoop",32,0,0,2,40)
+		KORX R 0 A_CustomMissile("KoraxPlayerSpiritCoop",32,0,60,2,40)
+		KORX R 0 A_CustomMissile("KoraxPlayerSpiritCoop",32,0,120,2,40)
+		KORX R 0 A_CustomMissile("KoraxPlayerSpiritCoop",32,0,180,2,40)
+		KORX R 0 A_CustomMissile("KoraxPlayerSpiritCoop",32,0,240,2,40)
+		KORX R 0 A_CustomMissile("KoraxPlayerSpiritCoop",32,0,300,2,40)
+        KORX Z 60 A_UnsetSolid
+        KORX Z 0 A_PlaySoundEx("freeze/break","soundslot6",0,0)
+        KORX HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 0 A_SpawnItemEx("IceChunk2",random(-1,1),random(-1,1),random(16,96),random(-2,2),random(-2,2),random(5,15))
+        KORX Z 0 //A_IceGuyDie
+        KORX Z 1 //A_IceGuyDie
+        ACLO A -1
+        stop
+}
 }

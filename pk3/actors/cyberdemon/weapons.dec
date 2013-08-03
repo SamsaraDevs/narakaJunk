@@ -358,7 +358,7 @@ ACTOR CyberRocket2 : CyberRocket
         Loop
 
       Death:
-        DMSL B 8 bright A_Explode(96,128,0)
+        DMSL B 8 bright A_Explode(128,128,0)
         DMSL C 6 bright
         DMSL D 4 bright
         Stop
@@ -385,7 +385,7 @@ ACTOR CyberRocketCoop : CyberRocket2
     States
     {
       Death:
-        DMSL B 8 bright A_Explode(128,128,0)
+        DMSL B 8 bright A_Explode(128,160,0)
         DMSL C 6 bright
         DMSL D 4 bright
         Stop
@@ -400,7 +400,7 @@ ACTOR CyberRocketTargeterCoop : CyberRocketTargeter
 	States
 	{
       Death:
-        DMSL B 8 bright A_Explode(128,128,0)
+        DMSL B 8 bright A_Explode(128,160,0)
         DMSL C 6 bright
         DMSL D 4 bright
         Stop
@@ -419,7 +419,7 @@ ACTOR CyberRocketTargeterTLMS : CyberRocketTargeter
 
 ACTOR CyberRocket3 : CyberRocket2
 {
-    Obituary "%k \crsplattered\c- %o \crwith a Cyber-Rocket.\c-"
+    Obituary "%k \crsplattered\c- %o \crwith a rocket.\c-"
     Speed 20
 }
 
@@ -436,7 +436,7 @@ ACTOR CyberRocketCoop2 : CyberRocket3
     States
     {
       Death:
-        DMSL B 8 bright A_Explode(128,128,0)
+        DMSL B 8 bright A_Explode(128,160,0)
         DMSL C 6 bright
         DMSL D 4 bright
         Stop

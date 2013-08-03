@@ -391,6 +391,7 @@ actor DSparilWizard : Wizard2
 actor DSparilWizardTLMS : DSparilWizard
 {
 	DamageFactor "VillainTeam", 0.0
+	DamageFactor "VillainTeamWithSelfDamage", 0.0
 	States
 	{
 	  Missile:
@@ -438,6 +439,7 @@ actor DSparilWizard2 : DSparilWizard
 actor DSparilWizardTLMS2 : DSparilWizard2
 {
 	DamageFactor "VillainTeam", 0.0
+	DamageFactor "VillainTeamWithSelfDamage", 0.0
 	States
 	{
 	  Missile:

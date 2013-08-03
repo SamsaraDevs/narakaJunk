@@ -254,6 +254,7 @@ ACTOR TfearPfhorTrooper : FriendlyPfhorTrooper
 ACTOR TfearPfhorTrooperTLMS : TfearPfhorTrooper
 {
 	DamageFactor "VillainTeam", 0.0
+	DamageFactor "VillainTeamWithSelfDamage", 0.0
     States
     {
       Missile:

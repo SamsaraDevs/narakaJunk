@@ -187,6 +187,7 @@ SerpentFXContinuous     	glbhiss1
 SerpentFXHit            	glbhit4
 loremaster/active           CHNSWCH8
 chains/fire                 SHNSHOT
+chains/death  				DRSTP7
 
 
 pickup/defense				PKDEFENS // Taken from Trickster

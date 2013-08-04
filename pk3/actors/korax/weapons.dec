@@ -827,7 +827,7 @@ ACTOR KoraxDemon2FX1 : LoreShot
 {
   Speed 60
   Scale 0.9
-  Radius 10
+  Radius 16
   Height 14
   Damage 2 // Original is 5
   //DamageType Fire
@@ -835,7 +835,7 @@ ACTOR KoraxDemon2FX1 : LoreShot
   //+SPAWNSOUNDSOURCE
   //RenderStyle Add
   SeeSound "chains/fire"
-  DeathSound "CentaurMissileExplode"
+  DeathSound "chains/death"
   Obituary "%k \crswept\c- %o \croff the board."
   States
   {

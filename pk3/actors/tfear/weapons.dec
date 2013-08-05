@@ -126,7 +126,8 @@ actor "Aggregate Type 'Guilt'" : Weapon
 		//TNT1 A 0 A_TakeInventory("GuiltAmmo",6)
 		TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"CoopHold")
 		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopHold")
-        TSTF F 1 Offset(-2,32) A_FireCustomMissile("GuiltAttack",0,1)//A_CustomPunch(random(100,140),1,1,"GuiltPuff",144)
+		TNT1 A 2
+        TSTF F 1 Offset(-2,32) A_FireCustomMissile("GuiltAttack",0,0)//A_CustomPunch(random(100,140),1,1,"GuiltPuff",144)
 		TSTF F 1 Offset(7,30)
         TSTF G 1 Offset(-2,32)
 		TSTF G 1 Offset(7,30)
@@ -136,7 +137,8 @@ actor "Aggregate Type 'Guilt'" : Weapon
         Goto Ready
 	
 	  CoopHold:
-        TSTF F 1 Offset(-2,32) A_FireCustomMissile("GuiltAttackCoop",0,1)//A_CustomPunch(random(100,140),1,1,"GuiltPuff",144)
+		TNT1 A 2
+        TSTF F 1 Offset(-2,32) A_FireCustomMissile("GuiltAttackCoop",0,0)//A_CustomPunch(random(100,140),1,1,"GuiltPuff",144)
 		TSTF F 1 Offset(7,30)
         TSTF G 1 Offset(-2,32)
 		TSTF G 1 Offset(7,30)

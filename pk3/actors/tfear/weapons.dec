@@ -969,7 +969,7 @@ actor "Predator Type 'Abandon'" : Weapon
 	+NOALERT
 
     Weapon.SelectionOrder 500
-    Weapon.SlotNumber 3
+    Weapon.SlotNumber 4
 
     //Weapon.BobRangeX 0
     //Weapon.BobStyle Smooth

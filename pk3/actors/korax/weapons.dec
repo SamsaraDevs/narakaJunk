@@ -1,6 +1,6 @@
 actor "Ethereal Wraith Magic" : InstantSwitchWeapon
 {
-    Weapon.SlotNumber 1
+    Weapon.SlotNumber 4
 	Weapon.AmmoType "VillainAmmoHeavy"
 	Weapon.AmmoGive 0
 	Weapon.AmmoUse 0
@@ -86,7 +86,7 @@ actor "Ethereal Wraith Magic" : InstantSwitchWeapon
 
 actor "Chaos Serpent Magic" : InstantSwitchWeapon
 {
-    Weapon.SlotNumber 2
+    Weapon.SlotNumber 1
 	Weapon.AmmoType "VillainAmmoLight"
 	Weapon.AmmoGive 0
 	Weapon.AmmoUse 0
@@ -172,7 +172,7 @@ actor "Chaos Serpent Magic" : InstantSwitchWeapon
 
 actor "Steel Chain Magic" : InstantSwitchWeapon
 {
-    Weapon.SlotNumber 3
+    Weapon.SlotNumber 5
 	Weapon.AmmoType "VillainAmmoHeavy"
 	Weapon.AmmoGive 0
 	Weapon.AmmoUse 0
@@ -258,7 +258,7 @@ actor "Steel Chain Magic" : InstantSwitchWeapon
 
 actor "Hell Fire Magic" : InstantSwitchWeapon
 {
-    Weapon.SlotNumber 4
+    Weapon.SlotNumber 2
 	Weapon.AmmoType "VillainAmmoLight"
 	Weapon.AmmoGive 0
 	Weapon.AmmoUse 0
@@ -465,7 +465,7 @@ actor "Hell Fire Magic" : InstantSwitchWeapon
 
 actor "Iron Force Magic" : InstantSwitchWeapon
 {
-    Weapon.SlotNumber 5
+    Weapon.SlotNumber 6
 	Weapon.AmmoType "VillainAmmoHeavy"
 	Weapon.AmmoGive 0
 	Weapon.AmmoUse 0
@@ -581,7 +581,7 @@ actor "Iron Force Magic" : InstantSwitchWeapon
 
 actor "Swamp Poison Magic" : InstantSwitchWeapon
 {
-    Weapon.SlotNumber 6
+    Weapon.SlotNumber 3
 	Weapon.AmmoType "VillainAmmoLight"
 	Weapon.AmmoGive 0
 	Weapon.AmmoUse 0

@@ -83,4 +83,6 @@ int ChangelogNaraka =
 - Tfear's Pfhor summons now can no longer be summoned in the environment and rendered useless.\n\
 - Tfear's Pfhor now have a more Marathon-esque teleport sequence.\n\
 - The HUDs now work in the automap.\n\
-- Admiral Tfear now has (some) of his proper sprites!";
+- Admiral Tfear now has (some of) his proper sprites!\n\
+- Summoned Pfhor now inherit colors from their summoner.\n\
+- By popular request, there is now a Mana Jewel at the bottom of Korax's HUD, indicating what weapon is equipped by color association.";

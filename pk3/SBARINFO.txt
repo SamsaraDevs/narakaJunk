@@ -2084,6 +2084,12 @@ Playerclass Korax
 {
 	drawimage "EVILHUD2", 0, 168;
     drawmugshot "EVL", 5, 147, 168;
+	IsSelected "Chaos Serpent Magic" {drawimage "KRMANA1", 149, 146; }
+	IsSelected "Hell Fire Magic" {drawimage "KRMANA2", 149, 146; }
+	IsSelected "Swamp Poison Magic" {drawimage "KRMANA3", 149, 146; }
+	IsSelected "Ethereal Wraith Magic" {drawimage "KRMANA4", 149, 146; }
+	IsSelected "Steel Chain Magic" {drawimage "KRMANA5", 149, 146; }
+	IsSelected "Iron Force Magic" {drawimage "KRMANA6", 149, 146; }
 	DrawBar "HBARRED", "HBAREMPT", Health, Horizontal, 24, 175;
 	DrawBar "HBARRED", "HBAREMPT", Armor, Horizontal, 24, 186;
     DrawNumber 3, INDEXFON, Gold, Health, 20, 176, Red, 50, White, 100;

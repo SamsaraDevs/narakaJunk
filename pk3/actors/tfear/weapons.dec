@@ -597,7 +597,7 @@ ACTOR EnforcerShot2 : EnforcerShot
 {
 Damage (random(40, 48))
 Obituary "%k \crflayed\c- %o \crto the bone with Hatred.\c-"
-Speed 25
+Speed 20
 }
 
 ACTOR EnforcerShotCoop2 : EnforcerShotCoop
@@ -606,7 +606,7 @@ Damage (random(40, 48))
 +THRUSPECIES
 Species "Villain"
 DamageType "VillainTeam"
-Speed 25
+Speed 20
 }
 
 // Marathon 1 Alien Weapon
@@ -910,14 +910,14 @@ actor "Rapid Type 'Flawed'" : Weapon//" Alien Weapon "
 ACTOR AlienWeaponBullet2 : AlienWeaponBullet
 {
 Damage (random(8, 12))
-Speed 125
+Speed 120
 Obituary "%k \crshowed\c- %o \crhow flawed %g was.\c-"
 }
 
 ACTOR AlienWeaponBulletCoop2 : AlienWeaponBulletCoop
 {
 Damage (random(8, 12))
-Speed 125
+Speed 120
 +THRUSPECIES
 Species "Villain"
 DamageType "VillainTeam"
@@ -1107,11 +1107,11 @@ actor AbandonGrenade
     Height 8
     Mass 1
     Speed 15
-    Damage 4
+    Damage (random(4,10))
     DamageType "Explosive"
     Scale 0.75
 	Gravity 0.225
-    //Gravity 0.11
+    //Gravity 0.125
     DeathSound "tfear/abandonboom"
     Projectile
     Obituary "%k \crabandoned \c-%o\cr.\c-"

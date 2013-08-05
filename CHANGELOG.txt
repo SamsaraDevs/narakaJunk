@@ -19,6 +19,7 @@ FROM V0.11 TO V0.12:
 - Tfear's Pfhor summons now can no longer be summoned in the environment and rendered useless.
 - Tfear's Pfhor now have a more Marathon-esque teleport sequence.
 - The HUDs now work in the automap.
+- Admiral Tfear now has (some of) his proper sprites!
 
 FROM V0.1 TO V0.11:
 ========================

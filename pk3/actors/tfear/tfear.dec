@@ -92,7 +92,8 @@ actor TfearPlayer : PlayerPawn
         Goto Spawn
 
       Melee:
-        TFER FG 4 BRIGHT
+        TFER F 4
+		TFER G 4 BRIGHT
         Goto Missile
         
       Death.HexGreenFire:

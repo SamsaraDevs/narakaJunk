@@ -19,6 +19,7 @@ actor KoraxPlayer : PlayerPawn
     Player.Face "EVL"
     Radius 20 // Previously 25
     Height 67
+	ProjectilePassHeight 86
 	Scale 0.75
     Mass 1000
     Player.Viewheight 67

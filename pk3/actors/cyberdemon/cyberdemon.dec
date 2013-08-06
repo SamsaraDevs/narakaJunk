@@ -82,6 +82,7 @@ actor CyberdemonPlayer : PlayerPawn
     Player.Face "EVL"
     Radius 20 // Previously 25
     Height 67
+	ProjectilePassHeight 110
     Mass 1000
     Player.Viewheight 67
     Player.AttackZOffset 22

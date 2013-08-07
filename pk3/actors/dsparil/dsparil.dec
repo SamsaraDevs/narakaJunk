@@ -247,7 +247,7 @@ actor DsparilPlayer : PlayerPawn
         SRCR Q 0 A_PlaySoundEx("freeze/dsparil","soundslot6",0,0)
         //SRCR Q 0 A_UnsetShootable
         SRCR Z 140 //A_UnsetSolid
-        SRCR Q 0 A_PlaySoun dEx("freeze/break","soundslot6",0,0)
+        SRCR Q 0 A_PlaySoundEx("freeze/break","soundslot6",0,0)
         SRCR GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 0 A_SpawnItemEx("IceChunk2",random(-1,1),random(-1,1),random(16,96),random(-2,2),random(-2,2),random(5,15))
         ACLO E 6 ACS_ExecuteAlways(465)
         TNT1 A -1

@@ -732,13 +732,15 @@ ACTOR KoraxSerpentFX
 
 ACTOR KoraxSerpentFXTLMS : KoraxSerpentFX
 {
++THRUSPECIES
+Species "Villain"
 DamageType "VillainTeam"
 }
 
 ACTOR KoraxSerpentFXCoop : KoraxSerpentFX
 {
 +THRUSPECIES
-Species "Villain"
+Species "Player"
 }
 
 // Force Magic. Shotgun spread.
@@ -775,13 +777,15 @@ ACTOR KoraxCentaurFX
 
 ACTOR KoraxCentaurFXTLMS : KoraxCentaurFX
 {
++THRUSPECIES
+Species "Villain"
 DamageType "VillainTeam"
 }
 
 ACTOR KoraxCentaurFXCoop : KoraxCentaurFX
 {
 +THRUSPECIES
-Species "Villain"
+Species "Player"
 }
 
 // Hell Fire Magic. Rapid fire, fast, inaccurate, low damage.
@@ -813,13 +817,15 @@ ACTOR KoraxFireDemonMissile
 
 ACTOR KoraxFireDemonMissileTLMS : KoraxFireDemonMissile
 {
++THRUSPECIES
+Species "Villain"
 DamageType "VillainTeam"
 }
 
 ACTOR KoraxFireDemonMissileCoop : KoraxFireDemonMissile
 {
 +THRUSPECIES
-Species "Villain"
+Species "Player"
 }
 
 // Steel Chain magic. Grabs people and yanks them over.
@@ -861,13 +867,15 @@ ACTOR LoreShot3 : LoreShot2 replaces LoreShot2
 
 ACTOR KoraxDemon2FX1TLMS : KoraxDemon2FX1
 {
++THRUSPECIES
+Species "Villain"
 DamageType "VillainTeam"
 }
 
 ACTOR KoraxDemon2FX1Coop : KoraxDemon2FX1
 {
 +THRUSPECIES
-Species "Villain"
+Species "Player"
 }
 
 // Green Chaos Magic. Staple fast-but-weak.
@@ -901,13 +909,15 @@ ACTOR KoraxDemon1FX1
 
 ACTOR KoraxDemon1FX1TLMS : KoraxDemon1FX1
 {
++THRUSPECIES
+Species "Villain"
 DamageType "VillainTeam"
 }
 
 ACTOR KoraxDemon1FX1Coop : KoraxDemon1FX1
 {
 +THRUSPECIES
-Species "Villain"
+Species "Player"
 }
 
 // Ethereal Wraith Magic. Effectively arcane grenades, lobbed a distance and affected by gravity.
@@ -949,12 +959,14 @@ ACTOR KoraxWraithFX1 : WraithFX1
 
 actor KoraxWraithFX1TLMS : KoraxWraithFX1
 {
++THRUSPECIES
+Species "Villain"
 DamageType "VillainTeam"
 }
 
 actor KoraxWraithFX1Coop : KoraxWraithFX1
 {
 +THRUSPECIES
-Species "Villain"
+Species "Player"
 DamageType "VillainTeam"
 }

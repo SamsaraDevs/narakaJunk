@@ -119,6 +119,7 @@ actor CyberdemonPlayer : PlayerPawn
     DamageFactor "TimonsAxe", 0.55
     DamageFactor "WMCBeam", 0.5
     DamageFactor "WMCNade", 0.5
+	DamageFactor "EnemyInfightDamage", 0.0
     Species "Villain"
     //DamageFactor "MarathonFusion", 2.0 // Maybe not for this.
     //DamageFactor "CorvusHellstaffTomed", 0.2 // Or this...

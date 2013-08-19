@@ -47,16 +47,12 @@ actor TfearBeacon : CustomInventory
     States
     {		
       Use:
-	    TNT1 A 0 A_JumpIfInventory("TfearSummonLimit",4,"UseFail")
+	    TNT1 A 0 A_JumpIfInventory("TfearSummonLimit",7,"UseFail")
         TNT1 A 0 A_JumpIfInventory("TfearBeaconCooldown",1,"UseFail")
 		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"TLMSUse")
 		TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"TLMSUse")
 		TNT1 A 0 A_SetBlend("CCFF00",0.8,10)
-		TNT1 A 0 A_JumpIfInventory("TfearSummonLimit",3,"SummonOnlyOne")
-        //TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooper",0,85,2,0,0,0,105,48)
-        //TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooper",0,85,2,0,0,0,65,48)
-        //TNT1 A 0 A_SpawnItemEx("TeleportFog",0,85,2,0,0,0,105,48)
-        //TNT1 A 0 A_SpawnItemEx("TeleportFog",0,85,2,0,0,0,65,48)
+		TNT1 A 0 A_JumpIfInventory("TfearSummonLimit",6,"SummonOnlyOne")
         TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooper",0,0,2,0,80,0,105,49)
         TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooper",0,0,2,0,80,0,75,49)
 		TNT1 A 0 A_GiveInventory("TfearSummonLimit",2)
@@ -76,11 +72,7 @@ actor TfearBeacon : CustomInventory
 		
 	  TLMSUse:
 		TNT1 A 0 A_SetBlend("CCFF00",0.8,10)
-		TNT1 A 0 A_JumpIfInventory("TfearSummonLimit",3,"SummonOnlyOneTLMS")
-        /*TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooperTLMS",0,85,2,0,0,0,105,48)
-        TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooperTLMS",0,85,2,0,0,0,65,48)
-        TNT1 A 0 A_SpawnItemEx("TeleportFog",0,85,2,0,0,0,105,48)
-        TNT1 A 0 A_SpawnItemEx("TeleportFog",0,85,2,0,0,0,65,48)*/
+		TNT1 A 0 A_JumpIfInventory("TfearSummonLimit",6,"SummonOnlyOneTLMS")
         TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooperTLMS",0,0,2,0,80,0,105,49)
         TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooperTLMS",0,0,2,0,80,0,75,49)
 		TNT1 A 0 A_GiveInventory("TfearSummonLimit",2)
@@ -91,6 +83,26 @@ actor TfearBeacon : CustomInventory
 		
 	  SummonOnlyOneTLMS:
         TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooperTLMS",0,0,2,0,80,0,85,49)
+        TNT1 A 0 A_SpawnItemEx("TeleportFog",0,85,2,0,0,0,85,48)
+		TNT1 A 0 A_GiveInventory("TfearSummonLimit",1)
+		TNT1 A 0 A_PlaySoundEx("tfear/summon","soundslot7",0,0)
+		TNT1 A 0 A_GiveInventory("TfearBeaconCooldown",21)
+        TNT1 A 1 ACS_ExecuteAlways(484, 0, 7, 35)
+        fail
+		
+	  CoopUse:
+		TNT1 A 0 A_SetBlend("CCFF00",0.8,10)
+		TNT1 A 0 A_JumpIfInventory("TfearSummonLimit",6,"SummonOnlyOneCoop")
+        TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooperCoop",0,0,2,0,80,0,105,49)
+        TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooperCoop",0,0,2,0,80,0,75,49)
+		TNT1 A 0 A_GiveInventory("TfearSummonLimit",2)
+		TNT1 A 0 A_PlaySoundEx("tfear/summon","soundslot7",0,0)
+		TNT1 A 0 A_GiveInventory("TfearBeaconCooldown",21)
+        TNT1 A 1 ACS_ExecuteAlways(484, 0, 7, 35)
+        fail
+		
+	  SummonOnlyOneCoop:
+        TNT1 A 0 A_SpawnItemEx("TfearPfhorTrooperCoop",0,0,2,0,80,0,85,49)
         TNT1 A 0 A_SpawnItemEx("TeleportFog",0,85,2,0,0,0,85,48)
 		TNT1 A 0 A_GiveInventory("TfearSummonLimit",1)
 		TNT1 A 0 A_PlaySoundEx("tfear/summon","soundslot7",0,0)
@@ -297,6 +309,40 @@ ACTOR TfearPfhorTrooperTLMS : TfearPfhorTrooper
     }
 }
 
+ACTOR TfearPfhorTrooperCoop : TfearPfhorTrooper
+{
+    +THRUSPECIES
+	Species "Player"
+	DamageFactor "DukeExplosive", 0.0
+	DamageFactor "NotQuadded", 0.0
+	DamageFactor "VillainTeam", 0.0
+	DamageFactor "VillainTeamWithSelfDamage", 0.0
+    States
+    {
+      Missile:
+		TNT1 A 0 A_JumpIfInTargetInventory("IsNarakaClass",1,"OhBuggerItsMyTeammate")
+		TNT1 A 0 A_JumpIfInTargetInventory("IsSamsaraClass",1,"OhBuggerItsMyTeammate")
+        TNT1 A 0 A_ChangeFlag("NOPAIN",0)
+        PTRO E 2 A_FaceTarget
+        TNT1 A 0 A_PlaySound("pfhortrooper/fire")
+        PTRO F 2 Bright A_CustomMissile("TfearTrooperBulletCoop",32,0,random(-4,4))
+        PTRO E 2 A_FaceTarget
+        TNT1 A 0 A_PlaySound("pfhortrooper/fire")
+        PTRO F 2 Bright A_CustomMissile("TfearTrooperBulletCoop",32,0,random(-4,4))
+        TNT1 A 0 A_Jump(64,"See")
+        PTRO E 2 A_FaceTarget
+        TNT1 A 0 A_PlaySound("pfhortrooper/fire")
+        PTRO F 2 Bright A_CustomMissile("TfearTrooperBulletCoop",32,0,random(-4,4))
+        TNT1 A 0 A_Jump(64,"Missile")
+        Goto See
+		
+	  OhBuggerItsMyTeammate:
+		TNT1 A 0 A_ClearTarget
+        PTRO AABBCCDD 3 A_Wander
+		goto See
+    }
+}
+
 ACTOR TfearTrooperBullet : MarathonARBulletCoop
 {
 	Obituary "%k \crmarched over\c- %o \crand lead the Pfhor to victory.\c-"
@@ -307,6 +353,13 @@ ACTOR TfearTrooperBullet : MarathonARBulletCoop
 
 ACTOR TfearTrooperBulletTLMS : TfearTrooperBullet
 {
+	DamageType "VillainTeam"
+}
+
+ACTOR TfearTrooperBulletCoop : TfearTrooperBullet
+{
+    +THRUSPECIES
+	Species "Player"
 	DamageType "VillainTeam"
 }
 

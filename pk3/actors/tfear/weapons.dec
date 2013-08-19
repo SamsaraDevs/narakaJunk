@@ -107,7 +107,7 @@ actor "Aggregate Type 'Guilt'" : Weapon
 		TSTF D 1 Offset(2,34)
         TSTF E 1 Offset(-2,33) A_PlayWeaponSound("tfear/swing")
 		TSTF E 1 Offset(7,32)
-		TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"CoopHold")
+		TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"TLMSHold")
 		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopHold")
         TSTF F 1 Offset(-2,32) A_FireCustomMissile("GuiltAttack",0,0)//A_CustomPunch(random(100,140),1,1,"GuiltPuff",144)
 		TSTF F 1 Offset(7,30)
@@ -125,7 +125,7 @@ actor "Aggregate Type 'Guilt'" : Weapon
         TSTF E 1 Offset(-2,33) A_PlayWeaponSound("tfear/swing")
 		TSTF E 1 Offset(7,32)
 		//TNT1 A 0 A_TakeInventory("GuiltAmmo",6)
-		TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"CoopHold")
+		TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"TLMSHold")
 		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopHold")
         TSTF F 1 Offset(-2,32) A_FireCustomMissile("GuiltAttack",0,0)//A_CustomPunch(random(100,140),1,1,"GuiltPuff",144)
 		TSTF F 1 Offset(7,30)
@@ -145,6 +145,16 @@ actor "Aggregate Type 'Guilt'" : Weapon
         TSTF DDCCB 1 A_ClearRefire
 		TSTF B 1 Offset(14,27)
         Goto Ready
+	
+	  TLMSHold:
+        TSTF F 1 Offset(-2,32) A_FireCustomMissile("GuiltAttackTLMS",0,0)//A_CustomPunch(random(100,140),1,1,"GuiltPuff",144)
+		TSTF F 1 Offset(7,30)
+        TSTF G 1 Offset(-2,32)
+		TSTF G 1 Offset(7,30)
+		TNT1 A 12 A_ClearRefire
+        TSTF DDCCB 1 A_ClearRefire
+		TSTF B 1 Offset(14,27)
+        Goto Ready
 		
 	  AltFire:
 		TNT1 A 0 A_JumpIfNoAmmo("LightShot")
@@ -155,7 +165,7 @@ actor "Aggregate Type 'Guilt'" : Weapon
 		TSTF L 1 Offset(0,32) 
         TSTF L 1 Offset(0,36) A_PlayWeaponSound("tfear/shoot")
 		TSTF L 1 Offset(0,59)
-		TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"CoopAltHold")
+		TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"TLMSAltHold")
 		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopAltHold")
         TSTF L 1 Offset(0,52) A_FireCustomMissile("GuiltShot",0,1,0,0,0,0)//A_CustomPunch(random(100,140),1,1,"GuiltPuff",144)
 		TSTF L 1 Offset(0,46)
@@ -178,11 +188,22 @@ actor "Aggregate Type 'Guilt'" : Weapon
 		TSTF A 1 A_TakeInventory("TfearRefire")
 		goto Ready
 		
+	  TLMSAltHold:
+        TSTF L 1 Offset(0,52) A_FireCustomMissile("GuiltShotTLMS",0,1,0,0,0,0)//A_CustomPunch(random(100,140),1,1,"GuiltPuff",144)
+		TSTF L 1 Offset(0,46)
+        TSTF L 1 Offset(0,40)
+		TSTF L 1 Offset(0,36) A_GiveInventory("TfearRefire")
+		TSTF L 2 Offset(0,33)
+		TSTF L 5 A_Refire
+        TSTF KKKJJIIHH 1 A_ClearRefire
+		TSTF A 1 A_TakeInventory("TfearRefire")
+		goto Ready
+		
 	  AltHold2:
         TSTF L 1 A_JumpIfNoAmmo("GoToReload")
         TSTF L 1 Offset(0,35) A_PlayWeaponSound("tfear/shoot2")
 		TSTF L 1 Offset(0,46)
-		TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"CoopAltHold2")
+		TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"TLMSAltHold2")
 		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopAltHold2")
         TSTF L 1 Offset(0,42) A_FireCustomMissile("GuiltShot2",random(-1,1),1,0,0,0,random(-1,1))//A_CustomPunch(random(100,140),1,1,"GuiltPuff",144)
 		TSTF L 1 Offset(0,38)
@@ -195,6 +216,16 @@ actor "Aggregate Type 'Guilt'" : Weapon
 
 	  CoopAltHold2:
         TSTF L 1 Offset(0,42) A_FireCustomMissile("GuiltShotCoop2",random(-1,1),1,0,0,0,random(-1,1))//A_CustomPunch(random(100,140),1,1,"GuiltPuff",144)
+		TSTF L 1 Offset(0,38)
+        TSTF L 1 Offset(0,35)
+		TSTF L 1 Offset(0,33) A_GiveInventory("TfearRefire")
+		TSTF L 5 A_Refire
+        TSTF KKKJJIIHH 1 A_ClearRefire
+		TSTF A 1 A_TakeInventory("TfearRefire")
+		goto Ready
+
+	  TLMSAltHold2:
+        TSTF L 1 Offset(0,42) A_FireCustomMissile("GuiltShotTLMS2",random(-1,1),1,0,0,0,random(-1,1))//A_CustomPunch(random(100,140),1,1,"GuiltPuff",144)
 		TSTF L 1 Offset(0,38)
         TSTF L 1 Offset(0,35)
 		TSTF L 1 Offset(0,33) A_GiveInventory("TfearRefire")
@@ -275,6 +306,13 @@ actor GuiltAttack : FastProjectile
 actor GuiltAttackCoop : GuiltAttack
 {
 +THRUSPECIES
+Species "Player"
+DamageType "VillainTeam"
+}
+
+actor GuiltAttackTLMS : GuiltAttack
+{
++THRUSPECIES
 Species "Villain"
 DamageType "VillainTeam"
 }
@@ -308,6 +346,13 @@ ACTOR GuiltShot
 }
 
 ACTOR GuiltShotCoop : GuiltShot
+{
+	+THRUSPECIES
+	Species "Player"
+	DamageType "VillainTeam"
+}
+
+ACTOR GuiltShotTLMS : GuiltShot
 {
 	+THRUSPECIES
 	Species "Villain"
@@ -376,6 +421,13 @@ ACTOR GuiltShot2
 }
 
 ACTOR GuiltShotCoop2 : GuiltShot2
+{
+	+THRUSPECIES
+	Species "Player"
+	DamageType "VillainTeam"
+}
+
+ACTOR GuiltShotTLMS2 : GuiltShot2
 {
 	+THRUSPECIES
 	Species "Villain"
@@ -477,9 +529,14 @@ actor "Scatter Type 'Hatred'" : Weapon
         TNT1 A 0 A_JumpIfInventory("AlienWeaponFired", 1, 2)
         TNT1 A 0 A_GiveInventory("AlienWeaponFired", 7)
         TNT1 A 0 A_GiveInventory("AlienWeaponFiredP", 7)
+        TNT1 A 0 A_JumpIfInventory("TLMSModeOn", 1, "TLMSFire")
         TNT1 A 0 A_JumpIfInventory("CoopModeOn", 1, "CoopFire")
         TNT1 B 0 A_FireCustomMissile("EnforcerShot2", random(-1, 1), 1, 0, 0, 0, random(-1, 1))
         goto Fire2
+
+      TLMSFire:
+        TNT1 B 0 A_FireCustomMissile("EnforcerShotTLMS2", random(-1, 1), 1, 0, 0, 0, random(-1, 1))
+        Goto Fire2
 
       CoopFire:
         TNT1 B 0 A_FireCustomMissile("EnforcerShotCoop2", random(-1, 1), 1, 0, 0, 0, random(-1, 1))
@@ -504,12 +561,14 @@ actor "Scatter Type 'Hatred'" : Weapon
         TNT1 A 0 A_GiveInventory("AlienWeaponFired", 7)
         TNT1 A 0 A_GiveInventory("AlienWeaponFiredS", 7)
         TNT1 A 0 A_JumpIfInventory("AlienWeaponSecondarySide", 1, "AltFire1")
+        TNT1 A 0 A_JumpIfInventory("TLMSModeOn", 1, "TLMSAltFire1")
         TNT1 A 0 A_JumpIfInventory("CoopModeOn", 1, "CoopAltFire1")
         TNT1 B 0 A_FireCustomMissile("EnforcerShot2", -22, 1, 0, 0, 0, random(-1, 1))
         TNT1 B 0 A_GiveInventory("AlienWeaponSecondarySide")
         goto AltFire2
 
       AltFire1:
+        TNT1 A 0 A_JumpIfInventory("TLMSModeOn", 1, "TLMSAltFire2")
         TNT1 A 0 A_JumpIfInventory("CoopModeOn", 1, "CoopAltFire2")
         TNT1 B 0 A_FireCustomMissile("EnforcerShot2", 22, 1, 0, 0, 0, random(-1, 1))
         TNT1 B 0 A_TakeInventory("AlienWeaponSecondarySide")
@@ -522,6 +581,16 @@ actor "Scatter Type 'Hatred'" : Weapon
 
       CoopAltFire2:
         AWP1 B 0 Bright A_FireCustomMissile("EnforcerShotCoop2", 22, 1)
+        TNT1 B 0 A_TakeInventory("AlienWeaponSecondarySide")
+        goto AltFire2
+
+      TLMSAltFire1:
+        AWP1 B 0 Bright A_FireCustomMissile("EnforcerShotTLMS2", -22, 1)
+        TNT1 B 0 A_GiveInventory("AlienWeaponSecondarySide")
+        goto AltFire2
+
+      TLMSAltFire2:
+        AWP1 B 0 Bright A_FireCustomMissile("EnforcerShotTLMS2", 22, 1)
         TNT1 B 0 A_TakeInventory("AlienWeaponSecondarySide")
         goto AltFire2
 
@@ -610,6 +679,15 @@ DamageType "VillainTeam"
 Speed 20
 }
 
+ACTOR EnforcerShotTLMS2 : EnforcerShotCoop
+{
+Damage (random(40, 48))
++THRUSPECIES
+Species "Player"
+DamageType "VillainTeam"
+Speed 20
+}
+
 // Marathon 1 Alien Weapon
 actor "Rapid Type 'Flawed'" : Weapon//" Alien Weapon "
 {
@@ -667,6 +745,7 @@ actor "Rapid Type 'Flawed'" : Weapon//" Alien Weapon "
         TWP2 B 1 A_Recoil(0.1)
         TNT1 A 0 A_Light2
         TNT1 A 0 A_PlayWeaponSound("alienweapon/shoot")
+		TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"TLMSFire")
 		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopFire")
         TNT1 A 0 A_FireCustomMissile("AlienWeaponBullet2", 0, 0, 0, 0)
         TWP2 C 2 bright A_FireCustomMissile("AlienWeaponBullet2", 0, 1, 0, 0)//A_FireBullets(7.5, 0, 3, 5, "alienpuff", 1, 0)
@@ -683,10 +762,19 @@ actor "Rapid Type 'Flawed'" : Weapon//" Alien Weapon "
 		TWP2 A 1 A_Refire
         goto Ready
 		
+	  TLMSFire:
+        TNT1 A 0 A_FireCustomMissile("AlienWeaponBulletTLMS2", 0, 0, 0, 0)
+        TWP2 C 2 bright A_FireCustomMissile("AlienWeaponBulletTLMS2", 0, 1, 0, 0)//A_FireBullets(7.5, 0, 3, 5, "alienpuff", 1, 0)
+        TNT1 A 0 A_Light0
+        TWP2 B 1
+		TWP2 A 1 A_Refire
+        goto Ready
+		
 	  ZoomedFire:
         NKLZ A 1 A_Recoil(0.1)
         TNT1 A 0 A_Light2
         TNT1 A 0 A_PlayWeaponSound("alienweapon/shoot")
+		TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"TLMSZoomedFire")
 		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopZoomedFire")
         TNT1 A 0 A_FireCustomMissile("AlienWeaponBullet2", 0, 0, 0, 0)
         NKLZ A 2 bright A_FireCustomMissile("AlienWeaponBullet2", 0, 1, 0, 0)//A_FireBullets(7.5, 0, 3, 5, "alienpuff", 1, 0)
@@ -702,6 +790,14 @@ actor "Rapid Type 'Flawed'" : Weapon//" Alien Weapon "
         NKLZ A 1
 		NKLZ B 1 A_Refire
         goto Ready
+		
+	  TLMSZoomedFire:
+        TNT1 A 0 A_FireCustomMissile("AlienWeaponBulletTLMS2", 0, 0, 0, 0)
+        NKLZ A 2 bright A_FireCustomMissile("AlienWeaponBulletTLMS2", 0, 1, 0, 0)//A_FireBullets(7.5, 0, 3, 5, "alienpuff", 1, 0)
+        TNT1 A 0 A_Light0
+        NKLZ A 1
+		NKLZ B 1 A_Refire
+        goto Ready
 
       Hold:
 		TNT1 A 0 A_JumpIfInventory("Zoomed",1,"ZoomedHold")
@@ -709,6 +805,7 @@ actor "Rapid Type 'Flawed'" : Weapon//" Alien Weapon "
         TWP2 B 1 A_Recoil(0.1)
         TNT1 A 0 A_Light2
         TNT1 A 0 A_PlayWeaponSound("alienweapon/shoot")
+		TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"TLMSHold")
 		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopHold")
         TNT1 A 0 A_FireCustomMissile("AlienWeaponBullet2", random(-200, 200)/100.00, 0, 0, 0)
         TWP2 C 2 bright A_FireCustomMissile("AlienWeaponBullet2", random(-100, 100)/100.00, 1, 0, 0)//A_FireBullets(7.5, 0, 3, 5, "alienpuff", 1, 0)
@@ -727,11 +824,21 @@ actor "Rapid Type 'Flawed'" : Weapon//" Alien Weapon "
 		TWP2 A 1 A_ClearRefire
         Goto Ready
 		
+	  TLMSHold:
+        TNT1 A 0 A_FireCustomMissile("AlienWeaponBulletTLMS2", random(-200, 200)/100.00, 0, 0, 0)
+        TWP2 C 2 bright A_FireCustomMissile("AlienWeaponBulletTLMS2", random(-100, 100)/100.00, 1, 0, 0)//A_FireBullets(7.5, 0, 3, 5, "alienpuff", 1, 0)
+        TNT1 A 0 A_Light0
+        TWP2 B 1
+		TWP2 A 1 A_Refire
+		TWP2 A 1 A_ClearRefire
+        Goto Ready
+		
 	  ZoomedHold:
         NKLZ A 1 A_Recoil(0.1)
 		TNT1 A 0 A_JumpIfNoAmmo("UnzoomReload")
         TNT1 A 0 A_Light2
         TNT1 A 0 A_PlayWeaponSound("alienweapon/shoot")
+		TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"TLMSZoomedHold")
 		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopZoomedHold")
         TNT1 A 0 A_FireCustomMissile("AlienWeaponBullet2", random(-100, 100)/100.00, 0, 0, 0)
         NKLZ A 2 bright A_FireCustomMissile("AlienWeaponBullet2", random(-100, 100)/100.00, 1, 0, 0)//A_FireBullets(7.5, 0, 3, 5, "alienpuff", 1, 0)
@@ -744,6 +851,15 @@ actor "Rapid Type 'Flawed'" : Weapon//" Alien Weapon "
 	  CoopZoomedHold:
         TNT1 A 0 A_FireCustomMissile("AlienWeaponBulletCoop2", random(-100, 100)/100.00, 0, 0, 0)
         NKLZ A 2 bright A_FireCustomMissile("AlienWeaponBulletCoop2", random(-100, 100)/100.00, 1, 0, 0)//A_FireBullets(7.5, 0, 3, 5, "alienpuff", 1, 0)
+        TNT1 A 0 A_Light0
+        NKLZ A 1
+		NKLZ B 1 A_Refire
+		NKLZ B 1 A_ClearRefire
+        goto Ready
+		
+	  TLMSZoomedHold:
+        TNT1 A 0 A_FireCustomMissile("AlienWeaponBulletTLMS2", random(-100, 100)/100.00, 0, 0, 0)
+        NKLZ A 2 bright A_FireCustomMissile("AlienWeaponBulletTLMS2", random(-100, 100)/100.00, 1, 0, 0)//A_FireBullets(7.5, 0, 3, 5, "alienpuff", 1, 0)
         TNT1 A 0 A_Light0
         NKLZ A 1
 		NKLZ B 1 A_Refire
@@ -924,6 +1040,15 @@ Species "Villain"
 DamageType "VillainTeam"
 }
 
+ACTOR AlienWeaponBulletTLMS2 : AlienWeaponBulletCoop
+{
+Damage (random(8, 12))
+Speed 120
++THRUSPECIES
+Species "Player"
+DamageType "VillainTeam"
+}
+
 actor GuiltAmmo : Ammo
 {
     +IGNORESKILL
@@ -1007,7 +1132,7 @@ actor "Predator Type 'Abandon'" : Weapon
         TNT1 A 0 A_JumpIfNoAmmo("Reload")
         TNT1 A 0 A_AlertMonsters//,0,0,0,0)
         TNT1 A 0 A_Recoil(1)
-        TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"CoopFire")
+        TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"TLMSFire")
         TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopFire")
         TNT1 A 0 A_FireCustomMissile("AbandonGrenade",0,1,0,0,0,6)
         TNT1 A 0 A_PlaySound("tfear/abandonshot")
@@ -1024,13 +1149,21 @@ actor "Predator Type 'Abandon'" : Weapon
 		TABD A 3
 		goto Ready
 		
+	  TLMSFire:
+        TNT1 A 0 A_FireCustomMissile("AbandonGrenadeTLMS",0,1,0,0,0,6)
+        TNT1 A 0 A_PlaySound("tfear/abandonshot")
+		TABD B 1
+		TABD C 2
+		TABD A 3
+		goto Ready
+		
 	  AltFire:
         TNT1 A 0 A_JumpIf(waterlevel == 3, "NothingFire")
         TABD A 1
         TNT1 A 0 A_JumpIfNoAmmo("Reload")
         TNT1 A 0 A_AlertMonsters//,0,0,0,0)
         TNT1 A 0 A_Recoil(1)
-        TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"CoopAltFire")
+        TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"TLMSAltFire")
         TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopAltFire")
 		TNT1 A 0 A_JumpIfInventory("AbandonAmmo",3,"FireThree")
 		TNT1 A 0 A_JumpIfInventory("AbandonAmmo",2,"FireTwo")
@@ -1065,6 +1198,24 @@ actor "Predator Type 'Abandon'" : Weapon
 		goto AltFireFinish
 	  FireOneCoop:
         TNT1 A 0 A_FireCustomMissile("AbandonGrenadeCoop",0,1,0,0,0,7)
+		goto AltFireFinish
+		
+	 TLMSAltFire:
+	    TNT1 A 0 A_JumpIfInventory("AbandonAmmo",3,"FireThreeTLMS")
+		TNT1 A 0 A_JumpIfInventory("AbandonAmmo",2,"FireTwoTLMS")
+		TNT1 A 0 A_JumpIfInventory("AbandonAmmo",1,"FireOneTLMS")
+		
+	  FireThreeTLMS:
+        TNT1 A 0 A_FireCustomMissile("AbandonGrenadeTLMS",-6,1,0,0,0,1)
+        TNT1 A 0 A_FireCustomMissile("AbandonGrenadeTLMS",6,1,0,0,0,1)
+        TNT1 A 0 A_FireCustomMissile("AbandonGrenadeTLMS",0,1,0,0,0,7)
+		goto AltFireFinish
+	  FireTwoTLMS:
+        TNT1 A 0 A_FireCustomMissile("AbandonGrenadeTLMS",-6,1,0,0,0,1)
+        TNT1 A 0 A_FireCustomMissile("AbandonGrenadeTLMS",6,1,0,0,0,1)
+		goto AltFireFinish
+	  FireOneTLMS:
+        TNT1 A 0 A_FireCustomMissile("AbandonGrenadeTLMS",0,1,0,0,0,7)
 		goto AltFireFinish
 		
 		
@@ -1161,6 +1312,13 @@ actor AbandonGrenadeSmoke
 }
 
 actor AbandonGrenadeCoop : AbandonGrenade
+{
++THRUSPECIES
+Species "Villain"
+DamageType "VillainTeamWithSelfDamage"
+}
+
+actor AbandonGrenadeTLMS : AbandonGrenade
 {
 +THRUSPECIES
 Species "Villain"

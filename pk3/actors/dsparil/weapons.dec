@@ -77,6 +77,7 @@ actor "Chaos Serpent" : Weapon
         SPRN BC 2
         SPRN A 0 A_GunFlash
         SPRN A 0 A_PlayWeaponSound("dsparilserpent/attack")
+		TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"TLMSFire")
 		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopFire")
         SPRN D 4 A_FireCustomMissile("DSparilFireball",0,0,0,-3)
         SPRN B 6 
@@ -86,16 +87,22 @@ actor "Chaos Serpent" : Weapon
         SPRN D 4 A_FireCustomMissile("DSparilFireballCoop",0,0,0,-3)
         SPRN B 6 
         goto Ready
+		
+	  TLMSFire:
+        SPRN D 4 A_FireCustomMissile("DSparilFireballTLMS",0,0,0,-3)
+        SPRN B 6 
+        goto Ready
 
       AltFire:
         SPRN B 2
         SPRN C 3
         TNT1 A 0 A_GunFlash
         TNT1 A 0 A_PlayWeaponSound("dsparilserpent/attack2")
+		TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"TLMSAltFire")
 		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopAltFire")
         TNT1 A 0 A_FireCustomMissile("DSparilFireball2",-3,0,0,-3)
         TNT1 A 0 A_FireCustomMissile("DSparilFireball2",0,0,0,-3)
-        TNT1 A 0  A_FireCustomMissile("DSparilFireball2",3,0,0,-3)
+        TNT1 A 0 A_FireCustomMissile("DSparilFireball2",3,0,0,-3)
         SPRN D 5
         SPRN C 4
         SPRN B 3
@@ -116,7 +123,7 @@ actor "Chaos Serpent" : Weapon
 	  CoopAltFire:
         TNT1 A 0 A_FireCustomMissile("DSparilFireballCoop2",-3,0,0,-3)
         TNT1 A 0 A_FireCustomMissile("DSparilFireballCoop2",0,0,0,-3)
-        TNT1 A 0  A_FireCustomMissile("DSparilFireballCoop2",3,0,0,-3)
+        TNT1 A 0 A_FireCustomMissile("DSparilFireballCoop2",3,0,0,-3)
         SPRN D 5
         SPRN C 4
         SPRN B 3
@@ -128,6 +135,27 @@ actor "Chaos Serpent" : Weapon
         TNT1 A 0 A_FireCustomMissile("DSparilFireballCoop2",-3,0,0,-3)
         TNT1 A 0 A_FireCustomMissile("DSparilFireballCoop2",0,0,0,-3)
         TNT1 A 0 A_FireCustomMissile("DSparilFireballCoop2",3,0,0,-3)
+        SPRN D 5
+        SPRN C 4
+        SPRN B 3
+        SPRN A 23
+        goto Ready
+		
+	  TLMSAltFire:
+        TNT1 A 0 A_FireCustomMissile("DSparilFireballTLMS2",-3,0,0,-3)
+        TNT1 A 0 A_FireCustomMissile("DSparilFireballTLMS2",0,0,0,-3)
+        TNT1 A 0 A_FireCustomMissile("DSparilFireballTLMS2",3,0,0,-3)
+        SPRN D 5
+        SPRN C 4
+        SPRN B 3
+        SPRN A 3
+        SPRN B 2
+        SPRN C 3
+        TNT1 A 0 A_GunFlash
+        TNT1 A 0 A_PlayWeaponSound("dsparilserpent/attack2")
+        TNT1 A 0 A_FireCustomMissile("DSparilFireballTLMS2",-3,0,0,-3)
+        TNT1 A 0 A_FireCustomMissile("DSparilFireballTLMS2",0,0,0,-3)
+        TNT1 A 0 A_FireCustomMissile("DSparilFireballTLMS2",3,0,0,-3)
         SPRN D 5
         SPRN C 4
         SPRN B 3
@@ -162,20 +190,22 @@ actor DSparilFireballSerpent2 : DSparilFireball
 	DamageType "DSparilDamage"
 }
 
-actor DSparilFireballSerpentTLMS : DSparilFireball
+actor DSparilFireballTLMS : DSparilFireball
 {
+    Species "Villain"
 	DamageType "VillainTeam"
 }
 
-actor DSparilFireballSerpent2TLMS : DSparilFireball
+actor DSparilFireballTLMS2 : DSparilFireball
 {
+    Species "Villain"
 	DamageType "VillainTeam"
 }
 
 actor DSparilFireballCoop : SorcererFX1
 {
 	+THRUSPECIES
-	Species "Villain"
+	Species "Player"
     //Obituary "%k fed %o to the Serpent."
     Speed 35
     FastSpeed 35
@@ -184,7 +214,7 @@ actor DSparilFireballCoop : SorcererFX1
 actor DSparilFireballCoop2 : SorcererFX1
 {
 	+THRUSPECIES
-	Species "Villain"
+	Species "Player"
     //Obituary "%k fed %o to the Serpent."
     Speed 25
     FastSpeed 25
@@ -237,6 +267,7 @@ actor "Staff of D'Sparil" : weapon
         DSPS B 4 bright Offset(0,37)
 		TNT1 A 0 A_TakeInventory("VillainAmmoLight",4)
 		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopFire")
+		TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"CoopFire")
 		TNT1 A 0 A_FireCustomMissile("DSparilLightning",0,1)
         DSPS C 3 bright Offset(0,58)
         DSPS C 3 bright Offset(0,52)
@@ -259,13 +290,25 @@ actor "Staff of D'Sparil" : weapon
 		DSPS A 3 offset(0,32)
         DSPS A 4 A_ReFire
         goto ready
+		
+	  TLMSFire:
+		TNT1 A 0 A_FireCustomMissile("DSparilLightningTLMS",0,1)
+        DSPS C 3 bright Offset(0,58)
+        DSPS C 3 bright Offset(0,52)
+        DSPS B 3 bright Offset(0,46)
+        DSPS B 3 bright offset(0,42)
+		DSPS A 3 offset(0,39)
+		DSPS A 3 offset(0,36)
+		DSPS A 3 offset(0,32)
+        DSPS A 4 A_ReFire
+        goto ready
 
       AltFire:
 		TNT1 A 0 A_JumpIfNoAmmo("Ready")
         DSPS A 10 A_JumpIfInventory("DSparilSummonCooldown",1,"Ready")
         DSPS A 5 A_PlayWeaponSound("dsparil/attack")
         TNT1 A 0 A_GunFlash
-		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"AltFireTLMS")
+		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"AltFireCoop")
 		TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"AltFireTLMS")
         DSPS D 5 bright
 		TNT1 A 0 A_TakeInventory("VillainAmmoHeavy",9)
@@ -286,6 +329,19 @@ actor "Staff of D'Sparil" : weapon
 		TNT1 A 0 A_FireCustomMissile("BFGAmmoWaster")
         TNT1 A 0 A_SpawnItemEx("DSparilWizardTLMS",0,0,2,0,12,0,105,49)
         TNT1 A 0 A_SpawnItemEx("DSparilWizardTLMS2",0,0,2,0,12,0,75,49)
+		TNT1 A 0 ACS_ExecuteAlways(484, 0, 1, 35)
+        DSPS E 6 bright
+        DSPS D 6 bright
+        DSPS A 8 bright
+        goto ready
+		
+	  AltFireCoop:
+        DSPS D 5 bright
+		TNT1 A 0 A_TakeInventory("VillainAmmoHeavy",9)
+		TNT1 A 0 A_GiveInventory("DSparilSummonCooldown",10)
+		TNT1 A 0 A_FireCustomMissile("BFGAmmoWaster")
+        TNT1 A 0 A_SpawnItemEx("DSparilWizardCoop",0,0,2,0,12,0,105,49)
+        TNT1 A 0 A_SpawnItemEx("DSparilWizardCoop2",0,0,2,0,12,0,75,49)
 		TNT1 A 0 ACS_ExecuteAlways(484, 0, 1, 35)
         DSPS E 6 bright
         DSPS D 6 bright
@@ -314,7 +370,7 @@ actor DSparilLightningCoop : Sorcerer2FX1
 	+THRUSPECIES
 	+FORCERADIUSDMG
 	DONTHURTSHOOTER
-	Species "Villain"
+	Species "Player"
 	DamageType "VillainTeam"
     //Obituary "%k \croverwhelmed\c- %o \crwith despair.\c-"
     Speed 35
@@ -325,6 +381,11 @@ actor DSparilLightningCoop : Sorcerer2FX1
       FX16 HIJKL 5 Bright
       Stop
 	}
+}
+
+actor DSparilLightningTLMS : DSparilLightningCoop
+{
+    Species "Villain"
 }
 
 actor DSparilWizard : Wizard2
@@ -414,6 +475,36 @@ actor DSparilWizardTLMS : DSparilWizard
 	}
 }
 
+actor DSparilWizardCoop : DSparilWizard
+{
+    +THRUSPECIES
+	Species "Player"
+	DamageFactor "DukeExplosive", 0.0
+	DamageFactor "NotQuadded", 0.0
+	DamageFactor "VillainTeam", 0.0
+	DamageFactor "VillainTeamWithSelfDamage", 0.0
+	States
+	{
+	  Missile:
+		TNT1 A 0 A_JumpIfInTargetInventory("IsNarakaClass",1,"WhoopsThatsDSparil")
+		// Well, no, it's not D'Sparil, but may as well use an existing state.
+	    WZRD C 4 A_WizAtk1
+        WZRD C 4 A_WizAtk2
+        WZRD C 4 A_WizAtk1
+        WZRD C 4 A_WizAtk2
+        WZRD C 4 A_WizAtk1
+        WZRD C 4 A_WizAtk2
+        WZRD C 4 A_WizAtk1
+        WZRD C 4 A_WizAtk2
+		WZRD D 0 A_GhostOff
+		WZRD D 0 A_CustomMissile("DSparilWizardShotCoop",32,0,5.625,0,0)
+		WZRD D 0 A_CustomMissile("DSparilWizardShotCoop",32,0,-5.625,0,0)
+		WZRD D 0 A_CustomMissile("DSparilWizardShotCoop",32,0,0,0,0)
+        WZRD D 12 A_PlaySound("wizard/attack")
+        Goto See
+	}
+}
+
 actor DSparilWizard2 : DSparilWizard
 {
     States
@@ -461,6 +552,35 @@ actor DSparilWizardTLMS2 : DSparilWizard2
 	}
 }
 
+actor DSparilWizardCoop2 : DSparilWizard2
+{
+    +THRUSPECIES
+	Species "Player"
+	DamageFactor "DukeExplosive", 0.0
+	DamageFactor "NotQuadded", 0.0
+	DamageFactor "VillainTeam", 0.0
+	DamageFactor "VillainTeamWithSelfDamage", 0.0
+	States
+	{
+	  Missile:
+		TNT1 A 0 A_JumpIfInTargetInventory("IsNarakaClass",1,"WhoopsThatsDSparil")
+	    WZRD C 4 A_WizAtk1
+        WZRD C 4 A_WizAtk2
+        WZRD C 4 A_WizAtk1
+        WZRD C 4 A_WizAtk2
+        WZRD C 4 A_WizAtk1
+        WZRD C 4 A_WizAtk2
+        WZRD C 4 A_WizAtk1
+        WZRD C 4 A_WizAtk2
+		WZRD D 0 A_GhostOff
+		WZRD D 0 A_CustomMissile("DSparilWizardShotCoop",32,0,5.625,0,0)
+		WZRD D 0 A_CustomMissile("DSparilWizardShotCoop",32,0,-5.625,0,0)
+		WZRD D 0 A_CustomMissile("DSparilWizardShotCoop",32,0,0,0,0)
+        WZRD D 12 A_PlaySound("wizard/attack")
+        Goto See
+	}
+}
+
 actor HereticTeleport
 {
     +NOBLOCKMAP
@@ -488,6 +608,18 @@ actor DSparilWizardShot : WizardFX1
 
 actor DSparilWizardShotTLMS : WizardFX1
 {
+    +THRUSPECIES
+	Species "Villain"
+    Obituary "\crA Disciple overwhelmed\c- %o \crwith Despair.\c-"
+    DamageType "VillainTeam"
+    Speed 25
+    Damage 5
+}
+
+actor DSparilWizardShotCoop : WizardFX1
+{
+    +THRUSPECIES
+	Species "Player"
     Obituary "\crA Disciple overwhelmed\c- %o \crwith Despair.\c-"
     DamageType "VillainTeam"
     Speed 25

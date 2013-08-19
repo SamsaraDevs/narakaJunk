@@ -26,7 +26,8 @@ script 465 (void)
     Thing_ChangeTID(0, myTID);
     SetActivator(newTID);
 
-
+    if (GameType() == GAME_NET_COOPERATIVE)
+    { SetActorProperty(0,APROP_Species,"Player");	}
     Thing_SetTranslation(myTID, -1);
     //GiveInventory("Megasphere", 1);
 
@@ -117,14 +118,16 @@ script NARAKA_SPAWN (int respawning) // This differs from 890 in that this works
     int pNum = playerNumber();
     if (GameType() == GAME_SINGLE_PLAYER || GameType() == GAME_NET_COOPERATIVE)
     {
-	    GiveInventory("CoopModeOn",1);
+		if (GameType () == GAME_NET_COOPERATIVE) { GiveInventory("CoopModeOn",1);
+	    SetActorProperty(0,APROP_Species,"Player");}
+		
         if (CheckInventory("CyberdemonClass") == 1) { GiveInventory("CyberBeef", 1); }
         if (CheckInventory("DsparilClass") == 1)
         {
 			//Print(s:"I'm working! - Enter");
-			if (CheckInventory("DsparilMount") == 1)
-			{ TakeInventory("DsparilMount", 1);
-			GiveInventory("DsparilDismount", 1); }
+			//if (CheckInventory("DsparilMount") == 1) {
+			TakeInventory("DsparilMount", 1);
+			GiveInventory("DsparilDismount", 1); //}
             DSparilHealth[pNum] = 200;
             SerpentArmor[pNum]  = 50;
             SerpentHealth[pNum] = 100;
@@ -410,12 +413,12 @@ script 888 (int ent)
     int pNum = PlayerNumber();
     int serpentTID = 1500+pNum;	
     if (!ent) {
-			//Print(s:"I'm working! - Normal - Unspawned");
+	    Print(s:"I'm working! - Normal - Unspawned");
         // Dismount the Serpent. Spawn the Serpent actor in the player's current spot,
         // change its health accordingly, and morph the player to the D'Sparil On Foot class.
         if (Spawn("DSparilSerpentUnmounted", GetActorX(0), GetActorY(0), GetActorZ(0), serpentTID, GetActorAngle(0) >> 8 ) > 0)
         {
-			//Print(s:"I'm working! - Normal - Spawned");
+			Print(s:"I'm working! - Normal - Spawned");
             Thing_SetTranslation(serpentTID, -1); // Make the Serpent use the translation the Player is!
             SetActorProperty(serpentTID, APROP_HEALTH, GetActorProperty(0, APROP_HEALTH) * 5);
             ThingSound(serpentTID, "dsparilserpent/active", 255);
@@ -452,7 +455,7 @@ script 888 (int ent)
     {
         // Mount the Serpent.
         // Can't get on the Serpent if it's dead!
-			//Print(s:"I'm working! - Normal - Mount");
+			Print(s:"I'm working! - Normal - Mount");
         if (ThingCount(0, serpentTID) > 0) {
             // Check if the player is close enough to the Serpent, then
             // remove the Serpent actor and morph the player back.
@@ -485,12 +488,12 @@ script 889 (int ent)
     int pNum = PlayerNumber();
     int serpentTID = 1500+pNum;	
     if (!ent) {
-			//Print(s:"I'm working! - Coop - Unspawned");
+			Print(s:"I'm working! - TLMS - Unspawned");
         // Dismount the Serpent. Spawn the Serpent actor in the player's current spot,
         // change its health accordingly, and morph the player to the D'Sparil On Foot class.
         if (Spawn("DSparilSerpentUnmountedTLMS", GetActorX(0), GetActorY(0), GetActorZ(0), serpentTID, GetActorAngle(0) >> 8 ) > 0)
         {
-			//Print(s:"I'm working! - Coop - Spawned");
+			Print(s:"I'm working! - TLMS - Spawned");
             Thing_SetTranslation(serpentTID, -1); // Make the Serpent use the translation the Player is!
             SetActorProperty(serpentTID, APROP_HEALTH, GetActorProperty(0, APROP_HEALTH) * 5);
             ThingSound(serpentTID, "dsparilserpent/active", 255);
@@ -527,7 +530,7 @@ script 889 (int ent)
     {
         // Mount the Serpent.
         // Can't get on the Serpent if it's dead!
-			//Print(s:"I'm working! - Coop - Mount");
+			Print(s:"I'm working! - TLMS - Mount");
         if (ThingCount(0, serpentTID) > 0) {
             // Check if the player is close enough to the Serpent, then
             // remove the Serpent actor and morph the player back.
@@ -675,14 +678,84 @@ script 895 ENTER clientside
 	terminate;
 }
 
-/*script 896 open
+script 896 (int ent)
 {
-    if (!GetCVar("naraka_teambalancer"))
-    {   ConsoleCommand("set naraka_teambalancer 0");
-    ConsoleCommand("archivecvar naraka_teambalancer"); }
+    int pNum = PlayerNumber();
+    int serpentTID = 1500+pNum;	
+    if (!ent) {
+			Print(s:"I'm working! - Coop - Unspawned");
+        // Dismount the Serpent. Spawn the Serpent actor in the player's current spot,
+        // change its health accordingly, and morph the player to the D'Sparil On Foot class.
+        if (Spawn("DSparilSerpentUnmountedCoop", GetActorX(0), GetActorY(0), GetActorZ(0), serpentTID, GetActorAngle(0) >> 8 ) > 0)
+        {
+			Print(s:"I'm working! - Coop - Spawned");
+            Thing_SetTranslation(serpentTID, -1); // Make the Serpent use the translation the Player is!
+            SetActorProperty(serpentTID, APROP_HEALTH, GetActorProperty(0, APROP_HEALTH) * 5);
+            ThingSound(serpentTID, "dsparilserpent/active", 255);
+            // Takes the player's current health and multiplies it by 5 for the Serpent.
+            // Getting off the Serpent earlier means tankier Serpent!
+            
+            SerpentArmor [pNum] = CheckInventory("Armor");
+            SerpentHealth[pNum] = GetActorProperty(0, APROP_HEALTH);
+            
+			int newTID = unusedTID(23000, 25000);
+			int myTID  = defaultTID(-1);
+			Spawn("TranslationHolder", GetActorX(0), GetActorY(0), GetActorZ(0)+8.0, newTID);
+			Thing_SetTranslation(newTID, -1);
+
+			MorphActor(0, "DSparilOnFootPlayer", "", 0x7FFFFFFF, 194, "emptytelefog", "emptytelefog");
+			Thing_ChangeTID(0, myTID);
+			SetActivator(newTID);
+
+			Thing_SetTranslation(myTID, -1);
+			//GiveInventory("Megasphere", 1);
+
+			SetActivator(myTID);
+			Thing_Remove(newTID);
+	    
+		
+		    SetActorProperty(0, APROP_Species,"Player");
+            SetActorProperty(0, APROP_HEALTH, DSparilHealth[pNum]);
+            GiveInventory("DSparilDismountedSerpent", 1);
+            TakeInventory("DSparilDismount", 1);
+            GiveInventory("DSparilMount", 1);
+            playerOnFoot[pNum] = 1;
+        }
+        
+    }
+    else
+    {
+        // Mount the Serpent.
+        // Can't get on the Serpent if it's dead!
+			Print(s:"I'm working! - Coop - Mount");
+        if (ThingCount(0, serpentTID) > 0) {
+            // Check if the player is close enough to the Serpent, then
+            // remove the Serpent actor and morph the player back.
+            int x = (GetActorX(serpentTID) - GetActorX(0)) >> 16;
+            int y = (GetActorY(serpentTID) - GetActorY(0)) >> 16;
+            int z = abs(GetActorZ(serpentTID) - GetActorZ(0)) >> 16;		
+            
+            if (sqrt_i(x*x + y*y) <= 128 && z <= 128)
+            {
+                ThingSound(serpentTID, "dsparilserpent/active", 255);
+                Thing_Remove(serpentTID);
+                
+                DSparilHealth[pNum] = GetActorProperty(0, APROP_HEALTH);
+                
+                UnmorphActor(0, 1);
+                GiveInventory("DSparilSerpentArmor", SerpentArmor[pNum]);
+                SetActorProperty(0, APROP_HEALTH, SerpentHealth[pNum]);
+                
+                TakeInventory("DSparilDismountedSerpent", 1);
+                GiveInventory("DSparilDismount", 1);
+                TakeInventory("DSparilMount", 1);
+                playerOnFoot[pNum] = 0;
+            }
+        }
+    }
 }
 
-script 897 (void)
+/*script 897 (void)
 {
 	if(GetCvar("naraka_teambalancer") == 1)
 		setresultvalue(1);

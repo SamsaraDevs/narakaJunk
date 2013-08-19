@@ -4,7 +4,7 @@ actor Zoomed : Boolean { }
 actor TfearCloakCount : Counter { Inventory.MaxAmount 20 }
 actor TfearCloakCooldown : Counter { Inventory.MaxAmount 30 }
 actor TfearBeaconCooldown : Counter { Inventory.MaxAmount 21 }
-actor TfearSummonLimit : Counter { Inventory.MaxAmount 4 }
+actor TfearSummonLimit : Counter { Inventory.MaxAmount 7 }
 actor TfearCloak : PowerShadow
 {
   Powerup.Duration -25
@@ -43,6 +43,7 @@ actor TfearPlayer : PlayerPawn
     DamageFactor "WolfenFlamethrower", 0.9
     DamageFactor "Fire", 0.9 // Effects Corvus' Phoenix Rod as well as the TOZT and Firestorm. Damn.
     DamageFactor "PhasingZorch", 0.9 // Not in yet!
+	DamageFactor "EnemyInfightDamage", 0.0
     -THRUSPECIES
     +NOSKIN
     -DONTBLAST

@@ -66,6 +66,7 @@ actor DsparilPlayer : PlayerPawn
     DamageFactor "PhasingZorch", 0.8
     DamageFactor "WMCBeam", 0.55
     DamageFactor "WMCNade", 0.55
+	DamageFactor "EnemyInfightDamage", 0.0
     Species "Villain"
     -THRUSPECIES
     +NOSKIN

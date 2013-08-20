@@ -140,6 +140,7 @@ script NARAKA_SPAWN (int respawning) // This differs from 890 in that this works
     if (isLMS())
     {
         ApplyLMS();
+		if(CheckInventory("HitlerClass") == 1) { GiveInventory("HitlerAmmoCrate",1); }
     }
 	if(CheckInventory("TfearClass") == 1) { Thing_ChangeTID(0, 13150 + PlayerNumber()); }
 }

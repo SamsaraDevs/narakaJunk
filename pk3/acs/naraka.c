@@ -755,9 +755,7 @@ script 896 (int ent)
     }
 }
 
-/*script 897 (void)
+script 897 (void)
 {
-	if(GetCvar("naraka_teambalancer") == 1)
-		setresultvalue(1);
-		else setresultvalue(0);
-}*/
+	SetActorProperty(0,APROP_Speed,1.45);
+}

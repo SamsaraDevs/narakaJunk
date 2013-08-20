@@ -63,6 +63,8 @@ actor TranslationHolder
 #include "actors/dsparil/dsparil.dec"
 #include "actors/dsparil/items.dec"
 #include "actors/dsparil/weapons.dec"
+#include "actors/hitler/hitler.dec"
+#include "actors/hitler/weapons.dec"
 #include "actors/korax/korax.dec"
 #include "actors/korax/weapons.dec"
 #include "actors/tfear/tfear.dec"

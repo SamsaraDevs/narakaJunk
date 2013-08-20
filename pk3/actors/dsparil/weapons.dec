@@ -390,6 +390,7 @@ actor DSparilLightningTLMS : DSparilLightningCoop
 
 actor DSparilWizard : Wizard2
 {
+	-COUNTKILL
     Health 130
     DamageFactor "DSparilDamage", 0.0
     //+FRIENDLY
@@ -451,6 +452,7 @@ actor DSparilWizard : Wizard2
 
 actor DSparilWizardTLMS : DSparilWizard
 {
+	-COUNTKILL
 	DamageFactor "VillainTeam", 0.0
 	DamageFactor "VillainTeamWithSelfDamage", 0.0
 	States
@@ -477,6 +479,7 @@ actor DSparilWizardTLMS : DSparilWizard
 
 actor DSparilWizardCoop : DSparilWizard
 {
+	-COUNTKILL
     +THRUSPECIES
 	Species "Player"
 	DamageFactor "DukeExplosive", 0.0
@@ -507,6 +510,7 @@ actor DSparilWizardCoop : DSparilWizard
 
 actor DSparilWizard2 : DSparilWizard
 {
+	-COUNTKILL
     States
     {
       Spawn:
@@ -529,6 +533,7 @@ actor DSparilWizard2 : DSparilWizard
 
 actor DSparilWizardTLMS2 : DSparilWizard2
 {
+	-COUNTKILL
 	DamageFactor "VillainTeam", 0.0
 	DamageFactor "VillainTeamWithSelfDamage", 0.0
 	States
@@ -554,6 +559,7 @@ actor DSparilWizardTLMS2 : DSparilWizard2
 
 actor DSparilWizardCoop2 : DSparilWizard2
 {
+	-COUNTKILL
     +THRUSPECIES
 	Species "Player"
 	DamageFactor "DukeExplosive", 0.0

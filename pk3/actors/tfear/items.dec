@@ -123,6 +123,7 @@ ACTOR TfearPfhorTrooper : FriendlyPfhorTrooper
 	Species "Villain"
     Radius 16
     Height 56
+	-COUNTKILL
 	-SOLID
 	+MISSILEMORE
     -SHOOTABLE
@@ -282,6 +283,7 @@ ACTOR TfearPfhorTrooper : FriendlyPfhorTrooper
 
 ACTOR TfearPfhorTrooperTLMS : TfearPfhorTrooper
 {
+	-COUNTKILL
 	DamageFactor "VillainTeam", 0.0
 	DamageFactor "VillainTeamWithSelfDamage", 0.0
     States
@@ -311,6 +313,7 @@ ACTOR TfearPfhorTrooperTLMS : TfearPfhorTrooper
 
 ACTOR TfearPfhorTrooperCoop : TfearPfhorTrooper
 {
+	-COUNTKILL
     +THRUSPECIES
 	Species "Player"
 	DamageFactor "DukeExplosive", 0.0

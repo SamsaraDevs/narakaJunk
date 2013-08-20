@@ -1,0 +1,279 @@
+actor HitlerLostArmor : Boolean {}
+
+actor HitlerPlayer : PlayerPawn
+{
+    LimitedToTeam 1
+    Player.DisplayName "Hitler"
+    Player.StartItem "Vierfach Fokker-Leimberger", 1
+	//Player.StartItem "Zweifach Fokker-Leimberger", 1
+    Player.StartItem "HitlerClass", 1
+    Player.StartItem "CanWolfMovement", 1
+    Player.StartItem "IsNarakaClass", 1
+    //Player.StartItem "IsSamsaraClass", 1 // Needed for wolfmove. Dammit.
+    Player.StartItem "VillainAmmoLight", 100
+	Player.StartItem "HitlerLMSArmor1", 1
+    Player.Face "EVL"
+    Player.JumpZ 9//Default is 8
+    BloodColor "Red"
+    Player.Soundclass "Hitler"
+    Player.ForwardMove 0.65 0.65
+    Player.SideMove 0.6 0.6
+    DamageFactor "MarathonFusion", 0.45
+    DamageFactor "TimonsAxe", 0.45
+    DamageFactor "Slime", 0.5
+    DamageFactor "Lava", 0.5
+    DamageFactor "LavaHefty", 0.5
+    DamageFactor "Nuke", 0.5
+    DamageFactor "Nukage", 0.5
+    DamageFactor "Hellslime", 0.5
+    DamageFactor "SuperHellslime", 0.5
+	//DamageFactor "Normal", 1.1
+	RadiusDamageFactor 0.5
+	DamageFactor "Explosive", 0.9
+	DamageFactor "DukeExplosive", 0.9
+	DamageFactor "VillainTeam", 0.0
+    DamageFactor "DoomguyPlasma", 0.85
+    DamageFactor "DukeIce", 0.85
+    DamageFactor "CorvusHellstaff", 0.85
+    DamageFactor "WolfenFlamethrower", 0.85
+    DamageFactor "Fire", 0.85
+    DamageFactor "PhasingZorch", 0.85
+	DamageFactor "EnemyInfightDamage", 0.0
+	-INVULNERABLE
+    -THRUSPECIES
+	+BOSS
+    +NOSKIN
+    -DONTBLAST
+    +DONTRIP
+    +BOSSDEATH
+    +NOICEDEATH
+    //+NORADIUSDMG
+    Species "Villain"
+    //Player.ColorRange 96, 111
+    States
+    {
+      Spawn:
+        //TNT1 A 0 A_TakeInventory("WolfCheckMoving")
+		TNT1 A 0 A_JumpIfInventory("HitlerLostArmor",1,"SpawnUnarmored")
+        MHTL A 1 //A_JumpIfInventory("WolfMoving", 1, "See")
+        Loop
+		
+	  SpawnUnarmored:
+		TNT1 A 0 A_JumpIf((momx*momx) + (momy*momy) >= 8,"SeeUnarmored")
+	    HTLR A 1
+		loop
+
+      See:
+	    TNT1 A 0 A_JumpIfInventory("HitlerLostArmor",1,"SeeUnarmored")
+        MHTL AAA 1 //A_GiveInventory("WolfCheckMoving")
+		TNT1 A 0 A_CheckFloor("WalkSound")
+        goto See2
+		
+	  WalkSound:
+	    TNT1 A 0 A_PlaySoundEx("hitler/step","soundslot6")
+		
+	  See2:
+		MHTL AAABBBBBB 1 //A_GiveInventory("WolfCheckMoving")
+        MHTL CCC 1 A_GiveInventory("WolfCheckMoving")
+		TNT1 A 0 A_CheckFloor("WalkSound2")
+		goto See3
+		
+	  WalkSound2:
+        TNT1 A 0 A_PlaySoundEx("hitler/step","soundslot6")
+		
+	  See3:
+		MHTL CCCDDDDDD 1 //A_GiveInventory("WolfCheckMoving")
+        goto Spawn
+		
+	  SeeUnarmored:
+	    HTLR ABCD 4
+		goto SpawnUnarmored
+
+      Missile:
+	    TNT1 A 0 A_JumpIfInventory("HitlerLostArmor",1,"MissileUnarmored")
+        MHTL E 6 
+        Goto Spawn
+		
+	  MissileUnarmored:
+        HTLR E 6 
+        Goto Spawn
+
+      Melee:
+	    TNT1 A 0 A_JumpIfInventory("HitlerLostArmor",1,"MeleeUnarmored")
+        MHTL FG 6 BRIGHT
+        Goto Missile
+		
+      MeleeUnarmored:
+        HTLR FG 6 BRIGHT
+        Goto Missile
+
+      Pain:
+	    TNT1 A 0 A_JumpIfInventory("HitlerLostArmor",1,"GenuinePain")
+		TNT1 A 0 A_JumpIfInventory("HitlerLMSArmor1",1,"GenuineArmoredPain")
+		TNT1 A 0 A_JumpIfInventory("HitlerLMSArmor2",1,"GenuineArmoredPain")
+		TNT1 A 0 A_JumpIfInventory("HitlerLMSArmor3",1,"GenuineArmoredPain")
+		TNT1 A 0 A_JumpIfInventory("HitlerLMSArmor4",1,"GenuineArmoredPain")
+		TNT1 A 0 A_JumpIfInventory("HitlerLMSArmor5",1,"GenuineArmoredPain")
+		TNT1 A 0
+		goto LoseMech
+		
+	  LoseMech:
+	    TNT1 A 0
+        TNT1 A 0 ACS_ExecuteAlways(466, 0, 1)
+		TNT1 A 0 A_UnsetShootable
+		TNT1 A 0 A_GiveInventory("CyberSpeed2")
+		TNT1 A 0 A_PlaySoundEx("hitler/armorloss","soundslot7",0,0)
+		TNT1 A 0 A_Stop
+		TNT1 A 0 A_GiveInventory("HitlerLostArmor",1)
+		MHTL HHH 5 A_SpawnItemEx("HitlerArmorSplode",random(-16,16),random(-16,16),random(12,48),0,0,0,0,32)
+		TNT1 A 0 ACS_ExecuteAlways(897,0,0,0,0)
+		MHTL III 5 A_SpawnItemEx("HitlerArmorSplode",random(-16,16),random(-16,16),random(12,48),0,0,0,0,32)
+		MHTL JJJ 5 A_SpawnItemEx("HitlerArmorSplode",random(-16,16),random(-16,16),random(12,48),0,0,0,0,32)
+		TNT1 A 0 A_SpawnItemEx("HitlerArmorScrap",0,0,0,0,0,0,0,33)
+		TNT1 A 0 A_TakeInventory("CyberSpeed2")
+		HTLR A 6
+        TNT1 A 0 ACS_ExecuteAlways(466, 0, 0)
+		HTLR A 3 A_SetShootable
+		goto SpawnUnarmored
+		
+	  GenuineArmoredPain:
+		MHTL E 4 
+        MHTL E 4 A_Pain
+        Goto Spawn
+	  
+	  GenuinePain:
+        HTLR E 4 
+        HTLR E 4 A_Pain
+        Goto Spawn
+
+      XDeath:
+      Death:
+	    TNT1 A 0
+        HTLR A 1 A_SpawnItemEx("KilledHitler",0,0,0,0,0,0,0,33)
+        TNT1 A 0 A_PlayerScream
+        TNT1 A 0 A_NoBlocking
+        ACLO E -1
+        Stop
+
+      Death.ZorchPistol:
+
+      Death.Zorch:
+      Death.ZorchKamikaze:
+      Death.PhasingZorch:
+      Death.ZorchSpectral:
+        HTLR E 0 A_Stop
+        TNT1 A 0 A_PlaySoundEx("chex/zorch","soundslot5",0,0)
+        HTLR E 3 A_SpawnItem("ZorchEffectSmall")
+        HTLR E 3 A_SetTranslucent(0.9,0)
+        HTLR E 0 A_PlayerScream
+        HTLR E 3 A_SetTranslucent(0.8,0)
+        HTLR E 0 A_NoBlocking
+        HTLR E 3 A_SetTranslucent(0.7,0)
+        HTLR E 3 A_SetTranslucent(0.6,0)
+        HTLR E 3 A_SetTranslucent(0.5,0)
+        HTLR E 3 A_SetTranslucent(0.4,0)
+        HTLR E 3 A_SetTranslucent(0.3,0)
+        HTLR E 3 A_SetTranslucent(0.2,0)
+        HTLR E 3 A_SetTranslucent(0.1,0)
+        ACLO E 1 A_SetTranslucent(1,0)
+        ACLO E -1
+        stop
+
+      CoOpModeOn:
+        TNT1 A 0
+        TNT1 A 0 A_ChangeFlag("THRUSPECIES",1)
+        TNT1 A 0 A_ChangeFlag("DONTBLAST",1)
+        HITL A 1
+        goto See
+
+      Death.DukeDamage:
+      Death.DukePistol:
+      Death.DukeExplosive:
+      Death.DukeSpectral:
+        TNT1 A 0 A_Jump(218,"Death")
+        TNT1 A 0 A_GiveToTarget("DukeBossKillTaunt",1)
+        goto Death
+
+      Death.DukeIce:
+        TNT1 A 0 A_Jump(218,"Death")//(218,"Ice")
+        TNT1 A 0 A_GiveToTarget("DukeBossKillTaunt",1)
+        goto Death//Ice
+
+      /*Ice:
+      Death.HexenIce:
+
+      Death.Ice:
+	TNT1 A 0 A_PlayWeaponSound("misc/freeze")
+        BJBL Z 70 A_NoBlocking//A_GenericFreezeDeath
+        BJBL Z 0 A_SetTranslucent(0,0)
+        TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("IceChunk2",random(-1,1),random(-1,1),random(8,48),random(-2,2),random(-2,2),random(1,6))
+        BJBL Z 1 A_PlayWeaponSound("misc/icebreak")//A_FreezeDeathChunks
+        BJBL Z -1
+        stop
+        //BJBL G 5 A_GenericFreezeDeath
+        //BJBL G 1 A_FreezeDeathChunks
+        //wait
+
+      Death.HexGreenFire:
+
+      Burn:
+        BJBR A 4 A_PlayerScream
+        BJBR B 4 A_NoBlocking
+        BJBR C 4
+        BJBR DEFGH 4
+        BJBR I -1
+        Stop*/
+    }
+}
+
+Actor HitlerArmorSplode
+{
+    +CLIENTSIDEONLY
+	+NOINTERACTION
+	States
+    {
+    Spawn:
+	    TNT1 A 0
+		TNT1 A 0 A_PlaySound("wolfen/missilexplod")
+        WFLB C 8 Bright
+        WFLB D 6 Bright
+        WFLB E 4 Bright
+        Stop
+	}
+}
+
+Actor HitlerArmorScrap
+{
+    +CLIENTSIDEONLY
+    +NOBLOCKMAP
+	+DROPOFF
+	+NOTELEPORT
+	+FLOORCLIP
+	+MOVEWITHSECTOR
+	States
+    {
+    Spawn:
+	    TNT1 A 0
+        MHTL K -1
+        Stop
+	}
+}
+
+Actor KilledHitler // No Deathcam(TM) this time, sorry.
+{
+    Radius 1
+    Height 1
+    +NOCLIP
+    -SOLID
+    +CLIENTSIDEONLY
+    States
+	{
+	Spawn:
+		HTLR A 60
+		HTLR I 5 A_PlaySound("hitler/death2")
+		HTLR J 5
+		HTLR KLMNOP 5
+		HTLR P -1
+		Stop
+	}
+}

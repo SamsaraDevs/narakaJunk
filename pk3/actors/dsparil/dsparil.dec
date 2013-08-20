@@ -63,6 +63,7 @@ actor DsparilPlayer : PlayerPawn
     DamageFactor "CorvusHellstaff", 0.8
     DamageFactor "WolfenFlamethrower", 0.8
     DamageFactor "Fire", 0.8 // Effects Corvus' Phoenix Rod as well as the TOZT and Firestorm. Damn.
+    DamageFactor "QuakeFire", 0.75
     DamageFactor "PhasingZorch", 0.8
     DamageFactor "WMCBeam", 0.55
     DamageFactor "WMCNade", 0.55
@@ -296,6 +297,7 @@ actor DsparilOnFootPlayer : PlayerPawn
     DamageFactor "CorvusHellstaff", 0.8
     DamageFactor "WolfenFlamethrower", 0.8
     DamageFactor "Fire", 0.8 // Effects Corvus' Phoenix Rod as well as the TOZT and Firestorm. Damn.
+    DamageFactor "QuakeFire", 0.75
     DamageFactor "PhasingZorch", 0.8
     DamageFactor "WMCBeam", 0.55
     DamageFactor "WMCNade", 0.55

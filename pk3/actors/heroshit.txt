@@ -1,9 +1,11 @@
 actor AxePuff2 : AxePuff replaces AxePuff
-{
-DamageType "TimonsAxe"
-}
+{ DamageType "TimonsAxe" }
 
 actor AxePuffGlow2 : AxePuffGlow replaces AxePuffGlow
-{
-DamageType "TimonsAxe"
-}
+{ DamageType "TimonsAxe" }
+
+actor QuakeLavaNail2 : QuakeLavaNail replaces QuakeLavaNail
+{ DamageType "QuakeFire" }
+
+actor QuakeSLNail2 : QuakeSLNail replaces QuakeSLNail
+{ DamageType "QuakeFire" }

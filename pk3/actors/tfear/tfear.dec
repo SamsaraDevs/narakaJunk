@@ -42,6 +42,7 @@ actor TfearPlayer : PlayerPawn
     DamageFactor "CorvusHellstaff", 0.9
     DamageFactor "WolfenFlamethrower", 0.9
     DamageFactor "Fire", 0.9 // Effects Corvus' Phoenix Rod as well as the TOZT and Firestorm. Damn.
+    DamageFactor "QuakeFire", 0.85
     DamageFactor "PhasingZorch", 0.9 // Not in yet!
 	DamageFactor "EnemyInfightDamage", 0.0
     -THRUSPECIES

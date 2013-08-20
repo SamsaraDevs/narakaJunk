@@ -22,6 +22,9 @@ FROM V0.11 TO V0.12:
 - Admiral Tfear now has (some of) his proper sprites!
 - Summoned Pfhor now inherit colors from their summoner.
 - By popular request, there is now a Mana Jewel at the bottom of Korax's HUD, indicating what weapon is equipped by color association.
+- Heroes and Villains can now work side by side in co-op without getting stuck on each other.
+- Minions no longer bring Invasion to a screeching halt.
+- Up to seven Pfhor Troopers can now be summoned. Their max damage range has been decreased from 15 to 10.
 
 FROM V0.1 TO V0.11:
 ========================

@@ -127,6 +127,7 @@ ACTOR TfearPfhorTrooper : FriendlyPfhorTrooper
 	-SOLID
 	+MISSILEMORE
     -SHOOTABLE
+	-ISMONSTER
     States
     {
       Spawn:
@@ -284,6 +285,7 @@ ACTOR TfearPfhorTrooper : FriendlyPfhorTrooper
 ACTOR TfearPfhorTrooperTLMS : TfearPfhorTrooper
 {
 	-COUNTKILL
+	-ISMONSTER
 	DamageFactor "VillainTeam", 0.0
 	DamageFactor "VillainTeamWithSelfDamage", 0.0
     States
@@ -314,6 +316,7 @@ ACTOR TfearPfhorTrooperTLMS : TfearPfhorTrooper
 ACTOR TfearPfhorTrooperCoop : TfearPfhorTrooper
 {
 	-COUNTKILL
+	-ISMONSTER
     +THRUSPECIES
 	Species "Player"
 	DamageFactor "DukeExplosive", 0.0
@@ -351,7 +354,7 @@ ACTOR TfearTrooperBullet : MarathonARBulletCoop
 	Obituary "%k \crmarched over\c- %o \crand lead the Pfhor to victory.\c-"
 	DamageType "PfhorDamage"
 	-THRUSPECIES
-    Damage (random(5,15))
+    Damage (random(5,10))
 }
 
 ACTOR TfearTrooperBulletTLMS : TfearTrooperBullet

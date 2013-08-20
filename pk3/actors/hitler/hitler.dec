@@ -138,13 +138,14 @@ actor HitlerPlayer : PlayerPawn
         Goto Spawn
 	  
 	  GenuinePain:
-        HITL E 4 
-        HITL E 4 A_Pain
+        HTLR E 4 
+        HTLR E 4 A_Pain
         Goto Spawn
 
       XDeath:
       Death:
-        HITL A 1 A_SpawnItemEx("KilledHitler",0,0,0,0,0,0,0,33)
+	    TNT1 A 0
+        HTLR A 1 A_SpawnItemEx("KilledHitler",0,0,0,0,0,0,0,33)
         TNT1 A 0 A_PlayerScream
         TNT1 A 0 A_NoBlocking
         ACLO E -1
@@ -156,20 +157,20 @@ actor HitlerPlayer : PlayerPawn
       Death.ZorchKamikaze:
       Death.PhasingZorch:
       Death.ZorchSpectral:
-        BJBL E 0 A_Stop
+        HTLR E 0 A_Stop
         TNT1 A 0 A_PlaySoundEx("chex/zorch","soundslot5",0,0)
-        BJBL E 3 A_SpawnItem("ZorchEffectSmall")
-        BJBL E 3 A_SetTranslucent(0.9,0)
-        BJBL E 0 A_PlayerScream
-        BJBL E 3 A_SetTranslucent(0.8,0)
-        BJBL E 0 A_NoBlocking
-        BJBL E 3 A_SetTranslucent(0.7,0)
-        BJBL E 3 A_SetTranslucent(0.6,0)
-        BJBL E 3 A_SetTranslucent(0.5,0)
-        BJBL E 3 A_SetTranslucent(0.4,0)
-        BJBL E 3 A_SetTranslucent(0.3,0)
-        BJBL E 3 A_SetTranslucent(0.2,0)
-        BJBL E 3 A_SetTranslucent(0.1,0)
+        HTLR E 3 A_SpawnItem("ZorchEffectSmall")
+        HTLR E 3 A_SetTranslucent(0.9,0)
+        HTLR E 0 A_PlayerScream
+        HTLR E 3 A_SetTranslucent(0.8,0)
+        HTLR E 0 A_NoBlocking
+        HTLR E 3 A_SetTranslucent(0.7,0)
+        HTLR E 3 A_SetTranslucent(0.6,0)
+        HTLR E 3 A_SetTranslucent(0.5,0)
+        HTLR E 3 A_SetTranslucent(0.4,0)
+        HTLR E 3 A_SetTranslucent(0.3,0)
+        HTLR E 3 A_SetTranslucent(0.2,0)
+        HTLR E 3 A_SetTranslucent(0.1,0)
         ACLO E 1 A_SetTranslucent(1,0)
         ACLO E -1
         stop
@@ -264,11 +265,11 @@ Actor KilledHitler // No Deathcam(TM) this time, sorry.
     States
 	{
 	Spawn:
-		HITL A 60
-		HITL I 5 A_PlaySound("hitler/death2")
-		HITL J 5
-		HITL KLMNOP 5
-		HITL P -1
+		HTLR A 60
+		HTLR I 5 A_PlaySound("hitler/death2")
+		HTLR J 5
+		HTLR KLMNOP 5
+		HTLR P -1
 		Stop
 	}
 }

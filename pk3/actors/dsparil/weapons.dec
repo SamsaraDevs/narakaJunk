@@ -434,13 +434,21 @@ actor DSparilWizard : Wizard2
 		
       Idle:
         WZRD A 3 A_Wander
+		TNT1 A 0 A_Look
         WZRD A 4 A_Wander
+		TNT1 A 0 A_Look
         WZRD A 3 A_Wander
+		TNT1 A 0 A_Look
         WZRD A 4 A_Wander
+		TNT1 A 0 A_Look
         WZRD B 3 A_Wander
+		TNT1 A 0 A_Look
         WZRD B 4 A_Wander
+		TNT1 A 0 A_Look
         WZRD B 3 A_Wander
+		TNT1 A 0 A_Look
         WZRD B 4 A_Wander
+		TNT1 A 0 A_Look
         Loop
 		
 	  Missile:

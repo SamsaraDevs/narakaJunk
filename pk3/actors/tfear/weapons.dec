@@ -674,7 +674,7 @@ ACTOR EnforcerShotCoop2 : EnforcerShotCoop
 {
 Damage (random(40, 48))
 +THRUSPECIES
-Species "Villain"
+Species "Player"
 DamageType "VillainTeam"
 Speed 20
 }
@@ -683,7 +683,7 @@ ACTOR EnforcerShotTLMS2 : EnforcerShotCoop
 {
 Damage (random(40, 48))
 +THRUSPECIES
-Species "Player"
+Species "Villain"
 DamageType "VillainTeam"
 Speed 20
 }

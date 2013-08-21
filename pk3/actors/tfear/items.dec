@@ -286,6 +286,8 @@ ACTOR TfearPfhorTrooperTLMS : TfearPfhorTrooper
 {
 	-COUNTKILL
 	-ISMONSTER
+	+THRUSPECIES
+	Species "Villain"
 	DamageFactor "VillainTeam", 0.0
 	DamageFactor "VillainTeamWithSelfDamage", 0.0
     States
@@ -359,6 +361,7 @@ ACTOR TfearTrooperBullet : MarathonARBulletCoop
 
 ACTOR TfearTrooperBulletTLMS : TfearTrooperBullet
 {
+	Obituary "%k \crmarched over\c- %o \crand lead the Pfhor to victory.\c-"
 	DamageType "VillainTeam"
 }
 

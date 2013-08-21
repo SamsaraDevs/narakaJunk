@@ -10,7 +10,6 @@ actor DsparilDismount : CustomInventory
     {
       Use:
 	    TNT1 A 0
-		TNT1 A 0 A_Print("I'm working!")
 		TNT1 A 0 A_GiveInventory("DSparilDismountedSerpent",1)
 		TNT1 A 0 A_JumpIfInventory("SPModeOn",1,"TLMSSummon")
 		TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopSummon")

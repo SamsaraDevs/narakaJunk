@@ -1036,7 +1036,7 @@ ACTOR AlienWeaponBulletCoop2 : AlienWeaponBulletCoop
 Damage (random(8, 12))
 Speed 120
 +THRUSPECIES
-Species "Villain"
+Species "Player"
 DamageType "VillainTeam"
 }
 
@@ -1045,7 +1045,7 @@ ACTOR AlienWeaponBulletTLMS2 : AlienWeaponBulletCoop
 Damage (random(8, 12))
 Speed 120
 +THRUSPECIES
-Species "Player"
+Species "Villain"
 DamageType "VillainTeam"
 }
 

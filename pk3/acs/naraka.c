@@ -414,12 +414,12 @@ script 888 (int ent)
     int pNum = PlayerNumber();
     int serpentTID = 1500+pNum;	
     if (!ent) {
-	    Print(s:"I'm working! - Normal - Unspawned");
+	    //Print(s:"I'm working! - Normal - Unspawned");
         // Dismount the Serpent. Spawn the Serpent actor in the player's current spot,
         // change its health accordingly, and morph the player to the D'Sparil On Foot class.
         if (Spawn("DSparilSerpentUnmounted", GetActorX(0), GetActorY(0), GetActorZ(0), serpentTID, GetActorAngle(0) >> 8 ) > 0)
         {
-			Print(s:"I'm working! - Normal - Spawned");
+			//Print(s:"I'm working! - Normal - Spawned");
             Thing_SetTranslation(serpentTID, -1); // Make the Serpent use the translation the Player is!
             SetActorProperty(serpentTID, APROP_HEALTH, GetActorProperty(0, APROP_HEALTH) * 5);
             ThingSound(serpentTID, "dsparilserpent/active", 255);
@@ -456,7 +456,7 @@ script 888 (int ent)
     {
         // Mount the Serpent.
         // Can't get on the Serpent if it's dead!
-			Print(s:"I'm working! - Normal - Mount");
+			//Print(s:"I'm working! - Normal - Mount");
         if (ThingCount(0, serpentTID) > 0) {
             // Check if the player is close enough to the Serpent, then
             // remove the Serpent actor and morph the player back.
@@ -489,12 +489,12 @@ script 889 (int ent)
     int pNum = PlayerNumber();
     int serpentTID = 1500+pNum;	
     if (!ent) {
-			Print(s:"I'm working! - TLMS - Unspawned");
+			//Print(s:"I'm working! - TLMS - Unspawned");
         // Dismount the Serpent. Spawn the Serpent actor in the player's current spot,
         // change its health accordingly, and morph the player to the D'Sparil On Foot class.
         if (Spawn("DSparilSerpentUnmountedTLMS", GetActorX(0), GetActorY(0), GetActorZ(0), serpentTID, GetActorAngle(0) >> 8 ) > 0)
         {
-			Print(s:"I'm working! - TLMS - Spawned");
+			//Print(s:"I'm working! - TLMS - Spawned");
             Thing_SetTranslation(serpentTID, -1); // Make the Serpent use the translation the Player is!
             SetActorProperty(serpentTID, APROP_HEALTH, GetActorProperty(0, APROP_HEALTH) * 5);
             ThingSound(serpentTID, "dsparilserpent/active", 255);
@@ -531,7 +531,7 @@ script 889 (int ent)
     {
         // Mount the Serpent.
         // Can't get on the Serpent if it's dead!
-			Print(s:"I'm working! - TLMS - Mount");
+			//Print(s:"I'm working! - TLMS - Mount");
         if (ThingCount(0, serpentTID) > 0) {
             // Check if the player is close enough to the Serpent, then
             // remove the Serpent actor and morph the player back.
@@ -636,42 +636,18 @@ script 895 ENTER clientside
 		if (PlayerTeam() == 1)
 		{
 			if (GetTeamProperty(1,TPROP_NumPlayers) > GetTeamProperty(0,TPROP_NumPlayers))
-			{ Print(s:"\cgVillains\cf have too many players!\n\n\cfSpectating in five...");
+			{ Print(s:"\cgVillains\cf have too many players!\n\n\cfSpectating...");
 			delay(35);
 			if (GetTeamProperty(1,TPROP_NumPlayers) > GetTeamProperty(0,TPROP_NumPlayers))
-			{ Print(s:"\cgVillains\cf have too many players!\n\n\cfSpectating in four...");
-			delay(35);
-			if (GetTeamProperty(1,TPROP_NumPlayers) > GetTeamProperty(0,TPROP_NumPlayers))
-			{ Print(s:"\cgVillains\cf have too many players!\n\n\cfSpectating in three...");
-			delay(35);
-			if (GetTeamProperty(1,TPROP_NumPlayers) > GetTeamProperty(0,TPROP_NumPlayers))
-			{ Print(s:"\cgVillains\cf have too many players!\n\n\cfSpectating in two...");
-			delay(35);
-			if (GetTeamProperty(1,TPROP_NumPlayers) > GetTeamProperty(0,TPROP_NumPlayers))
-			{ Print(s:"\cgVillains\cf have too many players!\n\n\cfSpectating in one...");
-			delay(35);
-			if (GetTeamProperty(1,TPROP_NumPlayers) > GetTeamProperty(0,TPROP_NumPlayers))
-			{ ConsoleCommand("spectate"); }}}}}}
+			{ ConsoleCommand("spectate"); }}
 		}
 		if (PlayerTeam() == 0)
 		{
 			if (GetTeamProperty(0,TPROP_NumPlayers) > (GetTeamProperty(1,TPROP_NumPlayers)*2))
-			{ Print(s:"\chHeroes\cf have too many players!\n\n\cfSpectating in five...");
+			{ Print(s:"\chHeroes\cf have too many players!\n\n\cfSpectating...");
 			delay(35);
 			if (GetTeamProperty(0,TPROP_NumPlayers) > (GetTeamProperty(1,TPROP_NumPlayers)*2))
-			{ Print(s:"\chHeroes\cf have too many players!\n\n\cfSpectating in four...");
-			delay(35);
-			if (GetTeamProperty(0,TPROP_NumPlayers) > (GetTeamProperty(1,TPROP_NumPlayers)*2))
-			{ Print(s:"\chHeroes\cf have too many players!\n\n\cfSpectating in three...");
-			delay(35);
-			if (GetTeamProperty(0,TPROP_NumPlayers) > (GetTeamProperty(1,TPROP_NumPlayers)*2))
-			{ Print(s:"\chHeroes\cf have too many players!\n\n\cfSpectating in two...");
-			delay(35);
-			if (GetTeamProperty(0,TPROP_NumPlayers) > (GetTeamProperty(1,TPROP_NumPlayers)*2))
-			{ Print(s:"\chHeroes\cf have too many players!\n\n\cfSpectating in one...");
-			delay(35);
-			if (GetTeamProperty(0,TPROP_NumPlayers) > (GetTeamProperty(1,TPROP_NumPlayers)*2))
-			{ ConsoleCommand("spectate"); }}}}}}
+			{ ConsoleCommand("spectate"); }}
 		}
 	    }
 	}
@@ -684,12 +660,12 @@ script 896 (int ent)
     int pNum = PlayerNumber();
     int serpentTID = 1500+pNum;	
     if (!ent) {
-			Print(s:"I'm working! - Coop - Unspawned");
+			//Print(s:"I'm working! - Coop - Unspawned");
         // Dismount the Serpent. Spawn the Serpent actor in the player's current spot,
         // change its health accordingly, and morph the player to the D'Sparil On Foot class.
         if (Spawn("DSparilSerpentUnmountedCoop", GetActorX(0), GetActorY(0), GetActorZ(0), serpentTID, GetActorAngle(0) >> 8 ) > 0)
         {
-			Print(s:"I'm working! - Coop - Spawned");
+			//Print(s:"I'm working! - Coop - Spawned");
             Thing_SetTranslation(serpentTID, -1); // Make the Serpent use the translation the Player is!
             SetActorProperty(serpentTID, APROP_HEALTH, GetActorProperty(0, APROP_HEALTH) * 5);
             ThingSound(serpentTID, "dsparilserpent/active", 255);
@@ -728,7 +704,7 @@ script 896 (int ent)
     {
         // Mount the Serpent.
         // Can't get on the Serpent if it's dead!
-			Print(s:"I'm working! - Coop - Mount");
+			//Print(s:"I'm working! - Coop - Mount");
         if (ThingCount(0, serpentTID) > 0) {
             // Check if the player is close enough to the Serpent, then
             // remove the Serpent actor and morph the player back.

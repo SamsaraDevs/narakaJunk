@@ -145,6 +145,77 @@ actor DSparilLMSHealth5 : InheritedLMSHealth
 
 
 
+// Hitler
+// Operates on a 1:1 health ratio. Hitler might have been a wicked commander, but he was still only human.
+// Operates on a 2:1 armor ratio. Wicked battle armor.
+//==============
+
+//lmslife1
+actor HitlerLMSArmor1 : InheritedLMSArmor
+{
+  Armor.SavePercent 100
+  DamageFactor "Normal", 0.9
+  Armor.SaveAmount 200
+}
+
+//lmslife2
+actor HitlerLMSArmor2 : InheritedLMSArmor
+{
+  Armor.SavePercent 100
+  DamageFactor "Normal", 0.9
+  Armor.SaveAmount 400
+}
+
+actor HitlerLMSHealth2 : InheritedLMSHealth
+{
+  Inventory.Amount 200
+  Inventory.MaxAmount 200
+}
+
+//lmslife3
+actor HitlerLMSArmor3 : InheritedLMSArmor
+{
+  Armor.SavePercent 100
+  DamageFactor "Normal", 0.9
+  Armor.SaveAmount 600
+}
+
+actor HitlerLMSHealth3 : InheritedLMSHealth
+{
+  Inventory.Amount 300
+  Inventory.MaxAmount 300
+}
+
+//lmslife4
+actor HitlerLMSArmor4 : InheritedLMSArmor
+{
+  Armor.SavePercent 100
+  DamageFactor "Normal", 0.9
+  Armor.SaveAmount 800
+}
+
+actor HitlerLMSHealth4 : InheritedLMSHealth
+{
+  Inventory.Amount 400
+  Inventory.MaxAmount 400
+}
+
+//lmslife5
+actor HitlerLMSArmor5 : InheritedLMSArmor
+{
+  Armor.SavePercent 100
+  DamageFactor "Normal", 0.9
+  Armor.SaveAmount 1000
+}
+
+actor HitlerLMSHealth5 : InheritedLMSHealth
+{
+  Inventory.Amount 500
+  Inventory.MaxAmount 500
+}
+
+
+
 // Tfear
 // Operates on a 1:1 health ratio. Normal, heroic health.
 // Operates on a 1:1 armor ratio. Normal, heroic armor.

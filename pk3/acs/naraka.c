@@ -738,5 +738,5 @@ script 896 (int ent)
 
 script 897 (void)
 {
-	SetActorProperty(0,APROP_Speed,1.45);
+	SetActorProperty(0,APROP_Speed,1.55);
 }

@@ -766,7 +766,7 @@ ACTOR KoraxCentaurFX
     CTFX A -1 Bright
     Stop
   Death:
-    CTFX B 4 Bright //A_RadiusThrust(2500,128,0)
+    CTFX B 4 Bright A_RadiusThrust(2500,128,0)
     CTFX C 3 Bright
     CTFX D 4 Bright
     CTFX E 3 Bright

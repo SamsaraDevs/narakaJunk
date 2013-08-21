@@ -43,6 +43,7 @@ actor HitlerPlayer : PlayerPawn
 	DamageFactor "EnemyInfightDamage", 0.0
 	-INVULNERABLE
     -THRUSPECIES
+	+NOBLOOD
 	+BOSS
     +NOSKIN
     -DONTBLAST
@@ -61,6 +62,10 @@ actor HitlerPlayer : PlayerPawn
         Loop
 		
 	  SpawnUnarmored:
+        TNT1 A 0 ACS_ExecuteAlways(466, 0, 0)
+		TNT1 A 0 A_UnsetShootable
+		TNT1 A 0 A_ChangeFlag("NoBlood",0)
+		TNT1 A 0 A_TakeInventory("CyberSpeed2")
 		TNT1 A 0 A_JumpIf((momx*momx) + (momy*momy) >= 8,"SeeUnarmored")
 	    HTLR A 1
 		loop
@@ -129,6 +134,7 @@ actor HitlerPlayer : PlayerPawn
 		TNT1 A 0 A_SpawnItemEx("HitlerArmorScrap",0,0,0,0,0,0,0,33)
 		TNT1 A 0 A_TakeInventory("CyberSpeed2")
 		MHTL L 10
+		TNT1 A 0 A_ChangeFlag("NoBlood",0)
         TNT1 A 0 ACS_ExecuteAlways(466, 0, 0)
 		HTLR A 3 A_SetShootable
 		goto SpawnUnarmored

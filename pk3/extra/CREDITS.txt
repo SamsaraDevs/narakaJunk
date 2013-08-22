@@ -8,6 +8,8 @@
 - D'Sparil, Heretic, and everything associated are copyright Raven Software.
  ^-: The mount/dismount system was basically lifted wholesale from Xaser's Necrodoom. All credit goes to him!
  ^-: The Staff of D'Sparil was drawn by Ichor and coded by Gothic, and taken off Realm667.
+- Hitler, Wolfenstein, and everything associated are copyright id Software.
+ ^-: Player sprites were done by Untrustable for the SplitWolf project.
 - Korax, HeXen, and everything associated are copyright Raven Software.
  ^-: Translations by Repo Man.
  ^-: Death sequence redone in DECORATE by Popsoap.

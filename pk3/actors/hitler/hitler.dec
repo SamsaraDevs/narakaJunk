@@ -128,7 +128,7 @@ actor HitlerPlayer : PlayerPawn
 		TNT1 A 0 A_Stop
 		TNT1 A 0 A_GiveInventory("HitlerLostArmor",1)
 		MHTL HHH 5 A_SpawnItemEx("HitlerArmorSplode",random(-16,16),random(-16,16),random(12,48),0,0,0,0,32)
-		TNT1 A 0 ACS_ExecuteAlways(897,0,0,0,0)
+		TNT1 A 0 ACS_ExecuteAlways(897,0,1,0,0)
 		MHTL III 5 A_SpawnItemEx("HitlerArmorSplode",random(-16,16),random(-16,16),random(12,48),0,0,0,0,32)
 		MHTL JJJ 5 A_SpawnItemEx("HitlerArmorSplode",random(-16,16),random(-16,16),random(12,48),0,0,0,0,32)
 		TNT1 A 0 A_SpawnItemEx("HitlerArmorScrap",0,0,0,0,0,0,0,33)

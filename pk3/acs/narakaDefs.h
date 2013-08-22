@@ -93,4 +93,5 @@ int ChangelogNaraka =
 - By popular request, there is now a Mana Jewel at the bottom of Korax's HUD, indicating what weapon is equipped by color association.\n\
 - Heroes and Villains can now work side by side in co-op without getting stuck on each other.\n\
 - Minions no longer bring Invasion to a screeching halt.\n\
-- Up to seven Pfhor Troopers can now be summoned. Their max damage range has been decreased from 15 to 10.";
+- Up to seven Pfhor Troopers can now be summoned. Their max damage range has been decreased from 15 to 10, and their accuracy decreased.\n\
+- Hitler, the Villain of B.J. Blazkowicz, has been added!";

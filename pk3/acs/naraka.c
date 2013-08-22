@@ -27,7 +27,7 @@ script 465 (void)
     SetActivator(newTID);
 
     if (GameType() == GAME_NET_COOPERATIVE)
-    { SetActorProperty(0,APROP_Species,"Player");	}
+    { SetActorProperty(0,APROP_Species,"Player"); }
     Thing_SetTranslation(myTID, -1);
     //GiveInventory("Megasphere", 1);
 
@@ -736,7 +736,16 @@ script 896 (int ent)
     }
 }
 
-script 897 (void)
+script 897 (int hitlershit)
 {
+switch (hitlershit)
+{
+    case 1:
 	SetActorProperty(0,APROP_Speed,1.55);
+	break;
+	
+    case 2:
+	SetActorProperty(0,APROP_Speed,1.00);
+	break;
+}
 }

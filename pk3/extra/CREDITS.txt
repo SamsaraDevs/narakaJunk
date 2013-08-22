@@ -10,6 +10,7 @@
  ^-: The Staff of D'Sparil was drawn by Ichor and coded by Gothic, and taken off Realm667.
 - Hitler, Wolfenstein, and everything associated are copyright id Software.
  ^-: Player sprites were done by Untrustable for the SplitWolf project.
+ ^-: HUD face made by Turbo.
 - Korax, HeXen, and everything associated are copyright Raven Software.
  ^-: Translations by Repo Man.
  ^-: Death sequence redone in DECORATE by Popsoap.

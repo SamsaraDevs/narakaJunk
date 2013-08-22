@@ -755,9 +755,10 @@ script 898 ENTER
 {
 while (1)
 { if (CheckInventory("HitlerClass") == 1)
-  { if (!CheckInventory("HitlerLostArmor"))
-    { if (!CheckInventory("Armor"))
-      { SetActorState(0,"LoseMech"); } } }
+  { if (CheckInventory("Health") > 0)
+    { if (!CheckInventory("HitlerLostArmor"))
+      { if (!CheckInventory("Armor"))
+        { SetActorState(0,"LoseMech"); } } }}
 delay(1); }
 }
 

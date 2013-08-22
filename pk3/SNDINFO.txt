@@ -85,6 +85,24 @@ $playersound	Korax		 male	*puzzfail		KORNOPE
 $playersound	Korax		 male	*taunt			KORTAUNT
 $playersounddup	Korax	     male	*splat		    *death
 
+$playersound	Hitler		 male	*death			HITLDTH1
+$playersounddup	Hitler		 male	*xdeath			*death
+$playersounddup	Hitler		 male	*burndeath		*death
+$playersounddup	Hitler		 male	*crazydeath		*death
+$playersounddup Hitler		 male   *wimpydeath 	*death
+$playersounddup	Hitler		 male	*gibbed			*death
+$playersound	Hitler		 male	*falling		HITLFALL
+$playersound	Hitler		 male	*pain100		HITLPAIN
+$playersounddup	Hitler		 male	*pain75			*pain100
+$playersounddup	Hitler		 male	*pain50			*pain100
+$playersounddup	Hitler		 male	*pain25			*pain100
+$playersound	Hitler		 male	*grunt			SILENCE
+$playersound	Hitler		 male	*land			BJOOF
+$playersound	Hitler		 male	*usefail		BJNOPE
+$playersound	Hitler		 male	*puzzfail		BJNOPE
+$playersound	Hitler		 male	*taunt			HITLTANT
+$playersounddup	Hitler	     male	*splat		    *death
+
 cyber/hoof					cybhoof
 cyber/dashon				cydashon
 cyber/dashoff				cydashof
@@ -188,6 +206,11 @@ SerpentFXHit            	glbhit4
 loremaster/active           CHNSWCH8
 chains/fire                 SHNSHOT
 chains/death  				DRSTP7
+
+hitler/shot                 HITLSHOT
+hitler/step                 HITLSTEP
+hitler/armorloss            HITLRMRL
+hitler/death2               HITLDTH2
 
 
 pickup/defense				PKDEFENS // Taken from Trickster

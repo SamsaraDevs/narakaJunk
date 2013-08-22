@@ -212,7 +212,7 @@ hitler/step                 HITLSTEP
 hitler/armorloss            HITLRMRL
 hitler/death2               HITLDTH2
 hitler/laugh                HITLOLOL
-
+hitler/reload               HITLLOAD
 
 pickup/defense				PKDEFENS // Taken from Trickster
 pickup/offense				PKOFFENS // Taken from Trickster

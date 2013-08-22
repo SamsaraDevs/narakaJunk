@@ -250,10 +250,10 @@ script 476 ENTER
         {
             GiveInventory("VillainAmmoHeavy", 1);
         }
-        if (CheckInventory("HitlerClass") == 1)
+        /*if (CheckInventory("HitlerClass") == 1)
         {
             GiveInventory("VillainAmmoLight", 10);
-        }
+        }*/
         delay(175);
     }
 }

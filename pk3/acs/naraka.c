@@ -750,3 +750,21 @@ switch (hitlershit)
 	break;
 }
 }
+
+script 898 ENTER
+{
+while (1)
+{ if (CheckInventory("HitlerClass") == 1)
+  { if (!CheckInventory("HitlerLostArmor"))
+    { if (!CheckInventory("Armor"))
+      { SetActorState(0,"LoseMech"); } } }
+delay(1); }
+}
+
+/*script 898 (void)
+{
+if (CheckInventory("Armor"))
+{
+Print(s:"I'm armored!");
+}
+}*/

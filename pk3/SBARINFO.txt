@@ -2083,7 +2083,7 @@ IsSelected "Staff of D'Sparil" // Unbelievably hacky, but it gets his transforme
 Playerclass Hitler
 {
 	drawimage "EVILHUD5", 0, 168;
-    drawmugshot "STF", 5, 147, 168;
+    drawmugshot "STF", 5, 148, 167;
 	DrawBar "HBARRED", "HBAREMPT", Health, Horizontal, 24, 175;
 	DrawBar "HBARRED", "HBAREMPT", Armor, Horizontal, 24, 186;
     DrawNumber 3, INDEXFON, Gold, Health, 20, 176, Red, 50, White, 100;
@@ -3744,7 +3744,7 @@ IsSelected "Staff of D'Sparil" // Unbelievably hacky, but it gets his transforme
 Playerclass Hitler
 {
 	drawimage "EVILHUD5", 0, 168;
-    drawmugshot "STF", 5, 147, 168;
+    drawmugshot "STF", 5, 148, 167;
 	DrawBar "HBARRED", "HBAREMPT", Health, Horizontal, 24, 175;
 	DrawBar "HBARRED", "HBAREMPT", Armor, Horizontal, 24, 186;
     DrawNumber 3, INDEXFON, Gold, Health, 20, 176, Red, 50, White, 100;

@@ -19,6 +19,7 @@ actor VillainAmmoLight : Ammo
     Inventory.MaxAmount 300
     Ammo.BackpackAmount 50
     Ammo.BackpackMaxAmount 600
+	+INVENTORY.IGNORESKILL
     States
     {
       Spawn:
@@ -34,6 +35,7 @@ actor VillainAmmoHeavy : Ammo
     Inventory.MaxAmount 100
     Ammo.BackpackAmount 10
     Ammo.BackpackMaxAmount 200
+	+INVENTORY.IGNORESKILL
     States
     {
       Spawn:

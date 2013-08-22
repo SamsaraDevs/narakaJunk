@@ -211,6 +211,7 @@ hitler/shot                 HITLSHOT
 hitler/step                 HITLSTEP
 hitler/armorloss            HITLRMRL
 hitler/death2               HITLDTH2
+hitler/laugh                HITLOLOL
 
 
 pickup/defense				PKDEFENS // Taken from Trickster

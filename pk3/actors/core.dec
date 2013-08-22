@@ -135,6 +135,7 @@ actor MegaPack2 : MegaPack replaces MegaPack
 		
 	  PickupHitler:
         TNT1 A 0 A_PlaySound("megapackpickup", CHAN_ITEM)
+        TNT1 A 0 A_PlaySoundEx("hitler/laugh","soundslot7")
 		TNT1 A 0 A_TakeInventory("HitlerLostArmor",1)
         TNT1 A 0 A_GiveInventory("HitlerLMSArmor1",1)
 		TNT1 A 0 ACS_ExecuteAlways(897,0,2,0,0)

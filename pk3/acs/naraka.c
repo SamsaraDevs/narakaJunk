@@ -746,6 +746,7 @@ switch (hitlershit)
 	
     case 2:
 	SetActorProperty(0,APROP_Speed,1.00);
+	SetActorState(0,"Spawn");
 	break;
 }
 }

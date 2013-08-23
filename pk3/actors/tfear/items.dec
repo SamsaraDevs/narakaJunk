@@ -119,9 +119,9 @@ actor TfearBeacon : CustomInventory
 
 ACTOR TfearPfhorTrooper
 {
-	Obituary "%k \crmarched over\c- %o \crand lead the Pfhor to victory.\c-"
+	Obituary "%o\crmet the Pfhor personal guard.\c-"
     Gravity 0.15
-    Health 170
+    Health 150
     Radius 16
     Height 50
     Mass 100

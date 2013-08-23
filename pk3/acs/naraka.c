@@ -635,7 +635,7 @@ script 895 ENTER clientside
     if (PlayerNumber() != ConsolePlayerNumber()) { terminate; }
     if (GetCVar("teamlms") == 1)
 	{
-	    if (PlayerCount() >= 5)
+	    if (PlayerCount() >= 6)
 	    {
 		if (PlayerTeam() == 1)
 		{

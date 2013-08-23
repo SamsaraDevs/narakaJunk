@@ -635,25 +635,28 @@ script 895 ENTER clientside
     if (PlayerNumber() != ConsolePlayerNumber()) { terminate; }
     if (GetCVar("teamlms") == 1)
 	{
-	    if (PlayerCount() >= 6)
-	    {
 		if (PlayerTeam() == 1)
 		{
-			if (GetTeamProperty(1,TPROP_NumPlayers) > GetTeamProperty(0,TPROP_NumPlayers))
-			{ Print(s:"\cgVillains\cf have too many players!\n\n\cfSpectating...");
-			delay(35);
-			if (GetTeamProperty(1,TPROP_NumPlayers) > GetTeamProperty(0,TPROP_NumPlayers))
-			{ ConsoleCommand("spectate"); }}
+		    if (GetTeamProperty(1,TPROP_NumPlayers) > 4)
+		    {
+			    if (GetTeamProperty(1,TPROP_NumPlayers) > GetTeamProperty(0,TPROP_NumPlayers))
+			    { Print(s:"\cgVillains\cf have too many players!\n\n\cfSpectating...");
+			    delay(15);
+			    if (GetTeamProperty(1,TPROP_NumPlayers) > GetTeamProperty(0,TPROP_NumPlayers))
+			    { ConsoleCommand("spectate"); }}
+		    }
 		}
-		if (PlayerTeam() == 0)
+		if (GetTeamProperty(0,TPROP_NumPlayers) > 6)
 		{
-			if (GetTeamProperty(0,TPROP_NumPlayers) > (GetTeamProperty(1,TPROP_NumPlayers)*2))
-			{ Print(s:"\chHeroes\cf have too many players!\n\n\cfSpectating...");
-			delay(35);
-			if (GetTeamProperty(0,TPROP_NumPlayers) > (GetTeamProperty(1,TPROP_NumPlayers)*2))
-			{ ConsoleCommand("spectate"); }}
+		    if (PlayerTeam() == 0)
+		    {
+			    if (GetTeamProperty(0,TPROP_NumPlayers) > (GetTeamProperty(1,TPROP_NumPlayers)*2))
+			    { Print(s:"\chHeroes\cf have too many players!\n\n\cfSpectating...");
+			    delay(15);
+			    if (GetTeamProperty(0,TPROP_NumPlayers) > (GetTeamProperty(1,TPROP_NumPlayers)*2))
+			    { ConsoleCommand("spectate"); }}
+		    }
 		}
-	    }
 	}
 	delay(1);
 	terminate;

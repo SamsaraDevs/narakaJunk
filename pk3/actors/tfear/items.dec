@@ -204,6 +204,7 @@ ACTOR TfearPfhorTrooper
         PTRO E 2
         Goto See
 
+      XDeath:
       Death:
 	    TNT1 A 0 ACS_ExecuteAlways(893,0)
         TNT1 A 0 ThrustThingZ(0, random(4,8), 0, 0)

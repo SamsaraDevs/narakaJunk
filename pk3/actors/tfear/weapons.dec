@@ -1075,7 +1075,7 @@ Species "Player"
 DamageType "VillainTeam"
 }
 
-ACTOR AlienWeaponBulletTLMS2 : AlienWeaponBulletCoop
+ACTOR AlienWeaponBulletTLMS2 : AlienWeaponBullet2
 {
 +THRUSPECIES
 Species "Villain"

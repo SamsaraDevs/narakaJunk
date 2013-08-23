@@ -4,6 +4,7 @@ FROM v0.12 TO v0.13:
 - The Team Balancer no longer checks to see if there are X amount of player in the game. Instead, it checks if X amount of players are on either team. This should result in much more lenient balancing when there's a small number of players.
 - Joining the game at the last minute no longer breaks the balancer.
 - Hitler now always gains his speed boost when he loses his mech.
+- Tfear's Flawed no longer uses the SYSTEM ERROR obituary.
 
 FROM V0.11 TO V0.12:
 ========================

@@ -117,15 +117,30 @@ actor TfearBeacon : CustomInventory
     }
 }
 
-ACTOR TfearPfhorTrooper : FriendlyPfhorTrooper
+ACTOR TfearPfhorTrooper
 {
-	Health 170
-	Species "Villain"
+	Obituary "%k \crmarched over\c- %o \crand lead the Pfhor to victory.\c-"
+    Gravity 0.15
+    Health 170
     Radius 16
-    Height 56
+    Height 50
+    Mass 100
+    Speed 8
+    PainChance 200
+    MinMissileChance 120
+    Scale 0.45
+    BloodColor "Yellow"
+    SeeSound "pfhor/see"
+    DeathSound "pfhor/death"
+    ActiveSound "pfhor/active"
+    Monster
+    Species "Villain"
+    +MISSILEMORE
+    //+MISSILEEVENMORE
+    +FLOORCLIP
+    +FRIENDLY
+    -SOLID
 	-COUNTKILL
-	-SOLID
-	+MISSILEMORE
     -SHOOTABLE
 	-ISMONSTER
     States
@@ -169,17 +184,6 @@ ACTOR TfearPfhorTrooper : FriendlyPfhorTrooper
 		PTRO D 3 A_Wander
 		TNT1 A 0 A_Look
         LOOP
-		
-	  Death:
-	    TNT1 A 0 ACS_ExecuteAlways(893,0)
-		goto Super::Death
-		
-	  XDeath:
-	    TNT1 A 0 ACS_ExecuteAlways(893,0)
-		goto Super::XDeath
-		
-	  Burn:
-		goto Super::Burn
 
       Missile:
         TNT1 A 0 A_ChangeFlag("NOPAIN",0)
@@ -195,6 +199,42 @@ ACTOR TfearPfhorTrooper : FriendlyPfhorTrooper
         PTRO F 2 Bright A_CustomMissile("TfearTrooperBullet",32,0,random(-600,600)/100.00)
         TNT1 A 0 A_Jump(64,"Missile")
         Goto See
+
+      Pain:
+        PTRO E 2
+        Goto See
+
+      Death:
+	    TNT1 A 0 ACS_ExecuteAlways(893,0)
+        TNT1 A 0 ThrustThingZ(0, random(4,8), 0, 0)
+        TNT1 A 0 A_Recoil(random(1,3))
+        PTRO G 15
+        PTRO H 5 A_Scream
+        PTRO I 5
+        PTRO J 5 A_NoBlocking
+        PTRO K -1
+        Stop
+
+      Death.HexGreenFire: // Hah hah yeah right.
+
+      Burn:
+	    TNT1 A 0 ACS_ExecuteAlways(893,0)
+        TNT1 A 0 ThrustThingZ(0, random(4,8), 0, 0)
+        TNT1 A 0 A_Recoil(random(1,3))
+        TNT1 A 0 A_PlaySound("pfhor/burn")
+        TNT1 A 0 A_UnsetSolid
+        SOPL U 5 Bright
+
+      Burn2:
+        SOPL U 5 Bright A_CheckFloor("Burn3")
+        loop
+
+      Burn3:
+        SOPL V 7 Bright
+        SOPL W 7 Bright
+        SOPL X 7 Bright A_NoBlocking
+        SOPL X -1
+        stop
 
       Death.DukeDamage:
       Death.DukePistol:
@@ -218,7 +258,7 @@ ACTOR TfearPfhorTrooper : FriendlyPfhorTrooper
         TNT1 A 0 A_UnsetSolid
         TNT1 A 0 A_Jump(96,"DukeXDeath")
         TNT1 A 0 A_GiveToTarget("DukeGibTaunt",1)
-	goto DukeXDeath
+	    goto DukeXDeath
 	
 	  DukeXDeath:
         TNT1 A 0 ThrustThingZ(0, random(4,10), 0, 0)
@@ -372,7 +412,6 @@ ACTOR TfearPfhorTrooperCoop : TfearPfhorTrooper
 
 ACTOR TfearTrooperBullet : MarathonARBulletCoop
 {
-	Obituary "%k \crmarched over\c- %o \crand lead the Pfhor to victory.\c-"
 	DamageType "PfhorDamage"
 	-THRUSPECIES
     Damage (random(5,10))
@@ -380,8 +419,9 @@ ACTOR TfearTrooperBullet : MarathonARBulletCoop
 
 ACTOR TfearTrooperBulletTLMS : TfearTrooperBullet
 {
-	Obituary "%k \crmarched over\c- %o \crand lead the Pfhor to victory.\c-"
 	DamageType "VillainTeam"
+	+THRUSPECIES
+	Species "Villain"
 }
 
 ACTOR TfearTrooperBulletCoop : TfearTrooperBullet

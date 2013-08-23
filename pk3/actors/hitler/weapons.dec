@@ -199,4 +199,4 @@ actor HitlerBullet: FastProjectile
     }
 }
 
-actor HitlerBullet2 : HitlerBullet { Damage (10) }
+actor HitlerBullet2 : HitlerBullet { Damage (7) }

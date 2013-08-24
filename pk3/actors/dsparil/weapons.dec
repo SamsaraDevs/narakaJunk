@@ -411,7 +411,7 @@ actor DSparilWizard : Wizard2
 	-SOLID
     Species "Villain"
     -SHOOTABLE
-    DropItem "ArtiTomeOfPower", 16
+    //DropItem "ArtiTomeOfPower", 16
     Obituary "\crA Disciple overwhelmed\c- %o \crwith Despair.\c-"
 	BloodColor Purple
     States

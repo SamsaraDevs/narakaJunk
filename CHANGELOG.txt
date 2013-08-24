@@ -13,6 +13,7 @@ FROM v0.12 TO v0.13:
 - The powerups for the Shotgun and the Chaingun have been replaced with something more useful--very slight armor and health regeneration.
 - The pickup messages have been reworked so that people actually know what you're getting on picking them up.
 - D'Sparil, Korax, and Cyberdemon are now less resistant to Duke's explosives. Hitler is now slightly more resistant.
+- By massive request, Disciples no longer drop Lesser Tomes of Power. Bye bye, awesome book. ;_;
 
 FROM V0.11 TO V0.12:
 ========================

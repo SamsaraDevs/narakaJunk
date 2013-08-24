@@ -108,6 +108,7 @@ script 470 UNLOADING
     TakeInventory("PowerShadow", 999);
     TakeInventory("DSparilMount", 999);
     TakeInventory("TfearSummonLimit", 999);
+    TakeInventory("AbandonRemoteLaunched", 999);
 }
 
 script 571 ENTER   { ACS_ExecuteAlways(NARAKA_SPAWN, 0, 0,0,0); }
@@ -248,13 +249,11 @@ script 476 ENTER
     while (1)
     {
         if (CheckInventory("CyberdemonClass") == 1)
-        {
-            GiveInventory("VillainAmmoHeavy", 1);
-        }
-        /*if (CheckInventory("HitlerClass") == 1)
-        {
-            GiveInventory("VillainAmmoLight", 10);
-        }*/
+        { GiveInventory("VillainAmmoHeavy", 1); }
+        if (CheckInventory("CoopCawadootyMode") == 1)
+        { GiveInventory("HealPack0",1); }
+        if (CheckInventory("CoopHaloMode") == 1)
+        { GiveInventory("ArmorScrap",1); }
         delay(175);
     }
 }
@@ -329,33 +328,33 @@ script 491 (int messageshit) CLIENTSIDE
 	switch (messageshit)
 	{
 		case 1:
-			if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"You feel your power surging."); }
-			else { Log(s:"You feel your power surging."); }
+			if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"VILLAIN POWER: Light Damage Buff"); }
+			else { Log(s:"VILLAIN POWER: Light Damage Buff"); }
 			break;
 			
 		case 2:
-			if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"You feel your arsenal expanding."); }
-			else { Log(s:"You feel your arsenal expanding."); }
+			if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"VILLAIN POWER: Armor Regeneration"); }
+			else { Log(s:"VILLAIN POWER: Armor Regeneration"); }
 			break;
 			
 		case 3:
-			if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"You feel your armor hardening."); }
-			else { Log(s:"You feel your armor hardening."); }
+			if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"VILLAIN POWER: Light Armor Buff"); }
+			else { Log(s:"VILLAIN POWER: Light Armor Buff"); }
 			break;
 			
 		case 4:
-			if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"You feel your arsenal expanding."); }
-			else { Log(s:"You feel your arsenal expanding."); }
+			if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"VILLAIN POWER: Health Regeneration"); }
+			else { Log(s:"VILLAIN POWER: Health Regeneration"); }
 			break;
 			
 		case 5:
-			if(GetCvar("samsara_cl_printpickup") == 1)	{ Print(s:"You feel utterly impenetrable."); }
-			else	{ Log(s:"You feel utterly impenetrable."); }
+			if(GetCvar("samsara_cl_printpickup") == 1)	{ Print(s:"VILLAIN POWER: Heavy Armor Buff"); }
+			else	{ Log(s:"VILLAIN POWER: Heavy Armor Buff"); }
 			break;
 			
 		case 6:
-			if(GetCvar("samsara_cl_printpickup") == 1)	{ Print(s:"You feel your strength has no limits."); }
-			else { Log(s:"You feel your strength has no limits."); }
+			if(GetCvar("samsara_cl_printpickup") == 1)	{ Print(s:"VILLAIN POWER: Heavy Damage Buff"); }
+			else { Log(s:"VILLAIN POWER: Heavy Damage Buff"); }
 			break;
 			
 		case 7:
@@ -594,8 +593,12 @@ script 890 ENTER // This differs from Naraka_Spawn in that this is a constant lo
 		// Because this seems to break on co-op
 	    if(CheckInventory("GotWeapon0") == 1) { GiveInventory("CoopLesserBamf",1); }
 		else { TakeInventory("CoopLesserBamf",1); }
+	    if(CheckInventory("GotWeapon2") == 1) { GiveInventory("CoopHaloMode",1); }
+		else { TakeInventory("CoopHaloMode",1); }
 	    if(CheckInventory("GotWeapon3") == 1) { GiveInventory("CoopBeefStringy",1); }
 		else { TakeInventory("CoopBeefStringy",1); }
+	    if(CheckInventory("GotWeapon4") == 1) { GiveInventory("CoopCawadootyMode",1); }
+		else { TakeInventory("CoopCawadootyMode",1); }
 	    if(CheckInventory("GotWeapon5") == 1) { GiveInventory("CoopBeef",1); }
 		else { TakeInventory("CoopBeef",1); }
 	    if(CheckInventory("GotWeapon6") == 1) { GiveInventory("CoopBamf",1); }

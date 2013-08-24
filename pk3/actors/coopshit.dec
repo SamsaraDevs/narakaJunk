@@ -1,11 +1,10 @@
 // As the villains' larger hitboxes/slower speed/lesser weapons generally
 // makes them huge walking targets in co-op/invasion, they get permanent
 // powerups from weapon pickups.
-// Picking up both Beefs gives 0.675 resistance to everything.
-// Picking up both Bamfs gives 1.375 damage boost to everything.
+// Picking up both Beefs gives 0.595 resistance to everything.
+// Picking up both Bamfs gives 1.495 damage boost to everything.
 
 // Replaces Chainsaw
-
 ACTOR CoopLesserBamf : PowerDamage
 {
 	Powerup.Duration 0x7FFFFFFF
@@ -13,10 +12,13 @@ ACTOR CoopLesserBamf : PowerDamage
 }
 
 // Replaces Shotgun
-// Can't think of anything interesting. Just ammo and backpack for now.
+// Very slow armor regeneration
+ACTOR CoopHaloMode : Powerup
+{
+	Powerup.Duration 0x7FFFFFFF
+}
 
 // Replaces Super Shotgun
-
 ACTOR CoopBeefStringy : PowerProtection
 {
 	Powerup.Duration 0x7FFFFFFF
@@ -25,10 +27,13 @@ ACTOR CoopBeefStringy : PowerProtection
 }
 
 // Replaces Chaingun
-// Can't think of anything interesting. Just ammo and backpack for now.
+// Very slow health generation
+ACTOR CoopCawadootyMode : Powerup
+{
+	Powerup.Duration 0x7FFFFFFF
+}
 
 // Replaces Rocket Launcher
-
 ACTOR CoopBeef : PowerProtection
 {
 	Powerup.Duration 0x7FFFFFFF
@@ -37,7 +42,6 @@ ACTOR CoopBeef : PowerProtection
 }
 
 // Replaces Plasma Rifle
-
 ACTOR CoopBamf : PowerDamage
 {
 	Powerup.Duration 0x7FFFFFFF

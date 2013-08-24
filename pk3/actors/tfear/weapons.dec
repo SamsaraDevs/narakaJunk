@@ -1220,7 +1220,7 @@ actor "Predator Type 'Abandon'" : Weapon
         TABD A 5
 		goto Ready
 		
-	  CoopFire:
+	  CoopAltFire:
 	    TNT1 A 0 A_FireCustomMissile("AbandonRemoteGrenadeCoop",0,1,0,0,0,5)
         TNT1 A 0 A_PlaySound("tfear/abandonshot2")
 		TABD B 2 A_GiveInventory("AbandonRemoteLaunched",1)

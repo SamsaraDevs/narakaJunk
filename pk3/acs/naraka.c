@@ -135,6 +135,7 @@ script NARAKA_SPAWN (int respawning) // This differs from 890 in that this works
         }
         if (CheckInventory("KoraxClass") == 1) { GiveInventory("KoraxBeef", 1); }
         if (CheckInventory("TfearClass") == 1) { GiveInventory("DsparilBeef", 1); }
+        if (CheckInventory("HitlerClass") == 1) { GiveInventory("HitlerBeef", 1); }
     }
 
     if (isLMS())

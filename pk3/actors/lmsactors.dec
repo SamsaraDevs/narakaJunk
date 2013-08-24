@@ -154,7 +154,6 @@ actor DSparilLMSHealth5 : InheritedLMSHealth
 actor HitlerLMSArmor1 : InheritedLMSArmor
 {
   Armor.SavePercent 100
-  DamageFactor "Normal", 0.9
   Armor.SaveAmount 200
 }
 
@@ -162,7 +161,6 @@ actor HitlerLMSArmor1 : InheritedLMSArmor
 actor HitlerLMSArmor2 : InheritedLMSArmor
 {
   Armor.SavePercent 100
-  DamageFactor "Normal", 0.9
   Armor.SaveAmount 400
 }
 
@@ -176,7 +174,6 @@ actor HitlerLMSHealth2 : InheritedLMSHealth
 actor HitlerLMSArmor3 : InheritedLMSArmor
 {
   Armor.SavePercent 100
-  DamageFactor "Normal", 0.9
   Armor.SaveAmount 600
 }
 
@@ -190,7 +187,6 @@ actor HitlerLMSHealth3 : InheritedLMSHealth
 actor HitlerLMSArmor4 : InheritedLMSArmor
 {
   Armor.SavePercent 100
-  DamageFactor "Normal", 0.9
   Armor.SaveAmount 800
 }
 
@@ -204,7 +200,6 @@ actor HitlerLMSHealth4 : InheritedLMSHealth
 actor HitlerLMSArmor5 : InheritedLMSArmor
 {
   Armor.SavePercent 100
-  DamageFactor "Normal", 0.9
   Armor.SaveAmount 1000
 }
 

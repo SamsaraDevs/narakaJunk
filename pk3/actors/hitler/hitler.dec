@@ -1,6 +1,13 @@
 actor HitlerLostArmor : Boolean {}
 actor HitlerClass : Boolean {}
 
+ACTOR HitlerBeef : PowerProtection
+{
+	Powerup.Duration 0x7FFFFFFF
+	DamageFactor "Normal", 0.9
+	DamageFactor "Telefrag", 1.5
+}
+
 actor HitlerPlayer : PlayerPawn
 {
     LimitedToTeam 1

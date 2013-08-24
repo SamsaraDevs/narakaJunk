@@ -5,6 +5,7 @@ FROM v0.12 TO v0.13:
 - Joining the game at the last minute no longer breaks the balancer.
 - Hitler now always gains his speed boost when he loses his mech.
 - Tfear's Flawed no longer uses the SYSTEM ERROR obituary.
+- Minions now have +FRIENDLY in the co-op version, which means they should now attack enemy monsters.
 
 FROM V0.11 TO V0.12:
 ========================

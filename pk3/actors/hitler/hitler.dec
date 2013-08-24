@@ -39,7 +39,7 @@ actor HitlerPlayer : PlayerPawn
 	//DamageFactor "Normal", 1.1
 	RadiusDamageFactor 0.5
 	DamageFactor "Explosive", 0.9
-	DamageFactor "DukeExplosive", 0.9
+	DamageFactor "DukeExplosive", 0.85
 	DamageFactor "VillainTeam", 0.0
     DamageFactor "DoomguyPlasma", 0.85
     DamageFactor "DukeIce", 0.85

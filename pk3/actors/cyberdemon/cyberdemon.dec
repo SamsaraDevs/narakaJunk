@@ -109,7 +109,7 @@ actor CyberdemonPlayer : PlayerPawn
     DamageFactor "Normal", 0.9
     DamageFactor "Telefrag", 2.0
     DamageFactor "PoisonCloud", 1.75
-    DamageFactor "DukeExplosive", 0.375
+    DamageFactor "DukeExplosive", 0.575
     DamageFactor "DoomguyPlasma", 0.75
     DamageFactor "DukeIce", 0.75
     DamageFactor "CorvusHellstaff", 0.75

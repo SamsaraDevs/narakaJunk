@@ -56,7 +56,7 @@ actor DsparilPlayer : PlayerPawn
     DamageFactor "SuperHellslime", 0
     DamageFactor "Telefrag", 2.0
     DamageFactor "PoisonCloud", 1.75
-    DamageFactor "DukeExplosive", 0.5
+    DamageFactor "DukeExplosive", 0.625
     DamageFactor "TimonsAxe", 0.75
     DamageFactor "DoomguyPlasma", 0.8
     DamageFactor "DukeIce", 0.8
@@ -290,7 +290,7 @@ actor DsparilOnFootPlayer : PlayerPawn
     DamageFactor "Nuke", 0
     DamageFactor "Telefrag", 2.0
     DamageFactor "PoisonCloud", 1.75
-    DamageFactor "DukeExplosive", 0.625
+    DamageFactor "DukeExplosive", 0.675
     DamageFactor "TimonsAxe", 0.75
     DamageFactor "DoomguyPlasma", 0.8
     DamageFactor "DukeIce", 0.8

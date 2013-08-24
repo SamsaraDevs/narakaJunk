@@ -9,6 +9,8 @@ actor TfearCloak : PowerShadow
 {
   Powerup.Duration -25
 }
+actor AbandonRemoteLaunched : Boolean { }
+actor AbandonRemoteTrigger : Boolean { }
 
 actor TfearPlayer : PlayerPawn
 {

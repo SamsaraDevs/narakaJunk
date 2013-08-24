@@ -9,6 +9,7 @@ FROM v0.12 TO v0.13:
 - Hitler's 10% damage resistance buff now only takes effect in co-op play as his "Beef" item.
 - D'Sparil's cooldown for his summon and Chaos Device has been doubled--but whenever he enters his Pain State when on-foot, the cooldown is shortened slightly. This should reward more aggressive D'Sparils and slow down those who simply teleport, summon, and repeat.
 - Likewise, Tfear's cooldown for his Beacon has been doubled, and whenever he enters his Pain state the cooldown is shortened.
+- Tfear's questionable shotgun-esque alt-fire for the Abandon has been replaced with a more-suitable-for-the-role remote grenade launcher.
 
 FROM V0.11 TO V0.12:
 ========================

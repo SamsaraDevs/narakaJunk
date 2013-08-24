@@ -379,6 +379,7 @@ ACTOR TfearPfhorTrooperCoop : TfearPfhorTrooper
 {
 	-COUNTKILL
 	-ISMONSTER
+	+FRIENDLY
     +THRUSPECIES
 	Species "Player"
 	DamageFactor "DukeExplosive", 0.0

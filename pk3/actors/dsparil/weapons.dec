@@ -514,6 +514,7 @@ actor DSparilWizardCoop : DSparilWizard
 {
 	-COUNTKILL
 	-ISMONSTER
+	+FRIENDLY
     +THRUSPECIES
 	Species "Player"
 	DamageFactor "DukeExplosive", 0.0
@@ -598,6 +599,7 @@ actor DSparilWizardCoop2 : DSparilWizard2
 {
 	-COUNTKILL
 	-ISMONSTER
+	+FRIENDLY
     +THRUSPECIES
 	Species "Player"
 	DamageFactor "DukeExplosive", 0.0

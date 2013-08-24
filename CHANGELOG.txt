@@ -7,6 +7,7 @@ FROM v0.12 TO v0.13:
 - Tfear's Flawed no longer uses the SYSTEM ERROR obituary.
 - Minions now have +FRIENDLY in the co-op version, which means they should now attack enemy monsters.
 - Hitler's 10% damage resistance buff now only takes effect in co-op play as his "Beef" item.
+- D'Sparil's cooldown for his summon and Chaos Device has been doubled--but whenever he enters his Pain State when on-foot, the cooldown is shortened slightly. This should reward more aggressive D'Sparils and slow down those who simply teleport, summon, and repeat.
 
 FROM V0.11 TO V0.12:
 ========================

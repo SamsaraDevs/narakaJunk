@@ -1,9 +1,9 @@
 actor DsparilClass : Boolean { }
 actor DsparilWalking : Boolean { }
 actor DsparilRevived : Boolean { }
-actor ChaosDeviceCooldown : Counter { Inventory.MaxAmount 20 }
+actor ChaosDeviceCooldown : Counter { Inventory.MaxAmount 40 }
 actor GhostsphereCooldown : Counter { Inventory.MaxAmount 90 }
-actor DSparilSummonCooldown : Counter { Inventory.MaxAmount 10 }
+actor DSparilSummonCooldown : Counter { Inventory.MaxAmount 20 }
 actor DSparilDismountedSerpent : Boolean { }
 
 ACTOR DsparilBeef : PowerProtection
@@ -385,6 +385,9 @@ actor DsparilOnFootPlayer : PlayerPawn
         //Goto Missile
         
       Pain:
+	    TNT1 A 0
+		TNT1 A 0 A_TakeInventory("ChaosDeviceCooldown",1)
+		TNT1 A 0 A_TakeInventory("DsparilSummonCooldown",1)
         SOR2 Q 4 
         SOR2 Q 4 A_Pain
         Goto Spawn2
@@ -392,6 +395,9 @@ actor DsparilOnFootPlayer : PlayerPawn
       Pain.Zorch:
       Pain.ZorchPistol:
       Pain.PhasingZorch:
+	    TNT1 A 0
+		TNT1 A 0 A_TakeInventory("ChaosDeviceCooldown",1)
+		TNT1 A 0 A_TakeInventory("DsparilSummonCooldown",1)
         SOR2 Q 4 
         SOR2 Q 4 A_Pain
         Goto Spawn2
@@ -399,6 +405,9 @@ actor DsparilOnFootPlayer : PlayerPawn
       Pain.Ice:
       Pain.DukeIce:
       Pain.HexenIce:
+	    TNT1 A 0
+		TNT1 A 0 A_TakeInventory("ChaosDeviceCooldown",1)
+		TNT1 A 0 A_TakeInventory("DsparilSummonCooldown",1)
         SOR2 Q 4 
         SOR2 Q 4 A_Pain
         Goto Spawn2

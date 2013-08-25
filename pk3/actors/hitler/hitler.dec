@@ -20,6 +20,10 @@ actor HitlerPlayer : PlayerPawn
     //Player.StartItem "IsSamsaraClass", 1 // Needed for wolfmove. Dammit.
     Player.StartItem "VillainAmmoLight", 100
 	Player.StartItem "HitlerLMSArmor1", 1
+    Player.StartItem "OverMax", 200
+    Player.StartItem "OverOverMax", 300
+    Player.StartItem "OverOverOverMax", 400
+    Player.StartItem "OverOverOverOverMax", 500
     Player.Face "HTL"
     Player.JumpZ 9//Default is 8
     BloodColor "Red"

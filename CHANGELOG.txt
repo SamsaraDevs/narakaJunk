@@ -14,6 +14,7 @@ FROM v0.12 TO v0.13:
 - The pickup messages have been reworked so that people actually know what you're getting on picking them up.
 - D'Sparil, Korax, and Cyberdemon are now less resistant to Duke's explosives. Hitler is now slightly more resistant.
 - By massive request, Disciples no longer drop Lesser Tomes of Power. Bye bye, awesome book. ;_;
+- All of the Villains (sans D'Sparil due to technical issues) now have different colors across their life/armor bar to represent how much they have.
 
 FROM V0.11 TO V0.12:
 ========================

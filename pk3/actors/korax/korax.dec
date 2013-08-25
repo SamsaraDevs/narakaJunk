@@ -38,6 +38,14 @@ actor KoraxPlayer : PlayerPawn
 	Player.StartItem "VillainAmmoHeavy", 20
     Player.StartItem "KoraxClass", 1
 	Player.StartItem "IsNarakaClass", 1
+    Player.StartItem "OverMax", 200
+    Player.StartItem "OverOverMax", 300
+    Player.StartItem "OverOverOverMax", 400
+    Player.StartItem "OverOverOverOverMax", 500
+    Player.StartItem "RavenOverMax", 300
+    Player.StartItem "RavenOverOverMax", 450
+    Player.StartItem "RavenOverOverOverMax", 600
+    Player.StartItem "RavenOverOverOverOverMax", 750
     Player.Soundclass "Korax"
     DamageFactor "VillainTeam", 0
     DamageFactor "Slime", 0

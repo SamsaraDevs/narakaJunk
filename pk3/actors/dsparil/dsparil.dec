@@ -43,6 +43,14 @@ actor DsparilPlayer : PlayerPawn
 	Player.StartItem "VillainAmmoLight", 50
 	Player.StartItem "DsparilDismount", 1
     //Player.StartItem "BossDamageImmunity", 1
+    Player.StartItem "OverMax", 200
+    Player.StartItem "OverOverMax", 300
+    Player.StartItem "OverOverOverMax", 400
+    Player.StartItem "OverOverOverOverMax", 500
+    Player.StartItem "RavenOverMax", 300
+    Player.StartItem "RavenOverOverMax", 450
+    Player.StartItem "RavenOverOverOverMax", 600
+    Player.StartItem "RavenOverOverOverOverMax", 750
     Player.Soundclass "DSparil"
     RadiusDamageFactor 0.625
     DamageFactor "VillainTeam", 0
@@ -281,6 +289,10 @@ actor DsparilOnFootPlayer : PlayerPawn
     //Player.StartItem "BossDamageImmunity", 1
     Player.StartItem "DsparilPortTeleport", 1
     Player.StartItem "DsparilPortGhostsphere", 1
+    Player.StartItem "OverMax", 200
+    Player.StartItem "OverOverMax", 300
+    Player.StartItem "OverOverOverMax", 400
+    Player.StartItem "OverOverOverOverMax", 500
     Player.Soundclass "DSparilOnFoot"
 	RadiusDamageFactor 0.85
     DamageFactor "VillainTeam", 0

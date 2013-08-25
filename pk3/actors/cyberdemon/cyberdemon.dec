@@ -95,6 +95,14 @@ actor CyberdemonPlayer : PlayerPawn
     Player.StartItem "CyberDashToggle", 1
     Player.StartItem "CyberdemonClass", 1
 	Player.StartItem "IsNarakaClass", 1
+	Player.StartItem "OverMax", 200
+	Player.StartItem "OverOverMax", 300
+	Player.StartItem "OverOverOverMax", 400
+	Player.StartItem "OverOverOverOverMax", 500
+    Player.StartItem "CyberOverMax", 400
+    Player.StartItem "CyberOverOverMax", 600
+    Player.StartItem "CyberOverOverOverMax", 800
+    Player.StartItem "CyberOverOverOverOverMax", 1000
     //Player.StartItem "BossDamageImmunity", 1
     Player.Soundclass "Cyberdemon"
     RadiusDamageFactor 0.5

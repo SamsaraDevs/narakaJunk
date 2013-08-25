@@ -53,6 +53,18 @@ actor TranslationHolder
         stop
     }
 }
+actor OverOverOverMax: Counter { Inventory.MaxAmount 400 }
+actor OverOverOverOverMax: Counter { Inventory.MaxAmount 500 }
+
+actor CyberOverMax: Counter { Inventory.MaxAmount 400 }
+actor CyberOverOverMax: Counter { Inventory.MaxAmount 600 }
+actor CyberOverOverOverMax: Counter { Inventory.MaxAmount 800 }
+actor CyberOverOverOverOverMax: Counter { Inventory.MaxAmount 1000 }
+
+actor RavenOverMax: Counter { Inventory.MaxAmount 300 }
+actor RavenOverOverMax: Counter { Inventory.MaxAmount 450 }
+actor RavenOverOverOverMax: Counter { Inventory.MaxAmount 600 }
+actor RavenOverOverOverOverMax: Counter { Inventory.MaxAmount 750 }
 
 #include "actors/core.dec"
 #include "actors/coopshit.dec"

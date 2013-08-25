@@ -68,6 +68,10 @@ actor TfearPlayer : PlayerPawn
     Player.StartItem "AbandonAmmo", 500
     Player.StartItem "HatredAmmo", 500
     Player.StartItem "FlawedAmmo", 500
+    Player.StartItem "OverMax", 200
+    Player.StartItem "OverOverMax", 300
+    Player.StartItem "OverOverOverMax", 400
+    Player.StartItem "OverOverOverOverMax", 500
     Player.ColorRange 112, 127
     
     States

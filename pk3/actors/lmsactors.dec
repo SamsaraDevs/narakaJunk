@@ -211,67 +211,6 @@ actor HitlerLMSHealth5 : InheritedLMSHealth
 
 
 
-// Tfear
-// Operates on a 1:1 health ratio. Normal, heroic health.
-// Operates on a 1:1 armor ratio. Normal, heroic armor.
-//==============
-
-//lmslife1
-actor TfearLMSArmor1 : InheritedLMSArmor
-{
-  Armor.SaveAmount 100
-}
-
-//lmslife2
-actor TfearLMSArmor2 : InheritedLMSArmor
-{
-  Armor.SaveAmount 200
-}
-
-actor TfearLMSHealth2 : InheritedLMSHealth
-{
-  Inventory.Amount 200
-  Inventory.MaxAmount 200
-}
-
-//lmslife3
-actor TfearLMSArmor3 : InheritedLMSArmor
-{
-  Armor.SaveAmount 300
-}
-
-actor TfearLMSHealth3 : InheritedLMSHealth
-{
-  Inventory.Amount 300
-  Inventory.MaxAmount 300
-}
-
-//lmslife4
-actor TfearLMSArmor4 : InheritedLMSArmor
-{
-  Armor.SaveAmount 400
-}
-
-actor TfearLMSHealth4 : InheritedLMSHealth
-{
-  Inventory.Amount 400
-  Inventory.MaxAmount 400
-}
-
-//lmslife5
-actor TfearLMSArmor5 : InheritedLMSArmor
-{
-  Armor.SaveAmount 500
-}
-
-actor TfearLMSHealth5 : InheritedLMSHealth
-{
-  Inventory.Amount 500
-  Inventory.MaxAmount 500
-}
-
-
-
 // Korax
 // Operates on a 1.5:1 health ratio. Beefier, though not as much as Cyber.
 // Operates on a 1:1 armor ratio. Normal armor.
@@ -329,4 +268,65 @@ actor KoraxLMSHealth5 : InheritedLMSHealth
 {
   Inventory.Amount 750
   Inventory.MaxAmount 750
+}
+
+
+
+// Tfear
+// Operates on a 1:1 health ratio. Normal, heroic health.
+// Operates on a 1:1 armor ratio. Normal, heroic armor.
+//==============
+
+//lmslife1
+actor TfearLMSArmor1 : InheritedLMSArmor
+{
+  Armor.SaveAmount 100
+}
+
+//lmslife2
+actor TfearLMSArmor2 : InheritedLMSArmor
+{
+  Armor.SaveAmount 200
+}
+
+actor TfearLMSHealth2 : InheritedLMSHealth
+{
+  Inventory.Amount 200
+  Inventory.MaxAmount 200
+}
+
+//lmslife3
+actor TfearLMSArmor3 : InheritedLMSArmor
+{
+  Armor.SaveAmount 300
+}
+
+actor TfearLMSHealth3 : InheritedLMSHealth
+{
+  Inventory.Amount 300
+  Inventory.MaxAmount 300
+}
+
+//lmslife4
+actor TfearLMSArmor4 : InheritedLMSArmor
+{
+  Armor.SaveAmount 400
+}
+
+actor TfearLMSHealth4 : InheritedLMSHealth
+{
+  Inventory.Amount 400
+  Inventory.MaxAmount 400
+}
+
+//lmslife5
+actor TfearLMSArmor5 : InheritedLMSArmor
+{
+  Armor.SaveAmount 500
+}
+
+actor TfearLMSHealth5 : InheritedLMSHealth
+{
+  Inventory.Amount 500
+  Inventory.MaxAmount 500
 }

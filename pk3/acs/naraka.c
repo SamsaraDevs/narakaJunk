@@ -641,9 +641,9 @@ script 895 ENTER clientside
 	{
 		if (PlayerTeam() == 1)
 		{
-		    if (GetTeamProperty(1,TPROP_NumPlayers) >= 4)
+		    if (GetTeamProperty(1,TPROP_NumPlayers) > 4)
 		    {
-			    if (GetTeamProperty(1,TPROP_NumPlayers) > GetTeamProperty(0,TPROP_NumPlayers))
+			    if (GetTeamProperty(1,TPROP_NumPlayers) >= GetTeamProperty(0,TPROP_NumPlayers))
 			    { Print(s:"\cgVillains\cf have too many players!");
 				ConsoleCommand("spectate"); }
 		    }

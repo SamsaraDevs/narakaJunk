@@ -25,9 +25,9 @@ Team "Villains"
 }
 
 // Both of these are for compatibility purposes only. Please do not actually use them.
-Team "Raktah"
+Team "Red"
 {
 }
-Team "Nilah"
+Team "Blue"
 {
 }

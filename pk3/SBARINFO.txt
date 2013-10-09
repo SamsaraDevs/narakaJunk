@@ -2250,23 +2250,16 @@ Playerclass Korax
     DrawNumber 3, INDEXFON, Gold, Health, 20, 176, Red, 50, White, 100;
     DrawNumber 3, INDEXFON, White, Armor, FillZeros, 20, 187;
     drawselectedinventory alwaysshowcounter, HEREHUDF2, 290, 22, 293, 30, Red;
-	DrawString CONFONT, White, "Kills", 218, 171;
     gamemode deathmatch, teamplay, teamgame, lastmanstanding, OneFlagCTF, CTF, Skulltag, TeamLMS, TeamPossession
-    { DrawNumber 3, HEREHUDF2, Red, Frags, drawshadow, 204, 178; }
+    { DrawNumber 3, HEREHUDF, White, Frags, drawshadow, 214, 180; }
     gamemode cooperative, singleplayer
-    { DrawNumber 4, HEREHUDF2, Red, KillCountAmountTrue, drawshadow, 223, 178; }
+    { DrawNumber 4, HEREHUDF, White, KillCountAmountTrue, drawshadow, 223, 180; }
 	
-	DrawString CONFONT, White, "Ammo", 139, 171;
-	DrawNumber 3, HEREHUDF, White, Ammo1, drawshadow, 136, 178;
-	DrawNumber 3, HEREHUDF, White, Ammo2, drawshadow, 136, 188;
+	DrawNumber 3, HEREHUDF, White, Ammo1, drawshadow, 132, 180;
     DrawNumber 3, INDEXFON, White, ammo VillainAmmoLight, 295, 174;
     DrawNumber 3, INDEXFON, Red, ammocapacity VillainAmmoLight, 310, 174;
     DrawNumber 3, INDEXFON, White, ammo VillainAmmoHeavy, 295, 183;
     DrawNumber 3, INDEXFON, Red, ammocapacity VillainAmmoHeavy, 310, 183;
-	
-	//DrawBar "CBARRED", "CBAREMPT", ChaosDeviceCooldown, Horizontal, 283, 191; //CyberdemonDashCount
-	//DrawBar "CBARBLU", "CBAREMPT", GhostsphereCooldown, Horizontal, 283, 193; //CyberdemonDashCooldown
-	//DrawBar "CBARYEL", "CBAREMPT", DSparilSummonCooldown, Horizontal, 283, 195; //CyberdemonDashCooldown
 
     //Doom keys
         InInventory BlueCard, 1 {drawimage "STKEYS0", 236, 175;}
@@ -3956,6 +3949,12 @@ Playerclass Korax
 {
 	drawimage "EVILHUD2", 0, 168;
     drawmugshot "EVL", 5, 147, 168;
+	IsSelected "Chaos Serpent Magic" {drawimage "KRMANA1", 149, 146; }
+	IsSelected "Hell Fire Magic" {drawimage "KRMANA2", 149, 146; }
+	IsSelected "Swamp Poison Magic" {drawimage "KRMANA3", 149, 146; }
+	IsSelected "Ethereal Wraith Magic" {drawimage "KRMANA4", 149, 146; }
+	IsSelected "Steel Chain Magic" {drawimage "KRMANA5", 149, 146; }
+	IsSelected "Iron Force Magic" {drawimage "KRMANA6", 149, 146; }
 	DrawBar "HBARRED", "HBAREMPT", Health, Horizontal, 24, 175;
 	DrawBar "HBARRED", "HBAREMPT", Armor, Horizontal, 24, 186;
     DrawBar "HBARYEL", "HBAREMP2", Health RavenOverMax, Horizontal, -53, 175;
@@ -3969,23 +3968,16 @@ Playerclass Korax
     DrawNumber 3, INDEXFON, Gold, Health, 20, 176, Red, 50, White, 100;
     DrawNumber 3, INDEXFON, White, Armor, FillZeros, 20, 187;
     drawselectedinventory alwaysshowcounter, HEREHUDF2, 290, 22, 293, 30, Red;
-	DrawString CONFONT, White, "Kills", 218, 171;
     gamemode deathmatch, teamplay, teamgame, lastmanstanding, OneFlagCTF, CTF, Skulltag, TeamLMS, TeamPossession
-    { DrawNumber 3, HEREHUDF2, Red, Frags, drawshadow, 204, 178; }
+    { DrawNumber 3, HEREHUDF, White, Frags, drawshadow, 214, 180; }
     gamemode cooperative, singleplayer
-    { DrawNumber 4, HEREHUDF2, Red, KillCountAmountTrue, drawshadow, 223, 178; }
+    { DrawNumber 4, HEREHUDF, White, KillCountAmountTrue, drawshadow, 223, 180; }
 	
-	DrawString CONFONT, White, "Ammo", 139, 171;
-	DrawNumber 3, HEREHUDF, White, Ammo1, drawshadow, 136, 178;
-	DrawNumber 3, HEREHUDF, White, Ammo2, drawshadow, 136, 188;
+	DrawNumber 3, HEREHUDF, White, Ammo1, drawshadow, 132, 180;
     DrawNumber 3, INDEXFON, White, ammo VillainAmmoLight, 295, 174;
     DrawNumber 3, INDEXFON, Red, ammocapacity VillainAmmoLight, 310, 174;
     DrawNumber 3, INDEXFON, White, ammo VillainAmmoHeavy, 295, 183;
     DrawNumber 3, INDEXFON, Red, ammocapacity VillainAmmoHeavy, 310, 183;
-	
-	//DrawBar "CBARRED", "CBAREMPT", ChaosDeviceCooldown, Horizontal, 283, 191; //CyberdemonDashCount
-	//DrawBar "CBARBLU", "CBAREMPT", GhostsphereCooldown, Horizontal, 283, 193; //CyberdemonDashCooldown
-	//DrawBar "CBARYEL", "CBAREMPT", DSparilSummonCooldown, Horizontal, 283, 195; //CyberdemonDashCooldown
 
     //Doom keys
         InInventory BlueCard, 1 {drawimage "STKEYS0", 236, 175;}

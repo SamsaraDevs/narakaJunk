@@ -217,7 +217,7 @@ ACTOR KilledKorax
 	-SHOOTABLE
 	+PAINLESS
 	Scale 0.75
-	Obituary "%k \crleft\c- %o \crone last surprise.\c-"
+	Obituary "%k \culeft\c- %o \cuone last surprise.\c-"
     States
     {
       Spawn:
@@ -308,7 +308,7 @@ Actor KoraxPlayerSpirit : KoraxSpirit
 	+SEEKERMISSILE
 	+FORCERADIUSDMG
 	-COUNTKILL
-	Obituary "%k \crleft\c- %o \crone last surprise.\c-"
+	Obituary "%k \culeft\c- %o \cuone last surprise.\c-"
 	//SeeSound "SpiritActive"
 	States
 	{
@@ -363,7 +363,7 @@ ACTOR ZorchedKorax
 	-SHOOTABLE
 	+PAINLESS
 	Scale 0.75
-	Obituary "%k \crleft\c- %o \crone last surprise.\c-"
+	Obituary "%k \culeft\c- %o \cuone last surprise.\c-"
     States
     {
       Spawn:
@@ -445,7 +445,7 @@ ACTOR FrozenKorax
 	-SHOOTABLE
 	+PAINLESS
 	Scale 0.75
-	Obituary "%k \crleft\c- %o \crone last surprise.\c-"
+	Obituary "%k \culeft\c- %o \cuone last surprise.\c-"
     States
     {
       Spawn:

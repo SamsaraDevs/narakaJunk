@@ -10,7 +10,7 @@ actor "Aggregate Type 'Guilt'" : Weapon
     Weapon.AmmoGive2 25
     Weapon.KickBack 5500
     Inventory.PickupMessage "system error 0xfded"
-    Obituary "%k \crjudged\c- %o \crguilty.\c-"
+    Obituary "%k \ctjudged\c- %o \ctguilty.\c-"
     +UNDROPPABLE
     +PIERCEARMOR
 	+AMMO_OPTIONAL
@@ -279,7 +279,7 @@ actor GuiltAttack : FastProjectile
 	RenderStyle Translucent
 	Alpha 0.9
 	//Scale 1.5
-    Obituary "%k \crjudged\c- %o \crguilty.\c-"
+    Obituary "%k \ctjudged\c- %o \ctguilty.\c-"
     SeeSound "none"
     DeathSound "tfear/hit"
     Decal "Scorch"
@@ -677,7 +677,7 @@ actor EnforcerShot2
     +BLOODLESSIMPACT
     Scale 0.35
     DeathSound "enforcer/hit"
-    Obituary "%k \crflayed\c- %o \crto the bone with Hatred.\c-"
+    Obituary "%k \ctflayed\c- %o \ctto the bone with Hatred.\c-"
     Projectile
     States
     {
@@ -1049,7 +1049,7 @@ actor AlienWeaponBullet2 : FastProjectile
     Speed 120
     Projectile
     DamageType MarathonPlasma
-    Obituary "%k \crshowed\c- %o \crhow flawed %g was.\c-"
+    Obituary "%k \ctshowed\c- %o \cthow flawed %g was.\c-"
     -BLOODSPLATTER
     +NOBLOOD
     +NOTIMEFREEZE
@@ -1278,7 +1278,7 @@ actor AbandonGrenade
     //Gravity 0.125
     DeathSound "tfear/abandonboom"
     Projectile
-    Obituary "%k \crabandoned \c-%o\cr.\c-"
+    Obituary "%k \ctabandoned \c-%o\ct.\c-"
     -NOGRAVITY
     //+LOWGRAVITY
     +FORCERADIUSDMG
@@ -1314,7 +1314,7 @@ actor AbandonRemoteGrenade
 	Gravity 0.225
     //Gravity 0.125
     Projectile
-    Obituary "%k \crabandoned \c-%o\cr.\c-"
+    Obituary "%k \ctabandoned \c-%o\ct.\c-"
     -NOGRAVITY
     //+LOWGRAVITY
     +FORCERADIUSDMG

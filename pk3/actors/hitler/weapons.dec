@@ -9,7 +9,7 @@ actor "Vierfach Fokker-Leimberger": InstantSwitchWeapon
     +DONTBOB
     +INVENTORY.UNDROPPABLE
     Inventory.PickupMessage "You got the Chaingun!"
-    Obituary "%k \crgemacht\c- %o\cr heil der Fuhrer.\c-" // X made Y hail the Leader.
+    Obituary "%k \cbgemacht\c- %o\cb heil der Fuhrer.\c-" // X made Y hail the Leader.
     Weapon.YAdjust 16
     States
     {

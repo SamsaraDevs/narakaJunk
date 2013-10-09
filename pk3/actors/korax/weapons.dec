@@ -678,7 +678,7 @@ ACTOR KoraxMeleeSplosion
   -SOLID
   +FORCERADIUSDMG
   RenderStyle Add
-  Obituary "%k \crswept\c- %o \croff the board."
+  Obituary "%k \cuswept\c- %o \cuoff the board."
   States
   {
   Spawn:
@@ -715,7 +715,7 @@ ACTOR KoraxSerpentFX
   RenderStyle Add
   SeeSound "CentaurLeaderAttack"
   DeathSound "SerpentFXHit"
-  Obituary "%k \crswept\c- %o \croff the board."
+  Obituary "%k \cuswept\c- %o \cuoff the board."
   States
   {
   Spawn:
@@ -759,7 +759,7 @@ ACTOR KoraxCentaurFX
   RenderStyle Add
   SeeSound "CentaurLeaderAttack"
   DeathSound "CentaurMissileExplode"
-  Obituary "%k \crswept\c- %o \croff the board."
+  Obituary "%k \cuswept\c- %o \cuoff the board."
   States
   {
   Spawn:
@@ -803,7 +803,7 @@ ACTOR KoraxFireDemonMissile
   RenderStyle Add
   SeeSound "FireDemonAttack"
   DeathSound "FireDemonMissileHit"
-  Obituary "%k \crswept\c- %o \croff the board."
+  Obituary "%k \cuswept\c- %o \cuoff the board."
   States
   {
   Spawn:
@@ -842,7 +842,7 @@ ACTOR KoraxDemon2FX1 : LoreShot
   //RenderStyle Add
   SeeSound "chains/fire"
   DeathSound "chains/death"
-  Obituary "%k \crswept\c- %o \croff the board."
+  Obituary "%k \cuswept\c- %o \cuoff the board."
   States
   {
   Spawn:
@@ -893,7 +893,7 @@ ACTOR KoraxDemon1FX1
   RenderStyle Add
   SeeSound "DemonMissileFire"
   DeathSound "DemonMissileExplode"
-  Obituary "%k \crswept\c- %o \croff the board."
+  Obituary "%k \cuswept\c- %o \cuoff the board."
   States
   {
   Spawn:
@@ -937,7 +937,7 @@ ACTOR KoraxWraithFX1 : WraithFX1
   +EXTREMEDEATH
   SeeSound "WraithMissileFire"
   DeathSound "WraithMissileExplode"
-  Obituary "%k \crswept\c- %o \croff the board."
+  Obituary "%k \cuswept\c- %o \cuoff the board."
   States
   {
   Spawn:

@@ -74,7 +74,7 @@ actor DSparilSerpentUnmounted : Demon1B
 	PainSound "dsparilserpent/Pain"
 	DeathSound "dsparilserpent/Death"
 	ActiveSound "dsparilserpent/Active"
-	Obituary "\crA Chaos Serpent had\c- %o \crfor lunch.\c-"
+	Obituary "\c[c3]A Chaos Serpent had\c- %o \c[c3]for lunch.\c-"
 	States
 	{
 	  Spawn:

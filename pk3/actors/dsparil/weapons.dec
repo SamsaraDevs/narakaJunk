@@ -4,7 +4,7 @@ actor "Chaos Serpent" : Weapon
     +AMMO_OPTIONAL
     +ALT_AMMO_OPTIONAL
     Weapon.Kickback 100
-	Obituary "%k \crfed\c- %o \crto the Serpent."
+	Obituary "%k \c[c3]fed\c- %o \c[c3]to the Serpent."
     States
     {
       Ready:
@@ -165,7 +165,7 @@ actor "Chaos Serpent" : Weapon
 actor DSparilFireball : SorcererFX1
 {
 	Damage (random(5,50))
-    Obituary "%k \crfed\c- %o \crto the Serpent.\c-"
+    Obituary "%k \c[c3]fed\c- %o \c[c3]to the Serpent.\c-"
     Speed 35
     FastSpeed 35
 }
@@ -173,7 +173,7 @@ actor DSparilFireball : SorcererFX1
 actor DSparilFireball2 : SorcererFX1
 {
 	Damage (random(5,50))
-    Obituary "%k \crfed\c- %o \crto the Serpent.\c-"
+    Obituary "%k \c[c3]fed\c- %o \c[c3]to the Serpent.\c-"
     Speed 25
     FastSpeed 25
 }
@@ -353,7 +353,7 @@ actor DSparilLightning : Sorcerer2FX1
 	+FORCERADIUSDMG
 	DONTHURTSHOOTER
 	DamageType "VillainTeam"
-    Obituary "%k \croverwhelmed\c- %o \crwith despair.\c-"
+    Obituary "%k \c[c3]overwhelmed\c- %o \c[c3]with despair.\c-"
     Speed 35
 	States
 	{
@@ -371,7 +371,7 @@ actor DSparilLightningCoop : Sorcerer2FX1
 	DONTHURTSHOOTER
 	Species "Player"
 	DamageType "VillainTeam"
-    Obituary "%k \croverwhelmed\c- %o \crwith despair.\c-"
+    Obituary "%k \c[c3]overwhelmed\c- %o \c[c3]with despair.\c-"
     Speed 35
 	States
 	{
@@ -389,7 +389,7 @@ actor DSparilLightningTLMS : Sorcerer2FX1
 	DONTHURTSHOOTER
     Species "Villain"
 	DamageType "VillainTeam"
-    Obituary "%k \croverwhelmed\c- %o \crwith despair.\c-"
+    Obituary "%k \c[c3]overwhelmed\c- %o \c[c3]with despair.\c-"
     Speed 35
 	States
 	{
@@ -412,7 +412,7 @@ actor DSparilWizard : Wizard2
     Species "Villain"
     -SHOOTABLE
     //DropItem "ArtiTomeOfPower", 16
-    Obituary "\crA Disciple overwhelmed\c- %o \crwith Despair.\c-"
+    Obituary "\c[c3]A Disciple overwhelmed\c- %o \c[c3]with Despair.\c-"
 	BloodColor Purple
     States
     {
@@ -647,7 +647,7 @@ actor HereticTeleport
 
 actor DSparilWizardShot : WizardFX1
 {
-    Obituary "\crA Disciple overwhelmed\c- %o \crwith Despair.\c-"
+    Obituary "\c[c3]A Disciple overwhelmed\c- %o \c[c3]with Despair.\c-"
     DamageType "DSparilDamage"
     Speed 25
     Damage 5
@@ -657,7 +657,7 @@ actor DSparilWizardShotTLMS : WizardFX1
 {
     +THRUSPECIES
 	Species "Villain"
-    Obituary "\crA Disciple overwhelmed\c- %o \crwith Despair.\c-"
+    Obituary "\c[c3]A Disciple overwhelmed\c- %o \c[c3]with Despair.\c-"
     DamageType "VillainTeam"
     Speed 25
     Damage 5
@@ -667,7 +667,7 @@ actor DSparilWizardShotCoop : WizardFX1
 {
     +THRUSPECIES
 	Species "Player"
-    Obituary "\crA Disciple overwhelmed\c- %o \crwith Despair.\c-"
+    Obituary "\c[c3]A Disciple overwhelmed\c- %o \c[c3]with Despair.\c-"
     DamageType "VillainTeam"
     Speed 25
     Damage 5

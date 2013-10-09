@@ -80,8 +80,8 @@ actor SamsaraSlotOnePickup_Naraka: SamsaraSlotPickup replaces Chainsaw
 		TNT1 A 0 A_GiveInventory("GotWeapon0")
 		TNT1 A 0 ACS_ExecuteAlways(491,0,1)
 	    TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("WeaponSparkle",0,0,random(4,52),random(-2,2),random(-2,2),random(1,3),48,128)
-		TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(490,0,0,0)==1,"PickupFailure")
 		TNT1 A 0 A_SetBlend("ED E2 75", 0.25, 8)
+		TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(490,0,0,0)==1,"PickupFailure")
 		goto PickupSuccess
     }
 }
@@ -159,8 +159,8 @@ actor SamsaraSlotTwoPickup_Naraka: SamsaraSlotPickup replaces Shotgun
 		TNT1 A 0 A_GiveInventory("GotWeapon2")
 		TNT1 A 0 ACS_ExecuteAlways(491,0,2)
 	    TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("WeaponSparkle",0,0,random(4,52),random(-2,2),random(-2,2),random(1,3),48,128)
-		TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(490,0,0,0)==1,"PickupFailure")
 		TNT1 A 0 A_SetBlend("ED E2 75", 0.25, 8)
+		TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(490,0,0,0)==1,"PickupFailure")
 		goto PickupSuccess
     }
 }
@@ -265,8 +265,8 @@ actor SamsaraSlotThreePickup_Naraka: SamsaraSlotPickup replaces SuperShotgun
 		TNT1 A 0 A_GiveInventory("GotWeapon3")
 		TNT1 A 0 ACS_ExecuteAlways(491,0,3)
 	    TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("WeaponSparkle",0,0,random(4,52),random(-2,2),random(-2,2),random(1,3),48,128)
-		TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(490,0,0,0)==1,"PickupFailure")
 		TNT1 A 0 A_SetBlend("ED E2 75", 0.25, 8)
+		TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(490,0,0,0)==1,"PickupFailure")
 		goto PickupSuccess
     }
 }
@@ -361,8 +361,8 @@ actor SamsaraSlotFourPickup_Naraka: SamsaraSlotPickup replaces Chaingun
 		TNT1 A 0 A_GiveInventory("GotWeapon4")
 		TNT1 A 0 ACS_ExecuteAlways(491,0,4)
 	    TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("WeaponSparkle",0,0,random(4,52),random(-2,2),random(-2,2),random(1,3),48,128)
-		TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(490,0,0,0)==1,"PickupFailure")
 		TNT1 A 0 A_SetBlend("ED E2 75", 0.25, 8)
+		TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(490,0,0,0)==1,"PickupFailure")
 		goto PickupSuccess
     }
 }
@@ -461,8 +461,8 @@ actor SamsaraSlotFivePickup_Naraka: SamsaraSlotPickup replaces RocketLauncher
 		TNT1 A 0 A_GiveInventory("GotWeapon5")
 		TNT1 A 0 ACS_ExecuteAlways(491,0,5)
 	    TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("WeaponSparkle",0,0,random(4,52),random(-2,2),random(-2,2),random(1,3),48,128)
-		TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(490,0,0,0)==1,"PickupFailure")
 		TNT1 A 0 A_SetBlend("ED E2 75", 0.25, 8)
+		TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(490,0,0,0)==1,"PickupFailure")
 		goto PickupSuccess
     }
 }
@@ -553,8 +553,8 @@ actor SamsaraSlotSixPickup_Naraka: SamsaraSlotPickup replaces PlasmaRifle
 		TNT1 A 0 A_GiveInventory("GotWeapon6")
 		TNT1 A 0 ACS_ExecuteAlways(491,0,6)
 	    TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("WeaponSparkle",0,0,random(4,52),random(-2,2),random(-2,2),random(1,3),48,128)
-		TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(490,0,0,0)==1,"PickupFailure")
 		TNT1 A 0 A_SetBlend("ED E2 75", 0.25, 8)
+		TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(490,0,0,0)==1,"PickupFailure")
 		goto PickupSuccess
     }
 }
@@ -667,8 +667,8 @@ actor SamsaraSlotSevenPickup_Naraka: SamsaraSlotPickup replaces BFG9000
 		TNT1 A 0 A_JumpIfInventory("CyberdemonClass",1,"PickupCyberdemon")
 		TNT1 A 0 ACS_ExecuteAlways(491,0,7)
 	    TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("WeaponSparkle2",0,0,random(4,52),random(-2,2),random(-2,2),random(1,3),48,128)
-		TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(492,0,0,0)==1,"PickupFailure")
 		TNT1 A 0 A_SetBlend("ED E2 75", 0.25, 8)
+		TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(492,0,0,0)==1,"PickupFailure")
 		goto PickupSuccess
 		
 	  PickupCyberdemon:
@@ -676,8 +676,8 @@ actor SamsaraSlotSevenPickup_Naraka: SamsaraSlotPickup replaces BFG9000
 		TNT1 A 0 A_GiveInventory("VillainAmmoLight",100)
 		TNT1 A 0 ACS_ExecuteAlways(491,0,7)
 	    TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("WeaponSparkle2",0,0,random(4,52),random(-2,2),random(-2,2),random(1,3),48,128)
-		TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(492,0,0,0)==1,"PickupFailure")
 		TNT1 A 0 A_SetBlend("ED E2 75", 0.25, 8)
+		TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(492,0,0,0)==1,"PickupFailure")
 		goto PickupSuccess
     }
 }
@@ -834,7 +834,6 @@ actor SamsaraUniquePickup2_Naraka: SamsaraUniquePickup1_Naraka
         goto SpawnLoop
         
       Pickup:
-        //TNT1 A 0 A_Print("lol ur a faget")
 		TNT1 A 0 A_JumpIfInventory("CyberdemonClass",1,"PickupCyberdemon")
         TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(231, 1), "PickupSuccess")
         goto PickupFailure

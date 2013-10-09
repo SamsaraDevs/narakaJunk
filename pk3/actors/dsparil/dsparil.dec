@@ -150,7 +150,7 @@ actor DsparilPlayer : PlayerPawn
         
       Pain:
         TNT1 A 0 A_JumpIfHealthLower(50,"FakeDeath")
-        SRCR R 4 
+        SRCR R 4 A_TakeInventory("DsparilSummonCooldown",1) 
         SRCR R 4 A_Pain
         Goto Spawn
         
@@ -159,7 +159,7 @@ actor DsparilPlayer : PlayerPawn
       Pain.PhasingZorch:
       Pain.ZorchKamikaze:
         TNT1 A 0 A_JumpIfHealthLower(50,"FakeZorch")
-        SRCR R 4 
+        SRCR R 4 A_TakeInventory("DsparilSummonCooldown",1) 
         SRCR R 4 A_Pain
         Goto Spawn
         
@@ -167,7 +167,7 @@ actor DsparilPlayer : PlayerPawn
       Pain.DukeIce:
       Pain.HexenIce:
         TNT1 A 0 A_JumpIfHealthLower(50,"FakeFreeze")
-        SRCR R 4 
+        SRCR R 4 A_TakeInventory("DsparilSummonCooldown",1) 
         SRCR R 4 A_Pain
         Goto Spawn
         
@@ -399,7 +399,7 @@ actor DsparilOnFootPlayer : PlayerPawn
       Pain:
 	    TNT1 A 0
 		TNT1 A 0 A_TakeInventory("ChaosDeviceCooldown",1)
-		TNT1 A 0 A_TakeInventory("DsparilSummonCooldown",1)
+		TNT1 A 0 A_TakeInventory("DsparilSummonCooldown",random(1,2))
         SOR2 Q 4 
         SOR2 Q 4 A_Pain
         Goto Spawn2

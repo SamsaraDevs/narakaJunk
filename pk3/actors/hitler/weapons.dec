@@ -145,25 +145,26 @@ actor "Vierfach Fokker-Leimberger": InstantSwitchWeapon
 
       AltHold:
 	    TNT1 A 0 A_JumpIfInventory("HitlerLostArmor",1,"AltHold2")
-		HTCH A 0 Offset(0,32)
 		TNT1 A 0 A_GiveInventory("CyberSpeed2")
+		HTCH A 0 Offset(0,32)
         TNT1 A 0 A_PlayWeaponSound("hitler/reload")
-		HTCH G 10 A_GiveInventory("VillainAmmoLight",2)
+		HTCH G 9 A_GiveInventory("VillainAmmoLight",2)
         TNT1 A 0 A_PlayWeaponSound("hitler/reload")
-		HTCH H 10 A_GiveInventory("VillainAmmoLight",2)
+		HTCH H 9 A_GiveInventory("VillainAmmoLight",2)
 		TNT1 A 0 A_Refire
 		HTCH A 15 A_TakeInventory("CyberSpeed2")
 		goto Ready
 
       AltHold2:
 		HTCH A 0 Offset(0,32)
-		TNT1 A 0 A_GiveInventory("CyberSpeed2")
+		//TNT1 A 0 A_GiveInventory("CyberSpeed2")
         TNT1 A 0 A_PlayWeaponSound("hitler/reload")
-		HTCH I 10 A_GiveInventory("VillainAmmoLight",1)
+		HTCH I 8 A_GiveInventory("VillainAmmoLight",1)
         TNT1 A 0 A_PlayWeaponSound("hitler/reload")
-		HTCH J 10 A_GiveInventory("VillainAmmoLight",1)
+		HTCH J 8 A_GiveInventory("VillainAmmoLight",1)
 		TNT1 A 0 A_Refire
-		HTCH D 15 A_TakeInventory("CyberSpeed2")
+		HTCH D 5
+		HTCH D 10 A_TakeInventory("CyberSpeed2")
 		goto Ready
     }
 }

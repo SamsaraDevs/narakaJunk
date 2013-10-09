@@ -18,6 +18,7 @@ FROM v0.12 TO v0.13:
 - When more than four players are on the Villain team, they may no longer have even team numbers with the Heroes. This should help give people the idea that, hey, stack on the Heroes.
 - Due to popular demand, Hitler's obituary has been changed.
 - naraka_ban[class], naraka_[class]defense, and naraka_[class]damage have been imported.
+- Tfear now has a HUD graphic composed of Marathon Pfhor textures.
 
 FROM V0.11 TO V0.12:
 ========================

@@ -2329,31 +2329,31 @@ Playerclass Tfear
 {
 	drawimage "EVILHUD3", 0, 168;
     drawmugshot "STF", 5, 147, 168;
-	DrawBar "HBARRED", "HBAREMPT", Health, Horizontal, 24, 175;
-	DrawBar "HBARRED", "HBAREMPT", Armor, Horizontal, 24, 186;
-    DrawBar "HBARYEL", "HBAREMP2", Health OverMax, Horizontal, -53, 175;
-    DrawBar "HBARGRE", "HBAREMP3", Health OverOverMax, Horizontal, -130, 175;
-    DrawBar "HBARBLU", "HBAREMP4", Health OverOverOverMax, Horizontal, -207, 175;
-    DrawBar "HBARVIO", "HBAREMP5", Health OverOverOverOverMax, Horizontal, -284, 175;
-    DrawBar "HBARYEL", "HBAREMP2", Armor OverMax, Horizontal, -53, 186;
-    DrawBar "HBARGRE", "HBAREMP3", Armor OverOverMax, Horizontal, -130, 186;
-    DrawBar "HBARBLU", "HBAREMP4", Armor OverOverOverMax, Horizontal, -207, 186;
-    DrawBar "HBARVIO", "HBAREMP5", Armor OverOverOverOverMax, Horizontal, -284, 186;
-    DrawNumber 3, INDEXFON, Gold, Health, 20, 176, Red, 50, White, 100;
-    DrawNumber 3, INDEXFON, White, Armor, FillZeros, 20, 187;
+	DrawBar "HBARRED", "HBAREMPT", Health, Horizontal, 22, 175;
+	DrawBar "HBARRED", "HBAREMPT", Armor, Horizontal, 22, 186;
+    DrawBar "HBARYEL", "HBAREMP2", Health OverMax, Horizontal, -55, 175;
+    DrawBar "HBARGRE", "HBAREMP3", Health OverOverMax, Horizontal, -132, 175;
+    DrawBar "HBARBLU", "HBAREMP4", Health OverOverOverMax, Horizontal, -209, 175;
+    DrawBar "HBARVIO", "HBAREMP5", Health OverOverOverOverMax, Horizontal, -286, 175;
+    DrawBar "HBARYEL", "HBAREMP2", Armor OverMax, Horizontal, -55, 186;
+    DrawBar "HBARGRE", "HBAREMP3", Armor OverOverMax, Horizontal, -132, 186;
+    DrawBar "HBARBLU", "HBAREMP4", Armor OverOverOverMax, Horizontal, -209, 186;
+    DrawBar "HBARVIO", "HBAREMP5", Armor OverOverOverOverMax, Horizontal, -286, 186;
+    DrawNumber 3, INDEXFON, Gold, Health, 18, 176, Red, 50, White, 100;
+    DrawNumber 3, INDEXFON, White, Armor, FillZeros, 18, 187;
     drawselectedinventory alwaysshowcounter, TFERHUDF, 290, 22, 293, 30, Aqua;
-	DrawString CONFONT, White, "Kills", 218, 171;
+	//DrawString CONFONT, White, "Kills", 218, 171;
     gamemode deathmatch, teamplay, teamgame, lastmanstanding, OneFlagCTF, CTF, Skulltag, TeamLMS, TeamPossession
     { DrawNumber 3, TFERHUDF, Aqua, Frags, drawshadow, 204, 183; }
     gamemode cooperative, singleplayer
     { DrawNumber 4, TFERHUDF, Aqua, KillCountAmountTrue, drawshadow, 213, 183; }
 	
-	DrawString CONFONT, White, "Ammo", 139, 171;
+	//DrawString CONFONT, White, "Ammo", 139, 171;
 	DrawNumber 3, TFERHUDF, Aqua, Ammo1, drawshadow, 131, 183;
     DrawNumber 3, INDEXFON, White, ammo VillainAmmoLight, 295, 174;
-    DrawNumber 3, INDEXFON, Aqua, ammocapacity VillainAmmoLight, 310, 174;
+    DrawNumber 3, INDEXFON, Gold, ammocapacity VillainAmmoLight, 310, 174;
     DrawNumber 3, INDEXFON, White, ammo VillainAmmoHeavy, 295, 183;
-    DrawNumber 3, INDEXFON, Aqua, ammocapacity VillainAmmoHeavy, 310, 183;
+    DrawNumber 3, INDEXFON, Gold, ammocapacity VillainAmmoHeavy, 310, 183;
 	
 	DrawBar "CBARRED", "CBAREMPT", TfearCloakCount, Horizontal, 282, 191; //CyberdemonDashCount
 	DrawBar "CBARBLU", "CBAREMPT", TfearCloakCooldown, Horizontal, 282, 193; //CyberdemonDashCooldown
@@ -4048,31 +4048,31 @@ Playerclass Tfear
 {
 	drawimage "EVILHUD3", 0, 168;
     drawmugshot "STF", 5, 147, 168;
-	DrawBar "HBARRED", "HBAREMPT", Health, Horizontal, 24, 175;
-	DrawBar "HBARRED", "HBAREMPT", Armor, Horizontal, 24, 186;
-    DrawBar "HBARYEL", "HBAREMP2", Health OverMax, Horizontal, -53, 175;
-    DrawBar "HBARGRE", "HBAREMP3", Health OverOverMax, Horizontal, -130, 175;
-    DrawBar "HBARBLU", "HBAREMP4", Health OverOverOverMax, Horizontal, -207, 175;
-    DrawBar "HBARVIO", "HBAREMP5", Health OverOverOverOverMax, Horizontal, -284, 175;
-    DrawBar "HBARYEL", "HBAREMP2", Armor OverMax, Horizontal, -53, 186;
-    DrawBar "HBARGRE", "HBAREMP3", Armor OverOverMax, Horizontal, -130, 186;
-    DrawBar "HBARBLU", "HBAREMP4", Armor OverOverOverMax, Horizontal, -207, 186;
-    DrawBar "HBARVIO", "HBAREMP5", Armor OverOverOverOverMax, Horizontal, -284, 186;
-    DrawNumber 3, INDEXFON, Gold, Health, 20, 176, Red, 50, White, 100;
-    DrawNumber 3, INDEXFON, White, Armor, FillZeros, 20, 187;
+	DrawBar "HBARRED", "HBAREMPT", Health, Horizontal, 22, 175;
+	DrawBar "HBARRED", "HBAREMPT", Armor, Horizontal, 22, 186;
+    DrawBar "HBARYEL", "HBAREMP2", Health OverMax, Horizontal, -55, 175;
+    DrawBar "HBARGRE", "HBAREMP3", Health OverOverMax, Horizontal, -132, 175;
+    DrawBar "HBARBLU", "HBAREMP4", Health OverOverOverMax, Horizontal, -209, 175;
+    DrawBar "HBARVIO", "HBAREMP5", Health OverOverOverOverMax, Horizontal, -286, 175;
+    DrawBar "HBARYEL", "HBAREMP2", Armor OverMax, Horizontal, -55, 186;
+    DrawBar "HBARGRE", "HBAREMP3", Armor OverOverMax, Horizontal, -132, 186;
+    DrawBar "HBARBLU", "HBAREMP4", Armor OverOverOverMax, Horizontal, -209, 186;
+    DrawBar "HBARVIO", "HBAREMP5", Armor OverOverOverOverMax, Horizontal, -286, 186;
+    DrawNumber 3, INDEXFON, Gold, Health, 18, 176, Red, 50, White, 100;
+    DrawNumber 3, INDEXFON, White, Armor, FillZeros, 18, 187;
     drawselectedinventory alwaysshowcounter, TFERHUDF, 290, 22, 293, 30, Aqua;
-	DrawString CONFONT, White, "Kills", 218, 171;
+	//DrawString CONFONT, White, "Kills", 218, 171;
     gamemode deathmatch, teamplay, teamgame, lastmanstanding, OneFlagCTF, CTF, Skulltag, TeamLMS, TeamPossession
     { DrawNumber 3, TFERHUDF, Aqua, Frags, drawshadow, 204, 183; }
     gamemode cooperative, singleplayer
     { DrawNumber 4, TFERHUDF, Aqua, KillCountAmountTrue, drawshadow, 213, 183; }
 	
-	DrawString CONFONT, White, "Ammo", 139, 171;
+	//DrawString CONFONT, White, "Ammo", 139, 171;
 	DrawNumber 3, TFERHUDF, Aqua, Ammo1, drawshadow, 131, 183;
     DrawNumber 3, INDEXFON, White, ammo VillainAmmoLight, 295, 174;
-    DrawNumber 3, INDEXFON, Aqua, ammocapacity VillainAmmoLight, 310, 174;
+    DrawNumber 3, INDEXFON, Gold, ammocapacity VillainAmmoLight, 310, 174;
     DrawNumber 3, INDEXFON, White, ammo VillainAmmoHeavy, 295, 183;
-    DrawNumber 3, INDEXFON, Aqua, ammocapacity VillainAmmoHeavy, 310, 183;
+    DrawNumber 3, INDEXFON, Gold, ammocapacity VillainAmmoHeavy, 310, 183;
 	
 	DrawBar "CBARRED", "CBAREMPT", TfearCloakCount, Horizontal, 282, 191; //CyberdemonDashCount
 	DrawBar "CBARBLU", "CBAREMPT", TfearCloakCooldown, Horizontal, 282, 193; //CyberdemonDashCooldown

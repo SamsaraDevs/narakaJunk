@@ -64,7 +64,7 @@ while (1)
         ConsoleCommand("archivecvar naraka_tfeardefense"); }
         
         if (!GetCVar("naraka_teambalancer"))
-        {   ConsoleCommand("set naraka_teambalancer 0");
+        {   ConsoleCommand("set naraka_teambalancer 1");
         ConsoleCommand("archivecvar naraka_teambalancer"); }
 		
         Delay(1);

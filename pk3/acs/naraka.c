@@ -169,6 +169,15 @@ script 473 (int miscshit)
 		setresultvalue(1);
 		else setresultvalue(0);
 		break;
+		
+    case 3:
+	    SetActorProperty(0,APROP_Speed,1.55);
+	    break;
+    
+	case 4:
+	    SetActorProperty(0,APROP_Speed,1.00);
+	    SetActorState(0,"Spawn");
+	    break;
 	}
 }
 
@@ -635,21 +644,6 @@ script 896 (int ent)
             }
         }
     }
-}
-
-script 897 (int hitlershit)
-{
-switch (hitlershit)
-{
-    case 1:
-	SetActorProperty(0,APROP_Speed,1.55);
-	break;
-	
-    case 2:
-	SetActorProperty(0,APROP_Speed,1.00);
-	SetActorState(0,"Spawn");
-	break;
-}
 }
 
 /*script 898 ENTER

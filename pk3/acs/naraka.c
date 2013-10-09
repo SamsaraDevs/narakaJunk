@@ -2,6 +2,7 @@
 #include "zcommon.acs"
 #include "commonFuncs.h"
 
+#include "narakacvars.h"
 #include "narakaDefs.h"
 
 global int 61:SerpentArmor[];  // These two need to be
@@ -563,10 +564,13 @@ script 889 (int ent)
     }
 }
 
-script 890 ENTER // This differs from Naraka_Spawn in that this is a constant loop to be played.
+script 890 ENTER//(int respawning) // This differs from Naraka_Spawn in that this is a constant loop to be played.
 {
     int i;
+	int respawning;
 	
+	//while (1)
+    //{
 	if(CheckInventory("IsNarakaClass") == 1)
 	{
 	
@@ -588,6 +592,14 @@ script 890 ENTER // This differs from Naraka_Spawn in that this is a constant lo
 
         SetActorProperty(0, APROP_JumpZ, max(i, 0));
 		
+		if (GetCvar("naraka_bancyber") == 1) { ACS_ExecuteAlways(910,0,0); }
+		//if (GetCvar("naraka_bansnotfolus") == 1) { ACS_ExecuteAlways(910,0,1); }
+		if (GetCvar("naraka_bandsparil") == 1) { ACS_ExecuteAlways(910,0,2); }
+		if (GetCvar("naraka_banhitler") == 1) { ACS_ExecuteAlways(910,0,3); }
+		if (GetCvar("naraka_bankorax") == 1) { ACS_ExecuteAlways(910,0,4); }
+		//if (GetCvar("naraka_banproton") == 1) { ACS_ExecuteAlways(910,0,5); }
+		if (GetCvar("naraka_bantfear") == 1) { ACS_ExecuteAlways(910,0,6); }
+		//if (GetCvar("naraka_banshambler") == 1) { ACS_ExecuteAlways(910,0,7); }
 		
 		// POWERUPS SHIT
 		// Because this seems to break on co-op
@@ -603,6 +615,23 @@ script 890 ENTER // This differs from Naraka_Spawn in that this is a constant lo
 		else { TakeInventory("CoopBeef",1); }
 	    if(CheckInventory("GotWeapon6") == 1) { GiveInventory("CoopBamf",1); }
 		else { TakeInventory("CoopBamf",1); }
+		
+        HandleCyberDamage(respawning);
+        HandleCyberDefense(respawning);
+        //HandleSnotfolusDamage();
+        //HandleSnotfolusDefense();
+        HandleDSparilDamage(respawning);
+        HandleDSparilDefense(respawning);
+        HandleHitlerDamage(respawning);
+        HandleHitlerDefense(respawning);
+        HandleKoraxDamage(respawning);
+        HandleKoraxDefense(respawning);
+        //HandleProtonDamage();
+        //HandleProtonDefense();
+        HandleTfearDamage(respawning);
+        HandleTfearDefense(respawning);
+        //HandleShamblerDamage();
+        //HandleShamblerDefense();
 	}
     Delay(1);
 	Restart;
@@ -616,6 +645,7 @@ script 893 (void)
 { 
 	int tid = GetActorProperty(0, APROP_MASTERTID);
 	TakeActorInventory(tid, "TfearSummonLimit", 1);
+	printbold(d:tid);
 }
 
 script 894 (int changelogshit2) NET CLIENTSIDE
@@ -641,9 +671,9 @@ script 895 ENTER clientside
 	{
 		if (PlayerTeam() == 1)
 		{
-		    if (GetTeamProperty(1,TPROP_NumPlayers) > 4)
+		    if (GetTeamProperty(1,TPROP_NumPlayers) >= 4)
 		    {
-			    if (GetTeamProperty(1,TPROP_NumPlayers) >= GetTeamProperty(0,TPROP_NumPlayers))
+			    if (GetTeamProperty(1,TPROP_NumPlayers) > GetTeamProperty(0,TPROP_NumPlayers))
 			    { Print(s:"\cgVillains\cf have too many players!");
 				ConsoleCommand("spectate"); }
 		    }

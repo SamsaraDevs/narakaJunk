@@ -2,7 +2,8 @@
 #include "zcommon.acs"
 #include "commonFuncs.h"
 
-#include "narakacvars.h"
+#include "naraka_auto.h"
+#include "naraka_admin.h"
 #include "narakaDefs.h"
 
 global int 61:SerpentArmor[];  // These two need to be
@@ -36,8 +37,6 @@ script 465 (void)
     Thing_Remove(newTID);
 
 }
-
-script 255 (void) { }
 
 script 466 (int toggle)
 {
@@ -118,6 +117,9 @@ script 572 RESPAWN { ACS_ExecuteAlways(NARAKA_SPAWN, 0, 1,0,0); }
 script NARAKA_SPAWN (int respawning) // This differs from 890 in that this works only once.
 {
     int pNum = playerNumber();
+	
+	if (GetCvar("naraka_teambalancer") == 1) { ACS_ExecuteAlways(895,0,0); }
+	
     if (GameType() == GAME_SINGLE_PLAYER || GameType() == GAME_NET_COOPERATIVE)
     {
 		if (GameType () == GAME_NET_COOPERATIVE) { GiveInventory("CoopModeOn",1);
@@ -148,28 +150,27 @@ script NARAKA_SPAWN (int respawning) // This differs from 890 in that this works
 	if(CheckInventory("TfearClass") == 1) { Thing_ChangeTID(0, 13150 + PlayerNumber()); }
 }
 
-script 473 (void)
+script 473 (int miscshit)
 {
-    Thing_SetTranslation(0, -1);
-}
-
-/*script 474 (int cybermove) NET
-{
-    switch (cybermove)
+    switch (miscshit)
     {
-      case 1:
-        SetActorProperty(0, APROP_Speed, 0.45);
-        break;
-        
-      case 2:
-        SetActorProperty(0, APROP_Speed, 0.15);
-        break;
-        
-      case 3:
-        SetActorProperty(0, APROP_Speed, 1.0);
-        break;
-    }
-}*/
+	case 0:
+        Thing_SetTranslation(0, -1);
+		break;
+		
+	case 1:
+	    if(GetCvar("sv_weaponstay") == 1)
+		setresultvalue(1);
+		else setresultvalue(0);
+		break;
+		
+	case 2:
+	    if(GetCvar("samsara_permault") == 1)
+		setresultvalue(1);
+		else setresultvalue(0);
+		break;
+	}
+}
 
 script 474 (int cybermove) // It's time to D-D-D-DASH!
 {
@@ -245,20 +246,6 @@ script 475 (void) // D'Sparil's life-giving on Serpent kersploding.
     }
 }
 
-script 476 ENTER
-{
-    while (1)
-    {
-        if (CheckInventory("CyberdemonClass") == 1)
-        { GiveInventory("VillainAmmoHeavy", 1); }
-        if (CheckInventory("CoopCawadootyMode") == 1)
-        { GiveInventory("HealPack0",1); }
-        if (CheckInventory("CoopHaloMode") == 1)
-        { GiveInventory("ArmorScrap",1); }
-        delay(175);
-    }
-}
-
 script 480 (int cloakanddagger) // It's time to H-H-H-HIDE!
 {
     switch (cloakanddagger)
@@ -307,20 +294,6 @@ script 480 (int cloakanddagger) // It's time to H-H-H-HIDE!
         }
         break;
     }
-}
-
-script 490 (void)
-{
-	if(GetCvar("sv_weaponstay") == 1)
-		setresultvalue(1);
-		else setresultvalue(0);
-}
-
-script 492 (void)
-{
-	if(GetCvar("samsara_permault") == 1)
-		setresultvalue(1);
-		else setresultvalue(0);
 }
 
 script 491 (int messageshit) CLIENTSIDE
@@ -564,83 +537,6 @@ script 889 (int ent)
     }
 }
 
-script 890 ENTER//(int respawning) // This differs from Naraka_Spawn in that this is a constant loop to be played.
-{
-    int i;
-	int respawning;
-	
-	//while (1)
-    //{
-	if(CheckInventory("IsNarakaClass") == 1)
-	{
-	
-		// JUMPING SHIT
-        if (CheckInventory("TfearClass") == 1)
-		{
-            if (GetCVar("samsara_nocustomgravity"))
-			{ SetActorProperty(0, APROP_Gravity, 1.0); }
-            else
-			{ SetActorProperty(0, APROP_Gravity, 0.15); }
-		}
-		else
-		{ SetActorProperty(0, APROP_Gravity, 1.0); }
-		
-        /*if (CheckInventory("KoraxClass") == 1);
-		{ i = JumpZFromHeight(41 + GetCVar("samsara_jumpmod"), GetActorProperty(0, APROP_Gravity)); }
-        if (CheckInventory("KoraxClass") == 0);
-		{*/ i = JumpZFromHeight(32 + GetCVar("samsara_jumpmod"), GetActorProperty(0, APROP_Gravity)); //}
-
-        SetActorProperty(0, APROP_JumpZ, max(i, 0));
-		
-		if (GetCvar("naraka_bancyber") == 1) { ACS_ExecuteAlways(910,0,0); }
-		//if (GetCvar("naraka_bansnotfolus") == 1) { ACS_ExecuteAlways(910,0,1); }
-		if (GetCvar("naraka_bandsparil") == 1) { ACS_ExecuteAlways(910,0,2); }
-		if (GetCvar("naraka_banhitler") == 1) { ACS_ExecuteAlways(910,0,3); }
-		if (GetCvar("naraka_bankorax") == 1) { ACS_ExecuteAlways(910,0,4); }
-		//if (GetCvar("naraka_banproton") == 1) { ACS_ExecuteAlways(910,0,5); }
-		if (GetCvar("naraka_bantfear") == 1) { ACS_ExecuteAlways(910,0,6); }
-		//if (GetCvar("naraka_banshambler") == 1) { ACS_ExecuteAlways(910,0,7); }
-		
-		// POWERUPS SHIT
-		// Because this seems to break on co-op
-	    if(CheckInventory("GotWeapon0") == 1) { GiveInventory("CoopLesserBamf",1); }
-		else { TakeInventory("CoopLesserBamf",1); }
-	    if(CheckInventory("GotWeapon2") == 1) { GiveInventory("CoopHaloMode",1); }
-		else { TakeInventory("CoopHaloMode",1); }
-	    if(CheckInventory("GotWeapon3") == 1) { GiveInventory("CoopBeefStringy",1); }
-		else { TakeInventory("CoopBeefStringy",1); }
-	    if(CheckInventory("GotWeapon4") == 1) { GiveInventory("CoopCawadootyMode",1); }
-		else { TakeInventory("CoopCawadootyMode",1); }
-	    if(CheckInventory("GotWeapon5") == 1) { GiveInventory("CoopBeef",1); }
-		else { TakeInventory("CoopBeef",1); }
-	    if(CheckInventory("GotWeapon6") == 1) { GiveInventory("CoopBamf",1); }
-		else { TakeInventory("CoopBamf",1); }
-		
-        HandleCyberDamage(respawning);
-        HandleCyberDefense(respawning);
-        //HandleSnotfolusDamage();
-        //HandleSnotfolusDefense();
-        HandleDSparilDamage(respawning);
-        HandleDSparilDefense(respawning);
-        HandleHitlerDamage(respawning);
-        HandleHitlerDefense(respawning);
-        HandleKoraxDamage(respawning);
-        HandleKoraxDefense(respawning);
-        //HandleProtonDamage();
-        //HandleProtonDefense();
-        HandleTfearDamage(respawning);
-        HandleTfearDefense(respawning);
-        //HandleShamblerDamage();
-        //HandleShamblerDefense();
-	}
-    Delay(1);
-	Restart;
-}
-
-//script 891 enter { ACS_ExecuteWithResult(890, 0,0,0); }
-script 891 respawn { ACS_ExecuteWithResult(890, 0,0,0); }
-script 892 return { ACS_ExecuteWithResult(890, 0,0,0); }
-
 script 893 (void)
 { 
 	int tid = GetActorProperty(0, APROP_MASTERTID);
@@ -662,34 +558,6 @@ switch (changelogshit2)
         HudMessage(s:"";HUDMSG_PLAIN,1,1,512.0,384.0,0);
         break;*/
 }
-}
-
-script 895 ENTER clientside
-{
-    if (PlayerNumber() != ConsolePlayerNumber()) { terminate; }
-    if (GetCVar("teamlms") == 1)
-	{
-		if (PlayerTeam() == 1)
-		{
-		    if (GetTeamProperty(1,TPROP_NumPlayers) >= 4)
-		    {
-			    if (GetTeamProperty(1,TPROP_NumPlayers) > GetTeamProperty(0,TPROP_NumPlayers))
-			    { Print(s:"\cgVillains\cf have too many players!");
-				ConsoleCommand("spectate"); }
-		    }
-		}
-		if (GetTeamProperty(0,TPROP_NumPlayers) > 6)
-		{
-		    if (PlayerTeam() == 0)
-		    {
-			    if (GetTeamProperty(0,TPROP_NumPlayers) > (GetTeamProperty(1,TPROP_NumPlayers)*2))
-			    { Print(s:"\chHeroes\cf have too many players!");
-				ConsoleCommand("spectate"); }
-		    }
-		}
-	}
-	delay(1);
-	terminate;
 }
 
 script 896 (int ent)
@@ -784,7 +652,7 @@ switch (hitlershit)
 }
 }
 
-script 898 ENTER
+/*script 898 ENTER
 {
 while (1)
 { if (CheckInventory("HitlerClass") == 1)
@@ -793,7 +661,7 @@ while (1)
       { if (!CheckInventory("Armor"))
         { SetActorState(0,"LoseMech"); } } }}
 delay(1); }
-}
+}*/
 
 /*script 898 (void)
 {

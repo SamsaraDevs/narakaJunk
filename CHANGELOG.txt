@@ -16,7 +16,7 @@ FROM v0.12 TO v0.13:
 - By massive request, Disciples no longer drop Lesser Tomes of Power. Bye bye, awesome book. ;_;
 - All of the Villains (sans D'Sparil due to technical issues) now have different colors across their life/armor bar to represent how much they have.
 - Due to popular demand, Hitler's obituary has been changed.
-- naraka_ban[class], naraka_[class]defense, and naraka_[class]damage have been imported.
+- naraka_ban[class], naraka_[class]defense, and naraka_[class]damage have been imported. If you think a class is too OP, UP, or broken, now you have control over them!
 - Tfear now has a HUD graphic composed of Marathon Pfhor textures.
 - When sv_weaponstay is enabled, villains get a flash on their screen when they pick up a powerup.
 - The Villains now have their respective individual colors, like the Heroes do.

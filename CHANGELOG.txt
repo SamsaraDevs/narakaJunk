@@ -15,12 +15,12 @@ FROM v0.12 TO v0.13:
 - D'Sparil, Korax, and Cyberdemon are now less resistant to Duke's explosives. Hitler is now slightly more resistant.
 - By massive request, Disciples no longer drop Lesser Tomes of Power. Bye bye, awesome book. ;_;
 - All of the Villains (sans D'Sparil due to technical issues) now have different colors across their life/armor bar to represent how much they have.
-- When more than four players are on the Villain team, they may no longer have even team numbers with the Heroes. This should help give people the idea that, hey, stack on the Heroes.
 - Due to popular demand, Hitler's obituary has been changed.
 - naraka_ban[class], naraka_[class]defense, and naraka_[class]damage have been imported.
 - Tfear now has a HUD graphic composed of Marathon Pfhor textures.
 - When sv_weaponstay is enabled, villains get a flash on their screen when they pick up a powerup.
 - The Villains now have their respective individual colors, like the Heroes do.
+- The team balancer has been turned into a cvar, naraka_teambalancer. 0 does not attempt to balance the teams at all, 1 favors Heroes but allows Villains to have equal numbers with the heroes if desired, 2 is more strict and does not allow Villains to have equal numbers. Defaults to 1.
 
 FROM V0.11 TO V0.12:
 ========================

@@ -53,7 +53,7 @@ switch (which)
     }
 }
 
-script 895 (void) clientside//ENTER clientside
+script 895 (void) clientside // Allows Villains to be equal with the Heroes
 {
     if (PlayerNumber() != ConsolePlayerNumber()) { terminate; }
     if (GetCVar("teamlms") == 1)
@@ -63,6 +63,34 @@ script 895 (void) clientside//ENTER clientside
 		    if (GetTeamProperty(1,TPROP_NumPlayers) >= 4)
 		    {
 			    if (GetTeamProperty(1,TPROP_NumPlayers) > GetTeamProperty(0,TPROP_NumPlayers))
+			    { Print(s:"\cgVillains\cf have too many players!");
+				ConsoleCommand("spectate"); }
+		    }
+		}
+		if (GetTeamProperty(0,TPROP_NumPlayers) > 6)
+		{
+		    if (PlayerTeam() == 0)
+		    {
+			    if (GetTeamProperty(0,TPROP_NumPlayers) > (GetTeamProperty(1,TPROP_NumPlayers)*2))
+			    { Print(s:"\chHeroes\cf have too many players!");
+				ConsoleCommand("spectate"); }
+		    }
+		}
+	}
+	delay(1);
+	terminate;
+}
+
+script 897 (void) clientside // Does not allow Villains to have equal numbers with Heroes
+{
+    if (PlayerNumber() != ConsolePlayerNumber()) { terminate; }
+    if (GetCVar("teamlms") == 1)
+	{
+		if (PlayerTeam() == 1)
+		{
+		    if (GetTeamProperty(1,TPROP_NumPlayers) >= 4)
+		    {
+			    if (GetTeamProperty(1,TPROP_NumPlayers) >= GetTeamProperty(0,TPROP_NumPlayers))
 			    { Print(s:"\cgVillains\cf have too many players!");
 				ConsoleCommand("spectate"); }
 		    }

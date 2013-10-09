@@ -119,6 +119,7 @@ script NARAKA_SPAWN (int respawning) // This differs from 890 in that this works
     int pNum = playerNumber();
 	
 	if (GetCvar("naraka_teambalancer") == 1) { ACS_ExecuteAlways(895,0,0); }
+	if (GetCvar("naraka_teambalancer") == 2) { ACS_ExecuteAlways(897,0,0); }
 	
     if (GameType() == GAME_SINGLE_PLAYER || GameType() == GAME_NET_COOPERATIVE)
     {

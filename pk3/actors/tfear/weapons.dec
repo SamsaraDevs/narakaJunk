@@ -1343,8 +1343,9 @@ actor AbandonRemoteGrenade
 	    TNT1 A 0 A_Stop
         TNT1 A 0 A_NoGravity
 		TNT1 A 0 A_PlaySound("tfear/abandonboom")
+		TNT1 A 0 A_SpawnItemEx("AbandonGrenadeSmoke3",0,0,0,0,0,0,0,32)
 		TNT1 AAAAAAAAAA 0 A_SpawnItemEx("AbandonGrenadeSmoke",0,0,0,random(-500,500)/100.00,random(-500,500)/100.00,random(-500,500)/100.00,0,32)
-        ABDS F 5 Bright A_Explode(106+random(0, 20), 192)
+        ABDS F 5 Bright A_Explode(106+random(0, 20), 128)
         ABDS G 5 Bright
         Stop
     }
@@ -1359,7 +1360,7 @@ actor AbandonGrenadeSmoke
     -SOLID
     +NOCLIP
     +RANDOMIZE
-    +CLIENTSIDEONLY
+    //+CLIENTSIDEONLY - Turns out clientsiding this makes it not show up online. What the fuck?
 	+NOINTERACTION
     Scale 0.45
 	YScale 0.2
@@ -1377,6 +1378,20 @@ actor AbandonGrenadeSmoke2 : AbandonGrenadeSmoke
 {
 Scale 0.65
 yscale 0.35
++CLIENTSIDEONLY
++NOINTERACTION
+}
+
+actor AbandonGrenadeSmoke3 : AbandonGrenadeSmoke
+{
+    Scale 1.25
+	YScale 1.25
+    States
+    {
+      Spawn:
+        FHIT ABCD 3 BRIGHT
+        stop
+    }
 }
 
 actor AbandonGrenadeCoop : AbandonGrenade

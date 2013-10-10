@@ -295,7 +295,7 @@ Actor KilledHitler // No Deathcam(TM) this time, sorry.
     Height 1
     +NOCLIP
     -SOLID
-    +CLIENTSIDEONLY
+    //+CLIENTSIDEONLY - Turns out clientsiding this makes it not show up online. What the fuck?
     States
 	{
 	Spawn:

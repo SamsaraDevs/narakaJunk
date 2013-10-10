@@ -119,7 +119,7 @@ actor TfearBeacon : CustomInventory
 
 ACTOR TfearPfhorTrooper
 {
-	Obituary "%o\ctmet the Pfhor personal guard.\c-"
+	Obituary "%o\ct met the Pfhor personal guard.\c-"
     Gravity 0.15
     Health 150
     Radius 16

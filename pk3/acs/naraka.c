@@ -551,7 +551,6 @@ script 893 (void)
 { 
 	int tid = GetActorProperty(0, APROP_MASTERTID);
 	TakeActorInventory(tid, "TfearSummonLimit", 1);
-	printbold(d:tid);
 }
 
 script 894 (int changelogshit2) NET CLIENTSIDE

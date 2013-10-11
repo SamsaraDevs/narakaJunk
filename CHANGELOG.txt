@@ -21,6 +21,7 @@ FROM v0.12 TO v0.13:
 - When sv_weaponstay is enabled, villains get a flash on their screen when they pick up a powerup.
 - The Villains now have their respective individual colors, like the Heroes do.
 - The team balancer has been turned into a cvar, naraka_teambalancer. 0 does not attempt to balance the teams at all, 1 favors Heroes but allows Villains to have equal numbers with the heroes if desired, 2 is more strict and does not allow Villains to have equal numbers. Defaults to 1.
+- Team balancer should no longer take effect when people are respawning.
 
 FROM V0.11 TO V0.12:
 ========================

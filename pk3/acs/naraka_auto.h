@@ -128,6 +128,8 @@ script 890 ENTER//(int respawning) // This differs from Naraka_Spawn in that thi
 	    if(CheckInventory("GotWeapon6") == 1) { GiveInventory("CoopBamf",1); }
 		else { TakeInventory("CoopBamf",1); }
 		
+		if (!respawning)
+		{
         HandleCyberDamage(respawning);
         HandleCyberDefense(respawning);
         //HandleSnotfolusDamage();
@@ -144,6 +146,7 @@ script 890 ENTER//(int respawning) // This differs from Naraka_Spawn in that thi
         HandleTfearDefense(respawning);
         //HandleShamblerDamage();
         //HandleShamblerDefense();
+		}
 	}
     Delay(1);
 	Restart;

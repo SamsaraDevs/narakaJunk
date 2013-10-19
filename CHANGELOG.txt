@@ -25,6 +25,7 @@ FROM v0.12 TO v0.13:
 - After picking up a certain number of backpacks, Heroes are no longer unable to pick up any more ammo.
 - Tfear's beacon limiter now no longer exists for his Pfhor Troopers, thanks to lack of APROP_MASTERTID. To make up for it, they are slightly less triggerhappy, always trigger their painchance, and have less HP.
 - Tfear's beacon now no longer summons TLMS minions in coop.
+- D'Sparil's minions can no longer be revived by Archviles.
 
 FROM V0.11 TO V0.12:
 ========================

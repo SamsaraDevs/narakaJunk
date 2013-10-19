@@ -475,27 +475,32 @@ actor DSparilWizard// : Wizard2
 		
 	  Missile:
 		TNT1 A 0 A_JumpIfInTargetInventory("DsparilRevived",1,"WhoopsThatsDSparil")
-		TNT1 A 0 A_GhostOff
+		TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
 	    WZRD C 4 A_FaceTarget
 		TNT1 A 0 A_ChangeFlag("GHOST",1)
 		TNT1 A 0 A_SetTranslucent(0.6,0)
         WZRD C 4 A_FaceTarget
-		TNT1 A 0 A_GhostOff
+		TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
         WZRD C 4 A_FaceTarget
 		TNT1 A 0 A_ChangeFlag("GHOST",1)
 		TNT1 A 0 A_SetTranslucent(0.6,0)
         WZRD C 4 A_FaceTarget
-		TNT1 A 0 A_GhostOff
+		TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
         WZRD C 4 A_FaceTarget
 		TNT1 A 0 A_ChangeFlag("GHOST",1)
 		TNT1 A 0 A_SetTranslucent(0.6,0)
         WZRD C 4 A_FaceTarget
-		TNT1 A 0 A_GhostOff
+		TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
         WZRD C 4 A_FaceTarget
 		TNT1 A 0 A_ChangeFlag("GHOST",1)
 		TNT1 A 0 A_SetTranslucent(0.6,0)
         WZRD C 4 A_FaceTarget
-		WZRD D 0 A_GhostOff
+		TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
 		WZRD D 0 A_CustomMissile("DSparilWizardShot",32,0,5.625,0,0)
 		WZRD D 0 A_CustomMissile("DSparilWizardShot",32,0,-5.625,0,0)
 		WZRD D 0 A_CustomMissile("DSparilWizardShot",32,0,0,0,0)
@@ -515,12 +520,14 @@ actor DSparilWizard// : Wizard2
 		goto See
 		
       Pain:
-        WZRD E 3 A_GhostOff
+		WZRD D 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
         WZRD E 3 A_Pain
         Goto See
 		
       Death:
-        WZRD F 6 A_GhostOff
+		TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
         WZRD G 6 A_Scream
         WZRD HI 6 // sup
         WZRD J 6 A_NoBlocking
@@ -541,15 +548,32 @@ actor DSparilWizardTLMS : DSparilWizard
 	  Missile:
 		TNT1 A 0 A_JumpIfInTargetInventory("IsNarakaClass",1,"WhoopsThatsDSparil")
 		// Well, no, it's not D'Sparil, but may as well use an existing state.
-	    WZRD C 4 A_WizAtk1
-        WZRD C 4 A_WizAtk2
-        WZRD C 4 A_WizAtk1
-        WZRD C 4 A_WizAtk2
-        WZRD C 4 A_WizAtk1
-        WZRD C 4 A_WizAtk2
-        WZRD C 4 A_WizAtk1
-        WZRD C 4 A_WizAtk2
-		WZRD D 0 A_GhostOff
+		TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
+	    WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",1)
+		TNT1 A 0 A_SetTranslucent(0.6,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",1)
+		TNT1 A 0 A_SetTranslucent(0.6,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",1)
+		TNT1 A 0 A_SetTranslucent(0.6,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",1)
+		TNT1 A 0 A_SetTranslucent(0.6,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
 		WZRD D 0 A_CustomMissile("DSparilWizardShotTLMS",32,0,5.625,0,0)
 		WZRD D 0 A_CustomMissile("DSparilWizardShotTLMS",32,0,-5.625,0,0)
 		WZRD D 0 A_CustomMissile("DSparilWizardShotTLMS",32,0,0,0,0)
@@ -574,15 +598,32 @@ actor DSparilWizardCoop : DSparilWizard
 	  Missile:
 		TNT1 A 0 A_JumpIfInTargetInventory("IsNarakaClass",1,"WhoopsThatsDSparil")
 		TNT1 A 0 A_JumpIfInTargetInventory("IsSamsaraClass",1,"WhoopsThatsDSparil")
-	    WZRD C 4 A_WizAtk1
-        WZRD C 4 A_WizAtk2
-        WZRD C 4 A_WizAtk1
-        WZRD C 4 A_WizAtk2
-        WZRD C 4 A_WizAtk1
-        WZRD C 4 A_WizAtk2
-        WZRD C 4 A_WizAtk1
-        WZRD C 4 A_WizAtk2
-		WZRD D 0 A_GhostOff
+		TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
+	    WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",1)
+		TNT1 A 0 A_SetTranslucent(0.6,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",1)
+		TNT1 A 0 A_SetTranslucent(0.6,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",1)
+		TNT1 A 0 A_SetTranslucent(0.6,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",1)
+		TNT1 A 0 A_SetTranslucent(0.6,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
 		WZRD D 0 A_CustomMissile("DSparilWizardShotCoop",32,0,5.625,0,0)
 		WZRD D 0 A_CustomMissile("DSparilWizardShotCoop",32,0,-5.625,0,0)
 		WZRD D 0 A_CustomMissile("DSparilWizardShotCoop",32,0,0,0,0)
@@ -625,15 +666,32 @@ actor DSparilWizardTLMS2 : DSparilWizard2
 	{
 	  Missile:
 		TNT1 A 0 A_JumpIfInTargetInventory("IsNarakaClass",1,"WhoopsThatsDSparil")
-	    WZRD C 4 A_WizAtk1
-        WZRD C 4 A_WizAtk2
-        WZRD C 4 A_WizAtk1
-        WZRD C 4 A_WizAtk2
-        WZRD C 4 A_WizAtk1
-        WZRD C 4 A_WizAtk2
-        WZRD C 4 A_WizAtk1
-        WZRD C 4 A_WizAtk2
-		WZRD D 0 A_GhostOff
+		TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
+	    WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",1)
+		TNT1 A 0 A_SetTranslucent(0.6,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",1)
+		TNT1 A 0 A_SetTranslucent(0.6,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",1)
+		TNT1 A 0 A_SetTranslucent(0.6,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",1)
+		TNT1 A 0 A_SetTranslucent(0.6,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
 		WZRD D 0 A_CustomMissile("DSparilWizardShotTLMS",32,0,5.625,0,0)
 		WZRD D 0 A_CustomMissile("DSparilWizardShotTLMS",32,0,-5.625,0,0)
 		WZRD D 0 A_CustomMissile("DSparilWizardShotTLMS",32,0,0,0,0)
@@ -658,15 +716,32 @@ actor DSparilWizardCoop2 : DSparilWizard2
 	  Missile:
 		TNT1 A 0 A_JumpIfInTargetInventory("IsNarakaClass",1,"WhoopsThatsDSparil")
 		TNT1 A 0 A_JumpIfInTargetInventory("IsSamsaraClass",1,"WhoopsThatsDSparil")
-	    WZRD C 4 A_WizAtk1
-        WZRD C 4 A_WizAtk2
-        WZRD C 4 A_WizAtk1
-        WZRD C 4 A_WizAtk2
-        WZRD C 4 A_WizAtk1
-        WZRD C 4 A_WizAtk2
-        WZRD C 4 A_WizAtk1
-        WZRD C 4 A_WizAtk2
-		WZRD D 0 A_GhostOff
+		TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
+	    WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",1)
+		TNT1 A 0 A_SetTranslucent(0.6,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",1)
+		TNT1 A 0 A_SetTranslucent(0.6,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",1)
+		TNT1 A 0 A_SetTranslucent(0.6,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",1)
+		TNT1 A 0 A_SetTranslucent(0.6,0)
+        WZRD C 4 A_FaceTarget
+		TNT1 A 0 A_ChangeFlag("GHOST",0)
+		TNT1 A 0 A_SetTranslucent(1,0)
 		WZRD D 0 A_CustomMissile("DSparilWizardShotCoop",32,0,5.625,0,0)
 		WZRD D 0 A_CustomMissile("DSparilWizardShotCoop",32,0,-5.625,0,0)
 		WZRD D 0 A_CustomMissile("DSparilWizardShotCoop",32,0,0,0,0)

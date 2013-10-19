@@ -174,7 +174,7 @@ actor BlankPuffHitlerTLMS : BlankPuffHitler
 {
 +THRUSPECIES
 Species "Villain"
-DamageType "Villain"
+DamageType "VillainTeam"
 }
 
 actor HitlerBullet: FastProjectile
@@ -185,7 +185,7 @@ actor HitlerBullet: FastProjectile
     Speed 320
     Projectile
     Renderstyle "Normal"
-	DamageType "Villain"
+	DamageType "VillainTeam"
     Species "Player"
     +BLOODSPLATTER
     +THRUSPECIES

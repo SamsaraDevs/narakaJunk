@@ -23,6 +23,8 @@ FROM v0.12 TO v0.13:
 - The team balancer has been turned into a cvar, naraka_teambalancer. 0 does not attempt to balance the teams at all, 1 favors Heroes but allows Villains to have equal numbers with the heroes if desired, 2 is more strict and does not allow Villains to have equal numbers. Defaults to 1.
 - Team balancer should no longer take effect when people are respawning.
 - After picking up a certain number of backpacks, Heroes are no longer unable to pick up any more ammo.
+- Tfear's beacon limiter now no longer exists for his Pfhor Troopers, thanks to lack of APROP_MASTERTID. To make up for it, they are slightly less triggerhappy, always trigger their painchance, and have less HP.
+- Tfear's beacon now no longer summons TLMS minions in coop.
 
 FROM V0.11 TO V0.12:
 ========================

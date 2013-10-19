@@ -26,6 +26,8 @@ FROM v0.12 TO v0.13:
 - Tfear's beacon limiter now no longer exists for his Pfhor Troopers, thanks to lack of APROP_MASTERTID. To make up for it, they are slightly less triggerhappy, always trigger their painchance, and have less HP.
 - Tfear's beacon now no longer summons TLMS minions in coop.
 - D'Sparil's minions can no longer be revived by Archviles.
+- When respawning, unarmored Hitler no longer loses his speed boost.
+- In coop, Hitler's armored/unarmored damage per volley has been increased from 24/12 to 36/18.
 
 FROM V0.11 TO V0.12:
 ========================

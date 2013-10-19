@@ -178,7 +178,7 @@ Species "Villain"
 
 actor HitlerBullet: FastProjectile
 {
-    Damage (5)
+    Damage (8)
     Radius 1
     Height 1
     Speed 320
@@ -200,4 +200,4 @@ actor HitlerBullet: FastProjectile
     }
 }
 
-actor HitlerBullet2 : HitlerBullet { Damage (7) }
+actor HitlerBullet2 : HitlerBullet { Damage (10) }

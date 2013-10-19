@@ -30,6 +30,8 @@ FROM v0.12 TO v0.13:
 - In coop, Hitler's armored/unarmored damage per volley has been increased from 24/12 to 36/18.
 - Hitler's weapons now have the Villain damagetype, meaning they should no longer injure allied minions.
 - When D'Sparil's Serpent is killed in coop, D'Sparil was not shifting species to "Player". This has been fixed.
+- Villain HUDs now support Super Turbo Turkey Puncher 3000.
+- In coop, Tfear's troopers and D'Sparil's Disciples should now be immune to: DukeExplosive, Explosive, BFGSpray, Zorch, BJSpear, HexenIce, Poison, PoisonCloud, FireExplosive, Wraithverge, MightyBoot, DukeFreezethrower, WMCBeam, WMCNade, Chainsaw, TimonsAxe, and Pistol. While its not EVERYTHING they can be hit with, it should dramatically reduce their able-to-be-TK'd potential.
 
 FROM V0.11 TO V0.12:
 ========================

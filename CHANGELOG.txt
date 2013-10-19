@@ -28,6 +28,7 @@ FROM v0.12 TO v0.13:
 - D'Sparil's minions can no longer be revived by Archviles.
 - When respawning, unarmored Hitler no longer loses his speed boost.
 - In coop, Hitler's armored/unarmored damage per volley has been increased from 24/12 to 36/18.
+- Hitler's weapons now have the Villain damagetype, meaning they should no longer injure allied minions.
 
 FROM V0.11 TO V0.12:
 ========================

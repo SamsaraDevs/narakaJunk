@@ -85,6 +85,11 @@ script 890 ENTER//(int respawning) // This differs from Naraka_Spawn in that thi
             { if (!CheckInventory("HitlerLostArmor"))
               { if (!CheckInventory("Armor"))
                 { SetActorState(0,"LoseMech"); } } } }
+				
+		if (CheckInventory("HitlerClass") == 1)
+		  { if (CheckInventory("HitlerLostArmor") == 1) { SetActorProperty(0,APROP_Speed,1.55); }
+		    else { SetActorProperty(0,APROP_Speed,1.00); }
+		  }
 		
 		// JUMPING SHIT
         if (CheckInventory("TfearClass") == 1)

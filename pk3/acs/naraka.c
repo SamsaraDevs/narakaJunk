@@ -172,11 +172,13 @@ script 473 (int miscshit)
 		break;
 		
     case 3:
-	    SetActorProperty(0,APROP_Speed,1.55);
+	    GiveInventory("HitlerLostArmor",1);
+	    //SetActorProperty(0,APROP_Speed,1.55);
 	    break;
     
 	case 4:
-	    SetActorProperty(0,APROP_Speed,1.00);
+	    TakeInventory("HitlerLostArmor",1);
+	    //SetActorProperty(0,APROP_Speed,1.00);
 	    SetActorState(0,"Spawn");
 	    break;
 	}

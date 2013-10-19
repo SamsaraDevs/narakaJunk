@@ -165,12 +165,15 @@ script 476 ENTER
 {
     while (1)
     {
+	if (CheckInventory("Health") > 0)
+	{
         if (CheckInventory("CyberdemonClass") == 1)
         { GiveInventory("VillainAmmoHeavy", 1); }
         if (CheckInventory("CoopCawadootyMode") == 1)
         { GiveInventory("HealPack0",1); }
         if (CheckInventory("CoopHaloMode") == 1)
         { GiveInventory("ArmorScrap",1); }
-        delay(175);
+	}
+    delay(175);
     }
 }

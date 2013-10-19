@@ -256,6 +256,8 @@ script 475 (void) // D'Sparil's life-giving on Serpent kersploding.
         GiveInventory("HealthBonus", 50);
         //GiveInventory("Megasphere", 1);
     }
+	if (isCoop())
+	{ SetActorProperty(0, APROP_Species,"Player"); }
 }
 
 script 480 (int cloakanddagger) // It's time to H-H-H-HIDE!

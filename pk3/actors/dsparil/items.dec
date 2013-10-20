@@ -59,13 +59,13 @@ actor DSparilSerpentUnmounted : Demon1B
     DamageFactor "PhasingZorch", 0.75
     +THRUSPECIES
     Species "Villain"
-	+NOBLOCKMONST
 	+DONTRIP
 	+NORADIUSDMG
 	+MISSILEMORE
 	+MISSILEEVENMORE
 	+FRIENDLY
 	-ACTIVATEMCROSS
+	-NOBLOCKMONST
 	+NOTELEPORT
 	//+FLOORHUGGER
 	MinMissileChance 10

@@ -33,6 +33,7 @@ FROM v0.12 TO v0.13:
 - Villain HUDs now support Super Turbo Turkey Puncher 3000.
 - In coop, minions should now be immune to: DukeExplosive, Explosive, BFGSpray, Zorch, BJSpear, HexenIce, Poison, PoisonCloud, FireExplosive, Wraithverge, MightyBoot, DukeFreezethrower, WMCBeam, WMCNade, Chainsaw, TimonsAxe, Pistol, CorvusHellstaff, ZorchPistol, and Telefrag. While its not EVERYTHING they can be hit with, it should dramatically reduce their able-to-be-TK'd potential.
 - Minions no longer can activate teleports or Monster Crosses lines.
+- Minions no longer can go beyond monster boundaries.
 
 FROM V0.11 TO V0.12:
 ========================

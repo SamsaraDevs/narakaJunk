@@ -419,6 +419,7 @@ actor DSparilWizard// : Wizard2
     -SHOOTABLE
 	-ACTIVATEMCROSS
     +NOTELEPORT
+	-NOBLOCKMONST
     Species "Villain"
     SeeSound "wizard/sight"
     AttackSound "wizard/attack"

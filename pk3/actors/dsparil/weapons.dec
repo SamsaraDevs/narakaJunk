@@ -417,6 +417,8 @@ actor DSparilWizard// : Wizard2
     +THRUSPECIES
 	-SOLID
     -SHOOTABLE
+	-ACTIVATEMCROSS
+    +NOTELEPORT
     Species "Villain"
     SeeSound "wizard/sight"
     AttackSound "wizard/attack"
@@ -591,7 +593,7 @@ actor DSparilWizardCoop : DSparilWizard
 	Species "Player"
 	DamageFactor "DukeExplosive", 0.0
 	DamageFactor "Explosive", 0.0
-	DamageFactor "BFGSpray", 0.0
+	DamageFactor "BFGSplash", 0.0
 	DamageFactor "Zorch", 0.0
 	DamageFactor "BJSpear", 0.0
 	DamageFactor "HexenIce", 0.0
@@ -609,6 +611,9 @@ actor DSparilWizardCoop : DSparilWizard
 	DamageFactor "VillainTeam", 0.0
 	DamageFactor "Pistol", 0.0
 	DamageFactor "VillainTeamWithSelfDamage", 0.0
+	DamageFactor "ZorchPistol", 0.0
+    DamageFactor "Telefrag", 0.0
+    DamageFactor "CorvusHellstaff", 0.0
 	States
 	{
 	  Missile:

@@ -65,6 +65,8 @@ actor DSparilSerpentUnmounted : Demon1B
 	+MISSILEMORE
 	+MISSILEEVENMORE
 	+FRIENDLY
+	-ACTIVATEMCROSS
+	+NOTELEPORT
 	//+FLOORHUGGER
 	MinMissileChance 10
 	Speed 25
@@ -306,7 +308,7 @@ actor DSparilSerpentUnmountedCoop : DSparilSerpentUnmounted
 	+THRUSPECIES
 	DamageFactor "DukeExplosive", 0.0
 	DamageFactor "Explosive", 0.0
-	DamageFactor "BFGSpray", 0.0
+	DamageFactor "BFGSplash", 0.0
 	DamageFactor "Zorch", 0.0
 	DamageFactor "BJSpear", 0.0
 	DamageFactor "HexenIce", 0.0
@@ -323,6 +325,9 @@ actor DSparilSerpentUnmountedCoop : DSparilSerpentUnmounted
 	DamageFactor "NotQuadded", 0.0
 	DamageFactor "VillainTeam", 0.0
 	DamageFactor "Pistol", 0.0
+	DamageFactor "ZorchPistol", 0.0
+	DamageFactor "Telefrag", 0.0
+	DamageFactor "CorvusHellstaff", 0.0
 	States
 	{
 	  Melee:

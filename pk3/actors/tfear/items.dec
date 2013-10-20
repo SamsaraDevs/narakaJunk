@@ -143,6 +143,8 @@ ACTOR TfearPfhorTrooper
 	-COUNTKILL
     -SHOOTABLE
 	-ISMONSTER
+	-ACTIVATEMCROSS
+	+NOTELEPORT
     States
     {
       Spawn:
@@ -384,7 +386,7 @@ ACTOR TfearPfhorTrooperCoop : TfearPfhorTrooper
 	Species "Player"
 	DamageFactor "DukeExplosive", 0.0
 	DamageFactor "Explosive", 0.0
-	DamageFactor "BFGSpray", 0.0
+	DamageFactor "BFGSplash", 0.0
 	DamageFactor "Zorch", 0.0
 	DamageFactor "BJSpear", 0.0
 	DamageFactor "HexenIce", 0.0
@@ -402,6 +404,9 @@ ACTOR TfearPfhorTrooperCoop : TfearPfhorTrooper
 	DamageFactor "VillainTeam", 0.0
 	DamageFactor "Pistol", 0.0
 	DamageFactor "VillainTeamWithSelfDamage", 0.0
+	DamageFactor "ZorchPistol", 0.0
+    DamageFactor "Telefrag", 0.0
+    DamageFactor "CorvusHellstaff", 0.0
     States
     {
       Missile:

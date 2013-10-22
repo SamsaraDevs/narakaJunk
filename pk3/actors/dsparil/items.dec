@@ -266,6 +266,7 @@ actor DSparilSerpentUnmountedTLMS : DSparilSerpentUnmounted
 {
 	DamageFactor "VillainTeam", 0.0
 	DamageFactor "VillainTeamWithSelfDamage", 0.0
+	DamageFactor "VillainTeamFire", 0.0
 	States
 	{
 	  Melee:
@@ -328,6 +329,7 @@ actor DSparilSerpentUnmountedCoop : DSparilSerpentUnmounted
 	DamageFactor "ZorchPistol", 0.0
 	DamageFactor "Telefrag", 0.0
 	DamageFactor "CorvusHellstaff", 0.0
+	DamageFactor "VillainTeamFire", 0.0
 	States
 	{
 	  Melee:

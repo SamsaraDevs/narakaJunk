@@ -697,7 +697,7 @@ ACTOR KoraxMeleeSplosion
 
 ACTOR KoraxMeleeSplosionCoop : KoraxMeleeSplosion
 {
-DamageType "VillainTeam"
+DamageType "VillainTeamFire"
 }
 
 // Swamp Poison Magic. Semi-accurate, very fast with poison damage.
@@ -741,6 +741,7 @@ ACTOR KoraxSerpentFXCoop : KoraxSerpentFX
 {
 +THRUSPECIES
 Species "Player"
+Damage 6
 }
 
 // Force Magic. Shotgun spread.
@@ -819,13 +820,14 @@ ACTOR KoraxFireDemonMissileTLMS : KoraxFireDemonMissile
 {
 +THRUSPECIES
 Species "Villain"
-DamageType "VillainTeam"
+DamageType "VillainTeamFire"
 }
 
 ACTOR KoraxFireDemonMissileCoop : KoraxFireDemonMissile
 {
 +THRUSPECIES
 Species "Player"
+DamageType "VillainTeamFire"
 }
 
 // Steel Chain magic. Grabs people and yanks them over.
@@ -911,13 +913,14 @@ ACTOR KoraxDemon1FX1TLMS : KoraxDemon1FX1
 {
 +THRUSPECIES
 Species "Villain"
-DamageType "VillainTeam"
+DamageType "VillainTeamFire"
 }
 
 ACTOR KoraxDemon1FX1Coop : KoraxDemon1FX1
 {
 +THRUSPECIES
 Species "Player"
+DamageType "VillainTeamFire"
 }
 
 // Ethereal Wraith Magic. Effectively arcane grenades, lobbed a distance and affected by gravity.
@@ -961,12 +964,12 @@ actor KoraxWraithFX1TLMS : KoraxWraithFX1
 {
 +THRUSPECIES
 Species "Villain"
-DamageType "VillainTeam"
+DamageType "VillainTeamFire"
 }
 
 actor KoraxWraithFX1Coop : KoraxWraithFX1
 {
 +THRUSPECIES
 Species "Player"
-DamageType "VillainTeam"
+DamageType "VillainTeamFire"
 }

@@ -353,6 +353,7 @@ ACTOR TfearPfhorTrooperTLMS : TfearPfhorTrooper
 	Species "Villain"
 	DamageFactor "VillainTeam", 0.0
 	DamageFactor "VillainTeamWithSelfDamage", 0.0
+	DamageFactor "VillainTeamFire", 0.0
     States
     {
       Missile:
@@ -402,12 +403,13 @@ ACTOR TfearPfhorTrooperCoop : TfearPfhorTrooper
 	DamageFactor "Chainsaw", 0.0
 	DamageFactor "TimonsAxe", 0.0
 	DamageFactor "NotQuadded", 0.0
-	DamageFactor "VillainTeam", 0.0
 	DamageFactor "Pistol", 0.0
-	DamageFactor "VillainTeamWithSelfDamage", 0.0
 	DamageFactor "ZorchPistol", 0.0
     DamageFactor "Telefrag", 0.0
     DamageFactor "CorvusHellstaff", 0.0
+	DamageFactor "VillainTeam", 0.0
+	DamageFactor "VillainTeamWithSelfDamage", 0.0
+	DamageFactor "VillainTeamFire", 0.0
     States
     {
       Missile:

@@ -43,7 +43,7 @@ ACTOR "Cyber-Rocket Launcher" : Weapon
         CYBL A 1 Offset(0,135)
         CYBL A 1 Offset(0,140)
 	  IdleLoop:
-		TNT1 A 1
+		TNT1 A 1 A_ClearRefire
 		tnt1 A 0 A_JumpIfInventory("CyberDash",1,"IdleLoop")
 		goto BackToNormal
 	  BackToNormal:
@@ -84,6 +84,7 @@ ACTOR "Cyber-Rocket Launcher" : Weapon
 		//TNT1 A 0 A_JumpIfInventory("VillainAmmoHeavy",1,1)
         CYBL A 2 //A_GiveInventory("CyberSpeed")
 	  Hold:
+		TNT1 A 0 A_JumpIfInventory("CyberDash",1,"D_RUNNIN")
 		TNT1 A 0 A_JumpIfInventory("VillainAmmoHeavy",1,1)
 		goto NoAmmoFire
 		CYBL A 3
@@ -698,9 +699,9 @@ ACTOR "Master Chaingun" : Weapon
 		TNT1 A 0 A_PlaySoundEx("cyber/fire","soundslot7",0,0)
 		TNT1 A 0 A_Recoil(0.1)
 		TNT1 A 0 A_GunFlash
-		TNT1 A 0 BRIGHT A_FireCustomMissile("CyberdemonBulletCoop",random(-50,50),0,0,0,0,0)
-		TNT1 A 0 BRIGHT A_FireCustomMissile("CyberdemonBulletCoop",random(-50,50),0,0,0,0,0)
-		CYCH E 1 BRIGHT A_FireCustomMissile("CyberdemonBulletCoop",random(-50,50),1,0,0,0,0)
+		TNT1 A 0 BRIGHT A_FireCustomMissile("CyberdemonBulletCoop",random(-50,50)/10.0,0,0,0,0,0)
+		TNT1 A 0 BRIGHT A_FireCustomMissile("CyberdemonBulletCoop",random(-50,50)/10.0,0,0,0,0,0)
+		CYCH E 1 BRIGHT A_FireCustomMissile("CyberdemonBulletCoop",random(-50,50)/10.0,1,0,0,0,0)
 		CYCH C 1
 		TNT1 A 0 Radius_Quake(2,2,0,3,0)
 		TNT1 A 0 A_PlaySoundEx("cyber/fire","soundslot7",0,0)
@@ -746,9 +747,9 @@ ACTOR "Master Chaingun" : Weapon
 		TNT1 A 0 A_PlaySoundEx("cyber/fire","soundslot7",0,0)
 		TNT1 A 0 A_Recoil(0.1)
 		TNT1 A 0 A_GunFlash
-		TNT1 A 0 BRIGHT A_FireCustomMissile("CyberdemonBulletTLMS",random(-50,50),0,0,0,0,0)
-		TNT1 A 0 BRIGHT A_FireCustomMissile("CyberdemonBulletTLMS",random(-50,50),0,0,0,0,0)
-		CYCH E 1 BRIGHT A_FireCustomMissile("CyberdemonBulletTLMS",random(-50,50),1,0,0,0,0)
+		TNT1 A 0 BRIGHT A_FireCustomMissile("CyberdemonBulletTLMS",random(-50,50)/10.0,0,0,0,0,0)
+		TNT1 A 0 BRIGHT A_FireCustomMissile("CyberdemonBulletTLMS",random(-50,50)/10.0,0,0,0,0,0)
+		CYCH E 1 BRIGHT A_FireCustomMissile("CyberdemonBulletTLMS",random(-50,50)/10.0,1,0,0,0,0)
 		CYCH C 1
 		TNT1 A 0 Radius_Quake(2,2,0,3,0)
 		TNT1 A 0 A_PlaySoundEx("cyber/fire","soundslot7",0,0)
@@ -1000,6 +1001,8 @@ actor CyberdemonBulletCoop : FastProjectile
         loop
 
       Death:
+	  Crash:
+	    TNT1 A 0
         TNT1 A 1 A_SpawnItem("CyberBulletPuff")
         stop
 

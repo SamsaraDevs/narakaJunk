@@ -16,6 +16,7 @@ StatusBar Fullscreen
         InInventory MarathonClass, 1 { drawimage translatable "HUDBARD", 10, 176; }
     }
     DrawImage "HUDBAR", 13, 185;
+	InInventory CyberdemonTargeter, 1 {drawimage "CYBTRG", 0, 0;}
     //Armor
      DrawBar "HARMOR", "HEMPTY", Armor, Horizontal, /*Reverse, */ 14, 186;
      DrawImage "ARMRICON", 8, 191;
@@ -3598,7 +3599,6 @@ Playerclass Cyberdemon
 {
 	drawimage "EVILHUD", 0, 168;
     drawmugshot "STF", 5, 147, 168;
-	InInventory CyberdemonTargeter, 1 {drawimage "CYBTRG", 0, -16;}
 	DrawBar "HBARRED", "HBAREMPT", Health, Horizontal, 24, 175;
     DrawBar "HBARYEL", "HBAREMP2", Health CyberOverMax, Horizontal, -53, 175;
     DrawBar "HBARGRE", "HBAREMP3", Health CyberOverOverMax, Horizontal, -130, 175;

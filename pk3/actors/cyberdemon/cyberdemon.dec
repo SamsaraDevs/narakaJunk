@@ -6,8 +6,14 @@ ACTOR RotorActive : Boolean { }
 ACTOR CyberBeef : PowerProtection
 {
 	Powerup.Duration 0x7FFFFFFF
-	DamageFactor "Normal", 0.825
+	DamageFactor "Normal", 0.85
 	DamageFactor "Telefrag", 1.5
+}
+
+ACTOR CyberDash : PowerSpeed
+{
+  Powerup.Duration 0x7FFFFFFF
+  Speed 1.5
 }
 
 ACTOR CyberDashToggle : CustomInventory
@@ -114,7 +120,7 @@ actor CyberdemonPlayer : PlayerPawn
     DamageFactor "Nukage", 0
     DamageFactor "Hellslime", 0
     DamageFactor "SuperHellslime", 0
-    DamageFactor "Normal", 0.9
+    DamageFactor "Normal", 0.95
     DamageFactor "Telefrag", 2.0
     DamageFactor "PoisonCloud", 1.75
     DamageFactor "DukeExplosive", 0.575

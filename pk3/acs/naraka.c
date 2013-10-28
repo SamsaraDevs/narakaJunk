@@ -109,6 +109,7 @@ script 470 UNLOADING
     TakeInventory("DSparilMount", 999);
     TakeInventory("TfearSummonLimit", 999);
     TakeInventory("AbandonRemoteLaunched", 999);
+    TakeInventory("DSparilTeleportLimiter", 999);
 }
 
 script 571 ENTER   { ACS_ExecuteAlways(NARAKA_SPAWN, 0, 0,0,0); }

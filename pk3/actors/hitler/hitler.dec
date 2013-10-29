@@ -12,8 +12,8 @@ actor HitlerPlayer : PlayerPawn
 {
     LimitedToTeam 1
     Player.DisplayName "Hitler"
-    Player.StartItem "Vierfach Fokker-Leimberger", 1
-	//Player.StartItem "Zweifach Fokker-Leimberger", 1
+    Player.StartItem "Fokker-Leimberger", 1
+	//Player.StartItem "Vierfach Fokker-Leimberger", 1
     Player.StartItem "HitlerClass", 1
     Player.StartItem "CanWolfMovement", 1
     Player.StartItem "IsNarakaClass", 1

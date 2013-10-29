@@ -353,6 +353,9 @@ script 491 (int messageshit) CLIENTSIDE
 			if(CheckInventory("DSparilClass") == 1)
 			{	if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"Nope, nothin' yet."); }
 				else { Log(s:"Nope, nothin' yet."); }	}
+			if(CheckInventory("HitlerClass") == 1)
+			{	if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"You got the Vierfach Panzerschreck! Vorwarts! Vorwarts!"); }
+				else { Log(s:"You got the Vierfach Panzerschreck! Vorwarts! Vorwarts!"); }	}
 			if(CheckInventory("KoraxClass") == 1)
 			{	if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"Nope, nothin' yet."); }
 				else { Log(s:"Nope, nothin' yet."); }	}
@@ -366,6 +369,9 @@ script 491 (int messageshit) CLIENTSIDE
 			{	if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"You got a Targeting System! Hell yes."); }
 				else { Log(s:"You got a Targeting System! Hell yes."); }	}
 			if(CheckInventory("DSparilClass") == 1)
+			{	if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"Nope, nothin' yet."); }
+				else { Log(s:"Nope, nothin' yet."); }	}
+			if(CheckInventory("HitlerClass") == 1)
 			{	if(GetCvar("samsara_cl_printpickup") == 1) { Print(s:"Nope, nothin' yet."); }
 				else { Log(s:"Nope, nothin' yet."); }	}
 			if(CheckInventory("KoraxClass") == 1)

@@ -178,6 +178,7 @@ tfear/abandonshot			tferglgo
 tfear/abandonboom           tferboom
 tfear/abandonload           tferglld
 tfear/abandonshot2          tferglg2
+tfear/trigger               tferclik
 
 korax/step					korstep
 korax/attack				koratk
@@ -213,8 +214,13 @@ hitler/armorloss            HITLRMRL
 hitler/death2               HITLDTH2
 hitler/laugh                HITLOLOL
 hitler/reload               HITLLOAD
+hitler/missfire             HITLMISS
+hitler/misscock             HITLCOCK
 
 pickup/defense				PKDEFENS // Taken from Trickster
 pickup/offense				PKOFFENS // Taken from Trickster
 pickup/equipment			PKARTILL // Taken from Tribes: Ascend
 pickup/ultimate				PKULTIMT // Taken from Trickster
+
+pickup/cyber/ultimate       CYBRBGET // Taken from Devil May Cry 3
+pickup/hitler/ultimate      HITLBGET // Taken from Wolfenstein

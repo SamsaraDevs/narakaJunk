@@ -511,7 +511,7 @@ actor HitlerRocket
         Loop
 
       Death:
-        WFLB C 8 Bright A_Explode(128,32,0)
+        WFLB C 8 Bright A_Explode(96,32,0)
         WFLB D 6 Bright
         WFLB E 4 Bright
         Stop
@@ -523,7 +523,7 @@ actor HitlerRocketRJ : HitlerRocket
     States
 	{
     Death:
-        WFLB C 8 Bright A_Explode(128,64)
+        WFLB C 8 Bright A_Explode(96,64)
         WFLB D 6 Bright
         WFLB E 4 Bright
         Stop

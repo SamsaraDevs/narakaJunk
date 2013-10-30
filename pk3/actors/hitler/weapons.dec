@@ -241,6 +241,7 @@ actor Panzerschreck : InstantSwitchWeapon
 	    TNT1 A 0 A_JumpIfInventory("HitlerLostArmor",1,"Fire2")
         TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"TLMSFire")
         TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopFire")
+		TNT1 A 0 A_JumpIfInventory("RJModeOn",1,"FireRJ")
 		TNT1 A 0 A_FireCustomMissile("HitlerRocket",0,1,14,8,0,0)
 		TNT1 A 0 A_FireCustomMissile("HitlerRocket",0,1,-14,8,0,0)
 		TNT1 A 0 A_FireCustomMissile("HitlerRocket",0,1,10,-4,0,0)
@@ -249,8 +250,19 @@ actor Panzerschreck : InstantSwitchWeapon
         HTRK CDA 5
         HTRK A 0 A_Refire
         Goto Ready
+		
+	  FireRJ:
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketRJ",0,1,14,8,0,0)
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketRJ",0,1,-14,8,0,0)
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketRJ",0,1,10,-4,0,0)
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketRJ",0,1,-10,-4,0,0)
+        HTRK B 5 BRIGHT
+        HTRK CDA 5
+        HTRK A 0 A_Refire
+        Goto Ready
 
       CoopFire:
+		TNT1 A 0 A_JumpIfInventory("RJModeOn",1,"CoopFireRJ")
 		TNT1 A 0 A_FireCustomMissile("HitlerRocketCoop",0,1,14,8,0,0)
 		TNT1 A 0 A_FireCustomMissile("HitlerRocketCoop",0,1,-14,8,0,0)
 		TNT1 A 0 A_FireCustomMissile("HitlerRocketCoop",0,1,10,-4,0,0)
@@ -260,7 +272,18 @@ actor Panzerschreck : InstantSwitchWeapon
         HTRK A 0 A_Refire
         Goto Ready
 
+      CoopFireRJ:
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketCoopRJ",0,1,14,8,0,0)
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketCoopRJ",0,1,-14,8,0,0)
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketCoopRJ",0,1,10,-4,0,0)
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketCoopRJ",0,1,-10,-4,0,0)
+        HTRK B 5 BRIGHT
+        HTRK CDA 5
+        HTRK A 0 A_Refire
+        Goto Ready
+
       TLMSFire:
+		TNT1 A 0 A_JumpIfInventory("RJModeOn",1,"TLMSFireRJ")
 		TNT1 A 0 A_FireCustomMissile("HitlerRocketTLMS",0,1,14,8,0,0)
 		TNT1 A 0 A_FireCustomMissile("HitlerRocketTLMS",0,1,-14,8,0,0)
 		TNT1 A 0 A_FireCustomMissile("HitlerRocketTLMS",0,1,10,-4,0,0)
@@ -270,9 +293,20 @@ actor Panzerschreck : InstantSwitchWeapon
         HTRK A 0 A_Refire
         Goto Ready
 
+      TLMSFireRJ:
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketTLMSRJ",0,1,14,8,0,0)
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketTLMSRJ",0,1,-14,8,0,0)
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketTLMSRJ",0,1,10,-4,0,0)
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketTLMSRJ",0,1,-10,-4,0,0)
+        HTRK B 5 BRIGHT
+        HTRK CDA 5
+        HTRK A 0 A_Refire
+        Goto Ready
+
       Fire2:
         TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"TLMSFire2")
         TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopFire2")
+		TNT1 A 0 A_JumpIfInventory("RJModeOn",1,"Fire2RJ")
 		TNT1 A 0 A_FireCustomMissile("HitlerRocket",0,1,10,0,0,0)
 		TNT1 A 0 A_FireCustomMissile("HitlerRocket",0,1,-10,0,0,0)
         HTRK F 5 BRIGHT
@@ -280,7 +314,16 @@ actor Panzerschreck : InstantSwitchWeapon
         HTRK A 0 A_Refire
         Goto Ready
 		
+	  Fire2RJ:
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketRJ",0,1,10,0,0,0)
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketRJ",0,1,-10,0,0,0)
+        HTRK F 5 BRIGHT
+        HTRK GHE 5
+        HTRK A 0 A_Refire
+        Goto Ready
+		
 	  TLMSFire2:
+		TNT1 A 0 A_JumpIfInventory("RJModeOn",1,"TLMSFire2RJ")
 		TNT1 A 0 A_FireCustomMissile("HitlerRocketTLMS",0,1,10,0,0,0)
 		TNT1 A 0 A_FireCustomMissile("HitlerRocketTLMS",0,1,-10,0,0,0)
         HTRK F 5 BRIGHT
@@ -288,9 +331,26 @@ actor Panzerschreck : InstantSwitchWeapon
         HTRK A 0 A_Refire
         Goto Ready
 		
+	  TLMSFire2RJ:
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketTLMSRJ",0,1,10,0,0,0)
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketTLMSRJ",0,1,-10,0,0,0)
+        HTRK F 5 BRIGHT
+        HTRK GHE 5
+        HTRK A 0 A_Refire
+        Goto Ready
+		
 	  CoopFire2:
+		TNT1 A 0 A_JumpIfInventory("RJModeOn",1,"CoopFire2RJ")
 		TNT1 A 0 A_FireCustomMissile("HitlerRocketCoop",0,1,10,0,0,0)
 		TNT1 A 0 A_FireCustomMissile("HitlerRocketCoop",0,1,-10,0,0,0)
+        HTRK F 5 BRIGHT
+        HTRK GHE 5
+        HTRK A 0 A_Refire
+        Goto Ready
+		
+	  CoopFire2RJ:
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketCoopRJ",0,1,10,0,0,0)
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketCoopRJ",0,1,-10,0,0,0)
         HTRK F 5 BRIGHT
         HTRK GHE 5
         HTRK A 0 A_Refire
@@ -303,6 +363,7 @@ actor Panzerschreck : InstantSwitchWeapon
 		TNT1 A 0 A_Recoil(10)
         TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"AltTLMSFire")
         TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"AltCoopFire")
+		TNT1 A 0 A_JumpIfInventory("RJModeOn",1,"AltFireRJ")
 		TNT1 A 0 A_FireCustomMissile("HitlerRocket2",0,1,14,8,0,0)
 		TNT1 A 0 A_FireCustomMissile("HitlerRocket2",0,1,-14,8,0,0)
 		TNT1 A 0 A_FireCustomMissile("HitlerRocket2",0,1,10,-4,0,0)
@@ -312,8 +373,20 @@ actor Panzerschreck : InstantSwitchWeapon
 		HTRK A 5 A_TakeInventory("CyberSpeed2")
         HTRK A 0 A_Refire
         Goto Ready
+		
+	  AltFireRJ:
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketRJ2",0,1,14,8,0,0)
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketRJ2",0,1,-14,8,0,0)
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketRJ2",0,1,10,-4,0,0)
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketRJ2",0,1,-10,-4,0,0)
+        HTRK B 5 BRIGHT
+        HTRK CD 5 Offset(0,32)
+		HTRK A 5 A_TakeInventory("CyberSpeed2")
+        HTRK A 0 A_Refire
+        Goto Ready
 
       AltCoopFire:
+		TNT1 A 0 A_JumpIfInventory("RJModeOn",1,"AltCoopFireRJ")
 		TNT1 A 0 A_FireCustomMissile("HitlerRocketCoop2",0,1,14,8,0,0)
 		TNT1 A 0 A_FireCustomMissile("HitlerRocketCoop2",0,1,-14,8,0,0)
 		TNT1 A 0 A_FireCustomMissile("HitlerRocketCoop2",0,1,10,-4,0,0)
@@ -324,7 +397,19 @@ actor Panzerschreck : InstantSwitchWeapon
         HTRK A 0 A_Refire
         Goto Ready
 
+      AltCoopFireRJ:
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketCoopRJ2",0,1,14,8,0,0)
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketCoopRJ2",0,1,-14,8,0,0)
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketCoopRJ2",0,1,10,-4,0,0)
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketCoopRJ2",0,1,-10,-4,0,0)
+        HTRK B 5 BRIGHT
+        HTRK CD 5 Offset(0,32)
+		HTRK A 5 A_TakeInventory("CyberSpeed2")
+        HTRK A 0 A_Refire
+        Goto Ready
+
       AltTLMSFire:
+		TNT1 A 0 A_JumpIfInventory("RJModeOn",1,"AltTLMSFireRJ")
 		TNT1 A 0 A_FireCustomMissile("HitlerRocketTLMS2",0,1,14,8,0,0)
 		TNT1 A 0 A_FireCustomMissile("HitlerRocketTLMS2",0,1,-14,8,0,0)
 		TNT1 A 0 A_FireCustomMissile("HitlerRocketTLMS2",0,1,10,-4,0,0)
@@ -335,11 +420,24 @@ actor Panzerschreck : InstantSwitchWeapon
         HTRK A 0 A_Refire
         Goto Ready
 
+      AltTLMSFireRJ:
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketTLMSRJ2",0,1,14,8,0,0)
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketTLMSRJ2",0,1,-14,8,0,0)
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketTLMSRJ2",0,1,10,-4,0,0)
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketTLMSRJ2",0,1,-10,-4,0,0)
+        HTRK B 5 BRIGHT
+        HTRK CD 5 Offset(0,32)
+		HTRK A 5 A_TakeInventory("CyberSpeed2")
+        HTRK A 0 A_Refire
+        Goto Ready
+
+
       AltFire2:
 		HTRK E 15 Offset(0,30) A_PlayWeaponSound("hitler/misscock")
 		TNT1 A 0 A_Recoil(10)
         TNT1 A 0 A_JumpIfInventory("TLMSModeOn",1,"TLMSFire2")
         TNT1 A 0 A_JumpIfInventory("CoopModeOn",1,"CoopFire2")
+		TNT1 A 0 A_JumpIfInventory("RJModeOn",1,"AltFire2RJ")
 		TNT1 A 0 A_FireCustomMissile("HitlerRocket2",0,1,10,0,0,0)
 		TNT1 A 0 A_FireCustomMissile("HitlerRocket2",0,1,-10,0,0,0)
         HTRK F 5 BRIGHT
@@ -347,7 +445,16 @@ actor Panzerschreck : InstantSwitchWeapon
         HTRK A 0 A_Refire
         Goto Ready
 		
+	  AltFire2RJ:
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketRJ2",0,1,10,0,0,0)
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketRJ2",0,1,-10,0,0,0)
+        HTRK F 5 BRIGHT
+        HTRK GHE 5 Offset(0,32)
+        HTRK A 0 A_Refire
+        Goto Ready
+		
 	  AltTLMSFire2:
+		TNT1 A 0 A_JumpIfInventory("RJModeOn",1,"AltTLMSFire2RJ")
 		TNT1 A 0 A_FireCustomMissile("HitlerRocketTLMS2",0,1,10,0,0,0)
 		TNT1 A 0 A_FireCustomMissile("HitlerRocketTLMS2",0,1,-10,0,0,0)
         HTRK F 5 BRIGHT
@@ -355,9 +462,26 @@ actor Panzerschreck : InstantSwitchWeapon
         HTRK A 0 A_Refire
         Goto Ready
 		
+	  AltTLMSFire2RJ:
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketTLMSRJ2",0,1,10,0,0,0)
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketTLMSRJ2",0,1,-10,0,0,0)
+        HTRK F 5 BRIGHT
+        HTRK GHE 5 Offset(0,32)
+        HTRK A 0 A_Refire
+        Goto Ready
+		
 	  AltCoopFire2:
+		TNT1 A 0 A_JumpIfInventory("RJModeOn",1,"AltCoopFire2RJ")
 		TNT1 A 0 A_FireCustomMissile("HitlerRocketCoop2",0,1,10,0,0,0)
 		TNT1 A 0 A_FireCustomMissile("HitlerRocketCoop2",0,1,-10,0,0,0)
+        HTRK F 5 BRIGHT
+        HTRK GHE 5 Offset(0,32)
+        HTRK A 0 A_Refire
+        Goto Ready
+		
+	  AltCoopFire2RJ:
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketCoopRJ2",0,1,10,0,0,0)
+		TNT1 A 0 A_FireCustomMissile("HitlerRocketCoopRJ2",0,1,-10,0,0,0)
         HTRK F 5 BRIGHT
         HTRK GHE 5 Offset(0,32)
         HTRK A 0 A_Refire
@@ -394,7 +518,26 @@ actor HitlerRocket
     }
 }
 
+actor HitlerRocketRJ : HitlerRocket
+{
+    States
+	{
+    Death:
+        WFLB C 8 Bright A_Explode(128,64)
+        WFLB D 6 Bright
+        WFLB E 4 Bright
+        Stop
+    }
+}
+
 actor HitlerRocketCoop: HitlerRocket
+{
++THRUSPECIES
+Species "Player"
+DamageType "VillainTeam"
+}
+
+actor HitlerRocketCoopRJ: HitlerRocketRJ
 {
 +THRUSPECIES
 Species "Player"
@@ -408,9 +551,19 @@ Species "Villain"
 DamageType "VillainTeam"
 }
 
+actor HitlerRocketTLMSRJ: HitlerRocketRJ
+{
++THRUSPECIES
+Species "Villain"
+DamageType "VillainTeam"
+}
+
 actor HitlerRocket2 : HitlerRocket { Speed 55 }
 actor HitlerRocketCoop2 : HitlerRocketCoop { Speed 55 }
 actor HitlerRocketTLMS2 : HitlerRocketTLMS { Speed 55 }
+actor HitlerRocketRJ2 : HitlerRocketRJ { Speed 55 }
+actor HitlerRocketCoopRJ2 : HitlerRocketCoopRJ { Speed 55 }
+actor HitlerRocketTLMSRJ2 : HitlerRocketTLMSRJ { Speed 55 }
 
 actor HitlerRocketSmoke
 {

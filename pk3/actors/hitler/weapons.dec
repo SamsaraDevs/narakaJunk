@@ -541,7 +541,7 @@ actor HitlerRocketCoopRJ: HitlerRocketRJ
 {
 +THRUSPECIES
 Species "Player"
-DamageType "VillainTeam"
+DamageType "VillainTeamWithSelfDamage"
 }
 
 actor HitlerRocketTLMS: HitlerRocket
@@ -555,7 +555,7 @@ actor HitlerRocketTLMSRJ: HitlerRocketRJ
 {
 +THRUSPECIES
 Species "Villain"
-DamageType "VillainTeam"
+DamageType "VillainTeamWithSelfDamage"
 }
 
 actor HitlerRocket2 : HitlerRocket { Speed 55 }

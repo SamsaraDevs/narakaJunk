@@ -133,6 +133,8 @@ script 890 ENTER//(int respawning) // This differs from Naraka_Spawn in that thi
 	    if(CheckInventory("GotWeapon6") == 1) { GiveInventory("CoopBamf",1); }
 		else { TakeInventory("CoopBamf",1); }
 		
+		if(GetCvar("samsara_allcanrj") == 1) { GiveInventory("RJingModeOn",1); }
+		
 		if (!respawning)
 		{
         HandleCyberDamage(respawning);
